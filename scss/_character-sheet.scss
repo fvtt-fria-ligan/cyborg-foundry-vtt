@@ -1,0 +1,96 @@
+
+$aqua: #71C5C9;
+$near-black: #1C1E23;
+$cream: #F6EDDB;
+
+.cy.sheet.actor.character {
+  border: 2px solid $aqua;
+  border-radius: 5px;
+  
+  section.window-content {
+    background: $near-black;
+    background-image: none;
+    border: 2px solid $cream;
+    color: $cream;
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      .header {
+        display: flex;
+        height: 500px;
+        .left-col {
+          display: flex;
+          flex-direction: column;
+          flex: 0 0 320px;
+          margin-right: 4px;
+          .portrait {
+            border: 4px solid $cream;
+            border-radius: 5px;
+            flex: 0 0 320px;
+            margin-bottom: 4px;
+          } 
+          .name {
+            border: 4px solid $cream;
+            border-radius: 5px;
+            flex: 0 0 50px;
+            margin-bottom: 4px;
+          } 
+          .class {
+            border: 4px solid $cream;
+            border-radius: 5px;
+            flex: 0 0 50px;
+            margin-bottom: 4px;
+          }  
+          .field-row {
+            display: flex;
+            flex: 0 0 50px;
+            width: 100%;
+            .field {
+              border: 4px solid $cream;
+              border-radius: 5px;
+              height: 80;
+              flex: 1;
+            }
+          }
+        }
+        .right-col {
+          display: flex;
+          flex-direction: column;
+          width: 100px;
+          .hit-points {
+            border: 4px solid $cream;
+            border-radius: 5px;
+            flex: 0 0 100px;
+            margin-bottom: 4px;
+            width: 100%;
+          }
+          .ability-row {
+            border: 4px solid $cream;
+            border-radius: 5px;
+            display: flex;
+            flex: 0 0 50px;
+            margin-bottom: 4px;
+            .ability-icon {
+              background-color: $cream;
+              flex: 0 0 50px;
+            }
+            .ability-score {
+              flex: 1;
+            }
+          }
+          .glitches {
+            border: 2px solid $cream;
+            border-radius: 5px;
+            flex: 0 0 50px;
+          }
+        }  
+      }
+      .tab-area {
+
+      }
+    }
+  }
+}
