@@ -1,0 +1,126 @@
+{
+  "Actor": {
+    "types": ["character", "foe"],
+    "templates": {
+      "common": {
+        "abilities": {
+          "agility": {
+            "value": 0
+          },
+          "presence": {
+            "value": 0
+          },
+          "strength": {
+            "value": 0
+          },
+          "toughness": {
+            "value": 0
+          }
+        },
+        "description": "",
+        "hitPoints": {
+          "max": 1,
+          "value": 1
+        }
+      }
+    },
+    "character": {
+      "templates": ["common"],
+      "appFumbleOn": 1,
+      "credits": 0,
+      "currentObsession": "",
+      "debt": {
+        "amount": 0,
+        "to": ""
+      },
+      "feature": "",
+      "glitches": {
+        "min": 0,
+        "max": 0,
+        "value": 0
+      },
+      "nanoFumbleOn": 1,
+      "quirk": "",
+      "style": "",
+      "wants": ""
+    },
+    "foe": {
+      "armor": "",
+      "attack": "",
+      "morale": 7,
+      "special": ""
+    }
+  },
+  "Item": {
+    "types": [
+      "app",
+      "armor",
+      "class",
+      "cybertech",
+      "equipment",
+      "feat",
+      "infestation",
+      "nanoPower",
+      "weapon"
+    ],
+    "templates": {
+      "baseEquipment": {
+        "carrySlots": 1,
+        "description": "",
+        "price": 0,
+        "quantity": 1
+      }
+    },
+    "app": {
+    },
+    "armor": {
+      "templates": ["baseEquipment"],
+      "tier": {
+        "min": 0,
+        "max": 1,
+        "value": 1
+      }
+    },
+    "class": {
+      "abilities": "",
+      "armorTableDie": "1d4",
+      "description": "",
+      "glitchDie": "1d2",
+      "startingAgility": "3d6",
+      "startingCredits": "2d6*10",
+      "startingHitPoints": "1d8",
+      "startingItems": null,
+      "startingKnowledge": "3d6",
+      "startingPresence": "3d6",
+      "startingRolls": null,
+      "startingStrength": "3d6",
+      "startingToughness": "3d6",
+      "weaponTableDie": "1d10"
+    },
+    "cybertech": {
+    },
+    "equipment": {
+      "templates": ["baseEquipment"]
+    },
+    "feat": {
+      "description": "",
+      "rollMacro": "",
+      "rollLabel": ""
+    },
+    "infestation": {
+    },
+    "nanoPower": {
+    },
+    "weapon": {
+      "templates": ["baseEquipment"],
+      "autofire": false,
+      "critMultiplier": 2,
+      "critOn": 20,
+      "damage": "1d2",
+      "fumbleOn": 1,
+      "targets": "1",
+      "usesAmmo": false,
+      "weaponType": "ranged"
+    }
+  }
+}

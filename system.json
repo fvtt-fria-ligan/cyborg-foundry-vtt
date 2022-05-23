@@ -1,0 +1,31 @@
+{
+  "name": "cy_borg",
+  "title": "CY_BORG",
+  "description": "Foundry VTT system for CY_BORG.",
+  "version": "1.0.0",
+  "templateVersion": 2,
+  "author": "mcglintlock",
+  "scripts": [],
+  "esmodules": ["module/cy_borg.js"],
+  "styles": ["css/cy_borg.css"],
+  "packs": [
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": true,
+  "initiative": "1d6",
+  "gridDistance": 10,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "hitPoints",
+  "secondaryTokenAttribute": null,
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "9",
+  "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",
+  "manifest": "https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/releases/latest/download/system.json",
+  "download": "https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/releases/latest/download/system.zip"
+}
