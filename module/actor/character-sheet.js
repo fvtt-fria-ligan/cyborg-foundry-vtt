@@ -25,7 +25,6 @@ export class CYCharacterSheet extends ActorSheet {
     superData.data.data.class = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.class)
       .pop();
-    console.log(superData);
     return superData;
   }  
  }

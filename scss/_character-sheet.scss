@@ -5,6 +5,8 @@ $cream: #F6EDDB;
 
 $widget-margin: 5px;
 $field-height: 38px;
+$tab-height: 30px;
+$tab-width: 50px;
 
 .cy.sheet.actor.character {
   border: 2px solid $aqua;
@@ -140,9 +142,12 @@ $field-height: 38px;
       .sheet-tabs {
         border-bottom: 4px solid $cream;
         border-top: 4px solid $cream;
-        flex: 0 0 30px;
+        flex: 0 0 $tab-height;
         padding: 0;
         a.item {
+          height: $tab-height;
+          width: $tab-width;
+          text-align: center;
           &:hover {
             text-shadow: 0 0 10px red;
           }
@@ -151,12 +156,24 @@ $field-height: 38px;
           }
           img {
             border: none;
-            height: 30px;
-            width: 45px;
+            border-radius: 0;
+            height: $tab-height;
           }
         }
       }
       .sheet-body {
+        .notes-tab {
+          background-color: $cream;
+          color: $near-black;
+          // display: flex;
+          // flex-direction: column;
+          // height: 100%;
+          height: 300px;
+          width: 100%;
+          .editor, .editor-content {
+            height: 100%;
+          }
+        }
       }
     }
   }

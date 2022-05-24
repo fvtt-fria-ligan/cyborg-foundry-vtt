@@ -133,6 +133,11 @@
   flex: 0 0 30px;
   padding: 0;
 }
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item {
+  height: 30px;
+  width: 50px;
+  text-align: center;
+}
 .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item:hover {
   text-shadow: 0 0 10px red;
 }
@@ -141,8 +146,17 @@
 }
 .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item img {
   border: none;
+  border-radius: 0;
   height: 30px;
-  width: 45px;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab {
+  background-color: #F6EDDB;
+  color: #1C1E23;
+  height: 300px;
+  width: 100%;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab .editor, .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab .editor-content {
+  height: 100%;
 }
 
 /*# sourceMappingURL=cy_borg.css.map */

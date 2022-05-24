@@ -3,8 +3,9 @@ import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
 
 Hooks.once("init", async function () {
-  CONFIG.CY = CY;
   consoleBanner();
+  CONFIG.CY = CY;
+  await registerHandlebarsPartials();
   registerSheets();
 });
 
@@ -20,6 +21,15 @@ const consoleBanner = () => {
   console.log('%c===========================================================', consoleOptions);
 };
 
+const registerHandlebarsPartials = async () => {
+  await loadTemplates([
+    "systems/cy_borg/templates/actor/notes-tab.html",
+  ]);
+  console.log("*******************************************")
+  console.log("*******************************************")
+  console.log("*******************************************")
+  console.log("*******************************************")
+}
 const registerSheets = () => {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(CY.system, CYCharacterSheet, {
