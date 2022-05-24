@@ -2,55 +2,84 @@
   <div class="wrapper">
     <div class="header">
       <div class="left-col">
-        <div class="portrait">
+        <div class="widget portrait">
+          <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
         </div>
-        <div class="name">
+        <div class="widget name">
+          <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
         </div>
-        <div class="class">
+        <div class="widget class">
+          <span class="class-name">{{data.data.class.name}}</span>
         </div>
         <div class="field-row">
-          <div class="field">
+          <div class="widget field foo-field">
 
           </div>
-          <div class="field">
+          <div class="widget field">
 
           </div>
         </div>
       </div>
       <div class="right-col">
-        <div class="hit-points">
+        <div class="widget hit-points">          
+          <div class="hit-points-ul">
+            <input class="hit-points-value" type="number" name="data.hitPoints.value" value="{{data.data.hitPoints.value}}" />            
+          </div>
+          <div class="hit-points-ur">
+          </div>
+          <div class="hit-points-ll">
+          </div>
+          <div class="hit-points-lr">
+            <input class="hit-points-max" type="number" name="data.hitPoints.max" value="{{data.data.hitPoints.max}}" />            
+          </div>
         </div>        
-        <div class="ability-row strength">
+        <div class="widget ability-row">
           <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_strength.png" />
           </div>
           <div class="ability-score">
+            <input class="strength" type="number" name="data.abilities.strength.value" value="{{data.data.abilities.strength.value}}" />
           </div>
         </div>        
-        <div class="ability-row agility">
+        <div class="widget ability-row">
           <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_agility.png" />
           </div>
           <div class="ability-score">
+            <input class="strength" type="number" name="data.abilities.agility.value" value="{{data.data.abilities.agility.value}}" />
           </div>
         </div>        
-        <div class="ability-row presence">
+        <div class="widget ability-row">
           <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_presence.png" />
           </div>
           <div class="ability-score">
+            <input class="presence" type="number" name="data.abilities.presence.value" value="{{data.data.abilities.presence.value}}" />
           </div>
         </div>        
-        <div class="ability-row toughness">
+        <div class="widget ability-row">
           <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_toughness.png" />
           </div>
           <div class="ability-score">
+            <input class="toughness" type="number" name="data.abilities.toughness.value" value="{{data.data.abilities.toughness.value}}" />
           </div>
         </div>        
-        <div class="ability-row knowledge">
+        <div class="widget ability-row">
           <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_strength.png" />
           </div>
           <div class="ability-score">
+            <input class="knowledge" type="number" name="data.abilities.knowledge.value" value="{{data.data.abilities.knowledge.value}}" />
           </div>
         </div>        
-        <div class="glitches">
+        <div class="widget ability-row">
+          <div class="ability-icon">
+            <img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" />
+          </div>
+          <div class="ability-score">
+            <input class="glitches" type="number" name="data.glitches.value" value="{{data.data.glitches.value}}" />
+          </div>
         </div>        
       </div>
     </div>

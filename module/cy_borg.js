@@ -3,6 +3,7 @@ import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
 
 Hooks.once("init", async function () {
+  CONFIG.CY = CY;
   consoleBanner();
   registerSheets();
 });
