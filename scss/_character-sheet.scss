@@ -33,12 +33,12 @@ $field-height: 38px;
       width: 100%;
     }
 
-    .wrapper {
+    .sheet-wrapper {
       display: flex;
       flex-direction: column;
-      .header {
+      .sheet-header {
         display: flex;
-        height: 500px;
+        height: 443px;
         .left-col {
           display: flex;
           flex-direction: column;
@@ -137,8 +137,26 @@ $field-height: 38px;
           }
         }  
       }
-      .tab-area {
-
+      .sheet-tabs {
+        border-bottom: 4px solid $cream;
+        border-top: 4px solid $cream;
+        flex: 0 0 30px;
+        padding: 0;
+        a.item {
+          &:hover {
+            text-shadow: 0 0 10px red;
+          }
+          &.active {
+            background-color: $cream;
+          }
+          img {
+            border: none;
+            height: 30px;
+            width: 45px;
+          }
+        }
+      }
+      .sheet-body {
       }
     }
   }

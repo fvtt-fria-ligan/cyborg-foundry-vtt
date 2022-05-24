@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <div class="wrapper">
-    <div class="header">
+  <div class="sheet-wrapper">
+    <div class="sheet-header">
       <div class="left-col">
         <div class="widget portrait">
           <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
@@ -35,7 +35,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_strength.png" />
+            <a class="ability-link" data-ability="strength" title="{{ localize 'CY.Strength' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_strength.png" /></a>
           </div>
           <div class="ability-score">
             <input class="strength" type="number" name="data.abilities.strength.value" value="{{data.data.abilities.strength.value}}" />
@@ -43,7 +44,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_agility.png" />
+            <a class="ability-link" data-ability="agility" title="{{ localize 'CY.Agility' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_agility.png" /></a>
           </div>
           <div class="ability-score">
             <input class="strength" type="number" name="data.abilities.agility.value" value="{{data.data.abilities.agility.value}}" />
@@ -51,7 +53,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_presence.png" />
+            <a class="ability-link" data-ability="presence" title="{{ localize 'CY.Presence' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_presence.png" /></a>
           </div>
           <div class="ability-score">
             <input class="presence" type="number" name="data.abilities.presence.value" value="{{data.data.abilities.presence.value}}" />
@@ -59,7 +62,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_toughness.png" />
+            <a class="ability-link" data-ability="toughness" title="{{ localize 'CY.Toughness' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_toughness.png" /></a>
           </div>
           <div class="ability-score">
             <input class="toughness" type="number" name="data.abilities.toughness.value" value="{{data.data.abilities.toughness.value}}" />
@@ -67,7 +71,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_strength.png" />
+            <a class="ability-link" data-ability="knowledge" title="{{ localize 'CY.Knowledge' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_knowledge.png" /></a>
           </div>
           <div class="ability-score">
             <input class="knowledge" type="number" name="data.abilities.knowledge.value" value="{{data.data.abilities.knowledge.value}}" />
@@ -75,7 +80,8 @@
         </div>        
         <div class="widget ability-row">
           <div class="ability-icon">
-            <img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" />
+            <a class="ability-link" data-ability="glitches" title="{{ localize 'CY.Glitches' }}">
+              <img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
           </div>
           <div class="ability-score">
             <input class="glitches" type="number" name="data.glitches.value" value="{{data.data.glitches.value}}" />
@@ -83,8 +89,29 @@
         </div>        
       </div>
     </div>
-    <div class="tab-area">
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="notes"><img class="tab-icon" title="{{localize 'CY.Notes'}}" src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+      <a class="item" data-tab="combat"><img class="tab-icon" title="{{localize 'CY.Combat'}}" src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+      <a class="item" data-tab="feats"><img class="tab-icon" title="{{localize 'CY.Feats'}}" src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+      <a class="item" data-tab="nano"><img class="tab-icon" title="{{localize 'CY.Nano'}}" src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+      <a class="item" data-tab="equipment"><img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+    </nav>
+    
   
+    <div class="sheet-body">
+  
+      <div class="tab notes-tab" data-group="primary" data-tab="notes">
+        {{editor content=data.data.description target="data.description"
+        button=true owner=owner editable=true}}
+      </div>
+
+      <div class="tab combat-tab" data-group="primary" data-tab="combat">
+      </div>
+
+      <div class="tab equipment-tab" data-group="primary" data-tab="equipment">
+      </div>
+
     </div>  
   </div>
 </form>

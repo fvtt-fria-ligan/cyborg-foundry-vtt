@@ -12,7 +12,7 @@ export class CYCharacterSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "violence",
+          initial: "notes",
         },
       ],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],

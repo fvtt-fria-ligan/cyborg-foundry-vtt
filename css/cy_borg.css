@@ -24,63 +24,63 @@
   text-transform: uppercase;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .wrapper {
+.cy.sheet.actor.character section.window-content .sheet-wrapper {
   display: flex;
   flex-direction: column;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header {
   display: flex;
-  height: 500px;
+  height: 443px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col {
   display: flex;
   flex-direction: column;
   flex: 0 0 292px;
   margin-right: 5px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .portrait {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .portrait {
   display: flex;
   flex: 0 0 292px;
   justify-content: center;
   margin-bottom: 5px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .portrait img {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .portrait img {
   height: 100%;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .name {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .name {
   flex: 0 0 38px;
   margin-bottom: 5px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .name input[type=text] {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .name input[type=text] {
   height: 38px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .class {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class {
   flex: 0 0 38px;
   margin-bottom: 5px;
   text-align: center;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .class span.class-name {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class span.class-name {
   line-height: 38px;
   text-transform: uppercase;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .field-row {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row {
   display: flex;
   flex: 0 0 38px;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .field-row .field {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row .field {
   height: 38px;
   flex: 1;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .left-col .field-row .foo-field {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row .foo-field {
   margin-right: 5px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col {
   display: flex;
   flex-direction: column;
   width: 88px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points {
   display: grid;
   flex: 0 0 88px;
   grid-template-columns: 1fr 1fr;
@@ -88,44 +88,61 @@
   margin-bottom: 5px;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points .hit-points-ur,
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points .hit-points-ll {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ur,
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ll {
   background-image: -webkit-linear-gradient(135deg, #F6EDDB 50%, #1C1E23 50%);
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points .hit-points-lr {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr {
   background-color: #F6EDDB;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points .hit-points-lr input[type=number] {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr input[type=number] {
   color: #1C1E23;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .hit-points input[type=number] {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points input[type=number] {
   font-size: 34px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .ability-row {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row {
   display: flex;
   flex: 0 0 38px;
   margin-bottom: 5px;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .ability-row .ability-icon {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row .ability-icon {
   background-color: #F6EDDB;
   border-right: 4px solid #F6EDDB;
   display: flex;
   flex: 0 0 38px;
   justify-content: center;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .ability-row .ability-icon img {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row .ability-icon img {
   border: none;
   height: 100%;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .ability-row .ability-score {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row .ability-score {
   flex: 1;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .ability-row .ability-score input[type=number] {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row .ability-score input[type=number] {
   font-size: 34px;
   font-weight: bold;
 }
-.cy.sheet.actor.character section.window-content .wrapper .header .right-col .glitches {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .glitches {
   flex: 0 0 38px;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs {
+  border-bottom: 4px solid #F6EDDB;
+  border-top: 4px solid #F6EDDB;
+  flex: 0 0 30px;
+  padding: 0;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item:hover {
+  text-shadow: 0 0 10px red;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item.active {
+  background-color: #F6EDDB;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item img {
+  border: none;
+  height: 30px;
+  width: 45px;
 }
 
 /*# sourceMappingURL=cy_borg.css.map */
