@@ -1,4 +1,14 @@
+@import "_vars";
+@import "_sheet";
 
 @import "_character-sheet";
+@import "_combat-tab";
+
+@import "_item-sheet";
+@import "_weapon-sheet";
 
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@font-face {
+  font-family: "Margahayu-Regular";
+  src: url("../assets/fonts/Margahayu-Regular.ttf") format("truetype");
+}

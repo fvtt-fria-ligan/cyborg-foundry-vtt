@@ -121,7 +121,8 @@
       "critOn": 20,
       "damage": "1d2",
       "fumbleOn": 1,
-      "targets": "1",
+      "special": "",
+      "targets": 1,
       "usesAmmo": false,
       "weaponType": "ranged"
     }

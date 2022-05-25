@@ -1,3 +1,57 @@
 <div class="tab combat-tab" data-group="primary" data-tab="combat">
-  combat
+  <div class="weapons">
+    {{#each data.data.weapons as |item id|}}
+      <div class="item weapon-row" data-item-id="{{item._id}}">
+        <div class="icon">
+          <img src="{{item.img}}" />
+        </div>
+        <div class="fields">
+          <div class="field-row">
+            {{item.name}}
+          </div>
+          <div class="field-row">
+            {{item.data.damage}} {{item.data.weaponType}}
+          </div>
+          {{#if item.data.special}}
+            {{ item.data.special }}
+          {{/if}}
+          {{#if item.data.autofire}}
+            <div class="field-row">
+              <button type="button" class="fire-button">Autofire</button>
+              <button type="button" class="fire-button">Suppress</button>
+            </div>
+          {{/if}}
+          <div class="field-row">
+            <div class="item-controls">
+              <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+            </div>
+          </div>          
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div class="armor">
+    {{#each data.data.armor as |item id|}}
+      <div class="item armor-row" data-item-id="{{item._id}}">
+        <div class="icon">
+          <img src="{{item.img}}" />
+        </div>
+        <div class="fields">
+          <div class="field-row">
+            {{item.name}}
+          </div>
+          <div class="field-row">
+            {{ localize 'CY.Tier' }} {{item.data.tier.value}}
+          </div>
+          <div class="field-row">
+            <div class="item-controls">
+              <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>      
+    {{/each}}
+  </div>
 </div>

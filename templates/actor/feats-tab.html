@@ -1,3 +1,7 @@
 <div class="tab feats-tab" data-group="primary" data-tab="feats">
-  feats
+  <div class="feats">
+    {{#each data.data.feats as |item id|}}
+      {{item.name}}
+    {{/each}}
+  </div>
 </div>

@@ -1,40 +1,6 @@
 
-$aqua: #71C5C9;
-$near-black: #1C1E23;
-$cream: #F6EDDB;
-
-$widget-margin: 5px;
-$field-height: 38px;
-$tab-height: 30px;
-$tab-width: 50px;
-
 .cy.sheet.actor.character {
-  border: 2px solid $aqua;
-  border-radius: 5px;
-  
-  .widget {
-    border: 4px solid $cream;
-    border-radius: 5px;
-  }
-
   section.window-content {
-    background: $near-black;
-    background-image: none;
-    border: 2px solid $cream;
-    color: $cream;
-    font-family: 'VT323', monospace;
-    font-size: 24px;
-    padding: $widget-margin;
-
-    input[type="number"],
-    input[type="text"] {
-      color: $cream;
-      height: 100%;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-    }
-
     .sheet-wrapper {
       display: flex;
       flex-direction: column;
@@ -44,11 +10,11 @@ $tab-width: 50px;
         .left-col {
           display: flex;
           flex-direction: column;
-          flex: 0 0 292px;
+          flex: 0 0 $portrait-size;
           margin-right: $widget-margin;
           .portrait {
             display: flex;
-            flex: 0 0 292px;
+            flex: 0 0 $portrait-size;
             justify-content: center;
             margin-bottom: $widget-margin;
             img {
@@ -139,30 +105,8 @@ $tab-width: 50px;
           }
         }  
       }
-      .sheet-tabs {
-        border-bottom: 4px solid $cream;
-        border-top: 4px solid $cream;
-        flex: 0 0 $tab-height;
-        padding: 0;
-        a.item {
-          height: $tab-height;
-          width: $tab-width;
-          text-align: center;
-          &:hover {
-            text-shadow: 0 0 10px red;
-          }
-          &.active {
-            background-color: $cream;
-          }
-          img {
-            border: none;
-            border-radius: 0;
-            height: $tab-height;
-          }
-        }
-      }
       .sheet-body {
-        .notes-tab {
+        .dossier-tab {
           background-color: $cream;
           color: $near-black;
           // display: flex;

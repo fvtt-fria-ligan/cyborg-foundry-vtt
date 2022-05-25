@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
-.cy.sheet.actor.character {
+.cy.sheet {
   border: 2px solid #71C5C9;
   border-radius: 5px;
 }
-.cy.sheet.actor.character .widget {
-  border: 4px solid #F6EDDB;
-  border-radius: 5px;
-}
-.cy.sheet.actor.character section.window-content {
+.cy.sheet section.window-content {
   background: #1C1E23;
   background-image: none;
   border: 2px solid #F6EDDB;
@@ -16,14 +12,46 @@
   font-size: 24px;
   padding: 5px;
 }
-.cy.sheet.actor.character section.window-content input[type=number],
-.cy.sheet.actor.character section.window-content input[type=text] {
+.cy.sheet section.window-content .sheet-tabs {
+  border-bottom: 4px solid #F6EDDB;
+  border-top: 4px solid #F6EDDB;
+  flex: 0 0 30px;
+  padding: 0;
+}
+.cy.sheet section.window-content .sheet-tabs a.item {
+  height: 30px;
+  width: 50px;
+  text-align: center;
+}
+.cy.sheet section.window-content .sheet-tabs a.item:hover {
+  text-shadow: 0 0 10px red;
+}
+.cy.sheet section.window-content .sheet-tabs a.item.active {
+  background-color: #F6EDDB;
+}
+.cy.sheet section.window-content .sheet-tabs a.item img {
+  border: none;
+  border-radius: 0;
+  height: 30px;
+}
+.cy.sheet section.window-content input[type=number],
+.cy.sheet section.window-content input[type=text] {
   color: #F6EDDB;
   height: 100%;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
 }
+.cy.sheet section.window-content input[type=number] {
+  font-family: "Margahayu";
+  font-size: 30px;
+  padding-top: 10px;
+}
+.cy.sheet section.window-content .widget {
+  border: 4px solid #F6EDDB;
+  border-radius: 5px;
+}
+
 .cy.sheet.actor.character section.window-content .sheet-wrapper {
   display: flex;
   flex-direction: column;
@@ -127,36 +155,111 @@
 .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .glitches {
   flex: 0 0 38px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs {
-  border-bottom: 4px solid #F6EDDB;
-  border-top: 4px solid #F6EDDB;
-  flex: 0 0 30px;
-  padding: 0;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item {
-  height: 30px;
-  width: 50px;
-  text-align: center;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item:hover {
-  text-shadow: 0 0 10px red;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item.active {
-  background-color: #F6EDDB;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-tabs a.item img {
-  border: none;
-  border-radius: 0;
-  height: 30px;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .dossier-tab {
   background-color: #F6EDDB;
   color: #1C1E23;
   height: 300px;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab .editor, .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .notes-tab .editor-content {
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .dossier-tab .editor, .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-body .dossier-tab .editor-content {
   height: 100%;
+}
+
+.combat-tab .icon {
+  flex: 0 0 135px;
+  margin-right: 5px;
+}
+.combat-tab .icon img {
+  border: 4px solid #F6EDDB;
+  border-radius: 5px;
+  height: 135px;
+  width: 135px;
+}
+.combat-tab .fields {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.combat-tab .weapons .weapon-row {
+  display: flex;
+}
+.combat-tab .weapons .weapon-row .fire-button {
+  color: #F6EDDB;
+  font-size: 12px;
+  width: 80px;
+}
+.combat-tab .armor .armor-row {
+  display: flex;
+}
+
+.cy.sheet.item .sheet-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.cy.sheet.item .sheet-header .portrait-row {
+  display: flex;
+  flex: 0 0 292px;
+}
+.cy.sheet.item .sheet-header .portrait-row .portrait {
+  align-items: center;
+  display: flex;
+  margin-bottom: 5px;
+}
+.cy.sheet.item .sheet-header .portrait-row .portrait img.portrait {
+  height: 292px;
+  width: 292px;
+}
+.cy.sheet.item .sheet-header .portrait-row .item-type {
+  align-items: center;
+  display: flex;
+  flex: 0 0 88px;
+  font-size: 100px;
+  justify-content: center;
+  writing-mode: vertical-rl;
+}
+.cy.sheet.item .sheet-header .name {
+  flex: 0 0 38px;
+  margin-bottom: 5px;
+}
+.cy.sheet.item .sheet-header .name input[type=text] {
+  height: 38px;
+}
+.cy.sheet.item .sheet-body .description-tab {
+  background-color: #F6EDDB;
+  color: #1C1E23;
+  height: 300px;
+  width: 100%;
+}
+.cy.sheet.item .sheet-body .description-tab .editor, .cy.sheet.item .sheet-body .description-tab .editor-content {
+  height: 100%;
+}
+.cy.sheet.item .sheet-body .details-tab .field-row {
+  display: flex;
+  margin-bottom: 5px;
+}
+.cy.sheet.item .sheet-body .details-tab .field-row .field-label {
+  background-color: #F6EDDB;
+  color: #1C1E23;
+  flex: 1;
+  line-height: 38px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.cy.sheet.item .sheet-body .details-tab .field-row .field-value {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+.cy.sheet.item .sheet-body .details-tab .field-row .field-value input {
+  width: 100%;
+}
+
+@font-face {
+  font-family: "Margahayu-Regular";
+  src: url("../assets/fonts/Margahayu-Regular.ttf") format("truetype");
 }
 
 /*# sourceMappingURL=cy_borg.css.map */
