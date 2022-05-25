@@ -25,6 +25,27 @@ export class CYCharacterSheet extends ActorSheet {
     superData.data.data.class = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.class)
       .pop();
+    superData.data.data.apps = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.app)
+      .sort(byName);
+    superData.data.data.armor = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
+      .sort(byName);
+    superData.data.data.cybernetics = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.cybernetic)
+      .sort(byName);
+    superData.data.data.equipment = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
+      .sort(byName);
+    superData.data.data.feats = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.feat)
+      .sort(byName);
+    superData.data.data.nanoPowers = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
+      .sort(byName);
+    superData.data.data.weapons = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
+      .sort(byName);
     return superData;
   }  
  }

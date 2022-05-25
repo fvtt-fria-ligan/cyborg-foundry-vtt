@@ -23,12 +23,13 @@ const consoleBanner = () => {
 
 const registerHandlebarsPartials = async () => {
   await loadTemplates([
-    "systems/cy_borg/templates/actor/notes-tab.html",
+    "systems/cy_borg/templates/actor/apps-tab.html",
+    "systems/cy_borg/templates/actor/combat-tab.html",
+    "systems/cy_borg/templates/actor/dossier-tab.html",
+    "systems/cy_borg/templates/actor/equipment-tab.html",
+    "systems/cy_borg/templates/actor/feats-tab.html",
+    "systems/cy_borg/templates/actor/nano-tab.html",
   ]);
-  console.log("*******************************************")
-  console.log("*******************************************")
-  console.log("*******************************************")
-  console.log("*******************************************")
 }
 const registerSheets = () => {
   Actors.unregisterSheet("core", ActorSheet);
