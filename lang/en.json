@@ -13,7 +13,7 @@
   "CY.Dossier": "Dossier",
   "CY.Equipment": "Equipment",
   "CY.Feats": "Feats",
-  "CY.FumbleOn": "Fumble On",  
+  "CY.FumbleOn": "Fumble On",
   "CY.Glitches": "Glitches",
   "CY.ItemSheet": "CY_BORG Item Sheet",
   "CY.Knowledge": "Knowledge",
@@ -30,6 +30,6 @@
   "CY.Tier": "Tier",
   "CY.Toughness": "Toughness",
   "CY.TriggerEffect": "Trigger Effect",
-  "CY.WeaponType": "Weapon Type",
-  "CY.UsesAmmo": "Uses Ammo"
+  "CY.UsesAmmo": "Uses Ammo",
+  "CY.WeaponType": "Weapon Type"
 }
