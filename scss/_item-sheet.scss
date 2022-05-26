@@ -1,0 +1,78 @@
+.cy.sheet.item {
+  .sheet-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .portrait-row {
+      display: flex;
+      flex: 0 0 $portrait-size;
+      .portrait {
+        align-items: center;
+        display: flex;
+        img.portrait {
+          height: $portrait-size;
+          width: $portrait-size;
+        }
+        margin-bottom: $widget-margin;
+      }  
+      .item-type {
+        align-items: center;
+        display: flex;
+        flex: 0 0 88px;
+        font-size: 100px;
+        // transform: rotate(-90deg);        
+        justify-content: center;
+        writing-mode: vertical-rl;
+      }
+    }
+    .name {
+      flex: 0 0 $field-height;
+      margin-bottom: $widget-margin;
+      input[type="text"] {
+        height: $field-height;
+      }
+    }    
+  }
+  .sheet-body {
+    .description-tab {
+      background-color: $cream;
+      color: $near-black;
+      // display: flex;
+      // flex-direction: column;
+      // height: 100%;
+      height: 300px;
+      width: 100%;
+      .editor, .editor-content {
+        height: 100%;
+      }
+    }
+    .details-tab {
+      .field-row {
+        display: flex;
+        flex: 0 0 $field-height;
+        margin-bottom: $widget-margin;
+        .field-label {
+          align-items: center;
+          background-color: $cream;
+          color: $near-black;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          justify-content: center;
+          text-align: center;
+          text-transform: uppercase;
+        }
+        .field-value {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          justify-content: center;
+          input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -52,15 +52,15 @@
         }
         .right-col {
           display: flex;
+          flex: 0 0 88px;
           flex-direction: column;
-          width: 88px;
           .hit-points {
             display: grid;
             flex: 0 0 88px;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
             margin-bottom: $widget-margin;
-            width: 100%;
+            width: 88px;
             .hit-points-ul {     
             }
             .hit-points-ur,
@@ -74,6 +74,7 @@
               }          
             }
             input[type="number"] {
+              border: none;
               font-size: 34px;
             }            
           }
@@ -82,21 +83,27 @@
             flex: 0 0 $field-height;
             margin-bottom: $widget-margin;
             .ability-icon {
+              align-items: center;
               background-color: $cream;
               border-right: 4px solid $cream;
               display: flex;
-              flex: 0 0 $field-height;
+              flex: 1;
               justify-content: center;
-              img {
-                border: none;
-                height: 100%;
+              a {
+                height: 34px;
+                width: 34px;
+                img {
+                  border: none;
+                  height: 34px;
+                  width: 34px;
+                }  
               }
             }
             .ability-score {
               flex: 1;
               input[type="number"] {
-                font-size: 34px;
-                font-weight: bold;
+                font-size: 32px;
+                padding-top: 6px;
               }
             }
           }

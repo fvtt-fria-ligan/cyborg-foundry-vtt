@@ -1,0 +1,84 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="sheet-wrapper">
+    {{> systems/cy_borg/templates/item/item-sheet-header.html itemType='WEAPON'}}  
+    {{> systems/cy_borg/templates/item/item-sheet-tabs.html }}
+    <div class="sheet-body">
+      {{> systems/cy_borg/templates/item/item-description-tab.html }} 
+      <div class="tab details-tab" data-group="primary" data-tab="details">
+        {{> systems/cy_borg/templates/item/item-base-fields.html }} 
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.WeaponType'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="text" name="data.weaponType" value="{{data.data.weaponType}}" spellcheck="false"/>
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Damage'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="text" name="data.damage" value="{{data.data.damage}}" spellcheck="false"/>
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Special'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="text" name="data.special" value="{{data.data.special}}" spellcheck="false"/>
+          </div>
+        </div>          
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.UsesAmmo'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.usesAmmo" {{checked data.data.usesAmmo}} />
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Autofire'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.autofire" {{checked data.data.autofire}} />
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Targets'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="number" name="data.targets" value="{{data.data.targets}}"/>
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.FumbleOn'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="number" name="data.fumbleOn" value="{{data.data.fumbleOn}}"/>
+          </div>
+        </div>        
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.CritOn'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="number" name="data.critOn" value="{{data.data.critOn}}"/>
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.CritMultiplier'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="number" name="data.critMultiplier" value="{{data.data.critMultiplier}}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
