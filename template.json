@@ -75,6 +75,8 @@
       }
     },
     "app": {
+      "burned": false,
+      "description": ""
     },
     "armor": {
       "templates": ["baseEquipment"],
@@ -101,6 +103,7 @@
       "weaponTableDie": "1d10"
     },
     "cybertech": {
+      "templates": ["baseEquipment"]
     },
     "equipment": {
       "templates": ["baseEquipment"]
@@ -111,8 +114,10 @@
       "rollLabel": ""
     },
     "infestation": {
+      "description": ""
     },
     "nanoPower": {
+      "description": ""
     },
     "weapon": {
       "templates": ["baseEquipment"],
