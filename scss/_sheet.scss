@@ -12,19 +12,24 @@
     padding: $widget-margin;
 
     .sheet-tabs {
-      border-bottom: 4px solid $cream;
-      border-top: 4px solid $cream;
+      background-color: $cream;
+      border: none;
+      // border-bottom: 4px solid $cream;
+      // border-top: 4px solid $cream;
       flex: 0 0 $tab-height;
       padding: 0;
       a.item {
-        height: $tab-height;
-        width: $tab-width;
+        height: 57;
+        padding: 4px;
         text-align: center;
+        width: 84;
+        border: 4px solid $cream;
         &:hover {
-          text-shadow: 0 0 10px red;
+          border: 4px solid $magenta;
         }
         &.active {
-          background-color: $cream;
+          border: 4px solid $magenta;
+          // background-color: $cream;
         }
         img {
           border: none;
