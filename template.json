@@ -59,7 +59,6 @@
       "app",
       "armor",
       "class",
-      "cybertech",
       "equipment",
       "feat",
       "infestation",
@@ -80,6 +79,7 @@
     },
     "armor": {
       "templates": ["baseEquipment"],
+      "cybertech": false,
       "tier": {
         "min": 0,
         "max": 1,
@@ -102,11 +102,9 @@
       "startingToughness": "3d6",
       "weaponTableDie": "1d10"
     },
-    "cybertech": {
-      "templates": ["baseEquipment"]
-    },
     "equipment": {
-      "templates": ["baseEquipment"]
+      "templates": ["baseEquipment"],
+      "cybertech": false
     },
     "feat": {
       "description": "",
@@ -124,6 +122,7 @@
       "autofire": false,
       "critMultiplier": 2,
       "critOn": 20,
+      "cybertech": false,
       "damage": "1d2",
       "fumbleOn": 1,
       "special": "",

@@ -1,4 +1,7 @@
 .cy.sheet.item {
+  .sheet-wrapper.cyber .sheet-header .portrait-row .item-type {
+    color: $yellow;
+  }
   .sheet-header {
     display: flex;
     flex-direction: column;

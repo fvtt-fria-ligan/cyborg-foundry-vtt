@@ -199,6 +199,9 @@
   display: flex;
 }
 
+.cy.sheet.item .sheet-wrapper.cyber .sheet-header .portrait-row .item-type {
+  color: #F8F800;
+}
 .cy.sheet.item .sheet-header {
   display: flex;
   flex-direction: column;

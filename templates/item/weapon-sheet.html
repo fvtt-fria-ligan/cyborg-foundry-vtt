@@ -1,11 +1,19 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <div class="sheet-wrapper">
+  <div class="sheet-wrapper {{cssCyberClass}}">
     {{> systems/cy_borg/templates/item/item-sheet-header.html itemType='WEAPON'}}  
     {{> systems/cy_borg/templates/item/item-sheet-tabs.html }}
     <div class="sheet-body">
       {{> systems/cy_borg/templates/item/item-description-tab.html }} 
       <div class="tab details-tab" data-group="primary" data-tab="details">
         {{> systems/cy_borg/templates/item/item-base-fields.html }} 
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Cybertech'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.cybertech" {{checked data.data.cybertech}} />
+          </div>
+        </div>
         <div class="widget field-row">
           <div class="field-label">
             {{ localize 'CY.WeaponType'}}

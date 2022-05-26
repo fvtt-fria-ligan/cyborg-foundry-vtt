@@ -19,5 +19,12 @@ export class CYItemSheet extends ItemSheet {
   get template() {
     const path = "systems/cy_borg/templates/item/";
     return `${path}/${this.item.data.type}-sheet.html`;
-  }  
+  }
+
+  /** @override */
+  getData() {
+    const superData = super.getData();
+    superData.cssCyberClass = superData.data.data.cybertech ? "cyber": "";
+    return superData;
+  }
 }

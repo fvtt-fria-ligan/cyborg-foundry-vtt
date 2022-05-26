@@ -9,6 +9,14 @@
           {{> systems/cy_borg/templates/item/item-base-fields.html }} 
           <div class="widget field-row">
             <div class="field-label">
+              {{ localize 'CY.Cybertech'}}
+            </div>
+            <div class="field-value">
+              <input class="field-input" type="checkbox" name="data.cybertech" {{checked data.data.cybertech}} />
+            </div>
+          </div>          
+          <div class="widget field-row">
+            <div class="field-label">
               {{ localize 'CY.CurrentTier'}}
             </div>
             <div class="field-value">

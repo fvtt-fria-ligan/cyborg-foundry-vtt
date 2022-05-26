@@ -47,8 +47,6 @@ export class CYCharacterSheet extends ActorSheet {
     superData.data.data.weapons = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
       .sort(byName);
-
-    console.log(superData);
     return superData;
   }
 
