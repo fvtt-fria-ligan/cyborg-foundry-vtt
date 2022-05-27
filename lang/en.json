@@ -25,6 +25,8 @@
   "CY.Presence": "Presence",
   "CY.Price": "Price",
   "CY.Quantity": "Quantity",
+  "CY.RollLabel": "Roll Label",
+  "CY.RollMacro": "Roll Macro",
   "CY.Special": "Special",
   "CY.Strength": "Strength",
   "CY.Targets": "Targets",
