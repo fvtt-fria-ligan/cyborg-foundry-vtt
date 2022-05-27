@@ -102,8 +102,8 @@
             .ability-score {
               flex: 1;
               input[type="number"] {
-                font-size: 32px;
-                padding-top: 6px;
+                font-size: 24px;
+                // padding-top: 6px;
               }
             }
           }
@@ -116,13 +116,13 @@
         .item-row {
           display: flex;
           .icon {
-            flex: 0 0 135px;
+            flex: 0 0 100px;
             margin-right: 5px;
             img {
               border: 4px solid $cream;
               border-radius: 5px;
-              height: 135px;
-              width: 135px;
+              height: 100px;
+              width: 100px;
             }  
           }
           .fields {

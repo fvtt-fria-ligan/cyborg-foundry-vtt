@@ -7,8 +7,10 @@
     background-image: none;
     border: 2px solid $cream;
     color: $cream;
-    font-family: 'VT323', monospace;
-    font-size: 24px;
+    // font-family: 'VT323', monospace;
+    // font-size: 24px;
+    font-family: 'UAV OSD Mono', monospace;
+    font-size: 15px;
     padding: $widget-margin;
 
     .sheet-tabs {
@@ -50,7 +52,10 @@
 
     input[type="number"] {
       // font-family: "Margahayu";
-      font-size: 24px;
+      // font-family: "B-sign";
+      font-family: "Aldo the Apache";
+      // font-family: "Arcade Interlaced";
+      font-size: 20px;
     }
 
     .widget {
