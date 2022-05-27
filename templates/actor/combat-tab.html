@@ -1,7 +1,7 @@
 <div class="tab combat-tab" data-group="primary" data-tab="combat">
   <div class="item-list weapons">
     {{#each data.data.weapons as |item id|}}
-      <div class="item weapon-row" data-item-id="{{item._id}}">
+      <div class="item item-row weapon-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
         </div>
@@ -27,7 +27,7 @@
   </div>
   <div class="item-list armor">
     {{#each data.data.armor as |item id|}}
-      <div class="item armor-row" data-item-id="{{item._id}}">
+      <div class="item item-row armor-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
         </div>

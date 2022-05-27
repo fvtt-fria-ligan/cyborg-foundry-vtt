@@ -1,0 +1,14 @@
+.sheet-body {
+  .dossier-tab {
+    background-color: $cream;
+    color: $near-black;
+    // display: flex;
+    // flex-direction: column;
+    // height: 100%;
+    height: 300px;
+    width: 100%;
+    .editor, .editor-content {
+      height: 100%;
+    }
+  }
+}

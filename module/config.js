@@ -6,7 +6,6 @@ CY.itemTypes = {
   app: "app",
   armor: "armor",
   class: "class",
-  cybertech: "cybertech",
   equipment: "equipment",
   feat: "feat",
   infestation: "infestation",
