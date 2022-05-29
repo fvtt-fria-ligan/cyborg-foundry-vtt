@@ -23,7 +23,7 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
-  "minimumCoreVersion": "0.8.6",
+  "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",
   "manifest": "https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/releases/latest/download/system.json",

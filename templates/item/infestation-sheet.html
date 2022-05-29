@@ -1,13 +1,19 @@
 <form class="{{cssClass}}" autocomplete="off">
   <div class="sheet-wrapper">
     {{> systems/cy_borg/templates/item/item-sheet-header.html itemType='INFEST'}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-      <a class="item" data-tab="description"><img class="tab-icon" title="{{localize 'CY.Description'}}" src="/systems/cy_borg/assets/images/ui/tab_dossier.png" /></a>
-    </nav>     
+    {{> systems/cy_borg/templates/item/item-sheet-tabs.html }}
     <div class="sheet-body">
       {{> systems/cy_borg/templates/item/item-description-tab.html }}
       <div class="tab details-tab" data-group="primary" data-tab="details">
-        <div class="fields">         
+        <div class="fields">
+          <div class="widget field-row">
+            <div class="field-label">
+              {{ localize 'CY.Triggered'}}
+            </div>
+            <div class="field-value">
+              <textarea class="field-input" name="data.triggered" rows="20">{{data.data.triggered}}</textarea>
+            </div>
+          </div>                   
         </div>
       </div>      
     </div>

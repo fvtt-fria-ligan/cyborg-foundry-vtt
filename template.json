@@ -112,7 +112,8 @@
       "rollLabel": ""
     },
     "infestation": {
-      "description": ""
+      "description": "",
+      "triggered": ""
     },
     "nanoPower": {
       "description": ""
