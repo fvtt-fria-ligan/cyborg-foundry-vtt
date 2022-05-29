@@ -1,4 +1,331 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@font-face {
+  font-family: "Aldo the Apache";
+  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Perfect DOS VGA 437";
+  src: url("../assets/fonts/Perfect DOS VGA 437.ttf") format("truetype");
+}
+@font-face {
+  font-family: "UAV OSD Sans Mono";
+  src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Aldo the Apache";
+  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
+}
+:root {
+  --color-text-light-highlight: #f0f0e0;
+  --color-text-light-heading: #c9c7b8;
+  --color-text-light-primary: #b5b3a4;
+  --color-text-dark-primary: #191813;
+  --color-text-dark-secondary: #4b4a44;
+  --color-text-dark-header: #23221d;
+  --color-text-dark-inactive: #7a7971;
+  --color-text-hyperlink: #F800F8;
+  --color-text-light-0: #fff;
+  --color-text-light-1: #eee;
+  --color-text-light-2: #ddd;
+  --color-text-light-3: #ccc;
+  --color-text-light-4: #bbb;
+  --color-text-light-5: #aaa;
+  --color-text-light-6: #999;
+  --color-text-light-7: #888;
+  --color-text-dark-1: #111;
+  --color-text-dark-2: #222;
+  --color-text-dark-3: #444;
+  --color-text-dark-4: #555;
+  --color-text-dark-5: #666;
+  --color-text-dark-6: #777;
+  --color-border-light-1: #ddd;
+  --color-border-light-2: #999;
+  --color-border-dark-1: #111;
+  --color-border-dark-2: #222;
+  --color-border-dark-3: #333;
+  --color-border-dark-4: #444;
+  --color-border-dark-5: #666;
+  --color-shadow-primary: #F800F8;
+  --color-shadow-highlight: #F800F8;
+  --color-shadow-dark: #000;
+  --color-underline-inactive: #7a7971;
+  --color-underline-active: #44191A;
+  --color-underline-header: #782e22;
+  --color-border-light-highlight: #f0f0e0;
+  --color-border-light-primary: #b5b3a4;
+  --color-border-light-secondary: #c9c7b8;
+  --color-border-light-tertiary: #7a7971;
+  --color-border-dark: #000;
+  --color-border-dark-primary: #191813;
+  --color-border-dark-secondary: #23221d;
+  --color-border-dark-tertiary: #4b4a44;
+  --color-border-highlight: #F800F8;
+  --color-border-highlight-alt: #F800F8;
+  --color-bg-btn-minor-inactive: #c9c7b8;
+  --color-bg-btn-minor-active: #b5b3a4;
+  --color-bg-option: #dad8cc;
+  --z-index-canvas: 0;
+  --z-index-app: 30;
+  --z-index-ui: 60;
+  --z-index-window: 100;
+  --sidebar-width: 300px;
+  --sidebar-header-height: 32px;
+  --sidebar-item-height: 48px;
+  --hotbar-height: 52px;
+  --hotbar-width: 578px;
+  --macro-size: 50px;
+  --players-width: 200px;
+  --form-field-height: 26px;
+  --font-primary: "Perfect DOS VGA 437";
+  --font-mono: monospace;
+  --font-size-11: 0.75rem;
+  --font-size-12: 0.8125rem;
+  --font-size-13: 0.875rem;
+  --font-size-14: 1rem;
+  --font-size-16: 1.125rem;
+  --font-size-18: 1.25rem;
+  --font-size-20: 1.5rem;
+  --font-size-24: 1.75rem;
+  --font-size-28: 2.0rem;
+  --line-height-12: 0.75rem;
+  --line-height-16: 1rem;
+  --line-height-20: 1.25rem;
+  --line-height-30: 1.875rem;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: 0 0 1px #999 inset;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  outline: none;
+  border-radius: 3px;
+  background: #F800F8;
+  border: none;
+}
+
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: #F800F8 #1C1E23;
+}
+
+/* ----------------------------------------- */
+/*  1.0 - Chat Panel
+/* ----------------------------------------- */
+.notification-pip {
+  color: var(--color-text-hyperlink);
+  text-shadow: 1px 1px 3px var(--color-shadow-dark);
+  position: absolute;
+  top: -1px;
+  right: -2px;
+}
+
+.notification-pip.update {
+  position: relative;
+  padding-right: 2px;
+}
+
+#chat-notification {
+  display: none;
+}
+
+#chat-controls {
+  flex: 0 0 28px;
+  margin: 0 6px;
+  align-content: center;
+}
+
+#chat-controls .chat-control-icon {
+  flex: 0;
+}
+
+#chat-controls .roll-type-select {
+  width: 200px;
+  height: 24px;
+  margin: 0 6px;
+  background: rgba(255, 255, 245, 0.8);
+}
+
+#chat-controls i.fas {
+  font-size: var(--font-size-20);
+  line-height: 28px;
+}
+
+#chat-controls .control-buttons {
+  flex: 0 0 48px;
+}
+
+#chat-controls .control-buttons a {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+/* Chat Log Container */
+#chat-log {
+  flex: 1;
+  height: calc(100% - 130px);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+}
+
+/* Single Chat Message */
+.chat-message {
+  margin: 3px;
+  padding: 5px;
+  font-size: var(--font-size-14);
+  color: var(--color-text-dark-primary);
+  background: none;
+  background-color: #1C1E23;
+  color: #F6EDDB;
+  border: 4px solid #F6EDDB;
+  border-radius: 5px;
+}
+
+.chat-message .message-header {
+  line-height: 20px;
+  color: #F6EDDB;
+}
+
+.chat-message .message-header .message-sender {
+  flex: 3;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.chat-message .message-header .message-metadata {
+  flex: 2;
+  text-align: right;
+  font-size: var(--font-size-12);
+}
+
+.chat-message .message-header .flavor-text,
+.chat-message .message-header .whisper-to {
+  flex: 0 0 100%;
+  font-size: var(--font-size-12);
+}
+
+.chat-message .message-content {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  word-break: break-word;
+}
+
+.chat-message.emote {
+  background: #f3edde;
+  border: 2px solid #887c5d;
+}
+
+.chat-message.whisper {
+  background: #e8e8ef;
+  border: 2px solid #545469;
+}
+
+.chat-message.blind {
+  background: #f5eaf5;
+  border: 2px solid #6b476b;
+}
+
+.chat-message .cards-notification {
+  align-items: center;
+}
+
+.chat-message .cards-notification > .icon {
+  flex: 0 0 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.chat-message .cards-notification > p {
+  margin: 0;
+}
+
+/* New Chat Message Form */
+#chat-form {
+  height: 100px;
+  flex: 0 0 100px;
+  margin: 0 6px 6px;
+}
+
+#chat-form textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background: url(/ui/parchment.jpg) repeat;
+}
+
+/* Roll Table Results */
+.chat-message .table-draw .table-description {
+  border-top: 1px solid var(--color-border-light-primary);
+  color: var(--color-text-dark-secondary);
+  font-size: var(--font-size-12);
+  padding: 5px 0;
+}
+
+.chat-message .table-draw .table-results {
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+}
+
+.chat-message .table-draw .table-results .table-result {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-light-primary);
+  padding: 3px 0;
+}
+
+.chat-message .table-draw .table-results .table-result img.result-image {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  object-fit: cover;
+}
+
+.chat-message .table-draw .table-results .table-result .result-text {
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+}
+
+.chat-message .table-draw .table-results .table-result:last-child {
+  border-bottom: none;
+}
+
+/** Card Draws */
+.chat-message .card-draw {
+  align-items: center;
+}
+
+.chat-message .card-draw .card-face {
+  height: 48px;
+  flex: 0;
+  margin-right: 8px;
+}
+
+.chat-message .card-draw .card-name {
+  line-height: 48px;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Popped-out Message */
+.chat-popout .window-content {
+  padding: 1px;
+}
+
 .cy.sheet {
   border: 2px solid #71C5C9;
   border-radius: 5px;
@@ -8,7 +335,7 @@
   background-image: none;
   border: 2px solid #F6EDDB;
   color: #F6EDDB;
-  font-family: "UAV OSD Mono", monospace;
+  font-family: "UAV OSD Sans Mono", monospace;
   font-size: 15px;
   padding: 5px;
 }
@@ -251,60 +578,6 @@
 }
 .cy.sheet.item .sheet-body .details-tab .field-row .field-value input {
   width: 100%;
-}
-
-@font-face {
-  font-family: "Margahayu-Regular";
-  src: url("../assets/fonts/Margahayu-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Bsign-Regular";
-  src: url("../assets/fonts/Bsign-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Aldo the Apache";
-  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Interlaced";
-  src: url("../assets/fonts/ARCADE_I.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Rounded";
-  src: url("../assets/fonts/ARCADE_R.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Normal";
-  src: url("../assets/fonts/ARCADE_R.ttf") format("truetype");
-}
-@font-face {
-  font-family: "UAV OSD Mono";
-  src: url("../assets/fonts/UAV-OSD-Mono.ttf") format("truetype");
-}
-@font-face {
-  font-family: "UAV OSD Sans Mono";
-  src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype");
-}
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: 0 0 1px #999 inset;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  outline: none;
-  border-radius: 3px;
-  background: #F800F8;
-  border: none;
-}
-
-:root {
-  scrollbar-width: thin;
-  scrollbar-color: #F800F8 #1C1E23;
 }
 
 /*# sourceMappingURL=cy_borg.css.map */

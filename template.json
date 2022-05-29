@@ -87,20 +87,20 @@
       }
     },
     "class": {
-      "abilities": "",
-      "armorTableDie": "1d4",
+      "agility": "3d6",
+      "armorTable": "1d6",
+      "credits": "2d6*10",
+      "debt": "3d6*1000",
       "description": "",
-      "glitchDie": "1d2",
-      "startingAgility": "3d6",
-      "startingCredits": "2d6*10",
-      "startingHitPoints": "1d8",
-      "startingItems": null,
-      "startingKnowledge": "3d6",
-      "startingPresence": "3d6",
-      "startingRolls": null,
-      "startingStrength": "3d6",
-      "startingToughness": "3d6",
-      "weaponTableDie": "1d10"
+      "glitches": "1d2",
+      "hitPoints": "1d8",
+      "items": null,
+      "knowledge": "3d6",
+      "presence": "3d6",
+      "rolls": null,
+      "strength": "3d6",
+      "toughness": "3d6",
+      "weaponTable": "1d12"
     },
     "equipment": {
       "templates": ["baseEquipment"],

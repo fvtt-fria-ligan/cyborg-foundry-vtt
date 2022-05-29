@@ -1,0 +1,181 @@
+/* ----------------------------------------- */
+/*  1.0 - Chat Panel
+/* ----------------------------------------- */
+.notification-pip {
+  color: var(--color-text-hyperlink);
+  text-shadow: 1px 1px 3px var(--color-shadow-dark);
+  position: absolute;
+  top: -1px;
+  right: -2px;
+}
+.notification-pip.update {
+  position: relative;
+  padding-right: 2px;
+}
+#chat-notification {
+  display: none;
+}
+#chat-controls {
+  flex: 0 0 28px;
+  margin: 0 6px;
+  align-content: center;
+}
+#chat-controls .chat-control-icon {
+  flex: 0;
+}
+#chat-controls .roll-type-select {
+  width: 200px;
+  height: 24px;
+  margin: 0 6px;
+  background: rgba(255, 255, 245, 0.8);
+}
+#chat-controls i.fas {
+  font-size: var(--font-size-20);
+  line-height: 28px;
+}
+#chat-controls .control-buttons {
+  flex: 0 0 48px;
+}
+#chat-controls .control-buttons a {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+/* Chat Log Container */
+#chat-log {
+  flex: 1;
+  height: calc(100% - 130px);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+}
+/* Single Chat Message */
+.chat-message {
+  margin: 3px;
+  padding: 5px;
+  font-size: var(--font-size-14);
+  color: var(--color-text-dark-primary);
+  // background: url(/ui/parchment.jpg) repeat;
+  background: none;
+  background-color: $near-black;
+  // background-color: $cream;
+  color: $cream;
+  // border: 2px solid #6f6c66;
+  border: 4px solid $cream;
+  border-radius: 5px;
+}
+.chat-message .message-header {
+  line-height: 20px;
+  // color: var(--color-text-dark-secondary);
+  color: $cream;
+}
+.chat-message .message-header .message-sender {
+  flex: 3;
+  margin: 0;
+  white-space: nowrap;
+}
+.chat-message .message-header .message-metadata {
+  flex: 2;
+  text-align: right;
+  font-size: var(--font-size-12);
+}
+.chat-message .message-header .flavor-text,
+.chat-message .message-header .whisper-to {
+  flex: 0 0 100%;
+  font-size: var(--font-size-12);
+}
+.chat-message .message-content {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  word-break: break-word;
+}
+.chat-message.emote {
+  background: #f3edde;
+  border: 2px solid #887c5d;
+}
+.chat-message.whisper {
+  background: #e8e8ef;
+  border: 2px solid #545469;
+}
+.chat-message.blind {
+  background: #f5eaf5;
+  border: 2px solid #6b476b;
+}
+.chat-message .cards-notification {
+  align-items: center;
+}
+.chat-message .cards-notification > .icon {
+  flex: 0 0 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+.chat-message .cards-notification > p {
+  margin: 0;
+}
+/* New Chat Message Form */
+#chat-form {
+  height: 100px;
+  flex: 0 0 100px;
+  margin: 0 6px 6px;
+}
+#chat-form textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background: url(/ui/parchment.jpg) repeat;
+}
+/* Roll Table Results */
+.chat-message .table-draw .table-description {
+  border-top: 1px solid var(--color-border-light-primary);
+  color: var(--color-text-dark-secondary);
+  font-size: var(--font-size-12);
+  padding: 5px 0;
+}
+.chat-message .table-draw .table-results {
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+}
+.chat-message .table-draw .table-results .table-result {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-light-primary);
+  padding: 3px 0;
+}
+.chat-message .table-draw .table-results .table-result img.result-image {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  object-fit: cover;
+}
+.chat-message .table-draw .table-results .table-result .result-text {
+  margin: 0;
+  padding: 0;
+  line-height: 16px;
+}
+.chat-message .table-draw .table-results .table-result:last-child {
+  border-bottom: none;
+}
+/** Card Draws */
+.chat-message .card-draw {
+  align-items: center;
+}
+.chat-message .card-draw .card-face {
+  height: 48px;
+  flex: 0;
+  margin-right: 8px;
+}
+.chat-message .card-draw .card-name {
+  line-height: 48px;
+  margin: 0;
+  font-weight: bold;
+}
+/* Popped-out Message */
+.chat-popout .window-content {
+  padding: 1px;
+}

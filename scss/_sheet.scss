@@ -7,9 +7,7 @@
     background-image: none;
     border: 2px solid $cream;
     color: $cream;
-    // font-family: 'VT323', monospace;
-    // font-size: 24px;
-    font-family: 'UAV OSD Mono', monospace;
+    font-family: 'UAV OSD Sans Mono', monospace;
     font-size: 15px;
     padding: $widget-margin;
 
@@ -51,10 +49,7 @@
     }
 
     input[type="number"] {
-      // font-family: "Margahayu";
-      // font-family: "B-sign";
       font-family: "Aldo the Apache";
-      // font-family: "Arcade Interlaced";
       font-size: 20px;
     }
 

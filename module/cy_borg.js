@@ -1,13 +1,15 @@
-
+import { CYActor } from "./actor/actor.js";
 import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
+import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
 
 Hooks.once("init", async function () {
   consoleBanner();
   CONFIG.CY = CY;
-  await registerHandlebarsPartials();
+  registerDocumentClasses();
   registerSheets();
+  await registerHandlebarsPartials();
 });
 
 const consoleBanner = () => {
@@ -20,6 +22,25 @@ const consoleBanner = () => {
   console.log('%c  ╚██████╗   ██║███████╗██████╔╝╚██████╔╝██║  ██║╚██████╔╝', consoleOptions);
   console.log('%c   ╚═════╝   ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ', consoleOptions);                                                          
   console.log('%c===========================================================', consoleOptions);
+};
+
+const registerDocumentClasses = () => {
+  CONFIG.Actor.documentClass = CYActor;
+  CONFIG.Item.documentClass = CYItem;
+}
+
+const registerSheets = () => {
+  Actors.unregisterSheet("core", ActorSheet);
+  Actors.registerSheet(CY.system, CYCharacterSheet, {
+    types: ["character"],
+    makeDefault: true,
+    label: "CY.CharacterSheet",
+  });  
+  Items.unregisterSheet("core", ItemSheet);
+  Items.registerSheet(CY.system, CYItemSheet, {
+    makeDefault: true,
+    label: "CY.ItemSheet",
+  });  
 };
 
 const registerHandlebarsPartials = async () => {
@@ -36,17 +57,3 @@ const registerHandlebarsPartials = async () => {
     "systems/cy_borg/templates/item/item-sheet-tabs.html",
   ]);
 }
-
-const registerSheets = () => {
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(CY.system, CYCharacterSheet, {
-    types: ["character"],
-    makeDefault: true,
-    label: "CY.CharacterSheet",
-  });  
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(CY.system, CYItemSheet, {
-    makeDefault: true,
-    label: "CY.ItemSheet",
-  });  
-};

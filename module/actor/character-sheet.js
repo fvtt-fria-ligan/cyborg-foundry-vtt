@@ -51,5 +51,34 @@ export class CYCharacterSheet extends CYActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-  }  
+    html
+      .find(".ability-link")
+      .on("click", this._testAbility.bind(this));
+  }
+
+  async _testAbility(event) {
+    event.preventDefault();
+    const ability = event.currentTarget.dataset.ability;
+    switch(ability) {
+      case "agility":
+        await this.actor.testAgility();
+        break;
+      case "glitches":
+        await this.actor.showGlitchesHelp();
+        break;
+      case "knowledge":
+        await this.actor.testKnowledge();
+        break;
+      case "presence":
+        await this.actor.testPresence();
+        break;
+      case "strength":
+        await this.actor.testStrength();
+        break;
+      case "toughness":
+        await this.actor.testStrength();
+        break;
+    }
+  }
+
  }

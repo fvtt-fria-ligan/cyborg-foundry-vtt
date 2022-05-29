@@ -1,4 +1,8 @@
 @import "_vars";
+@import "_fonts";
+@import "_foundry_root";
+@import "_foundry_chat";
+
 @import "_sheet";
 
 @import "_character-sheet";
@@ -6,58 +10,3 @@
 
 @import "_item-sheet";
 @import "_weapon-sheet";
-
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@font-face {
-  font-family: "Margahayu-Regular";
-  src: url("../assets/fonts/Margahayu-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Bsign-Regular";
-  src: url("../assets/fonts/Bsign-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Aldo the Apache";
-  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Interlaced";
-  src: url("../assets/fonts/ARCADE_I.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Rounded";
-  src: url("../assets/fonts/ARCADE_R.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Arcade Normal";
-  src: url("../assets/fonts/ARCADE_R.ttf") format("truetype");
-}
-@font-face {
-  font-family: "UAV OSD Mono";
-  src: url("../assets/fonts/UAV-OSD-Mono.ttf") format("truetype");
-}
-@font-face {
-  font-family: "UAV OSD Sans Mono";
-  src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype");
-}
-
-
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  box-shadow: 0 0 1px #999 inset;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb {
-  outline: none;
-  border-radius: 3px;
-  background: $magenta;
-  border: none;
-}
-:root {
-  scrollbar-width: thin;
-  scrollbar-color: $magenta $near-black;
-}
