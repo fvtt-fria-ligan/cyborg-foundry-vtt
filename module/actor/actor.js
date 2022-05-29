@@ -1,4 +1,6 @@
+import { CY } from "../config.js";
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
+import { trackCarryingCapacity } from "../settings.js";
 
 /**
  * @extends {Actor}
@@ -44,22 +46,57 @@ import { addShowDicePromise, diceSound, showDice } from "../dice.js";
     return 2 * this.normalCarryingCapacity();
   }
 
-  totalCarrySlots() {
+  carryingSlots() {
     return this.data.items
-      .reduce((slots, item) => slots + item.carrySlots, 0);
+      .reduce((slots, item) => slots + (item.data.data.carrySlots ?? 0), 0);
   }
 
   isEncumbered() {
-    // if (!trackCarryingCapacity()) {
-    //   return false;
-    // }
-    return this.carryingWeight() > this.normalCarryingCapacity();
+    if (!trackCarryingCapacity()) {
+      return false;
+    }
+    return this.carryingSlots() > this.normalCarryingCapacity();
+  }
+
+  _firstEquipped(itemType) {
+    for (const item of this.data.items) {
+      if (item.type === itemType && item.data.data.equipped) {
+        return item;
+      }
+    }
+    return undefined;
+  }
+
+  _first(itemType) {
+    return this.data.items.filter(x => x.data.type === itemType).shift();
+  }
+
+  equippedArmor() {
+    return this._first(CY.itemTypes.armor);
   }
 
   async testAgility() {
-    const drModifiers = {};
+    const drModifiers = [];
+    const armor = this.equippedArmor();
+    if (armor) {
+      const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+      if (armorTier.agilityModifier) {
+        drModifiers.push(
+          `${armor.name}: ${game.i18n.localize("CY.DR")} +${
+            armorTier.agilityModifier
+          }`
+        );
+      }
+    }
+    if (this.isEncumbered()) {
+      drModifiers.push(
+        `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
+          "CY.DR"
+        )} +2`
+      );
+    }
     await this._testAbility(
-      "strength",
+      "agility",
       "CY.Agility",
       "CY.AgilityAbbrev",
       drModifiers
@@ -67,27 +104,43 @@ import { addShowDicePromise, diceSound, showDice } from "../dice.js";
   }
 
   async testKnowledge() {
-    const drModifiers = {};
     await this._testAbility(
       "knowledge",
       "CY.Knowledge",
       "CY.KnowledgeAbbrev",
-      drModifiers
+      null
     );
   }
 
   async testPresence() {
-    const drModifiers = {};
     await this._testAbility(
       "strength",
       "CY.Presence",
       "CY.PresenceAbbrev",
-      drModifiers
+      null
     );
   }
 
   async testStrength() {
-    const drModifiers = {};
+    const drModifiers = [];
+    const armor = this.equippedArmor();
+    if (armor) {
+      const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+      if (armorTier.strengthModifier) {
+        drModifiers.push(
+          `${armor.name}: ${game.i18n.localize("CY.DR")} ${
+            armorTier.strengthModifier
+          }`
+        );
+      }
+    }
+    if (this.isEncumbered()) {
+      drModifiers.push(
+        `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
+          "CY.DR"
+        )} +2`
+      );
+    }    
     await this._testAbility(
       "strength",
       "CY.Strength",
@@ -97,7 +150,18 @@ import { addShowDicePromise, diceSound, showDice } from "../dice.js";
   }
 
   async testToughness() {
-    const drModifiers = {};
+    const drModifiers = [];
+    const armor = this.equippedArmor();
+    if (armor) {
+      const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+      if (armorTier.strengthModifier) {
+        drModifiers.push(
+          `${armor.name}: ${game.i18n.localize("CY.DR")} ${
+            armorTier.strengthModifier
+          }`
+        );
+      }
+    }    
     await this._testAbility(
       "knowledge",
       "CY.Knowledge",
@@ -106,14 +170,20 @@ import { addShowDicePromise, diceSound, showDice } from "../dice.js";
     );
   }
 
-  async _testAbility(ability, abilityKey, abilityAbbrevKey, drModifiers) {
-    const abilityRoll = new Roll(
-      `1d20+@abilities.${ability}.value`,
-      this.getRollData()
-    );
+  drModifiersToHtml(drModifiers) {
+    if (!drModifiers) {
+      return "";
+    }
+    return "<ul>" + drModifiers.map(x => `<li>${x}`) + "</ul>"
+  }
 
+  async _testAbility(ability, abilityKey, abilityAbbrevKey, drModifiers) {
+    const value = this.data.data.abilities[ability].value;
+    const formula = value >= 0 ? `1d20+${value}` : `1d20-${-value}`;
+    const abilityRoll = new Roll(formula);
+    const flavor = `${game.i18n.localize('CY.Test')} ${game.i18n.localize(abilityKey)} ${this.drModifiersToHtml(drModifiers)}`;
     await abilityRoll.toMessage({
-      flavor: `${game.i18n.localize('CY.Test')} ${game.i18n.localize(abilityKey)}`
+      flavor,
     });
     /*
     abilityRoll.evaluate({ async: false });

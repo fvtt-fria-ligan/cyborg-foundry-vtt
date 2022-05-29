@@ -76,7 +76,7 @@ export class CYCharacterSheet extends CYActorSheet {
         await this.actor.testStrength();
         break;
       case "toughness":
-        await this.actor.testStrength();
+        await this.actor.testToughness();
         break;
     }
   }

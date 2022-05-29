@@ -3,10 +3,12 @@ import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
+import { registerSystemSettings } from "./settings.js";
 
 Hooks.once("init", async function () {
   consoleBanner();
   CONFIG.CY = CY;
+  registerSystemSettings();
   registerDocumentClasses();
   registerSheets();
   await registerHandlebarsPartials();
