@@ -513,6 +513,14 @@
   flex-direction: column;
 }
 
+.combat-tab .defend-row {
+  margin-bottom: 5px;
+}
+.combat-tab .defend-row .defend-button {
+  border: 4px solid #F6EDDB;
+  border-radius: 5;
+  color: #F6EDDB;
+}
 .cy.sheet.item .sheet-wrapper.cyber .sheet-header .portrait-row .item-type {
   color: #F8F800;
 }

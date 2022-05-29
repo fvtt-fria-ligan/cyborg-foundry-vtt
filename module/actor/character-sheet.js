@@ -54,6 +54,7 @@ export class CYCharacterSheet extends CYActorSheet {
     html
       .find(".ability-link")
       .on("click", this._testAbility.bind(this));
+    html.find(".defend-button").on("click", this._defend.bind(this));
   }
 
   async _testAbility(event) {
@@ -79,6 +80,11 @@ export class CYCharacterSheet extends CYActorSheet {
         await this.actor.testToughness();
         break;
     }
+  }
+
+  async _defend(event) {
+    event.preventDefault();
+    await this.actor.defend();
   }
 
  }

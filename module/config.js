@@ -55,3 +55,11 @@ CY.armorTiers = {
     toughnessModifier: -2,
   },
 };
+
+CY.flagScope = CY.system;
+CY.flags = {
+  ATTACK_DR: "attackDR",
+  DEFEND_DR: "defendDR",
+  INCOMING_ATTACK: "incomingAttack",
+  TARGET_ARMOR: "targetArmor",
+};
