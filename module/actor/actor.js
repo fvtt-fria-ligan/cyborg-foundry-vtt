@@ -59,12 +59,7 @@ import { trackCarryingCapacity } from "../settings.js";
   }
 
   _firstEquipped(itemType) {
-    for (const item of this.data.items) {
-      if (item.type === itemType && item.data.data.equipped) {
-        return item;
-      }
-    }
-    return undefined;
+    return this.data.items.filter(x => x.data.type === itemType && x.data.data.equipped).shift();
   }
 
   _first(itemType) {
@@ -98,7 +93,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await this._testAbility(
       "agility",
       "CY.Agility",
-      "CY.AgilityAbbrev",
       drModifiers
     );
   }
@@ -107,7 +101,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await this._testAbility(
       "knowledge",
       "CY.Knowledge",
-      "CY.KnowledgeAbbrev",
       null
     );
   }
@@ -116,7 +109,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await this._testAbility(
       "strength",
       "CY.Presence",
-      "CY.PresenceAbbrev",
       null
     );
   }
@@ -144,7 +136,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await this._testAbility(
       "strength",
       "CY.Strength",
-      "CY.StrengthAbbrev",
       drModifiers
     );
   }
@@ -165,7 +156,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await this._testAbility(
       "knowledge",
       "CY.Knowledge",
-      "CY.KnowledgeAbbrev",
       drModifiers
     );
   }
@@ -177,7 +167,7 @@ import { trackCarryingCapacity } from "../settings.js";
     return "<ul>" + drModifiers.map(x => `<li>${x}`) + "</ul>"
   }
 
-  async _testAbility(ability, abilityKey, abilityAbbrevKey, drModifiers) {
+  async _testAbility(ability, abilityKey, drModifiers) {
     const value = this.data.data.abilities[ability].value;
     const formula = value >= 0 ? `1d20+${value}` : `1d20-${-value}`;
     const abilityRoll = new Roll(formula);
@@ -185,25 +175,6 @@ import { trackCarryingCapacity } from "../settings.js";
     await abilityRoll.toMessage({
       flavor,
     });
-    /*
-    abilityRoll.evaluate({ async: false });
-    await showDice(abilityRoll);
-    const rollResult = {
-      abilityKey,
-      abilityRoll,
-      displayFormula: `1d20 + ${game.i18n.localize(abilityAbbrevKey)}`,
-      drModifiers,
-    };
-    const html = await renderTemplate(
-      TEST_ABILITY_ROLL_CARD_TEMPLATE,
-      rollResult
-    );
-    ChatMessage.create({
-      content: html,
-      sound: diceSound(),
-      speaker: ChatMessage.getSpeaker({ actor: this }),
-    });
-    */
   }
 
   async showGlitchesHelp() {
