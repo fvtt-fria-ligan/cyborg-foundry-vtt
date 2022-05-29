@@ -55,6 +55,7 @@ export class CYCharacterSheet extends CYActorSheet {
       .find(".ability-link")
       .on("click", this._testAbility.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".weapon-icon").on("click", this._attack.bind(this));
   }
 
   async _testAbility(event) {
@@ -87,4 +88,10 @@ export class CYCharacterSheet extends CYActorSheet {
     await this.actor.defend();
   }
 
+  async _attack(event) {
+    event.preventDefault();
+    const item = $(event.currentTarget).parents(".item");
+    const itemId = item.data("itemId");
+    this.actor.attack(itemId);
+  }
  }

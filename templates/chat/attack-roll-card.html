@@ -1,0 +1,48 @@
+<form class="roll-card attack-roll-card">
+  <div class="card-title">
+    {{localize weaponTypeKey}} {{localize 'CY.Attack'}}
+  </div>
+  {{#each items as |item id|}}
+  <div class="item-row">
+    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+    <span class="item-name">{{item.name}}</span>
+  </div>
+  {{/each}}
+  <div class="attack-roll">
+    <div class="roll-title">
+      <span
+        >{{localize 'CY.Attack'}}: {{attackFormula}} {{localize 'CY.Vs'}}
+        {{localize 'CY.DR'}} {{attackDR}}</span
+      >
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal attackRoll}}</span>
+    </div>
+  </div>
+  <div class="outcome-text">
+    <span class="attack-outcome">{{attackOutcome}}</span>
+  </div>
+  {{#if damageRoll}}
+  <div class="damage-roll">
+    <div class="roll-title">
+      <span>{{localize 'CY.Damage'}}: {{damageRoll._formula}}</span>
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal damageRoll}}</span>
+    </div>
+  </div>
+  {{/if}} {{#if targetArmorRoll}}
+  <div class="target-armor-roll">
+    <div class="roll-title">
+      <span>{{localize 'CY.TargetArmor'}}: {{targetArmorRoll.formula}}</span>
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal targetArmorRoll}}</span>
+    </div>
+  </div>
+  {{/if}} {{#if takeDamage}}
+  <div class="outcome-text">
+    <span class="take-damage">{{takeDamage}}</span>
+  </div>
+  {{/if}}
+</form>

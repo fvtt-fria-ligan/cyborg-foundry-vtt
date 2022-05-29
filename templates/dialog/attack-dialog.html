@@ -1,0 +1,23 @@
+<form class="custom-dialog">
+  <input type="hidden" name="itemid" value="{{itemId}}" />
+  <div class="form-group">
+    <label>{{localize 'CY.Attack'}} {{localize 'CY.DR'}}:</label>
+    <input
+      type="text"
+      name="attackdr"
+      value="{{attackDR}}"
+      placeholder="12"
+      data-dtype="Number"
+    />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CY.TargetArmor'}}:</label>
+    <input
+      type="text"
+      name="targetarmor"
+      value="{{targetArmor}}"
+      placeholder="1d2"
+      data-dtype="String"
+    />
+  </div>
+</form>
