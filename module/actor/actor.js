@@ -1,6 +1,7 @@
 import { CY } from "../config.js";
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { trackCarryingCapacity } from "../settings.js";
+import { AttackDialog } from "../dialog/attack-dialog.js";
 
 const ATTACK_DIALOG_TEMPLATE =
   "systems/cy_borg/templates/dialog/attack-dialog.html";
@@ -198,7 +199,6 @@ const DEFEND_ROLL_CARD_TEMPLATE =
 
   async defend() {
     // look up any previous DR or incoming attack value
-    console.log(this);
     let defendDR = await this.getFlag(
       CONFIG.CY.flagScope,
       CONFIG.CY.flags.DEFEND_DR
@@ -312,7 +312,6 @@ const DEFEND_ROLL_CARD_TEMPLATE =
   }
 
   d20Formula(modifier) {
-    console.log(modifier);
     if (modifier < 0) {
       return `d20-${-modifier}`;
     } else if (modifier > 0) {
@@ -326,7 +325,6 @@ const DEFEND_ROLL_CARD_TEMPLATE =
    * Do the actual defend rolls and resolution.
    */
   async _rollDefend(defendDR, incomingAttack) {
-    console.log(this);
     const agility = this.data.data.abilities.agility;
     const defendFormula = this.d20Formula(agility);
 
@@ -418,87 +416,48 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     });
   }
 
-  /**
-   * Attack!
-   */
-   async attack(itemId) {
-    let attackDR = await this.getFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.ATTACK_DR
-    );
-    if (!attackDR) {
-      attackDR = 12; // default
-    }
-    const targetArmor = await this.getFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.TARGET_ARMOR
-    );
-    const dialogData = {
-      attackDR,
-      config: CONFIG.MorkBorg,
-      itemId,
-      targetArmor,
-    };
-    const html = await renderTemplate(ATTACK_DIALOG_TEMPLATE, dialogData);
-    return new Promise((resolve) => {
-      new Dialog({
-        title: game.i18n.localize("CY.Attack"),
-        content: html,
-        buttons: {
-          roll: {
-            icon: '<i class="fas fa-dice-d20"></i>',
-            label: game.i18n.localize("CY.Roll"),
-            // callback: html => resolve(_createItem(this.actor, html[0].querySelector("form")))
-            callback: (html) => this._attackDialogCallback(html),
-          },
-        },
-        default: "roll",
-        close: () => resolve(null),
-      }).render(true);
-    });
-  }
-
-  /**
-   * Callback from attack dialog.
-   */
-  async _attackDialogCallback(html) {
-    const form = html[0].querySelector("form");
-    const itemId = form.itemid.value;
-    const attackDR = parseInt(form.attackdr.value);
-    const targetArmor = form.targetarmor.value;
-    if (!itemId || !attackDR) {
-      // TODO: prevent form submit via required fields
+  async showAttackDialog(itemId) {
+    const item = this.items.get(itemId);
+    if (!item) {
       return;
     }
-    await this.setFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.ATTACK_DR,
-      attackDR
-    );
-    await this.setFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.TARGET_ARMOR,
-      targetArmor
-    );
-    this._rollAttack(itemId, attackDR, targetArmor);
+    const attackDialog = new AttackDialog();
+    attackDialog.actor = this;
+    attackDialog.item = item;
+    attackDialog.render(true);
   }
 
   /**
    * Do the actual attack rolls and resolution.
    */
-  async _rollAttack(itemId, attackDR, targetArmor) {
+  async rollAttack(itemId, attackDR, targetArmor, autofire) {
     const item = this.items.get(itemId);
     const itemRollData = item.getRollData();
-    const actorRollData = this.getRollData();
+
+    // decide relevant ability
+    let ability;
+    let abilityAbbrevKey;
+    let attackTypeKey;
+    if (autofire) {
+      // ranged + autofire
+      ability = "agility";
+      abilityAbbrevKey = "CY.AgilityAbbrev";
+      attackTypeKey = "CY.Autofire";
+    } else if(itemRollData.weaponType === "ranged") {
+      // ranged
+      ability = "presence";
+      abilityAbbrevKey = "CY.PresenceAbbrev";
+      attackTypeKey = "CY.Ranged";
+    } else {
+      // melee
+      ability = "strength";
+      abilityAbbrevKey = "CY.StrengthAbbrev";
+      attackTypeKey = "CY.Melee";
+    }
+    const value = this.data.data.abilities[ability].value;
 
     // roll 1: attack
-    const isRanged = itemRollData.weaponType === "ranged";
-    // ranged weapons use presence; melee weapons use strength
-    const ability = isRanged ? "presence" : "strength";
-    const attackRoll = new Roll(
-      `d20+@abilities.${ability}.value`,
-      actorRollData
-    );
+    const attackRoll = new Roll(this.d20Formula(value));
     attackRoll.evaluate({ async: false });
     await showDice(attackRoll);
 
@@ -511,7 +470,6 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     const isHit =
       attackRoll.total !== 1 &&
       (attackRoll.total === 20 || attackRoll.total >= attackDR);
-
     let attackOutcome = null;
     let damageRoll = null;
     let targetArmorRoll = null;
@@ -549,24 +507,17 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       );
     }
 
-    // TODO: decide keys in handlebars/template?
-    const abilityAbbrevKey = isRanged
-      ? "CY.PresenceAbbrev"
-      : "CY.StrengthAbbrev";
-    const weaponTypeKey = isRanged
-      ? "CY.Ranged"
-      : "CY.Melee";
     const rollResult = {
       actor: this,
       attackDR,
       attackFormula: `1d20 + ${game.i18n.localize(abilityAbbrevKey)}`,
       attackRoll,
       attackOutcome,
+      attackTypeKey,
       damageRoll,
       items: [item],
       takeDamage,
       targetArmorRoll,
-      weaponTypeKey,
     };
     await this._renderAttackRollCard(rollResult);
   }

@@ -1,10 +1,10 @@
-<form class="custom-dialog">
+<form class="dialog attack-dialog">
   <input type="hidden" name="itemid" value="{{itemId}}" />
   <div class="form-group">
     <label>{{localize 'CY.Attack'}} {{localize 'CY.DR'}}:</label>
     <input
-      type="text"
-      name="attackdr"
+      type="number"
+      name="attack-dr"
       value="{{attackDR}}"
       placeholder="12"
       data-dtype="Number"
@@ -14,10 +14,23 @@
     <label>{{localize 'CY.TargetArmor'}}:</label>
     <input
       type="text"
-      name="targetarmor"
+      name="target-armor"
       value="{{targetArmor}}"
       placeholder="1d2"
       data-dtype="String"
     />
+  </div>
+  <div class="form-group {{autofireClass}}"> 
+    <label>{{ localize "CY.Autofire" }}?</label>
+    <div>
+      {{#if autofireEnabled}}
+        <input name="autofire" type="checkbox" value="1"/>
+      {{else}}
+        <input name="autofire" type="checkbox" value="1" disabled="disabled"" />
+      {{/if}}
+    </div>
+  </div>
+  <div class="button-row">
+    <button class="attack-button" type="submit" name="Attack">{{ localize "CY.Attack" }}</button>
   </div>
 </form>

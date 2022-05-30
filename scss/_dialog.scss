@@ -1,0 +1,29 @@
+
+
+.window-app.cy.dialog {
+  border: 4px solid $cream;
+  .window-header {
+    background-color: $cream;
+    color: $near-black;
+  }
+  .window-content {
+    background-color: $near-black;  
+    background-image: none;
+    color: $cream;
+
+    form.dialog {
+      button {
+        background-color: $cream;
+        color: $near-black;
+      }
+      .form-group.disabled {
+        color: $disabled-color;
+      }
+      input[type="number"],
+      input[type="text"] {
+        color: $cream;
+      }
+    }    
+  }
+}
+

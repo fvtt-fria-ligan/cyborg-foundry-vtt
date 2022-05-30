@@ -92,6 +92,6 @@ export class CYCharacterSheet extends CYActorSheet {
     event.preventDefault();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
-    this.actor.attack(itemId);
+    this.actor.showAttackDialog(itemId);
   }
  }
