@@ -21,7 +21,6 @@ export class AttackDialog extends Application {
 
   /** @override */
   async getData() {
-    console.log(this.item);
     const autofireEnabled = this.item.data.data.autofire;
     let attackDR = await this.actor.getFlag(
       CONFIG.CY.flagScope,
@@ -55,7 +54,6 @@ export class AttackDialog extends Application {
       CONFIG.CY.flags.ATTACK_DR,
       attackDR
     );
-    console.log(this.item);
     this.actor.rollAttack(
       this.item.data._id,
       attackDR,

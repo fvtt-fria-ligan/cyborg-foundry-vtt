@@ -434,7 +434,7 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     const item = this.items.get(itemId);
     const itemRollData = item.getRollData();
 
-    // decide relevant ability
+    // decide relevant attack ability
     let ability;
     let abilityAbbrevKey;
     let attackTypeKey;
@@ -479,6 +479,9 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       attackOutcome = game.i18n.localize(
         isCrit ? "CY.AttackCritText" : "CY.Hit"
       );
+      if (autofire) {
+        attackOutcome += ". " + game.i18n.localize("CY.AutofireHit");
+      }
       // roll 2: damage.
       // Use parentheses for critical 2x in case damage die something like 1d6+1
       const damageFormula = isCrit ? "(@damage) * 2" : "@damage";
