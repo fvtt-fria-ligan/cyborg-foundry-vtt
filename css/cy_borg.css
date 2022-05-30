@@ -624,11 +624,22 @@
   text-align: center;
 }
 .roll-card .item-row {
-  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
+  width: 100%;
 }
 .roll-card .item-row span.item-name {
+  flex: 0 0 140px;
+  margin-left: 10px;
   font-size: 14px;
+}
+.roll-card .item-row img {
+  border: none;
+  height: 64px;
+  margin-left: 30px;
+  width: 64px;
 }
 .roll-card .roll-title {
   font-size: 16px;

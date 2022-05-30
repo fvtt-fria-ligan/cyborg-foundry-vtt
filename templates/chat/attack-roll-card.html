@@ -4,7 +4,7 @@
   </div>
   {{#each items as |item id|}}
   <div class="item-row">
-    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+    <img src="{{item.img}}" title="{{item.name}}" />
     <span class="item-name">{{item.name}}</span>
   </div>
   {{/each}}
@@ -12,7 +12,7 @@
     <div class="roll-title">
       <span
         >{{localize 'CY.Attack'}}: {{attackFormula}} {{localize 'CY.Vs'}}
-        {{localize 'CY.DR'}} {{attackDR}}</span
+        {{localize 'CY.DR'}}{{attackDR}}</span
       >
     </div>
     <div class="roll-result">

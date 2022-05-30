@@ -10,14 +10,23 @@
   }
 
   .item-row {
-    text-align: center;
-    // margin-top: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
+    width: 100%;
 
     span.item-name {
-      // color: var(--foreground-color);
-      // font-family: var(--item-font);
+      flex: 0 0 140px;
+      margin-left: 10px;
       font-size: 14px;
+    }
+
+    img {
+      border: none;
+      height: 64px;
+      margin-left: 30px;
+      width: 64px; 
     }
   }
 

@@ -11,6 +11,16 @@ export const registerSystemSettings = () => {
     default: true,
   });
 
+    /** Whether to keep track of carrying capacity */
+    game.settings.register(CY.system, "soundEffects", {
+      name: "CY.SettingsSoundEffects",
+      hint: "CY.SettingsSoundEffectsHint",
+      scope: "world",
+      config: true,
+      type: Boolean,
+      default: true,
+    });
+
   /** The allowed classes menu */
   // game.settings.registerMenu("morkborg", "EditAllowedScvmClassesMenu", {
   //   name: "MB.EditAllowedScvmClassesMenu",
@@ -38,6 +48,10 @@ export const registerSystemSettings = () => {
   //   scope: "client",
   //   config: false,
   // });
+};
+
+export const soundEffects = () => {
+  return game.settings.get(CY.system, "soundEffects");
 };
 
 export const trackCarryingCapacity = () => {

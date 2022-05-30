@@ -61,6 +61,8 @@
   "CY.RollMacro": "Roll Macro",
   "CY.SettingsApplyOvercapacityPenalty": "Apply Overcapacity Penalty",
   "CY.SettingsApplyOvercapacityPenaltyHint": "+2 STR/AGI DR when carrying more than STR+8 items",
+  "CY.SettingsSoundEffects": "Sound Effects",
+  "CY.SettingsSoundEffectsHint": "Play sound effects for various events (combat, etc)",
   "CY.Special": "Special",
   "CY.Strength": "Strength",
   "CY.StrengthAbbrev": "STR",

@@ -1,10 +1,8 @@
 import { CY } from "../config.js";
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
-import { trackCarryingCapacity } from "../settings.js";
+import { soundEffects, trackCarryingCapacity } from "../settings.js";
 import { AttackDialog } from "../dialog/attack-dialog.js";
 
-const ATTACK_DIALOG_TEMPLATE =
-  "systems/cy_borg/templates/dialog/attack-dialog.html";
 const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";
 const DEFEND_DIALOG_TEMPLATE =
@@ -395,7 +393,7 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       armorRoll,
       damageRoll,
       defendDR,
-      defendFormula: `1d20 + ${game.i18n.localize("CY.AgilityAbbrev")}`,
+      defendFormula: `1d20+${game.i18n.localize("CY.AgilityAbbrev")}`,
       defendOutcome,
       defendRoll,
       items,
@@ -431,6 +429,10 @@ const DEFEND_ROLL_CARD_TEMPLATE =
    * Do the actual attack rolls and resolution.
    */
   async rollAttack(itemId, attackDR, targetArmor, autofire) {
+    if (soundEffects) {
+      AudioHelper.play({src: "systems/cy_borg/assets/audio/machine-gun.wav", volume: 0.8, loop: false}, true);
+    }
+
     const item = this.items.get(itemId);
     const itemRollData = item.getRollData();
 
@@ -511,7 +513,7 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     const rollResult = {
       actor: this,
       attackDR,
-      attackFormula: `1d20 + ${game.i18n.localize(abilityAbbrevKey)}`,
+      attackFormula: `1d20+${game.i18n.localize(abilityAbbrevKey)}`,
       attackRoll,
       attackOutcome,
       attackTypeKey,

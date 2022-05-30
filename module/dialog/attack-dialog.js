@@ -54,6 +54,11 @@ export class AttackDialog extends Application {
       CONFIG.CY.flags.ATTACK_DR,
       attackDR
     );
+    await this.actor.setFlag(
+      CONFIG.CY.flagScope,
+      CONFIG.CY.flags.TARGET_ARMOR,
+      targetArmor
+    );
     this.actor.rollAttack(
       this.item.data._id,
       attackDR,
