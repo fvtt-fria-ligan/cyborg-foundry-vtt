@@ -1,9 +1,9 @@
-<form class="dialog">
+<form class="dialog defend-dialog">
   <div class="form-group">
     <label>{{localize 'CY.Defend'}} {{localize 'CY.DR'}}:</label>
     <input
       type="text"
-      name="defensebasedr"
+      name="defense-base-dr"
       value="{{defendDR}}"
       placeholder="12"
       data-dtype="Number"
@@ -14,7 +14,7 @@
     <input
       type="text"
       class="readonly"
-      name="defensemodifieddr"
+      name="defense-modified-dr"
       value=""
       placeholder="12"
       readonly
@@ -29,10 +29,13 @@
     <label>{{localize 'CY.IncomingAttack'}}:</label>
     <input
       type="text"
-      name="incomingattack"
+      name="incoming-attack"
       value="{{incomingAttack}}"
       placeholder="1d6"
       data-dtype="String"
     />
+  </div>
+  <div class="button-row">
+    <button class="defend-button" type="submit" name="Defend">{{ localize "CY.Defend" }}</button>
   </div>
 </form>

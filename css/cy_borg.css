@@ -592,6 +592,9 @@
 .cy.sheet.item .sheet-body .details-tab .field-row .field-value input {
   width: 100%;
 }
+.cy.sheet.item .sheet-body .details-tab .field-row button {
+  color: #F6EDDB;
+}
 
 .window-app.cy.dialog {
   border: 4px solid #F6EDDB;

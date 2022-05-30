@@ -2,6 +2,7 @@ import { CY } from "../config.js";
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { soundEffects, trackCarryingCapacity } from "../settings.js";
 import { AttackDialog } from "../dialog/attack-dialog.js";
+import { DefendDialog } from "../dialog/defend-dialog.js";
 
 const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";
@@ -171,6 +172,16 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     );
   }
 
+  d20Formula(modifier) {
+    if (modifier < 0) {
+      return `d20-${-modifier}`;
+    } else if (modifier > 0) {
+      return `d20+${modifier}`;
+    } else {
+      return "d20";
+    }
+  }
+
   drModifiersToHtml(drModifiers) {
     if (!drModifiers) {
       return "";
@@ -195,134 +206,16 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     });    
   }
 
-  async defend() {
-    // look up any previous DR or incoming attack value
-    let defendDR = await this.getFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.DEFEND_DR
-    );
-    if (!defendDR) {
-      defendDR = 12; // default
-    }
-    let incomingAttack = await this.getFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.INCOMING_ATTACK
-    );
-    if (!incomingAttack) {
-      incomingAttack = "1d4"; // default
-    }
-
-    const armor = this.equippedArmor();
-    const drModifiers = [];
-    if (armor) {
-      // armor defense adjustment is based on its max tier, not current
-      // TODO: maxTier is getting stored as a string
-      const maxTier = parseInt(armor.data.data.tier.max);
-      const defenseModifier = CONFIG.CY.armorTiers[maxTier].defenseModifier;
-      if (defenseModifier) {
-        drModifiers.push(
-          `${armor.name}: ${game.i18n.localize("CY.DR")} +${defenseModifier}`
-        );
-      }
-    }
-    if (this.isEncumbered()) {
-      drModifiers.push(
-        `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
-          "CY.DR"
-        )} +2`
-      );
-    }
-
-    const dialogData = {
-      defendDR,
-      drModifiers,
-      incomingAttack,
-    };
-    const html = await renderTemplate(DEFEND_DIALOG_TEMPLATE, dialogData);
-
-    return new Promise((resolve) => {
-      new Dialog({
-        title: game.i18n.localize("CY.Defend"),
-        content: html,
-        buttons: {
-          roll: {
-            icon: '<i class="fas fa-dice-d20"></i>',
-            label: game.i18n.localize("CY.Roll"),
-            callback: (html) => this._defendDialogCallback(html),
-          },
-        },
-        default: "roll",
-        render: (html) => {
-          html
-            .find("input[name='defensebasedr']")
-            .on("change", this._onDefenseBaseDRChange.bind(this));
-          html.find("input[name='defensebasedr']").trigger("change");
-        },
-        close: () => resolve(null),
-      }).render(true);
-    });
-  }
-
-  _onDefenseBaseDRChange(event) {
-    event.preventDefault();
-    const baseInput = $(event.currentTarget);
-    let drModifier = 0;
-    const armor = this.equippedArmor();
-    if (armor) {
-      // TODO: maxTier is getting stored as a string
-      const maxTier = parseInt(armor.data.data.tier.max);
-      const defenseModifier = CONFIG.CY.armorTiers[maxTier].defenseModifier;
-      if (defenseModifier) {
-        drModifier += defenseModifier;
-      }
-    }
-    if (this.isEncumbered()) {
-      drModifier += 2;
-    }
-    const modifiedDr = parseInt(baseInput[0].value) + drModifier;
-    // TODO: this is a fragile way to find the other input field
-    const modifiedInput = baseInput
-      .parent()
-      .parent()
-      .find("input[name='defensemodifieddr']");
-    modifiedInput.val(modifiedDr.toString());
-  }
-
-  /**
-   * Callback from defend dialog.
-   */
-  async _defendDialogCallback(html) {
-    const form = html[0].querySelector("form");
-    const baseDR = parseInt(form.defensebasedr.value);
-    const modifiedDR = parseInt(form.defensemodifieddr.value);
-    const incomingAttack = form.incomingattack.value;
-    if (!baseDR || !modifiedDR || !incomingAttack) {
-      // TODO: prevent dialog/form submission w/ required field(s)
-      return;
-    }
-    await this.setFlag(CONFIG.CY.flagScope, CONFIG.CY.flags.DEFEND_DR, baseDR);
-    await this.setFlag(
-      CONFIG.CY.flagScope,
-      CONFIG.CY.flags.INCOMING_ATTACK,
-      incomingAttack
-    );
-    this._rollDefend(modifiedDR, incomingAttack);
-  }
-
-  d20Formula(modifier) {
-    if (modifier < 0) {
-      return `d20-${-modifier}`;
-    } else if (modifier > 0) {
-      return `d20+${modifier}`;
-    } else {
-      return "d20";
-    }
+  async showDefendDialog() {
+    const attackDialog = new DefendDialog();
+    attackDialog.actor = this;
+    attackDialog.render(true);
   }
 
   /**
    * Do the actual defend rolls and resolution.
    */
-  async _rollDefend(defendDR, incomingAttack) {
+  async rollDefend(defendDR, incomingAttack) {
     const agility = this.data.data.abilities.agility;
     const defendFormula = this.d20Formula(agility);
 
@@ -429,12 +322,12 @@ const DEFEND_ROLL_CARD_TEMPLATE =
    * Do the actual attack rolls and resolution.
    */
   async rollAttack(itemId, attackDR, targetArmor, autofire) {
-    if (soundEffects) {
-      AudioHelper.play({src: "systems/cy_borg/assets/audio/machine-gun.wav", volume: 0.8, loop: false}, true);
-    }
-
     const item = this.items.get(itemId);
     const itemRollData = item.getRollData();
+
+    if (soundEffects && item.data.data.sound) {
+      AudioHelper.play({src: item.data.data.sound, volume: 0.8, loop: false}, true);
+    }
 
     // decide relevant attack ability
     let ability;

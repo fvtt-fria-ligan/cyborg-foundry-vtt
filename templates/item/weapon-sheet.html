@@ -86,6 +86,30 @@
             <input class="field-input" type="number" name="data.critMultiplier" value="{{data.data.critMultiplier}}"/>
           </div>
         </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Sound'}}
+          </div>
+          <div class="field-value">
+            <button
+            type="button"
+            class="file-picker"
+            data-type="audio"
+            data-target="data.sound"
+            title="Browse Files"
+            tabindex="-1"
+          >
+            <i class="fas fa-file-import fa-fw"></i>
+          </button>
+          <input
+            class="sound"
+            type="text"
+            name="data.sound"
+            value="{{data.data.sound}}"
+            data-dtype="String"
+            placeholder="File Path"
+          />
+        </div>
       </div>
     </div>
   </div>
