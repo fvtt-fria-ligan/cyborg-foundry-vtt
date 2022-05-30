@@ -505,9 +505,7 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       )} ${damage} ${game.i18n.localize("CY.Damage")}`;
     } else {
       // MISS!!!
-      attackOutcome = game.i18n.localize(
-        isFumble ? "CY.AttackFumbleText" : "CY.Miss"
-      );
+      attackOutcome = this._missText(isFumble);
     }
 
     const rollResult = {
@@ -523,6 +521,24 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       targetArmorRoll,
     };
     await this._renderAttackRollCard(rollResult);
+  }
+
+  _missText(isFumble) {
+    let missKey;
+    if (isFumble) {
+      const fumbleRoll = new Roll("1d6");
+      fumbleRoll.evaluate({ async: false });
+      if (fumbleRoll.total < 4) {
+        missKey = "CY.AttackFumbleText1";
+      } else if (fumbleRoll.total < 6) {
+        missKey = "CY.AttackFumbleText2";
+      } else {
+        missKey = "CY.AttackFumbleText3";
+      }
+    } else {
+      missKey = "CY.Miss";
+    }
+    return game.i18n.localize(missKey);
   }
 
   /**

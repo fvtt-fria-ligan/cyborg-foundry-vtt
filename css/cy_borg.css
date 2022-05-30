@@ -617,4 +617,59 @@
   color: #F6EDDB;
 }
 
+.roll-card .card-title {
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
+}
+.roll-card .item-row {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.roll-card .item-row span.item-name {
+  font-size: 14px;
+}
+.roll-card .roll-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+}
+.roll-card .roll-result {
+  border: 1px solid gray;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+.roll-card .roll-result span {
+  font-size: 20px;
+}
+.roll-card .outcome-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.roll-card .outcome-text .attack-outcome,
+.roll-card .outcome-text .defend-outcome {
+  margin-left: 10px;
+}
+.roll-card .outcome-text .attack-outcome,
+.roll-card .outcome-text .defend-outcome,
+.roll-card .outcome-text .take-damage {
+  color: #F800F8;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.roll-card .reaction-text {
+  font-size: 28px;
+  text-align: center;
+}
+.roll-card .dr-modifier {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=cy_borg.css.map */
