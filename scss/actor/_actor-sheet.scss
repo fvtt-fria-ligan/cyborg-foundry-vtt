@@ -1,77 +1,71 @@
 
 .cy.sheet.actor {
   section.window-content {
-    .sheet-wrapper {
+    .sheet-header {
       display: flex;
-      flex-direction: column;
-      .sheet-header {
+      height: 443px;
+      .left-col {
         display: flex;
-        height: 443px;
-        .left-col {
+        flex-direction: column;
+        flex: 0 0 $portrait-size;
+        margin-right: $widget-margin;
+        .portrait {
           display: flex;
-          flex-direction: column;
           flex: 0 0 $portrait-size;
-          margin-right: $widget-margin;
-          .portrait {
-            display: flex;
-            flex: 0 0 $portrait-size;
-            justify-content: center;
-            margin-bottom: $widget-margin;
-            img {
-              height: 100%;
-            }
-          } 
-          .name {
-            flex: 0 0 $field-height;
-            margin-bottom: $widget-margin;
-            input[type="text"] {
-              font-family: $name-font;
-              height: $field-height;
-            }
-          } 
-          .field-row {
-            display: flex;
-            flex: 0 0 $field-height;
-            width: 100%;
-            .field {
-              height: $field-height;
-              flex: 1;
-            }
-            .foo-field {
-              margin-right: $widget-margin;
-            }
+          justify-content: center;
+          margin-bottom: $widget-margin;
+          img {
+            height: 100%;
+          }
+        } 
+        .name {
+          flex: 0 0 $field-height;
+          margin-bottom: $widget-margin;
+          input[type="text"] {
+            font-family: $name-font;
+            height: $field-height;
+          }
+        } 
+        .field-row {
+          display: flex;
+          flex: 0 0 $field-height;
+          width: 100%;
+          .field {
+            height: $field-height;
+            flex: 1;
+          }
+          .foo-field {
+            margin-right: $widget-margin;
           }
         }
-        .right-col {
-          display: flex;
-          flex: 0 0 88px;
-          flex-direction: column;
-          .hit-points {
-            display: grid;
-            flex: 0 0 88px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            margin-bottom: $widget-margin;
-            width: 88px;
-            .hit-points-ul {     
-            }
-            .hit-points-ur,
-            .hit-points-ll {              
-              background-image: -webkit-linear-gradient(135deg, $cream 50%, $near-black 50%);              
-            }
-            .hit-points-lr {              
-              background-color: $cream;
-              input[type="number"] {
-                color: $near-black;
-              }          
-            }
-            input[type="number"] {
-              border: none;
-              font-size: 34px;
-            }            
-          }
-        }  
       }
+      .right-col {
+        display: flex;
+        flex: 0 0 88px;
+        flex-direction: column;
+        .hit-points {
+          display: grid;
+          flex: 0 0 88px;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          margin-bottom: $widget-margin;
+          width: 88px;
+          .hit-points-ur,
+          .hit-points-ll {              
+            background-image: -webkit-linear-gradient(135deg, $cream 50%, $near-black 50%);              
+          }
+          .hit-points-lr {              
+            background-color: $cream;
+            input[type="number"] {
+              color: $near-black;
+            }          
+          }
+          input[type="number"] {
+            border: none;
+            font-size: 34px;
+          }            
+        }
+      }  
     }
   }
 }

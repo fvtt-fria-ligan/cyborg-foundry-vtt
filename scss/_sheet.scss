@@ -11,6 +11,15 @@
     font-size: 15px;
     padding: $widget-margin;
 
+    form {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      height: 100%;
+    }
+
     .sheet-tabs {
       background-color: $cream;
       border: none;
@@ -27,7 +36,6 @@
         }
         &.active {
           border: 4px solid $magenta;
-          // background-color: $cream;
         }
         img {
           border: none;
@@ -61,16 +69,35 @@
       line-height: $textarea-line-height;
     }
 
+    .editor,
+    .editor-content {
+      height: 100%;
+    }
+    .editor {
+      padding: 0 8px;
+    }
+
     .widget {
       border: 4px solid $cream;
       border-radius: 5px;
     }
 
+    // style shared by foe actor sheet and item sheets
     .sheet-body {
-      .item-list {        
-        .field-row {
-          line-height: $textarea-line-height;
-          margin: 2px;
+      flex: 1;
+
+      .tab {
+        height: 100%;
+      }
+
+      .description-tab {
+        .description-wrapper {
+          background-color: $cream;
+          color: $near-black;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
         }
       }
       .data-tab {
