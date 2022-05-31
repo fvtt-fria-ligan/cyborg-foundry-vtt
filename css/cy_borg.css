@@ -738,6 +738,7 @@
   align-items: center;
   display: flex;
   flex: 0 0 88px;
+  font-family: "UAV OSD Sans Mono";
   font-size: 50px;
   justify-content: center;
   writing-mode: vertical-rl;
