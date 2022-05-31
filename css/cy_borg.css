@@ -89,6 +89,7 @@
 .cy.sheet section.window-content .editor,
 .cy.sheet section.window-content .editor-content {
   height: 100%;
+  line-height: 20px;
 }
 .cy.sheet section.window-content .editor {
   padding: 0 8px;
@@ -305,6 +306,10 @@
   font-size: 50px;
   justify-content: center;
   writing-mode: vertical-rl;
+}
+.cy.sheet.foe section.window-content .sheet-header .field-button {
+  background-color: #F6EDDB;
+  color: #1C1E23;
 }
 
 .roll-card .card-title {

@@ -3,7 +3,6 @@ import { CYActorSheet } from "./actor-sheet.js";
 export class CYFoeSheet extends CYActorSheet {
   /** @override */
   static get defaultOptions() {
-    console.log("********* default options");
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "foe"],
       template: "systems/cy_borg/templates/actor/foe-sheet.html",
@@ -28,10 +27,17 @@ export class CYFoeSheet extends CYActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-    // html
-    //   .find(".ability-link")
-    //   .on("click", this._testAbility.bind(this));
-    //   html.find(".weapon-icon").on("click", this._attack.bind(this));
-    //   html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".reaction-button").on("click", this._onReactionClick.bind(this));
+    html.find(".morale-button").on("click", this._onMoraleClick.bind(this));
+  }
+
+  async _onReactionClick(event) {
+    event.preventDefault();
+    this.actor.rollReaction();
+  }
+
+  async _onMoraleClick(event) {
+    event.preventDefault();
+    this.actor.rollMorale();
   }
  }

@@ -72,6 +72,7 @@
     .editor,
     .editor-content {
       height: 100%;
+      line-height: $textarea-line-height;
     }
     .editor {
       padding: 0 8px;

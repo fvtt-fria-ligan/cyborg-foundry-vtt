@@ -448,4 +448,51 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     });
   }
 
+  /**
+   * Roll reaction.
+   */
+   async rollReaction() {
+    const reactionRoll = new Roll("2d6");
+    reactionRoll.evaluate({ async: false });
+    let key = "";
+    if (reactionRoll.total <= 3) {
+      key = "CY.ReactionHostile";
+    } else if (reactionRoll.total <= 6) {
+      key = "CY.ReactionAngered";
+    } else if (reactionRoll.total <= 8) {
+      key = "CY.ReactionIndifferent";
+    } else if (reactionRoll.total <= 10) {
+      key = "CY.ReactionCurious";
+    } else {
+      key = "CY.ReactionAsksForHelp";
+    }
+    const reactionText = `${this.name} ${game.i18n.localize(key)}.`;   
+    await reactionRoll.toMessage({
+      flavor: reactionText
+    });
+  }
+
+  /**
+   * Roll morale.
+   */  
+  async rollMorale() {
+    const moraleRoll = new Roll("2d6");
+    moraleRoll.evaluate({ async: false });
+    let key = "";
+    if (moraleRoll.total > this.data.data.morale) {
+      const resultRoll = new Roll("1d6");
+      resultRoll.evaluate({ async: false });
+      if (resultRoll.total <= 3) {
+        key = "CY.MoraleFlees";
+      } else {
+        key = "CY.MoraleSurrenders";
+      }
+    } else {
+      key = "CY.MoraleStandsStrong";
+    }
+    const moraleText = `${this.name} ${game.i18n.localize(key)}.`;   
+    await moraleRoll.toMessage({
+      flavor: moraleText
+    });
+  }
  }
