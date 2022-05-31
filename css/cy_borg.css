@@ -98,6 +98,14 @@
   border: 4px solid #F6EDDB;
   border-radius: 5px;
 }
+.cy.sheet section.window-content .button-row {
+  display: flex;
+  justify-content: space-around;
+}
+.cy.sheet section.window-content .sheet-button {
+  background-color: #F6EDDB;
+  color: #1C1E23;
+}
 .cy.sheet section.window-content .sheet-body {
   flex: 1;
 }
@@ -307,10 +315,6 @@
   justify-content: center;
   writing-mode: vertical-rl;
 }
-.cy.sheet.foe section.window-content .sheet-header .field-button {
-  background-color: #F6EDDB;
-  color: #1C1E23;
-}
 
 .roll-card .card-title {
   font-size: 20px;
@@ -400,6 +404,24 @@
 .window-app.cy.dialog .window-content form.dialog input[type=number],
 .window-app.cy.dialog .window-content form.dialog input[type=text] {
   color: #F6EDDB;
+}
+
+.rest-dialog ul {
+  list-style-type: none;
+}
+.rest-dialog li {
+  margin: 0 0 10px 0;
+}
+.rest-dialog li input[type=checkbox], .rest-dialog li input[type=radio] {
+  float: left;
+}
+.rest-dialog li input[type=checkbox] {
+  height: 14px;
+  width: 14px;
+}
+.rest-dialog li label div {
+  display: block;
+  margin-left: 30px;
 }
 
 :root {

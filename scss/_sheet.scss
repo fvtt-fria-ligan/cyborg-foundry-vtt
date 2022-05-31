@@ -83,6 +83,16 @@
       border-radius: 5px;
     }
 
+    .button-row {
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .sheet-button {
+      background-color: $cream;
+      color: $near-black;
+    }
+
     // style shared by foe actor sheet and item sheets
     .sheet-body {
       flex: 1;

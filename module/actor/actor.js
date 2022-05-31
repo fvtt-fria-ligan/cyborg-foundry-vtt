@@ -3,11 +3,10 @@ import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { soundEffects, trackCarryingCapacity } from "../settings.js";
 import { AttackDialog } from "../dialog/attack-dialog.js";
 import { DefendDialog } from "../dialog/defend-dialog.js";
+import { RestDialog } from "../dialog/rest-dialog.js";
 
 const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";
-const DEFEND_DIALOG_TEMPLATE =
-  "systems/cy_borg/templates/dialog/defend-dialog.html";
 const DEFEND_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/defend-roll-card.html";
 
@@ -496,19 +495,59 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     });
   }
 
-  async rollRest() {
-
+  async showRestDialog() {
+    const restDialog = new RestDialog();
+    restDialog.actor = this;
+    restDialog.render(true);
   }
 
+  async rollRest(restLength, starving) {
+    if (starving) {
+      await this.rollStarvation();      
+    } else if (restLength === "short") {
+      await this.rollHealHitPoints("d4");
+    } else if (restLength === "long") {
+      await this.rollHealHitPoints("d6");
+    }
+  }
+
+  hitPointPlurality(num) {
+    const key = num == 1 ? "CY.HitPoint" : "CY.HitPoints";
+    return game.i18n.localize(key);
+  }
+
+  async rollHealHitPoints(dieRoll) {
+    const roll = new Roll(dieRoll);
+    roll.evaluate({async: false});
+    const flavor = `${game.i18n.localize("CY.Rest")}: ${game.i18n.localize("CY.Heal")} ${roll.total} ${this.hitPointPlurality(roll.total)}`;
+    await roll.toMessage({flavor});
+
+    const newHP = Math.min(
+      this.data.data.hitPoints.max,
+      this.data.data.hitPoints.value + roll.total
+    );
+    await this.update({ ["data.hitPoints.value"]: newHP });
+  }
+
+  async rollStarvation() {
+    const roll = new Roll("1d4");
+    roll.evaluate({async: false});
+    const flavor = `${game.i18n.localize("CY.Starving")}: ${game.i18n.localize("CY.Lose")} ${roll.total} ${this.hitPointPlurality(roll.total)}`;
+    await roll.toMessage({flavor});
+
+    const newHP = this.data.data.hitPoints.value - roll.total;
+    await this.update({ ["data.hitPoints.value"]: newHP });
+  }
+  
   async rollBattered() {
 
   }
 
-  async rollApp() {
+  async rollUseApp() {
 
   }
 
-  async rollNano() {
+  async rollUseNano() {
 
   }
  }

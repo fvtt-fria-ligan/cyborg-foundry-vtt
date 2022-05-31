@@ -56,6 +56,7 @@ export class CYCharacterSheet extends CYActorSheet {
       .on("click", this._testAbility.bind(this));
     html.find(".weapon-icon").on("click", this._attack.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".rest-button").on("click", this._rest.bind(this));
   }
 
   async _testAbility(event) {
@@ -93,5 +94,10 @@ export class CYCharacterSheet extends CYActorSheet {
   async _defend(event) {
     event.preventDefault();
     await this.actor.showDefendDialog();
+  }
+
+  async _rest(event) {
+    event.preventDefault();
+    await this.actor.showRestDialog();
   }
  }
