@@ -495,4 +495,20 @@ const DEFEND_ROLL_CARD_TEMPLATE =
       flavor: moraleText
     });
   }
+
+  async rollRest() {
+
+  }
+
+  async rollBattered() {
+
+  }
+
+  async rollApp() {
+
+  }
+
+  async rollNano() {
+
+  }
  }
