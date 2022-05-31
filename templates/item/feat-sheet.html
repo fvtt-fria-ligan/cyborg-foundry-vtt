@@ -1,29 +1,27 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <div class="sheet-wrapper">
-    {{> systems/cy_borg/templates/item/item-sheet-header.html itemType='FEAT'}}
-    {{> systems/cy_borg/templates/item/item-sheet-tabs.html }}
-    <div class="sheet-body">
-      {{> systems/cy_borg/templates/item/item-description-tab.html }}
-      <div class="tab data-tab" data-group="primary" data-tab="data">
-        <div class="fields">
-          <div class="widget field-row">
-            <div class="field-label">
-              {{ localize 'CY.RollLabel'}}
-            </div>
-            <div class="field-value">
-              <input class="field-input" type="text" name="data.rollLabel" value="{{data.data.rollLabel}}" spellcheck="false"/>
-            </div>
+  {{> systems/cy_borg/templates/item/item-sheet-header.html itemType='FEAT'}}
+  {{> systems/cy_borg/templates/item/item-sheet-tabs.html }}
+  <div class="sheet-body">
+    {{> systems/cy_borg/templates/item/item-description-tab.html }}
+    <div class="tab data-tab" data-group="primary" data-tab="data">
+      <div class="fields">
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.RollLabel'}}
           </div>
-          <div class="widget field-row">
-            <div class="field-label">
-              {{ localize 'CY.RollMacro'}}
-            </div>
-            <div class="field-value">
-              <input class="field-input" type="text" name="data.rollMacro" value="{{data.data.rollMacro}}" spellcheck="false"/>
-            </div>
-          </div>                    
+          <div class="field-value">
+            <input class="field-input" type="text" name="data.rollLabel" value="{{data.data.rollLabel}}" spellcheck="false"/>
+          </div>
         </div>
-      </div>      
-    </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.RollMacro'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="text" name="data.rollMacro" value="{{data.data.rollMacro}}" spellcheck="false"/>
+          </div>
+        </div>                    
+      </div>
+    </div>      
   </div>
 </form>
