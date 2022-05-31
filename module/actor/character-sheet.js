@@ -54,8 +54,8 @@ export class CYCharacterSheet extends CYActorSheet {
     html
       .find(".ability-link")
       .on("click", this._testAbility.bind(this));
-      html.find(".weapon-icon").on("click", this._attack.bind(this));
-      html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".weapon-icon").on("click", this._attack.bind(this));
+    html.find(".defend-button").on("click", this._defend.bind(this));
   }
 
   async _testAbility(event) {

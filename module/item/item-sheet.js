@@ -9,7 +9,7 @@ export class CYItemSheet extends ItemSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "details",
+          initial: "data",
         },
       ],
     });

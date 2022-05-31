@@ -1,6 +1,7 @@
 import { CYActor } from "./actor/actor.js";
 import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
+import { CYFoeSheet } from "./actor/foe-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
 import { registerSystemSettings } from "./settings.js";
@@ -38,7 +39,12 @@ const registerSheets = () => {
     types: ["character"],
     makeDefault: true,
     label: "CY.CharacterSheet",
-  });  
+  });
+  Actors.registerSheet(CY.system, CYFoeSheet, {
+    types: ["foe"],
+    makeDefault: true,
+    label: "CY.FoeSheet",
+  });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(CY.system, CYItemSheet, {
     makeDefault: true,

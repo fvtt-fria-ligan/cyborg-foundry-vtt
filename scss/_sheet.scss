@@ -7,15 +7,13 @@
     background-image: none;
     border: 2px solid $cream;
     color: $cream;
-    font-family: 'UAV OSD Sans Mono', monospace;
+    font-family: $main-font;
     font-size: 15px;
     padding: $widget-margin;
 
     .sheet-tabs {
       background-color: $cream;
       border: none;
-      // border-bottom: 4px solid $cream;
-      // border-top: 4px solid $cream;
       flex: 0 0 $tab-height;
       padding: 0;
       a.item {
@@ -42,26 +40,68 @@
     input[type="number"],
     input[type="text"] {
       color: $cream;
+      font-family: $input-font;
       height: 100%;
+      line-height: $textarea-line-height;
       text-align: center;
       text-transform: uppercase;
       width: 100%;
     }
 
     input[type="number"] {
-      font-family: "Aldo the Apache";
+      font-family: $number-font;
       font-size: 20px;
     }
 
     textarea {
       color: $cream;
-      font-family: 'UAV OSD Sans Mono', monospace;
+      font-family: $textarea-font;
       font-size: 15px;
+      line-height: $textarea-line-height;
     }
 
     .widget {
       border: 4px solid $cream;
       border-radius: 5px;
+    }
+
+    .sheet-body {
+      .data-tab {
+        .field-row {
+          display: flex;
+          flex: 0 0 $field-height;
+          margin-bottom: $widget-margin;
+          .field-label {
+            align-items: center;
+            background-color: $cream;
+            color: $near-black;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            font-family: $label-font;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+          }
+          .field-value {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: center;
+            input {
+              width: 100%;
+            }
+          }
+          button {
+            color: $cream;
+          }
+          textarea {
+            font-family: $textarea-font;
+            line-height: $textarea-line-height;
+          }
+        }
+      }  
     }  
   }
 }

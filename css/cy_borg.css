@@ -15,6 +15,10 @@
   font-family: "Aldo the Apache";
   src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
 }
+@font-face {
+  font-family: "QuanPixel 8px";
+  src: url("../assets/fonts/quan.ttf") format("truetype");
+}
 :root {
   --color-text-light-highlight: #f0f0e0;
   --color-text-light-heading: #c9c7b8;
@@ -335,7 +339,7 @@
   background-image: none;
   border: 2px solid #F6EDDB;
   color: #F6EDDB;
-  font-family: "UAV OSD Sans Mono", monospace;
+  font-family: "QuanPixel 8px";
   font-size: 15px;
   padding: 5px;
 }
@@ -366,7 +370,9 @@
 .cy.sheet section.window-content input[type=number],
 .cy.sheet section.window-content input[type=text] {
   color: #F6EDDB;
+  font-family: "QuanPixel 8px";
   height: 100%;
+  line-height: 20px;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -377,71 +383,98 @@
 }
 .cy.sheet section.window-content textarea {
   color: #F6EDDB;
-  font-family: "UAV OSD Sans Mono", monospace;
+  font-family: "QuanPixel 8px";
   font-size: 15px;
+  line-height: 20px;
 }
 .cy.sheet section.window-content .widget {
   border: 4px solid #F6EDDB;
   border-radius: 5px;
 }
+.cy.sheet section.window-content .sheet-body .data-tab .field-row {
+  display: flex;
+  flex: 0 0 38px;
+  margin-bottom: 5px;
+}
+.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-label {
+  align-items: center;
+  background-color: #F6EDDB;
+  color: #1C1E23;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: "UAV OSD Sans Mono";
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-value {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-value input {
+  width: 100%;
+}
+.cy.sheet section.window-content .sheet-body .data-tab .field-row button {
+  color: #F6EDDB;
+}
+.cy.sheet section.window-content .sheet-body .data-tab .field-row textarea {
+  font-family: "QuanPixel 8px";
+  line-height: 20px;
+}
 
-.cy.sheet.actor.character section.window-content .sheet-wrapper {
+.cy.sheet.actor section.window-content .sheet-wrapper {
   display: flex;
   flex-direction: column;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header {
   display: flex;
   height: 443px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col {
   display: flex;
   flex-direction: column;
   flex: 0 0 292px;
   margin-right: 5px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .portrait {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .portrait {
   display: flex;
   flex: 0 0 292px;
   justify-content: center;
   margin-bottom: 5px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .portrait img {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .portrait img {
   height: 100%;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .name {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .name {
   flex: 0 0 38px;
   margin-bottom: 5px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .name input[type=text] {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .name input[type=text] {
+  font-family: "UAV OSD Sans Mono";
   height: 38px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class {
-  flex: 0 0 38px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class span.class-name {
-  line-height: 38px;
-  text-transform: uppercase;
-}
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .field-row {
   display: flex;
   flex: 0 0 38px;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row .field {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .field-row .field {
   height: 38px;
   flex: 1;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .field-row .foo-field {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .left-col .field-row .foo-field {
   margin-right: 5px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col {
   display: flex;
   flex: 0 0 88px;
   flex-direction: column;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points {
   display: grid;
   flex: 0 0 88px;
   grid-template-columns: 1fr 1fr;
@@ -449,19 +482,33 @@
   margin-bottom: 5px;
   width: 88px;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ur,
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ll {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ur,
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-ll {
   background-image: -webkit-linear-gradient(135deg, #F6EDDB 50%, #1C1E23 50%);
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr {
   background-color: #F6EDDB;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr input[type=number] {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points .hit-points-lr input[type=number] {
   color: #1C1E23;
 }
-.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .hit-points input[type=number] {
+.cy.sheet.actor section.window-content .sheet-wrapper .sheet-header .right-col .hit-points input[type=number] {
   border: none;
   font-size: 34px;
+}
+
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header {
+  height: 443px;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class {
+  flex: 0 0 38px;
+  font-family: "UAV OSD Sans Mono";
+  margin-bottom: 5px;
+  text-align: center;
+}
+.cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .left-col .class span.class-name {
+  line-height: 38px;
+  text-transform: uppercase;
 }
 .cy.sheet.actor.character section.window-content .sheet-wrapper .sheet-header .right-col .ability-row {
   display: flex;
@@ -521,6 +568,20 @@
   border-radius: 5;
   color: #F6EDDB;
 }
+.cy.sheet.foe section.window-content .sheet-wrapper .sheet-header {
+  height: 396px;
+}
+.cy.sheet.foe section.window-content .sheet-wrapper .sheet-header .right-col .actor-type {
+  color: #F6EDDB;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  font-family: "UAV OSD Sans Mono";
+  font-size: 50px;
+  justify-content: center;
+  writing-mode: vertical-rl;
+}
+
 .cy.sheet.item .sheet-wrapper.cyber .sheet-header .portrait-row .item-type {
   color: #F8F800;
 }
@@ -565,35 +626,6 @@
 }
 .cy.sheet.item .sheet-body .description-tab .editor, .cy.sheet.item .sheet-body .description-tab .editor-content {
   height: 100%;
-}
-.cy.sheet.item .sheet-body .details-tab .field-row {
-  display: flex;
-  flex: 0 0 38px;
-  margin-bottom: 5px;
-}
-.cy.sheet.item .sheet-body .details-tab .field-row .field-label {
-  align-items: center;
-  background-color: #F6EDDB;
-  color: #1C1E23;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-}
-.cy.sheet.item .sheet-body .details-tab .field-row .field-value {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-}
-.cy.sheet.item .sheet-body .details-tab .field-row .field-value input {
-  width: 100%;
-}
-.cy.sheet.item .sheet-body .details-tab .field-row button {
-  color: #F6EDDB;
 }
 
 .window-app.cy.dialog {

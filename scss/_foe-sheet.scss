@@ -1,0 +1,19 @@
+.cy.sheet.foe {
+  section.window-content {
+    .sheet-wrapper {
+      .sheet-header {
+        height: 396px;
+        .right-col .actor-type {
+          color: $cream;
+          align-items: center;
+          display: flex;
+          flex: 1;
+          font-family: $type-font;
+          font-size: 50px;
+          justify-content: center;
+          writing-mode: vertical-rl;
+        }
+      }
+    }
+  }
+}

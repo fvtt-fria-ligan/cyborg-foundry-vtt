@@ -22,9 +22,7 @@
         align-items: center;
         display: flex;
         flex: 0 0 88px;
-        // font-size: 100px;
         font-size: 50px;
-        // transform: rotate(-90deg);        
         justify-content: center;
         writing-mode: vertical-rl;
       }
@@ -41,44 +39,10 @@
     .description-tab {
       background-color: $cream;
       color: $near-black;
-      // display: flex;
-      // flex-direction: column;
-      // height: 100%;
       height: 300px;
       width: 100%;
       .editor, .editor-content {
         height: 100%;
-      }
-    }
-    .details-tab {
-      .field-row {
-        display: flex;
-        flex: 0 0 $field-height;
-        margin-bottom: $widget-margin;
-        .field-label {
-          align-items: center;
-          background-color: $cream;
-          color: $near-black;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          justify-content: center;
-          text-align: center;
-          text-transform: uppercase;
-        }
-        .field-value {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          justify-content: center;
-          input {
-            width: 100%;
-          }
-        }
-        button {
-          color: $cream;
-        }
       }
     }
   }
