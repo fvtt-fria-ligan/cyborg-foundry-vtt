@@ -1,7 +1,7 @@
 // Foundry overrides
 // see [Foundry dir]/resources/app/public/css/style.css
 
-// TODO: why are color variables not working inside :root / in this file?
+// TODO: why are scss variables not working inside :root variables?
 
 :root {
   --color-text-light-highlight: #f0f0e0;
@@ -70,6 +70,7 @@
   --players-width: 200px;
   --form-field-height: 26px;
   // --font-primary: "Signika", sans-serif;
+  // --font-primary: 'Perfect DOS VGA 437';
   --font-primary: 'Perfect DOS VGA 437';
   --font-mono: monospace;
   // --font-size-11: 0.6875rem;

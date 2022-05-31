@@ -1,16 +1,17 @@
 @import "_vars";
 @import "_fonts";
-@import "_foundry_root";
-@import "_foundry_chat";
-
 @import "_sheet";
-@import "_actor-sheet";
-@import "_character-sheet";
-@import "_combat-tab";
-@import "_foe-sheet";
 
-@import "_item-sheet";
-@import "_weapon-sheet";
+@import "actor/_actor-sheet";
+@import "actor/_character-sheet";
+@import "actor/_combat-tab";
+@import "actor/_foe-sheet";
 
-@import "_dialog";
-@import "_roll-card";
+@import "chat/_roll-card";
+
+@import "dialog/_dialog";
+
+@import "foundry/_foundry_root";
+@import "foundry/_foundry_chat";
+
+@import "item/_item-sheet";

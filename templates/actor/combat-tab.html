@@ -8,7 +8,7 @@
         <div class="icon weapon-icon">
           <img src="{{item.img}}" />
         </div>
-        <div class="fields">
+        <div class="item-fields">
           <div class="field-row">
             {{item.name}}
           </div>
@@ -16,7 +16,9 @@
             {{item.data.damage}} {{item.data.weaponType}}
           </div>
           {{#if item.data.special}}
-            {{ item.data.special }}
+            <div class="field-row">
+              {{ item.data.special }}
+            </div>
           {{/if}}
           <div class="field-row">
             <div class="item-controls">

@@ -7,7 +7,7 @@
     background-image: none;
     border: 2px solid $cream;
     color: $cream;
-    font-family: $main-font;
+    font-family: $sheet-font;
     font-size: 15px;
     padding: $widget-margin;
 
@@ -40,17 +40,18 @@
     input[type="number"],
     input[type="text"] {
       color: $cream;
-      font-family: $input-font;
       height: 100%;
-      line-height: $textarea-line-height;
       text-align: center;
       text-transform: uppercase;
       width: 100%;
     }
-
     input[type="number"] {
-      font-family: $number-font;
+      font-family: $input-number-font;
       font-size: 20px;
+    }
+    input[type="text"] {
+      font-family: $input-text-font;
+      line-height: $textarea-line-height;
     }
 
     textarea {
@@ -66,6 +67,12 @@
     }
 
     .sheet-body {
+      .item-list {        
+        .field-row {
+          line-height: $textarea-line-height;
+          margin: 2px;
+        }
+      }
       .data-tab {
         .field-row {
           display: flex;
