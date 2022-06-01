@@ -1,4 +1,10 @@
 import { CYActorSheet } from "./actor-sheet.js";
+import { showAttackDialog } from "../combat/attack-dialog.js";
+import { showDefendDialog } from "../combat/defend-dialog.js";
+import { showRestDialog } from "../combat/rest-dialog.js";
+import { rollBattered } from "../combat/battered.js";
+import { rollLevelUp } from "./levelup.js";
+
 
 const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
 
@@ -90,26 +96,26 @@ export class CYCharacterSheet extends CYActorSheet {
     event.preventDefault();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
-    this.actor.showAttackDialog(itemId);
+    showAttackDialog(this.actor, itemId);
   }
 
   async _defend(event) {
     event.preventDefault();
-    await this.actor.showDefendDialog();
+    await showDefendDialog(this.actor);
   }
 
   async _rest(event) {
     event.preventDefault();
-    await this.actor.showRestDialog();
+    await showRestDialog(this.actor);
   }
 
   async _battered(event) {
     event.preventDefault();
-    await this.actor.rollBattered();
+    await rollBattered(this.actor);
   }
 
   async _levelUp(event) {
     event.preventDefault();
-    await this.actor.levelUp();
+    await rollLevelUp(this.actor);
   }
  }

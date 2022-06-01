@@ -1,3 +1,10 @@
+import { rollRest } from "./rest.js";
+
+export const showRestDialog = async (actor) => {
+  const restDialog = new RestDialog();
+  restDialog.actor = actor;
+  restDialog.render(true);
+}
 
 export class RestDialog extends Application {
   /** @override */
@@ -25,6 +32,6 @@ export class RestDialog extends Application {
     const restLength = $(form).find("input[name=rest-length]:checked").val();
     const starving = $(form).find("input[name=starving]:checked").val() ? true : false;
     this.close();
-    this.actor.rollRest(restLength, starving);
+    rollRest(this.actor, restLength, starving);
   }
 }

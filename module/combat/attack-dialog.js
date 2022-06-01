@@ -1,3 +1,16 @@
+import { rollAttack } from "./attack.js";
+
+
+export const showAttackDialog = async (actor, itemId) => {
+  const item = actor.items.get(itemId);
+  if (!item) {
+    return;
+  }
+  const attackDialog = new AttackDialog();
+  attackDialog.actor = actor;
+  attackDialog.item = item;
+  attackDialog.render(true);
+}
 
 export class AttackDialog extends Application {
   /** @override */
@@ -59,7 +72,8 @@ export class AttackDialog extends Application {
       CONFIG.CY.flags.TARGET_ARMOR,
       targetArmor
     );
-    this.actor.rollAttack(
+    rollAttack(
+      this.actor,
       this.item.data._id,
       attackDR,
       targetArmor,

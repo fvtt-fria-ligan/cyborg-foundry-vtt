@@ -11,7 +11,7 @@
   "CY.Autofire": "Autofire",
   "CY.AutofireHit": "Make another attack (max 3).",
   "CY.Battered": "Battered",
-  "CY.BatteredCyRage": "CY-RAGE: Gain {hp} HP. Attack random targets 2x per round with your most effective weapon. Attacks DR10, Defense DR14. Ends when Battered, Dead or sedated.",
+  "CY.BatteredCyRage": "CY-RAGE: gain {hp} temporary HP. Attack random targets 2x per round with your most effective weapon. Attacks are DR10, Defense DR14. Ends when Battered, Dead or sedated.",
   "CY.BatteredCriticalInjury": "Critical injury: your {bodyPart} is destroyed and has to be replaced or regrown. You are unable to act for {rounds} {roundsWord} then become active with {hp} HP.",
   "CY.BatteredDead": "Dead (unless you can pay).",
   "CY.BatteredHemorrhage": "Hemorrhage: death in {hours} {hoursWord} unless treated. {drModifier}",

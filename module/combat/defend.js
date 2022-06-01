@@ -1,0 +1,101 @@
+import { addShowDicePromise, diceSound, showDice } from "../dice.js";
+
+
+const DEFEND_ROLL_CARD_TEMPLATE =
+  "systems/cy_borg/templates/chat/defend-roll-card.html";
+
+/**
+ * Do the actual defend rolls and resolution.
+ */
+export const rollDefend = async (actor, defendDR, incomingAttack) => {
+  const agility = actor.data.data.abilities.agility;
+  const defendFormula = actor.d20Formula(agility);
+
+  // roll 1: defend
+  const defendRoll = new Roll(defendFormula);
+  defendRoll.evaluate({ async: false });
+  await showDice(defendRoll);
+
+  const d20Result = defendRoll.terms[0].results[0].result;
+  const isFumble = d20Result === 1;
+  const isCrit = d20Result === 20;
+
+  const items = [];
+  let damageRoll = null;
+  let armorRoll = null;
+  let defendOutcome = null;
+  let takeDamage = null;
+
+  if (isCrit) {
+    // critical success
+    defendOutcome = game.i18n.localize("CY.DefendCritText");
+  } else if (defendRoll.total >= defendDR) {
+    // success
+    defendOutcome = game.i18n.localize("CY.Dodge");
+  } else {
+    // failure
+    if (isFumble) {
+      defendOutcome = game.i18n.localize("CY.DefendFumbleText");
+    } else {
+      defendOutcome = game.i18n.localize("CY.YouAreHit");
+    }
+
+    // roll 2: incoming damage
+    let damageFormula = incomingAttack;
+    if (isFumble) {
+      damageFormula += " * 2";
+    }
+    damageRoll = new Roll(damageFormula, {});
+    damageRoll.evaluate({ async: false });
+    const dicePromises = [];
+    addShowDicePromise(dicePromises, damageRoll);
+    let damage = damageRoll.total;
+
+    // roll 3: damage reduction from equipped armor, if any
+    let damageReductionDie = "";
+    const armor = actor.equippedArmor();
+    if (armor) {
+      damageReductionDie =
+        CONFIG.CY.armorTiers[armor.data.data.tier.value].damageReductionDie;
+      items.push(armor);
+    }
+    if (damageReductionDie) {
+      armorRoll = new Roll("@die", { die: damageReductionDie });
+      armorRoll.evaluate({ async: false });
+      addShowDicePromise(dicePromises, armorRoll);
+      damage = Math.max(damage - armorRoll.total, 0);
+    }
+    if (dicePromises) {
+      await Promise.all(dicePromises);
+    }
+    takeDamage = `${game.i18n.localize(
+      "CY.Take"
+    )} ${damage} ${game.i18n.localize("CY.Damage")}`;
+  }
+
+  const rollResult = {
+    actor: actor,
+    armorRoll,
+    damageRoll,
+    defendDR,
+    defendFormula: `1d20+${game.i18n.localize("CY.AgilityAbbrev")}`,
+    defendOutcome,
+    defendRoll,
+    items,
+    takeDamage,
+  };
+  await renderDefendRollCard(actor, rollResult);
+}
+
+/**
+ * Show attack rolls/result in a chat roll card.
+ */
+const renderDefendRollCard = async (actor, rollResult) => {
+  const html = await renderTemplate(DEFEND_ROLL_CARD_TEMPLATE, rollResult);
+  ChatMessage.create({
+    content: html,
+    sound: diceSound(),
+    speaker: ChatMessage.getSpeaker({ actor }),
+  });
+}
+

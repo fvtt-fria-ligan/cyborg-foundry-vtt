@@ -1,3 +1,13 @@
+import { rollDefend } from "./defend.js";
+
+/**
+ * Show a defend dialog for the given actor.
+ */
+ export const showDefendDialog = async (actor) => {
+  const attackDialog = new DefendDialog();
+  attackDialog.actor = actor;
+  attackDialog.render(true);
+}
 
 export class DefendDialog extends Application {
   /** @override */
@@ -102,7 +112,6 @@ export class DefendDialog extends Application {
 
     if (!baseDR || !modifiedDR || !incomingAttack) {
       // TODO: prevent dialog/form submission w/ required field(s)
-      console.log("******** boo");
       return;
     }
 
@@ -117,7 +126,8 @@ export class DefendDialog extends Application {
       CONFIG.CY.flags.INCOMING_ATTACK,
       incomingAttack
     );
-    this.actor.rollDefend(
+    rollDefend(
+      this.actor,
       modifiedDR,
       incomingAttack
     );
