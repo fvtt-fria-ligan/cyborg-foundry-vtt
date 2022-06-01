@@ -4,6 +4,8 @@ import { showDefendDialog } from "../combat/defend-dialog.js";
 import { showRestDialog } from "../combat/rest-dialog.js";
 import { rollBattered } from "../combat/battered.js";
 import { rollLevelUp } from "./levelup.js";
+import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
+import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
 
 
 const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
@@ -75,22 +77,22 @@ export class CYCharacterSheet extends CYActorSheet {
     const ability = event.currentTarget.dataset.ability;
     switch(ability) {
       case "agility":
-        await this.actor.testAgility();
+        await testAgility(this.actor);
         break;
       case "glitches":
-        await this.actor.showGlitchesHelp();
+        await showGlitchesHelp(this.actor);
         break;
       case "knowledge":
-        await this.actor.testKnowledge();
+        await testKnowledge(this.actor);
         break;
       case "presence":
-        await this.actor.testPresence();
+        await testPresence(this.actor);
         break;
       case "strength":
-        await this.actor.testStrength();
+        await testStrength(this.actor);
         break;
       case "toughness":
-        await this.actor.testToughness();
+        await testToughness(this.actor);
         break;
     }
   }
@@ -124,11 +126,11 @@ export class CYCharacterSheet extends CYActorSheet {
 
   async _useApp(event) {
     event.preventDefault();
-    this.actor.rollUseApp();
+    await rollUseApp(this.actor);
   }
 
   async _useNano(event) {
     event.preventDefault();
-    this.actor.rollUseNano();
+    await rollUseNano(this.actor);
   }
  }

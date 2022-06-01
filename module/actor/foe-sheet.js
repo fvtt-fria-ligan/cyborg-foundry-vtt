@@ -1,4 +1,5 @@
 import { CYActorSheet } from "./actor-sheet.js";
+import { rollMorale, rollReaction } from "./misc-rolls.js";
 
 export class CYFoeSheet extends CYActorSheet {
   /** @override */
@@ -33,11 +34,11 @@ export class CYFoeSheet extends CYActorSheet {
 
   async _onReactionClick(event) {
     event.preventDefault();
-    this.actor.rollReaction();
+    await rollReaction(this.actor);
   }
 
   async _onMoraleClick(event) {
     event.preventDefault();
-    this.actor.rollMorale();
+    await rollMorale(this.actor);
   }
  }
