@@ -103,7 +103,7 @@ export const rollAttack = async (actor, itemId, attackDR, targetArmor, autofire)
     targetArmorRoll,
   };
   await renderAttackRollCard(actor, rollResult);
-}
+};
 
 const missText = (isFumble) => {
   let missKey;
@@ -121,7 +121,7 @@ const missText = (isFumble) => {
     missKey = "CY.Miss";
   }
   return game.i18n.localize(missKey);
-}
+};
 
 /**
  * Show attack rolls/result in a chat roll card.
@@ -133,4 +133,4 @@ const renderAttackRollCard = async (actor, rollResult) => {
     sound: diceSound(),
     speaker: ChatMessage.getSpeaker({ actor }),
   });
-}
+};

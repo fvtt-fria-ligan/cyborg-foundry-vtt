@@ -65,6 +65,9 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".battered-button").on("click", this._battered.bind(this));
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
+    html.find(".use-app-button").on("click", this._useApp.bind(this));
+    html.find(".use-nano-button").on("click", this._useNano.bind(this));
+    console.log(html.find(".use-app-button"));
   }
 
   async _testAbility(event) {
@@ -117,5 +120,15 @@ export class CYCharacterSheet extends CYActorSheet {
   async _levelUp(event) {
     event.preventDefault();
     await rollLevelUp(this.actor);
+  }
+
+  async _useApp(event) {
+    event.preventDefault();
+    this.actor.rollUseApp();
+  }
+
+  async _useNano(event) {
+    event.preventDefault();
+    this.actor.rollUseNano();
   }
  }

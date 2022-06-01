@@ -1,3 +1,5 @@
+import { CY } from "../config.js";
+import { diceSound, showDice } from "../dice.js";
 import { pluralize } from "../utils.js";
 
 
@@ -8,8 +10,11 @@ export const rollRest = async (actor, restLength, starving) => {
     await rollHealHitPoints(actor, "d4");
   } else if (restLength === "long") {
     await rollHealHitPoints(actor, "d6");
+    if (actor.data.data.glitches.value === 0) {
+      await rollGlitches(actor);
+    }    
   }
-}
+};
 
 const rollStarvation = async (actor) => {
   const roll = new Roll("1d4");
@@ -22,7 +27,7 @@ const rollStarvation = async (actor) => {
 
   const newHP = actor.data.data.hitPoints.value - roll.total;
   await actor.update({ ["data.hitPoints.value"]: newHP });
-}
+};
 
 const rollHealHitPoints = async (actor, dieRoll) => {
   const roll = new Roll(dieRoll);
@@ -38,4 +43,17 @@ const rollHealHitPoints = async (actor, dieRoll) => {
     actor.data.data.hitPoints.value + roll.total
   );
   await actor.update({ ["data.hitPoints.value"]: newHP });
-}
+};
+
+const rollGlitches = async (actor) => {
+  const classItem = actor.items.filter((x) => x.type === CY.itemTypes.class).pop();
+  if (!classItem || !classItem.data.data.glitches) {
+    return;
+  }
+  const roll = new Roll(classItem.data.data.glitches);
+  await roll.toMessage({
+    flavor: game.i18n.localize("CY.Glitches"),
+    speaker: ChatMessage.getSpeaker({ actor }),
+  })
+  await actor.update({ ["data.glitches"]: { max: roll.total, value: roll.total } });
+};

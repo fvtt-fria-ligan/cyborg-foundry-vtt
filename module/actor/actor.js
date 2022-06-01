@@ -191,6 +191,7 @@ import { trackCarryingCapacity } from "../settings.js";
     const flavor = `${game.i18n.localize('CY.Test')} ${game.i18n.localize(abilityKey)} ${this.drModifiersToHtml(drModifiers)}`;
     await abilityRoll.toMessage({
       flavor,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
     });
   }
 
@@ -198,6 +199,7 @@ import { trackCarryingCapacity } from "../settings.js";
     await ChatMessage.create({
       content: game.i18n.localize("CY.GlitchesHelpHtml"),
       flavor: game.i18n.localize("CY.Glitches"),
+      speaker: ChatMessage.getSpeaker({ actor: this }),
     });    
   }
 
@@ -251,14 +253,17 @@ import { trackCarryingCapacity } from "../settings.js";
     });
   }  
 
-  async levelUp() {
-  }
-
   async rollUseApp() {
-
+    const value = this.data.data.abilities.knowledge;
+    const formula = this.d20Formula(value);
+    const roll = new Roll(formula);
+    await roll.toMessage();
   }
 
   async rollUseNano() {
-
+    const value = this.data.data.abilities.presence;
+    const formula = this.d20Formula(value);
+    const roll = new Roll(formula);
+    await roll.toMessage();
   }
  }

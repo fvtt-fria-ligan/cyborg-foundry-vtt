@@ -1,4 +1,7 @@
 <div class="tab nano-tab" data-group="primary" data-tab="nano">
+  <div class="button-row">
+    <button type="button" class="sheet-button use-nano-button">{{ localize 'CY.UseNano' }}</button>
+  </div>  
   <div class="nano-powers item-list">
     {{#each data.data.nanoPowers as |item id|}}
       <div class="item item-row nano-power-row" data-item-id="{{item._id}}">

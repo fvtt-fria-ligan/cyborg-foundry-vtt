@@ -1,4 +1,7 @@
 <div class="tab apps-tab" data-group="primary" data-tab="apps">
+  <div class="button-row">
+    <button type="button" class="sheet-button use-app-button">{{ localize 'CY.UseApp' }}</button>
+  </div>  
   <div class="apps">
     {{#each data.data.apps as |item id|}}
       <div class="item item-row app-row" data-item-id="{{item._id}}">

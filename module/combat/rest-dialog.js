@@ -4,7 +4,7 @@ export const showRestDialog = async (actor) => {
   const restDialog = new RestDialog();
   restDialog.actor = actor;
   restDialog.render(true);
-}
+};
 
 export class RestDialog extends Application {
   /** @override */

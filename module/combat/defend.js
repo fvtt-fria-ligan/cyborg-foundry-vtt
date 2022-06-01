@@ -85,7 +85,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     takeDamage,
   };
   await renderDefendRollCard(actor, rollResult);
-}
+};
 
 /**
  * Show attack rolls/result in a chat roll card.
@@ -97,5 +97,5 @@ const renderDefendRollCard = async (actor, rollResult) => {
     sound: diceSound(),
     speaker: ChatMessage.getSpeaker({ actor }),
   });
-}
+};
 
