@@ -1,0 +1,17 @@
+<form class="roll-card">
+  <div class="card-title">{{localize 'CY.Battered'}}</div>
+  <div class="test-roll">
+    <div class="roll-title">
+      <span>{{batteredRoll.formula}}</span>
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal batteredRoll}}</span>
+    </div>
+    <div class="outcome-text">
+      {{#each outcomeLines}}
+      <span class="take-damage">{{this}}</span>
+      <br />
+      {{/each}}
+    </div>
+  </div>
+</form>

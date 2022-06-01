@@ -1,0 +1,26 @@
+.rest-dialog {
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    margin: 0 0 10px 0;
+
+    input {
+      &[type="checkbox"],
+      &[type="radio"] {
+        float: left;
+      }
+
+      &[type="checkbox"] {
+        height: 14px;
+        width: 14px;
+      }
+    }
+
+    label div {
+      display: block;
+      margin-left: 30px;
+    }
+  }  
+}

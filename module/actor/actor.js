@@ -9,7 +9,8 @@ const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";
 const DEFEND_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/defend-roll-card.html";
-
+const BATTERED_ROLL_CARD_TEMPLATE =
+  "systems/cy_borg/templates/chat/battered-roll-card.html";
 
 /**
  * @extends {Actor}
@@ -81,6 +82,11 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     return this._first(CY.itemTypes.armor);
   }
 
+  cybertechCount() {
+    return this.data.items
+    .reduce((count, item) => count + (item.data.data.cybertech ? 1 : 0), 0);
+  }
+  
   async testAgility() {
     const drModifiers = [];
     const armor = this.equippedArmor();
@@ -467,7 +473,8 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     }
     const reactionText = `${this.name} ${game.i18n.localize(key)}.`;   
     await reactionRoll.toMessage({
-      flavor: reactionText
+      flavor: reactionText,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
     });
   }
 
@@ -491,7 +498,8 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     }
     const moraleText = `${this.name} ${game.i18n.localize(key)}.`;   
     await moraleRoll.toMessage({
-      flavor: moraleText
+      flavor: moraleText,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
     });
   }
 
@@ -516,11 +524,18 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     return game.i18n.localize(key);
   }
 
+  pluralize(key1, key2, num) {
+    return game.i18n.localize(num == 1 ? key1 : key2);
+  }
+
   async rollHealHitPoints(dieRoll) {
     const roll = new Roll(dieRoll);
     roll.evaluate({async: false});
     const flavor = `${game.i18n.localize("CY.Rest")}: ${game.i18n.localize("CY.Heal")} ${roll.total} ${this.hitPointPlurality(roll.total)}`;
-    await roll.toMessage({flavor});
+    await roll.toMessage({
+      flavor,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+    });
 
     const newHP = Math.min(
       this.data.data.hitPoints.max,
@@ -533,14 +548,138 @@ const DEFEND_ROLL_CARD_TEMPLATE =
     const roll = new Roll("1d4");
     roll.evaluate({async: false});
     const flavor = `${game.i18n.localize("CY.Starving")}: ${game.i18n.localize("CY.Lose")} ${roll.total} ${this.hitPointPlurality(roll.total)}`;
-    await roll.toMessage({flavor});
+    await roll.toMessage({
+      flavor,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+    });
 
     const newHP = this.data.data.hitPoints.value - roll.total;
     await this.update({ ["data.hitPoints.value"]: newHP });
   }
   
   async rollBattered() {
+    const batteredRoll = new Roll("1d8").evaluate({ async: false });
+    await showDice(batteredRoll);
 
+    let outcomeLines = [];
+    let additionalRolls = [];
+    if (batteredRoll.total <= 2) {
+      // unconscious
+      const roundsRoll = new Roll("1d4").evaluate({ async: false });
+      const roundsWord = this.pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
+      const hpRoll = new Roll("1d4").evaluate({ async: false });
+      outcomeLines = [
+        game.i18n.format("CY.BatteredUnconscious", {
+          rounds: roundsRoll.total,
+          roundsWord,
+          hp: hpRoll.total,
+        }),
+      ];
+      additionalRolls = [roundsRoll, hpRoll];
+    } else if (batteredRoll.total <= 4) {
+      // maybe cy-rage
+      const rageDR = 10 + this.cybertechCount();
+      const presenceRoll = new Roll(`1d20+${this.data.data.abilities.presence.value}`).evaluate({ async: false });
+      if (presenceRoll.total >= rageDR) {
+        // passed presence test, so just unconscious
+        const roundsRoll = new Roll("1d4").evaluate({ async: false });
+        const roundsWord = this.pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
+        const hpRoll = new Roll("1d4").evaluate({ async: false });
+        outcomeLines = [
+          game.i18n.format("CY.BatteredUnconscious", {
+            rounds: roundsRoll.total,
+            roundsWord,
+            hp: hpRoll.total,
+          }),
+        ];
+        additionalRolls = [presenceRoll, roundsRoll, hpRoll];  
+      } else {
+        // cy-rage, woooo
+        const hpRoll = new Roll("1d8").evaluate({ async: false });
+        outcomeLines = [
+          game.i18n.format("CY.BatteredCyRage", {
+            hp: hpRoll.total,
+          }),
+        ];
+        additionalRolls = [presenceRoll, hpRoll];  
+      }
+    } else if (batteredRoll.total <= 6) {
+      // critical injury
+      const bodyPart = this.randomBodyPart();
+      const roundsRoll = new Roll("1d4").evaluate({ async: false });
+      const roundsWord = this.pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
+      const hpRoll = new Roll("1d4").evaluate({ async: false });
+      outcomeLines = [
+        game.i18n.format("CY.BatteredCriticalInjury", {
+          bodyPart,
+          hp: hpRoll.total,
+          rounds: roundsRoll.total,
+          roundsWord,
+        }),
+      ];
+      additionalRolls = [roundsRoll, hpRoll];
+    } else if (batteredRoll.total == 7) {
+      // hemmorrhage
+      const hoursRoll = new Roll("1d2").evaluate({ async: false });
+      const hoursWord = this.pluralize("CY.Hour", "CY.Hours", hoursRoll.total);
+      const drModifier = game.i18n.localize(hoursRoll.total == 1 ? "CY.BatteredHemorrhageOneHour" : "CY.BatteredHemorrhageTwoHours");
+      outcomeLines = [
+        game.i18n.format("CY.BatteredHemorrhage", {
+          hours: hoursRoll.total,
+          hoursWord,
+          drModifier,
+        }),
+      ];
+      additionalRolls = [hoursRoll];
+    } else {
+      // death
+      outcomeLines = [game.i18n.localize("CY.BatteredDead")];
+    }
+
+    const data = {
+      additionalRolls,
+      batteredRoll,
+      outcomeLines,
+    };
+    const html = await renderTemplate(BATTERED_ROLL_CARD_TEMPLATE, data);
+    ChatMessage.create({
+      content: html,
+      sound: diceSound(),
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+    });
+  }
+
+  randomBodyPart() {
+    // TODO: localize
+    const bodyParts = [
+      {name: "forehead"},
+      {name: "eye", sided: true},
+      {name: "ear", sided: true},
+      {name: "jaw"},
+      {name: "throat"},
+      {name: "shoulder", sided: true},
+      {name: "upper arm", sided: true},
+      {name: "elbow", sided: true},
+      {name: "lower arm", sided: true},
+      {name: "hand", sided: true},
+      {name: "chest"},
+      {name: "spine"},
+      {name: "abdomen"},
+      {name: "hip", sided: true},
+      {name: "groin"},
+      {name: "thigh", sided: true},
+      {name: "knee", sided: true},
+      {name: "shin", sided: true},
+      {name: "foot", sided: true},
+      {name: "finger/toe"}
+    ];
+    const bodyPart = bodyParts[Math.floor(Math.random() * bodyParts.length)];
+    if (bodyPart.sided) {
+      const side = Math.random() < .5 ? "left" : "right";
+      return `${side} ${bodyPart.name}`
+    } else {
+      return bodyPart.name;
+    }
   }
 
   async rollUseApp() {

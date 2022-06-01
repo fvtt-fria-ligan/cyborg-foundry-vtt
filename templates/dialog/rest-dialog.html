@@ -1,0 +1,37 @@
+<form id="rest-form" class="dialog rest-dialog">
+  <div class="section">
+    <div class="subtitle">{{localize 'CY.RestLength'}}</div>
+    <div>
+      <ul>
+        <li>
+          <label
+            ><input name="rest-length" type="radio" value="short" checked />
+            <div>{{localize 'CY.RestShort'}} - {{localize 'CY.RestShortHelp'}}</div></label>
+        </li>
+        <li>
+          <label
+            ><input name="rest-length" type="radio" value="long" />
+            <div>{{localize 'CY.RestLong'}} - {{localize 'CY.RestLongHelp'}}</div></label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="subtitle">{{localize 'CY.Starving'}}</div>
+    <div>
+      <ul>
+        <li>
+          <label
+            ><input name="starving" type="checkbox" />
+            <div>{{localize 'CY.StarvingHelp'}}</div></label
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="button-row">
+    <button type="submit" class="dialog-button rest-button" name="rest" value="1">
+      {{localize 'CY.Rest'}}
+    </button>
+  </div>
+</form>

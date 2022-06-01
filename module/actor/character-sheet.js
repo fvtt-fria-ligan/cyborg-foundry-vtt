@@ -57,6 +57,8 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".weapon-icon").on("click", this._attack.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
     html.find(".rest-button").on("click", this._rest.bind(this));
+    html.find(".battered-button").on("click", this._battered.bind(this));
+    html.find(".level-up-button").on("click", this._levelUp.bind(this));
   }
 
   async _testAbility(event) {
@@ -99,5 +101,15 @@ export class CYCharacterSheet extends CYActorSheet {
   async _rest(event) {
     event.preventDefault();
     await this.actor.showRestDialog();
+  }
+
+  async _battered(event) {
+    event.preventDefault();
+    await this.actor.rollBattered();
+  }
+
+  async _levelUp(event) {
+    event.preventDefault();
+    await this.actor.levelUp();
   }
  }
