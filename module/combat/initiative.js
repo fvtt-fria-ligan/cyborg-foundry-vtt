@@ -1,9 +1,9 @@
-import { diceSound, showDice } from "./dice.js";
+import { diceSound, showDice } from "../dice.js";
 
 const INDIVIDUAL_INITIATIVE_ROLL_CARD_TEMPLATE =
-  "systems/morkborg/templates/chat/individual-initiative-roll-card.html";
+  "systems/cy_borg/templates/chat/individual-initiative-roll-card.html";
 const PARTY_INITIATIVE_ROLL_CARD_TEMPLATE =
-  "systems/morkborg/templates/chat/party-initiative-roll-card.html";
+  "systems/cy_borg/templates/chat/party-initiative-roll-card.html";
 
 export const rollPartyInitiative = async () => {
   const initiativeRoll = new Roll("d6", {});
@@ -12,9 +12,9 @@ export const rollPartyInitiative = async () => {
 
   let outcomeText = "";
   if (initiativeRoll.total <= 3) {
-    outcomeText = game.i18n.localize("MB.InitiativeEnemiesBegin");
+    outcomeText = game.i18n.localize("MB.InitiativeEnemiesActFirst");
   } else {
-    outcomeText = game.i18n.localize("MB.InitiativePlayerCharactersBegin");
+    outcomeText = game.i18n.localize("MB.InitiativePCsActFirst");
   }
 
   const rollResult = {

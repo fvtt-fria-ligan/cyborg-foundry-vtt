@@ -63,3 +63,6 @@ CY.flags = {
   INCOMING_ATTACK: "incomingAttack",
   TARGET_ARMOR: "targetArmor",
 };
+
+CY.appBacklashesPack = "cy_borg-core.random-tables";
+CY.appBacklashesTable = "App Backlashes";

@@ -1,0 +1,31 @@
+<form class="roll-card use-app-roll-card">
+  <div class="card-title">{{localize 'CY.UseNano'}}</div>
+  <div class="useApp-roll">
+    <div class="roll-title">
+      <span
+        >{{useFormula}} {{localize 'CY.Vs'}}
+        {{localize 'CY.DR'}} {{useDR}}</span
+      >
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal useRoll}}</span>
+    </div>
+  </div>
+  <div class="outcome-text">
+    <span class="attack-outcome">{{useOutcome}}</span>
+  </div>
+  {{#if damageRoll}}
+  <div class="damage-roll">
+    <div class="roll-title">
+      <span>{{localize 'CY.Damage'}}: {{damageRoll.formula}}</span>
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal damageRoll}}</span>
+    </div>
+  </div>
+  {{/if}} {{#if takeDamage}}
+  <div class="outcome-text">
+    <span class="take-damage">{{takeDamage}}</span>
+  </div>
+  {{/if}}  
+</form>

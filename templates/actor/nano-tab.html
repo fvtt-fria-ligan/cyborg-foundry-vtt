@@ -1,6 +1,11 @@
 <div class="tab nano-tab" data-group="primary" data-tab="nano">
-  <div class="button-row">
-    <button type="button" class="sheet-button use-nano-button">{{ localize 'CY.UseNano' }}</button>
+  <div class="widget field-row">
+    <div class="field-label">
+    {{ localize 'CY.NanoFumbleOn'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="data.nanoFumbleOn" value="{{data.data.nanoFumbleOn}}"/>
+    </div>
   </div>  
   <div class="nano-powers item-list">
     {{#each data.data.nanoPowers as |item id|}}
@@ -12,6 +17,9 @@
           <div class="field-row">        
           {{item.name}}
           </div>
+          <div class="field-row">
+            <button type="button" class="sheet-button use-nano-button">{{localize 'CY.UseNano'}}</button>
+          </div>          
           <div class="field-row">
             <div class="item-controls">
               <a class="item-control item-edit"><i class="fas fa-edit"></i></a>

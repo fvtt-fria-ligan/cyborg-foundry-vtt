@@ -1,12 +1,12 @@
 import { CYActorSheet } from "./actor-sheet.js";
 import { showAttackDialog } from "../combat/attack-dialog.js";
 import { showDefendDialog } from "../combat/defend-dialog.js";
+import { rollPartyInitiative } from "../combat/initiative.js";
 import { showRestDialog } from "../combat/rest-dialog.js";
 import { rollBattered } from "../combat/battered.js";
 import { rollLevelUp } from "./levelup.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
 import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
-
 
 const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
 
@@ -62,14 +62,14 @@ export class CYCharacterSheet extends CYActorSheet {
     html
       .find(".ability-link")
       .on("click", this._testAbility.bind(this));
-    html.find(".weapon-icon").on("click", this._attack.bind(this));
-    html.find(".defend-button").on("click", this._defend.bind(this));
     html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".battered-button").on("click", this._battered.bind(this));
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
+    html.find(".initiative-button").on("click", this._initiative.bind(this));
+    html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".weapon-icon").on("click", this._attack.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
-    console.log(html.find(".use-app-button"));
   }
 
   async _testAbility(event) {
@@ -126,11 +126,20 @@ export class CYCharacterSheet extends CYActorSheet {
 
   async _useApp(event) {
     event.preventDefault();
-    await rollUseApp(this.actor);
+    const item = $(event.currentTarget).parents(".item");
+    const itemId = item.data("itemId");
+    await rollUseApp(this.actor, itemId);
   }
 
   async _useNano(event) {
     event.preventDefault();
-    await rollUseNano(this.actor);
+    const item = $(event.currentTarget).parents(".item");
+    const itemId = item.data("itemId");
+    await rollUseNano(this.actor, itemId);
+  }
+
+  async _initiative(event) {
+    event.preventDefault();
+    await rollPartyInitiative();
   }
  }

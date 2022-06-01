@@ -1,6 +1,11 @@
 <div class="tab apps-tab" data-group="primary" data-tab="apps">
-  <div class="button-row">
-    <button type="button" class="sheet-button use-app-button">{{ localize 'CY.UseApp' }}</button>
+  <div class="widget field-row">
+    <div class="field-label">
+    {{ localize 'CY.AppFumbleOn'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="data.appFumbleOn" value="{{data.data.appFumbleOn}}"/>
+    </div>
   </div>  
   <div class="apps">
     {{#each data.data.apps as |item id|}}
@@ -11,6 +16,9 @@
         <div class="fields">
           <div class="field-row">        
             {{item.name}}
+          </div>
+          <div class="field-row">
+            <button type="button" class="sheet-button use-app-button">{{localize 'CY.UseApp'}}</button>
           </div>
           <div class="field-row">
             <div class="item-controls">

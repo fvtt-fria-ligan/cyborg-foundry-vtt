@@ -1,3 +1,6 @@
+import { d20Formula } from "../utils.js";
+
+
 export const testAgility = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
@@ -91,16 +94,6 @@ export const testToughness = async (actor) => {
     "CY.Knowledge",
     drModifiers
   );
-};
-
-export const d20Formula = (modifier) => {
-  if (modifier < 0) {
-    return `d20-${-modifier}`;
-  } else if (modifier > 0) {
-    return `d20+${modifier}`;
-  } else {
-    return "d20";
-  }
 };
 
 const drModifiersToHtml = (drModifiers) => {

@@ -1,5 +1,4 @@
 import { CY } from "../config.js";
-import { diceSound, showDice } from "../dice.js";
 import { pluralize } from "../utils.js";
 
 
@@ -12,7 +11,8 @@ export const rollRest = async (actor, restLength, starving) => {
     await rollHealHitPoints(actor, "d6");
     if (actor.data.data.glitches.value === 0) {
       await rollGlitches(actor);
-    }    
+    }
+    await resetFumbles(actor);    
   }
 };
 
@@ -56,4 +56,11 @@ const rollGlitches = async (actor) => {
     speaker: ChatMessage.getSpeaker({ actor }),
   })
   await actor.update({ ["data.glitches"]: { max: roll.total, value: roll.total } });
+};
+
+const resetFumbles = async (actor) => {
+  await actor.update({ 
+    ["data.appFumbleOn"]: 1,
+    ["data.nanoFumbleOn"]: 1,
+  });
 };
