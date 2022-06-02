@@ -4,14 +4,29 @@
     .sheet-header {
       height: 443px;
       .left-col {
-        .class {
+        .name {
+          flex: 0 0 52px;
+          input[type="text"] {
+            font-size: 18px;
+            height: 46px;
+          }
+        }
+        .class-row {
+          align-items: center;
+          display: flex;
           flex: 0 0 $field-height;
-          font-family: $name-font;
           margin-bottom: $widget-margin;
-          text-align: center;
-          span.class-name {
-            line-height: $field-height;
-            text-transform: uppercase;
+          .class-name {
+            flex: 1;
+            // font-family: $sheet-font;
+            margin-left: 5px;
+            text-align: center;
+            // text-transform: uppercase;
+          }
+          .item-controls {
+            display: flex;
+            justify-content: space-around;
+            flex: 0 0 40px;
           }
         }
       }

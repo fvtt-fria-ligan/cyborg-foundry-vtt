@@ -212,15 +212,28 @@
 .cy.sheet.actor.character section.window-content .sheet-header {
   height: 443px;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .left-col .class {
+.cy.sheet.actor.character section.window-content .sheet-header .left-col .name {
+  flex: 0 0 52px;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .left-col .name input[type=text] {
+  font-size: 18px;
+  height: 46px;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row {
+  align-items: center;
+  display: flex;
   flex: 0 0 38px;
-  font-family: "UAV OSD Sans Mono";
   margin-bottom: 5px;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row .class-name {
+  flex: 1;
+  margin-left: 5px;
   text-align: center;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .left-col .class span.class-name {
-  line-height: 38px;
-  text-transform: uppercase;
+.cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row .item-controls {
+  display: flex;
+  justify-content: space-around;
+  flex: 0 0 40px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row {
   display: flex;

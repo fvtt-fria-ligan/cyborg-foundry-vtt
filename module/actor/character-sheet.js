@@ -47,6 +47,9 @@ export class CYCharacterSheet extends CYActorSheet {
     superData.data.data.feats = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.feat)
       .sort(byName);
+    superData.data.data.infestations = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.infestation)
+      .sort(byName);
     superData.data.data.nanoPowers = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
       .sort(byName);

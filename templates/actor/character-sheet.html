@@ -7,8 +7,12 @@
       <div class="widget name">
         <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
       </div>
-      <div class="widget class">
-        <span class="class-name">{{data.data.class.name}}</span>
+      <div class="widget class-row item" data-item-id="{{data.data.class._id}}">
+        <div class="class-name">{{data.data.class.name}}</div>
+        <div class="item-controls">
+          <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+          <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+        </div>
       </div>
       <div class="button-row">
         <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
@@ -28,7 +32,7 @@
         <div class="hit-points-lr">
           <input class="hit-points-max" type="number" name="data.hitPoints.max" value="{{data.data.hitPoints.max}}" />            
         </div>
-      </div>        
+      </div>
       <div class="widget ability-row">
         <div class="ability-icon">
           <a class="ability-link" data-ability="strength" title="{{ localize 'CY.Strength' }}">
