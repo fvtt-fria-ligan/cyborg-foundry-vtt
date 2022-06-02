@@ -71,7 +71,7 @@ const rollScvmForClass = async (clazz) => {
   const glitchesRoll = new Roll(clazz.data.data.glitches).evaluate({
     async: false,
   });
-  const hpRoll = new Roll(clazz.data.data.hHitPoints).evaluate({
+  const hpRoll = new Roll(clazz.data.data.hitPoints).evaluate({
     async: false,
   });
 
@@ -129,30 +129,12 @@ const rollScvmForClass = async (clazz) => {
   const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
   const ccContent = await ccPack.getDocuments();
 
-  // 3 starting equipment tables
-  if (CY.scvmFactory.startingEquipmentTable1) {
-    const equipTable1 = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingEquipmentTable1
-    );
-    const eqDraw1 = await equipTable1.draw({ displayChat: false });
-    const eq1 = await docsFromResults(eqDraw1.results);
-    allDocs.push(...eq1);
-  }
-  if (CY.scvmFactory.startingEquipmentTable1) {
-    const equipTable2 = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingEquipmentTable2
-    );
-    const eqDraw2 = await equipTable2.draw({ displayChat: false });
-    const eq2 = await docsFromResults(eqDraw2.results);
-    allDocs.push(...eq2);
-  }
-  if (CY.scvmFactory.startingEquipmentTable1) {
-    const equipTable3 = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingEquipmentTable3
-    );
-    const eqDraw3 = await equipTable3.draw({ displayChat: false });
-    const eq3 = await docsFromResults(eqDraw3.results);
-    allDocs.push(...eq3);
+  // starting equipment tables
+  for (const tableName of CY.scvmFactory.startingEquipmentTables) {
+    const table = ccContent.find((i) => i.name === tableName);
+    const draw = await table.draw({ displayChat: false });
+    const items = await docsFromResults(draw.results);
+    allDocs.push(...items);
   }
 
   // starting weapon

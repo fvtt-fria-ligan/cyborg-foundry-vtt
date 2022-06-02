@@ -69,19 +69,22 @@ CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
-  foodAndWaterPack: "morkborg.equipment-misc",
-  foodItemName: "Dried food",
-  waterItemName: "Waterskin",
-
-  characterCreationPack: "morkborg.character-creation",
-  startingEquipmentTable1: "Starting Equipment (1)",
-  startingEquipmentTable2: "Starting Equipment (2)",
-  startingEquipmentTable3: "Starting Equipment (3)",
-  startingWeaponTable: "Starting Weapon",
+  startingItemsPack: "cy_borg-core.equipment",
+  startingItems: [
+    "Cheap clothes",
+    "Retinal Com Device",
+  ],
+  characterCreationPack: "cy_borg-core.random-tables",
+  startingEquipmentTables: [
+    "Cash & Gear 1",
+    "Cash & Gear 2",
+    "Cash & Gear 3",
+  ],
+  startingWeaponTable: "Weapons",
   weaponDieIfRolledScroll: "1d6",
-  startingArmorTable: "Starting Armor",
-  armorDieIfRolledScroll: "1d2",
-  terribleTraitsTable: "Terribler Traits",
-  brokenBodiesTable: "Brokener Bodies",
-  badHabitsTable: "Badder Habits",
+  startingArmorTable: "Armor",
+  armorDieIfRolledScroll: "1d3",
+  descriptionTables: [
+
+  ],
 };
