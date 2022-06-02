@@ -5,6 +5,7 @@ import { CYFoeSheet } from "./actor/foe-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
 import { registerSystemSettings } from "./settings.js";
+import { MakePunkDialog } from "./generator/make-punk-dialog.js";
 
 Hooks.once("init", async function () {
   consoleBanner();
@@ -14,6 +15,7 @@ Hooks.once("init", async function () {
   registerSheets();
   registerHandlebarsHelpers();
   await registerHandlebarsPartials();
+  modifyFoundryUI();
 });
 
 const consoleBanner = () => {
@@ -84,4 +86,32 @@ const registerHandlebarsHelpers = () => {
       return result;
     }
   });  
+}
+
+
+const modifyFoundryUI = () => {
+  Hooks.on("renderActorDirectory", (app, html) => {
+    if (game.user.can("ACTOR_CREATE")) {
+      // only show the Create Punk button to users who can create actors
+      const section = document.createElement("header");
+      section.classList.add("make-punk");
+      section.classList.add("directory-header");
+      // Add menu before directory header
+      const dirHeader = html[0].querySelector(".directory-header");
+      dirHeader.parentNode.insertBefore(section, dirHeader);
+      section.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class="header-actions action-buttons flexrow">
+          <button type="button" class="make-punk-button"><i class="fas fa-skull"></i> ${game.i18n.localize('CY.MakeAPunk')}</button>
+        </div>
+        `
+      );
+      section
+        .querySelector(".make-punk-button")
+        .addEventListener("click", () => {
+          new MakePunkDialog().render(true);
+        });
+    }
+  });
 }
