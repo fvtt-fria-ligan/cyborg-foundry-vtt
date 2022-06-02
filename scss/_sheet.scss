@@ -101,6 +101,41 @@
         height: 100%;
       }
 
+      .field-row {
+        display: flex;
+        flex: 0 0 $field-height;
+        margin-bottom: $widget-margin;
+        .field-label {
+          align-items: center;
+          background-color: $cream;
+          color: $near-black;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          font-family: $label-font;
+          justify-content: center;
+          text-align: center;
+          text-transform: uppercase;
+        }
+        .field-value {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          justify-content: center;
+          input {
+            width: 100%;
+          }
+        }
+        button {
+          color: $cream;
+        }
+        textarea {
+          font-family: $textarea-font;
+          line-height: $textarea-line-height;
+        }
+      }
+      
       .description-tab {
         .description-wrapper {
           background-color: $cream;
@@ -111,41 +146,9 @@
           width: 100%;
         }
       }
+
       .data-tab {
-        .field-row {
-          display: flex;
-          flex: 0 0 $field-height;
-          margin-bottom: $widget-margin;
-          .field-label {
-            align-items: center;
-            background-color: $cream;
-            color: $near-black;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            font-family: $label-font;
-            justify-content: center;
-            text-align: center;
-            text-transform: uppercase;
-          }
-          .field-value {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: center;
-            input {
-              width: 100%;
-            }
-          }
-          button {
-            color: $cream;
-          }
-          textarea {
-            font-family: $textarea-font;
-            line-height: $textarea-line-height;
-          }
-        }
+
       }  
     }  
   }

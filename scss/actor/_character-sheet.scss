@@ -63,11 +63,11 @@
             width: 100px;
           }  
         }
-        .fields {
+        .item-fields {
           display: flex;
           flex: 1;
           flex-direction: column;
-          .field-row {
+          .item-field-row {
             line-height: $textarea-line-height;
             margin: 2px;
           }  

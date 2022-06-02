@@ -26,18 +26,6 @@
             height: $field-height;
           }
         } 
-        .field-row {
-          display: flex;
-          flex: 0 0 $field-height;
-          width: 100%;
-          .field {
-            height: $field-height;
-            flex: 1;
-          }
-          .foo-field {
-            margin-right: $widget-margin;
-          }
-        }
       }
       .right-col {
         display: flex;

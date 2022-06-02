@@ -112,20 +112,12 @@
 .cy.sheet section.window-content .sheet-body .tab {
   height: 100%;
 }
-.cy.sheet section.window-content .sheet-body .description-tab .description-wrapper {
-  background-color: #F6EDDB;
-  color: #1C1E23;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
-.cy.sheet section.window-content .sheet-body .data-tab .field-row {
+.cy.sheet section.window-content .sheet-body .field-row {
   display: flex;
   flex: 0 0 38px;
   margin-bottom: 5px;
 }
-.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-label {
+.cy.sheet section.window-content .sheet-body .field-row .field-label {
   align-items: center;
   background-color: #F6EDDB;
   color: #1C1E23;
@@ -137,24 +129,31 @@
   text-align: center;
   text-transform: uppercase;
 }
-.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-value {
+.cy.sheet section.window-content .sheet-body .field-row .field-value {
   align-items: center;
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
 }
-.cy.sheet section.window-content .sheet-body .data-tab .field-row .field-value input {
+.cy.sheet section.window-content .sheet-body .field-row .field-value input {
   width: 100%;
 }
-.cy.sheet section.window-content .sheet-body .data-tab .field-row button {
+.cy.sheet section.window-content .sheet-body .field-row button {
   color: #F6EDDB;
 }
-.cy.sheet section.window-content .sheet-body .data-tab .field-row textarea {
+.cy.sheet section.window-content .sheet-body .field-row textarea {
   font-family: "QuanPixel 8px";
   line-height: 20px;
 }
-
+.cy.sheet section.window-content .sheet-body .description-tab .description-wrapper {
+  background-color: #F6EDDB;
+  color: #1C1E23;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
 .cy.sheet.actor section.window-content .sheet-header {
   display: flex;
   height: 443px;
@@ -181,18 +180,6 @@
 .cy.sheet.actor section.window-content .sheet-header .left-col .name input[type=text] {
   font-family: "UAV OSD Sans Mono";
   height: 38px;
-}
-.cy.sheet.actor section.window-content .sheet-header .left-col .field-row {
-  display: flex;
-  flex: 0 0 38px;
-  width: 100%;
-}
-.cy.sheet.actor section.window-content .sheet-header .left-col .field-row .field {
-  height: 38px;
-  flex: 1;
-}
-.cy.sheet.actor section.window-content .sheet-header .left-col .field-row .foo-field {
-  margin-right: 5px;
 }
 .cy.sheet.actor section.window-content .sheet-header .right-col {
   display: flex;
@@ -279,12 +266,12 @@
   height: 100px;
   width: 100px;
 }
-.cy.sheet.actor.character section.window-content .sheet-body .item-row .fields {
+.cy.sheet.actor.character section.window-content .sheet-body .item-row .item-fields {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
-.cy.sheet.actor.character section.window-content .sheet-body .item-row .fields .field-row {
+.cy.sheet.actor.character section.window-content .sheet-body .item-row .item-fields .item-field-row {
   line-height: 20px;
   margin: 2px;
 }
