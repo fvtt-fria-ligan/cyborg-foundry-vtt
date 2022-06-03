@@ -88,7 +88,7 @@
     },
     "class": {
       "agility": "3d6",
-      "armorTable": "1d6",
+      "armorTable": "1d3",
       "credits": "2d6*10",
       "debt": "3d6*1000",
       "description": "",

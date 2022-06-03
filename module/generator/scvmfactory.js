@@ -132,9 +132,13 @@ const rollScvmForClass = async (clazz) => {
   // starting equipment tables
   for (const tableName of CY.scvmFactory.startingEquipmentTables) {
     const table = ccContent.find((i) => i.name === tableName);
-    const draw = await table.draw({ displayChat: false });
-    const items = await docsFromResults(draw.results);
-    allDocs.push(...items);
+    if (table) {
+      const draw = await table.draw({ displayChat: false });
+      const items = await docsFromResults(draw.results);
+      allDocs.push(...items);  
+    } else {
+      console.error(`Could not find table ${tableName}`);
+    }
   }
 
   // starting weapon
@@ -167,9 +171,9 @@ const rollScvmForClass = async (clazz) => {
   }
 
   // class-specific starting items
-  if (clazz.data.data.startingItems) {
+  if (clazz.data.data.items) {
     const startingItems = [];
-    const lines = clazz.data.data.startingItems.split("\n");
+    const lines = clazz.data.data.items.split("\n");
     for (const line of lines) {
       const [packName, itemName] = line.split(",");
       const pack = game.packs.get(packName);
@@ -190,6 +194,17 @@ const rollScvmForClass = async (clazz) => {
   descriptionLines.push("<p>&nbsp;</p>");
 
   let descriptionLine = "";
+  for (const dt of CY.scvmFactory.descriptionTables) {
+    const table = ccContent.find((i) => i.name === dt.tableName);
+    if (table) {
+      const draw = await table.draw({ displayChat: false });
+      const text = draw.results[0].data.text;
+      descriptionLine += game.i18n.format(dt.formatKey, {text}) + " ";  
+    } else {
+      console.error(`Could not find table ${dt.tableName}`);
+    }
+  }
+
   // TODO
   /*
   if (CY.scvmFactory.terribleTraitsTable) {
@@ -228,8 +243,8 @@ const rollScvmForClass = async (clazz) => {
 
   // class-specific starting rolls
   const startingRollItems = [];
-  if (clazz.data.data.startingRolls) {
-    const lines = clazz.data.data.startingRolls.split("\n");
+  if (clazz.data.data.rolls) {
+    const lines = clazz.data.data.rolls.split("\n");
     for (const line of lines) {
       const [packName, tableName, rolls] = line.split(",");
       // assume 1 roll unless otherwise specified in the csv
@@ -270,13 +285,12 @@ const rollScvmForClass = async (clazz) => {
 
   // add items as owned items
   const items = allDocs.filter((e) => e instanceof CYItem);
-  // for other non-item documents, just add some description text (ITEMTYPE: Item Name)
+  // for other non-item documents, just add some description text (Some text: Item Name)
   const nonItems = allDocs.filter((e) => !(e instanceof CYItem));
   for (const nonItem of nonItems) {
     if (nonItem && nonItem.data && nonItem.data.type) {
-      const upperType = nonItem.data.type.toUpperCase();
       descriptionLines.push(
-        `<p>&nbsp;</p><p>${upperType}: ${nonItem.data.name}</p>`
+        `<p>&nbsp;</p><p>${game.i18n.localize('CY.YouStartWith')}}: ${nonItem.data.name}</p>`
       );
     } else {
       console.log(`Skipping non-item ${nonItem}`);
@@ -381,31 +395,7 @@ const docsFromResults = async (results) => {
 
 const entityFromResult = async (result) => {
   // draw result type: text (0), entity (1), or compendium (2)
-  // TODO: figure out how we want to handle an entity result
-
-  // TODO: handle scroll lookup / rolls
-  // TODO: can we make a recursive random scroll thingy
-
-  if (result.data.type === 0) {
-    // hack for not having recursive roll tables set up
-    // TODO: set up recursive roll tables :P
-    // TODO
-    if (result.data.text === "Roll on Random Unclean Scrolls") {
-      const collection = game.packs.get("morkborg.random-scrolls");
-      const content = await collection.getDocuments();
-      const table = content.find((i) => i.name === "Unclean Scrolls");
-      const draw = await table.draw({ displayChat: false });
-      const items = await docsFromResults(draw.results);
-      return items[0];
-    } else if (result.data.text === "Roll on Random Sacred Scrolls") {
-      const collection = game.packs.get("morkborg.random-scrolls");
-      const content = await collection.getDocuments();
-      const table = content.find((i) => i.name === "Sacred Scrolls");
-      const draw = await table.draw({ displayChat: false });
-      const items = await docsFromResults(draw.results);
-      return items[0];
-    }
-  } else if (result.data.type === 2) {
+  if (result.data.type === 2) {
     // grab the item from the compendium
     const collection = game.packs.get(result.data.collection);
     if (collection) {

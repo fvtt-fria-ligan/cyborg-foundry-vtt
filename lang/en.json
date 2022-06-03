@@ -141,5 +141,6 @@
   "CY.Vs": "vs",
   "CY.WeaponTable": "Weapon Table",
   "CY.WeaponType": "Weapon Type",
-  "CY.YouAreHit": "You are Hit"
+  "CY.YouAreHit": "You are Hit",
+  "CY.YouStartWith": "You start with"
 }

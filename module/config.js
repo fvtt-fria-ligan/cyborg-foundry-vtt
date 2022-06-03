@@ -85,6 +85,21 @@ CY.scvmFactory = {
   startingArmorTable: "Armor",
   armorDieIfRolledScroll: "1d3",
   descriptionTables: [
-
+    {
+      tableName: "Styles",
+      formatKey: "CY.StyleFormat"
+    },
+    {
+      tableName: "Features",
+      formatKey: "CY.FeatureFormat"
+    },
+    {
+      tableName: "Quirks",
+      formatKey: "CY.QuirkFormat"
+    },
+    {
+      tableName: "Wants",
+      formatKey: "CY.WantFormat"
+    },
   ],
 };
