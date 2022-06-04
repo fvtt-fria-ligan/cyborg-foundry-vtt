@@ -283,7 +283,8 @@ const rollScvmForClass = async (clazz) => {
   const npcData = npcs.map(e => ({
     data: e.data.data,
     img: e.data.img,
-    name: `${name}'s ${e.data.name}`
+    name: `${name}'s ${e.data.name}`,
+    type: e.data.type
   }));
 
   const strength = abilityRoll(clazz.data.data.strength);
