@@ -62,41 +62,16 @@ export const classItemFromPack = async (packName) => {
   return content.find((i) => i.data.type === "class");
 };
 
+const rollTotal = (formula) => {
+  return new Roll(formula).evaluate({async: false}).total
+};
+
+const abilityRoll = (formula) => {
+  return abilityBonus(rollTotal(formula));
+}
+
 const rollScvmForClass = async (clazz) => {
   console.log(`Creating new ${clazz.data.name}`);
-
-  const creditsRoll = new Roll(clazz.data.data.credits).evaluate({
-    async: false,
-  });
-  const glitchesRoll = new Roll(clazz.data.data.glitches).evaluate({
-    async: false,
-  });
-  const hpRoll = new Roll(clazz.data.data.hitPoints).evaluate({
-    async: false,
-  });
-
-  const strRoll = new Roll(clazz.data.data.strength).evaluate({
-    async: false,
-  });
-  const strength = abilityBonus(strRoll.total);
-  const agiRoll = new Roll(clazz.data.data.agility).evaluate({
-    async: false,
-  });
-  const agility = abilityBonus(agiRoll.total);
-  const preRoll = new Roll(clazz.data.data.presence).evaluate({
-    async: false,
-  });
-  const presence = abilityBonus(preRoll.total);
-  const touRoll = new Roll(clazz.data.data.toughness).evaluate({
-    async: false,
-  });
-  const toughness = abilityBonus(touRoll.total);
-  const knoRoll = new Roll(clazz.data.data.knowledge).evaluate({
-    async: false,
-  });
-  const knowledge = abilityBonus(knoRoll.total);
-
-  const hitPoints = Math.max(1, hpRoll.total + toughness);
 
   const allDocs = [clazz];
 
@@ -283,21 +258,8 @@ const rollScvmForClass = async (clazz) => {
   }
   allDocs.push(...startingRollItems);
 
-  // add items as owned items
-  const items = allDocs.filter((e) => e instanceof CYItem);
-  // for other non-item documents, just add some description text (Some text: Item Name)
-  const nonItems = allDocs.filter((e) => !(e instanceof CYItem));
-  for (const nonItem of nonItems) {
-    if (nonItem && nonItem.data && nonItem.data.type) {
-      descriptionLines.push(
-        `<p>&nbsp;</p><p>${game.i18n.localize('CY.YouStartWith')}}: ${nonItem.data.name}</p>`
-      );
-    } else {
-      console.log(`Skipping non-item ${nonItem}`);
-    }
-  }
-
   // make simple data structure for embedded items
+  const items = allDocs.filter((e) => e instanceof CYItem);
   const itemData = items.map((i) => ({
     data: i.data.data,
     img: i.data.img,
@@ -305,15 +267,46 @@ const rollScvmForClass = async (clazz) => {
     type: i.data.type,
   }));
 
+  // for other non-item documents, just add some description text (Some text: Item Name)
+  // const nonItems = allDocs.filter((e) => !(e instanceof CYItem));
+  // for (const nonItem of nonItems) {
+  //   if (nonItem && nonItem.data && nonItem.data.type) {
+  //     descriptionLines.push(
+  //       `<p>&nbsp;</p><p>${game.i18n.localize('CY.YouStartWith')}}: ${nonItem.data.name}</p>`
+  //     );
+  //   } else {
+  //     console.log(`Skipping non-item ${nonItem}`);
+  //   }
+  // }
+  const name = randomName();
+  const npcs = allDocs.filter(e => e instanceof CYActor);
+  const npcData = npcs.map(e => ({
+    data: e.data.data,
+    img: e.data.img,
+    name: `${name}'s ${e.data.name}`
+  }));
+
+  const strength = abilityRoll(clazz.data.data.strength);
+  const agility = abilityRoll(clazz.data.data.agility);
+  const presence = abilityRoll(clazz.data.data.presence);
+  const toughness = abilityRoll(clazz.data.data.toughness);
+  const knowledge = abilityRoll(clazz.data.data.knowledge);
+  const hitPoints = Math.max(1,
+    rollTotal(clazz.data.data.hitPoints) + toughness);
+  const credits = rollTotal(clazz.data.data.credits);
+  const glitches = rollTotal(clazz.data.data.glitches);
+
   return {
     actorImg: clazz.img,
     agility,
-    credits: creditsRoll.total,
+    credits,
     description: descriptionLines.join(""),
-    glitches: glitchesRoll.total,
+    glitches,
     hitPoints,
     items: itemData,
     knowledge,
+    name,
+    npcs: npcData,
     presence,
     strength,
     tokenImg: clazz.img,
@@ -322,9 +315,8 @@ const rollScvmForClass = async (clazz) => {
 };
 
 const scvmToActorData = (s) => {
-  const newName = randomName();
   return {
-    name: newName,
+    name: s.name,
     // TODO: do we need to set folder or sort?
     // folder: folder.data._id,
     // sort: 12000,
@@ -352,7 +344,7 @@ const scvmToActorData = (s) => {
     flags: {},
     token: {
       img: s.actorImg,
-      name: newName,
+      name: s.name,
     },
     type: "character",
   };
@@ -363,6 +355,12 @@ const createActorWithScvm = async (s) => {
   // use CYActor.create() so we get default disposition, actor link, vision, etc
   const actor = await CYActor.create(data);
   actor.sheet.render(true);
+
+  // create any npcs
+  for (const npcData of s.npcs) {
+    const npcActor = await CYActor.create(npcData);
+    npcActor.sheet.render(true);
+  }
 };
 
 const updateActorWithScvm = async (actor, s) => {
