@@ -69,10 +69,88 @@ const abilityRoll = (formula) => {
   return abilityBonus(rollTotal(formula));
 }
 
-const rollScvmForClass = async (clazz) => {
-  console.log(`Creating new ${clazz.data.name}`);
+const classStartingArmor = async (clazz) => {
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
+  if (CY.scvmFactory.startingArmorTable && clazz.data.data.armorTable) {
+    const armorRoll = new Roll(clazz.data.data.armorTable);
+    const armorTable = ccContent.find(
+      (i) => i.name === CY.scvmFactory.startingArmorTable
+    );
+    const armorDraw = await armorTable.draw({
+      roll: armorRoll,
+      displayChat: false,
+    });
+    const armor = await docsFromResults(armorDraw.results);
+    return armor;
+  }
+};
 
-  const allDocs = [clazz];
+const classStartingWeapons = async (clazz) => {
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
+  if (CY.scvmFactory.startingWeaponTable && clazz.data.data.weaponTable) {
+    const weaponRoll = new Roll(clazz.data.data.weaponTable);
+    const weaponTable = ccContent.find(
+      (i) => i.name === CY.scvmFactory.startingWeaponTable
+    );
+    const weaponDraw = await weaponTable.draw({
+      roll: weaponRoll,
+      displayChat: false,
+    });
+    const weapons = await docsFromResults(weaponDraw.results);
+    // TODO: add ammo mags if starting weapon uses ammo
+    return weapons;
+  }
+};
+
+const classStartingItems = async (clazz) => {
+  if (clazz.data.data.items) {
+    const startingItems = [];
+    const lines = clazz.data.data.items.split("\n");
+    for (const line of lines) {
+      const [packName, itemName] = line.split(",");
+      const pack = game.packs.get(packName);
+      if (pack) {
+        const content = await pack.getDocuments();
+        const item = content.find((i) => i.data.name === itemName);
+        if (item) {
+          startingItems.push(item);
+        }
+      }
+    }
+    return startingItems;
+  }
+};
+
+const classDescriptionLines = async (clazz) => {
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
+  const descriptionLines = [];
+  descriptionLines.push(clazz.data.data.description);
+  descriptionLines.push("<p>&nbsp;</p>");
+  let descriptionLine = "";
+  for (const dt of CY.scvmFactory.descriptionTables) {
+    const table = ccContent.find((i) => i.name === dt.tableName);
+    if (table) {
+      const draw = await table.draw({ displayChat: false });
+      const text = draw.results[0].data.text;
+      descriptionLine += game.i18n.format(dt.formatKey, {text}) + " ";  
+    } else {
+      console.error(`Could not find table ${dt.tableName}`);
+    }
+  }
+  if (descriptionLine) {
+    descriptionLines.push(descriptionLine);
+    descriptionLines.push("<p>&nbsp;</p>");
+  }
+  return descriptionLines;
+};
+
+const startingEquipment = async (clazz) => {
+  const equipment = [];
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
 
   // TODO: headset
   /*
@@ -98,90 +176,60 @@ const rollScvmForClass = async (clazz) => {
     }
   }
   */
-
-  // starting equipment, weapons, armor, and traits etc all come from the same pack
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
-
-  // starting equipment tables
+  
   for (const tableName of CY.scvmFactory.startingEquipmentTables) {
     const table = ccContent.find((i) => i.name === tableName);
     if (table) {
       const draw = await table.draw({ displayChat: false });
       const items = await docsFromResults(draw.results);
-      allDocs.push(...items);  
+      // if (clazz.onlyApp) {
+      //   if (containsType(items, CY.itemTypes.cybertech) || 
+      //     containsType(items, CY.itemTypes.nano) {
+      //       XXX
+      //     }
+      // } else if (clazz.onlyCybertech) {
+
+      // } else if (clazz.onlyNano)
+
+      // }
+      equipment.push(...items);  
     } else {
       console.error(`Could not find table ${tableName}`);
     }
   }
+  return equipment;
+};
 
-  // starting weapon
-  if (CY.scvmFactory.startingWeaponTable && clazz.data.data.weaponTable) {
-    const weaponRoll = new Roll(clazz.data.data.weaponTable);
-    const weaponTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingWeaponTable
-    );
-    const weaponDraw = await weaponTable.draw({
-      roll: weaponRoll,
-      displayChat: false,
-    });
-    const weapons = await docsFromResults(weaponDraw.results);
-    // TODO: add ammo mags if starting weapon uses ammo
+const rollScvmForClass = async (clazz) => {
+  console.log(`Creating new ${clazz.data.name}`);
+  const allDocs = [clazz];
+
+  // all-character starting equipment tables
+  const equipment = await startingEquipment(clazz);
+  if (equipment) {
+    allDocs.push(...equipment);
+  }
+
+  // starting weapons
+  const weapons = await classStartingWeapons(clazz);
+  if (weapons) {
     allDocs.push(...weapons);
   }
 
   // starting armor
-  if (CY.scvmFactory.startingArmorTable && clazz.data.data.armorTable) {
-    const armorRoll = new Roll(clazz.data.data.armorTable);
-    const armorTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingArmorTable
-    );
-    const armorDraw = await armorTable.draw({
-      roll: armorRoll,
-      displayChat: false,
-    });
-    const armor = await docsFromResults(armorDraw.results);
+  const armor = await classStartingArmor(clazz);
+  if (armor) {
     allDocs.push(...armor);
   }
 
   // class-specific starting items
-  if (clazz.data.data.items) {
-    const startingItems = [];
-    const lines = clazz.data.data.items.split("\n");
-    for (const line of lines) {
-      const [packName, itemName] = line.split(",");
-      const pack = game.packs.get(packName);
-      if (pack) {
-        const content = await pack.getDocuments();
-        const item = content.find((i) => i.data.name === itemName);
-        if (item) {
-          startingItems.push(item);
-        }
-      }
-    }
+  const startingItems = await classStartingItems(clazz);
+  if (startingItems) {
     allDocs.push(...startingItems);
   }
 
   // start accumulating character description, starting with the class description
-  const descriptionLines = [];
-  descriptionLines.push(clazz.data.data.description);
-  descriptionLines.push("<p>&nbsp;</p>");
-
-  let descriptionLine = "";
-  for (const dt of CY.scvmFactory.descriptionTables) {
-    const table = ccContent.find((i) => i.name === dt.tableName);
-    if (table) {
-      const draw = await table.draw({ displayChat: false });
-      const text = draw.results[0].data.text;
-      descriptionLine += game.i18n.format(dt.formatKey, {text}) + " ";  
-    } else {
-      console.error(`Could not find table ${dt.tableName}`);
-    }
-  }
-  if (descriptionLine) {
-    descriptionLines.push(descriptionLine);
-    descriptionLines.push("<p>&nbsp;</p>");
-  }
+  const descriptionLines = await classDescriptionLines(clazz);
 
   // class-specific starting rolls
   // these may add items, actors, or description lines
