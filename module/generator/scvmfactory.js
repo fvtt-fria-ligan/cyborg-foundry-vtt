@@ -10,7 +10,6 @@ import { randomName } from "./names.js";
 //   drawText,
 // } from "./packutils.js";
 
-
 export const createRandomScvm = async () => {
   const clazz = await pickRandomClass();
   await createScvm(clazz);
@@ -179,49 +178,18 @@ const rollScvmForClass = async (clazz) => {
       console.error(`Could not find table ${dt.tableName}`);
     }
   }
-
-  // TODO
-  /*
-  if (CY.scvmFactory.terribleTraitsTable) {
-    const ttTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.terribleTraitsTable
-    );
-    const ttResults = await compendiumTableDrawMany(ttTable, 2);
-    const terribleTrait1 = ttResults[0].data.text;
-    const terribleTrait2 = ttResults[1].data.text;
-    // BrokenBodies and BadHabits end with a period, but TerribleTraits don't.
-    descriptionLine += `${terribleTrait1} and ${terribleTrait2
-      .charAt(0)
-      .toLowerCase()}${terribleTrait2.slice(1)}.`;
-  }
-  if (CY.scvmFactory.brokenBodiesTable) {
-    const bbTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.brokenBodiesTable
-    );
-    const bbDraw = await bbTable.draw({ displayChat: false });
-    const brokenBody = bbDraw.results[0].data.text;
-    descriptionLine += ` ${brokenBody}`;
-  }
-  if (CY.scvmFactory.badHabitsTable) {
-    const bhTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.badHabitsTable
-    );
-    const bhDraw = await bhTable.draw({ displayChat: false });
-    const badHabit = bhDraw.results[0].data.text;
-    descriptionLine += ` ${badHabit}`;
-  }
-  */
   if (descriptionLine) {
     descriptionLines.push(descriptionLine);
     descriptionLines.push("<p>&nbsp;</p>");
   }
 
   // class-specific starting rolls
+  // these may add items, actors, or description lines
   const startingRollItems = [];
   if (clazz.data.data.rolls) {
     const lines = clazz.data.data.rolls.split("\n");
     for (const line of lines) {
-      const [packName, tableName, rolls] = line.split(",");
+      const [packName, tableName, rolls, formula] = line.split(",");
       // assume 1 roll unless otherwise specified in the csv
       const numRolls = rolls ? parseInt(rolls) : 1;
       const pack = game.packs.get(packName);
@@ -229,9 +197,7 @@ const rollScvmForClass = async (clazz) => {
         const content = await pack.getDocuments();
         const table = content.find((i) => i.name === tableName);
         if (table) {
-          // const tableDraw = await table.drawMany(numRolls, {displayChat: false});
-          // const results = tableDraw.results;
-          const results = await compendiumTableDrawMany(table, numRolls);
+          const results = await compendiumTableDrawMany(table, numRolls, formula);
           for (const result of results) {
             // draw result type: text (0), entity (1), or compendium (2)
             if (result.data.type === 0) {
@@ -267,17 +233,6 @@ const rollScvmForClass = async (clazz) => {
     type: i.data.type,
   }));
 
-  // for other non-item documents, just add some description text (Some text: Item Name)
-  // const nonItems = allDocs.filter((e) => !(e instanceof CYItem));
-  // for (const nonItem of nonItems) {
-  //   if (nonItem && nonItem.data && nonItem.data.type) {
-  //     descriptionLines.push(
-  //       `<p>&nbsp;</p><p>${game.i18n.localize('CY.YouStartWith')}}: ${nonItem.data.name}</p>`
-  //     );
-  //   } else {
-  //     console.log(`Skipping non-item ${nonItem}`);
-  //   }
-  // }
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
   const npcData = npcs.map(e => ({
@@ -429,11 +384,16 @@ const abilityBonus = (rollTotal) => {
 };
 
 /** Workaround for compendium RollTables not honoring replacement=false */
-const compendiumTableDrawMany = async (rollTable, numDesired) => {
+const compendiumTableDrawMany = async (rollTable, numDesired, formula) => {
   const rollTotals = [];
   let results = [];
   while (rollTotals.length < numDesired) {
-    const tableDraw = await rollTable.draw({ displayChat: false });
+    const roll = formula ? new Roll(formula) : undefined;
+    if (roll) {
+      console.log("**** using roll");
+      console.log(roll);
+    }
+    const tableDraw = await rollTable.draw({ displayChat: false, roll });
     if (rollTotals.includes(tableDraw.roll.total)) {
       // already rolled this, so roll again
       continue;
