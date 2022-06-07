@@ -4,6 +4,7 @@ import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
 
 import {
+  documentFromPack,
   drawFromTable,
 } from "../packutils.js";
 
@@ -96,7 +97,22 @@ const classStartingWeapons = async (clazz) => {
       displayChat: false,
     });
     const weapons = await docsFromResults(weaponDraw.results);
-    // TODO: add ammo mags if starting weapon uses ammo
+    // add ammo mags if starting weapon uses ammo
+    const mags = [];
+    for (const weapon of weapons) {
+      if (weapon.data.data.usesAmmo) {
+        const mag = await documentFromPack(CY.scvmFactory.ammoPack, CY.scvmFactory.ammoItem);
+        const magRoll = new Roll("1d4").evaluate({async: false});
+        // TODO: need to mutate _data to get it to change for our owned item creation.
+        // Is there a better way to do this?
+        mag.data.name = `${weapon.name} ${mag.name}`;
+        // mag.data._source.data.quantity = magRoll.total;
+        mag.data.data.quantity = magRoll.total;
+        console.log(mag);
+        mags.push(mag);
+      }      
+    }
+    weapons.push(...mags);    
     return weapons;
   }
 };

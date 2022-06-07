@@ -69,6 +69,8 @@ CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
+  ammoItem: "Ammo Mag",
+  ammoPack: "cy_borg-core.weapons",
   startingItemsPack: "cy_borg-core.equipment",
   startingItems: [
     "Cheap clothes",
@@ -81,9 +83,7 @@ CY.scvmFactory = {
     "Cash & Gear 3",
   ],
   startingWeaponTable: "Weapons",
-  weaponDieIfRolledScroll: "1d6",
   startingArmorTable: "Armor",
-  armorDieIfRolledScroll: "1d3",
   descriptionTables: [
     {
       tableName: "Styles",
