@@ -3,12 +3,9 @@ import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
 
-// import {
-//   documentFromPack,
-//   drawDocument,
-//   drawDocuments,
-//   drawText,
-// } from "./packutils.js";
+import {
+  drawFromTable,
+} from "../packutils.js";
 
 export const createRandomScvm = async () => {
   const clazz = await pickRandomClass();
@@ -147,51 +144,50 @@ const classDescriptionLines = async (clazz) => {
   return descriptionLines;
 };
 
+const hasApp = (items) => {
+  return items.filter(x => x.data.type === CY.itemTypes.app).length > 0;
+}
+
+const hasCybertech = (items) => {
+  return items.filter(x => x.data.data.cybertech).length > 0;
+}
+
+const hasNano = (items) => {
+  return items.filter(x => x.data.type === CY.itemTypes.nanoPower).length > 0;
+}
+
 const startingEquipment = async (clazz) => {
   const equipment = [];
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
 
-  // TODO: headset
-  /*
-  if (CY.scvmFactory.foodAndWaterPack) {
-    // everybody gets food and water
-    const miscPack = game.packs.get(CY.scvmFactory.foodAndWaterPack);
-    const miscContent = await miscPack.getDocuments();
-    if (CY.scvmFactory.foodItemName) {
-      const food = miscContent.find(
-        (i) => i.data.name === CY.scvmFactory.foodItemName
-      );
-      const foodRoll = new Roll("1d4", {}).evaluate({ async: false });
-      // TODO: need to mutate _data to get it to change for our owned item creation.
-      // Is there a better way to do this?
-      food.data._source.data.quantity = foodRoll.total;
-      allDocs.push(food);
-    }
-    if (CY.scvmFactory.waterItemName) {
-      const waterskin = miscContent.find(
-        (i) => i.data.name === CY.scvmFactory.waterItemName
-      );
-      allDocs.push(waterskin);
+  if (CY.scvmFactory.startingItemsPack) {
+    const itemPack = game.packs.get(CY.scvmFactory.startingItemsPack);
+    const items = await itemPack.getDocuments();
+    for (const itemName of CY.scvmFactory.startingItems) {
+      const item = items.find(x => x.data.name === itemName);
+      equipment.push(item);
     }
   }
-  */
-  
+
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
   for (const tableName of CY.scvmFactory.startingEquipmentTables) {
-    const table = ccContent.find((i) => i.name === tableName);
+    const table = ccContent.find(x => x.name === tableName);
     if (table) {
       const draw = await table.draw({ displayChat: false });
-      const items = await docsFromResults(draw.results);
-      // if (clazz.onlyApp) {
-      //   if (containsType(items, CY.itemTypes.cybertech) || 
-      //     containsType(items, CY.itemTypes.nano) {
-      //       XXX
-      //     }
-      // } else if (clazz.onlyCybertech) {
-
-      // } else if (clazz.onlyNano)
-
-      // }
+      let items = await docsFromResults(draw.results);
+      if (clazz.data.data.onlyApp && (hasCybertech(items) || hasNano(items))) {
+        // replace with a draw from apps
+        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Apps");
+        items = [item];
+      } else if (clazz.data.data.onlyCybertech && (hasApp(items) || hasNano(items))) {
+        // replace with a draw from cybertech
+        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Cybertech", "1d12");
+        items = [item];
+      } else if (clazz.data.data.onlyNano && (hasApp(items) || hasCybertech(items))) {
+        // replace with a draw from nano powers
+        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Nano Powers");
+        items = [item];
+      }
       equipment.push(...items);  
     } else {
       console.error(`Could not find table ${tableName}`);
@@ -437,10 +433,6 @@ const compendiumTableDrawMany = async (rollTable, numDesired, formula) => {
   let results = [];
   while (rollTotals.length < numDesired) {
     const roll = formula ? new Roll(formula) : undefined;
-    if (roll) {
-      console.log("**** using roll");
-      console.log(roll);
-    }
     const tableDraw = await rollTable.draw({ displayChat: false, roll });
     if (rollTotals.includes(tableDraw.roll.total)) {
       // already rolled this, so roll again

@@ -109,6 +109,30 @@
             <textarea class="field-input" name="data.items" rows="4">{{data.data.items}}</textarea>
           </div>
         </div>          
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.OnlyApps'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.onlyApps" {{checked data.data.onlyApps}} />
+          </div>
+        </div>          
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.OnlyCybertech'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.onlyCybertech" {{checked data.data.onlyCybertech}} />
+          </div>
+        </div>          
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.OnlyNano'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="data.onlyNano" {{checked data.data.onlyNano}} />
+          </div>
+        </div>          
       </div>
     </div>      
   </div>

@@ -12,9 +12,10 @@ export const tableFromPack = async (packName, tableName) => {
   return table;
 };
 
-export const drawFromTable = async (packName, tableName) => {
+export const drawFromTable = async (packName, tableName, formula) => {
   const table = await tableFromPack(packName, tableName);
-  const tableDraw = await table.draw({ displayChat: false });
+  const roll = formula ? new Roll(formula) : undefined;
+  const tableDraw = await table.draw({ displayChat: false, roll });
   // TODO: decide if/how we want to handle multiple results
   return tableDraw;
 };
