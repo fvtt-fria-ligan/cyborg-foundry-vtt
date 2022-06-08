@@ -20,7 +20,8 @@
         color: $disabled-color;
       }
       input[type="number"],
-      input[type="text"] {
+      input[type="text"],
+      select {
         color: $cream;
       }
     }    

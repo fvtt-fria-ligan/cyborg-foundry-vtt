@@ -1,0 +1,22 @@
+
+<form class="dialog add-item-dialog" action="">
+  <div class="form-group">
+    <label>{{ localize "CY.ItemName" }}</label>
+    <input type="text" name="itemname" value="" placeholder="{{ localize 'CY.Name' }}" data-dtype="String"/>
+  </div>
+  <div class="form-group">
+    <label>{{ localize "CY.ItemType" }}</label>
+    <select class="add-type" name="itemtype"> 
+      <option value="app">{{ localize "CY.App" }}</option>
+      <option value="armor">{{ localize "CY.Armor" }}</option>
+      <option value="equipment" selected="selected">{{ localize "CY.Equipment" }}</option>
+      <option value="feat">{{ localize "CY.Feat" }}</option>
+      <option value="infestation">{{ localize "CY.Infestation" }}</option>
+      <option value="nanoPower">{{ localize "CY.NanoPower" }}</option>
+      <option value="weapon">{{ localize "CY.Weapon" }}</option>
+    </select>
+  </div>
+  <div class="button-row">
+    <button class="add-item-button" type="button" name="add-item-button">{{ localize "CY.Add" }}</button>
+  </div>
+</form>

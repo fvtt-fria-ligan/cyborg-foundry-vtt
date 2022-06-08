@@ -7,6 +7,7 @@ import { rollBattered } from "../combat/battered.js";
 import { rollLevelUp } from "./levelup.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
 import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
+import { showAddItemDialog } from "./add-item-dialog.js";
 
 const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
 
@@ -73,6 +74,7 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".weapon-icon").on("click", this._attack.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
+    html.find(".add-item-button").on("click", this._addItem.bind(this));
   }
 
   async _testAbility(event) {
@@ -144,5 +146,10 @@ export class CYCharacterSheet extends CYActorSheet {
   async _initiative(event) {
     event.preventDefault();
     await rollPartyInitiative();
+  }
+
+  async _addItem(event) {
+    event.preventDefault();
+    showAddItemDialog(this.actor);
   }
  }

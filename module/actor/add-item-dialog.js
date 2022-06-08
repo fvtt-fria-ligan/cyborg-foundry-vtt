@@ -1,12 +1,18 @@
-export default class AddItemDialog extends Application {
+export const showAddItemDialog = (actor) => {
+  const dialog = new AddItemDialog();
+  dialog.actor = actor;
+  dialog.render(true);
+}
+
+export class AddItemDialog extends Application {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;
     options.id = "add-item-dialog";
-    options.classes = ["deathinspace"];
-    options.title = game.i18n.localize("DIS.AddItem");
+    options.classes = ["cy", "dialog"];
+    options.title = game.i18n.localize("CY.AddItem");
     options.template =
-      "systems/deathinspace/templates/dialog/add-item-dialog.html";
+      "systems/cy_borg/templates/dialog/add-item-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;
@@ -21,12 +27,19 @@ export default class AddItemDialog extends Application {
   async _onAddItem(event) {
     event.preventDefault();
     const form = $(event.currentTarget).parents(".add-item-dialog")[0];
+    const itemName = form.itemname.value;
+    const itemType = form.itemtype.value;
+    if (!itemName || !itemType) {
+      ui.notifications.error(game.i18n.localize('CY.ItemNameAndTypeRequired'));
+      return;
+    }
     const itemData = {
       name: form.itemname.value,
       type: form.itemtype.value,
       data: {},
     };
-    await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    const docs = await this.actor.createEmbeddedDocuments("Item", [itemData]);
     this.close();
+    docs[0].sheet.render(true);  
   }
 }
