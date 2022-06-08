@@ -198,6 +198,18 @@
 .cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll {
   background-image: -webkit-linear-gradient(135deg, #F6EDDB 50%, #1C1E23 50%);
 }
+.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll {
+  color: #1C1E23;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll .hp-label {
+  padding-bottom: 0px;
+  padding-right: 8px;
+  text-align: right;
+}
 .cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-lr {
   background-color: #F6EDDB;
 }

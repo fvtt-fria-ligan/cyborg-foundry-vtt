@@ -42,6 +42,18 @@
           .hit-points-ll {              
             background-image: -webkit-linear-gradient(135deg, $cream 50%, $near-black 50%);              
           }
+          .hit-points-ll {
+            color: $near-black;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            font-size: 12px;
+            .hp-label {
+              padding-bottom: 0px;
+              padding-right: 8px;
+              text-align: right;
+            }
+          }
           .hit-points-lr {              
             background-color: $cream;
             input[type="number"] {
