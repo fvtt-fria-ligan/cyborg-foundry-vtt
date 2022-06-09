@@ -59,8 +59,10 @@ export class AttackDialog extends Application {
     const form = $(event.currentTarget).parents(".attack-dialog")[0];
     const attackDRStr = $(form).find("input[name=attack-dr]").val();
     const attackDR = parseInt(attackDRStr);
-    const targetArmor = $(form).find("input[name=target-armor]").val();
+    const weakPoints = $(form).find("input[name=weakPoints]:checked").val();
     const autofire = $(form).find("input[name=autofire]:checked").val();
+    const targetArmor = $(form).find("input[name=target-armor]").val();
+    const targetIsVehicle = $(form).find("input[name=targetIsVehicle]:checked").val();
     this.close();
     await this.actor.setFlag(
       CONFIG.CY.flagScope,
@@ -72,12 +74,15 @@ export class AttackDialog extends Application {
       CONFIG.CY.flags.TARGET_ARMOR,
       targetArmor
     );
+
     rollAttack(
       this.actor,
       this.item.data._id,
       attackDR,
       targetArmor,
-      autofire
+      autofire,
+      weakPoints,
+      targetIsVehicle
     );
   }
 }

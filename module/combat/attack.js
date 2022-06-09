@@ -1,6 +1,6 @@
-import { diceSound, showDice } from "../dice.js";
+import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { soundEffects } from "../settings.js";
-
+import { d20Formula } from "../utils.js";
 
 const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";
@@ -8,7 +8,9 @@ const ATTACK_ROLL_CARD_TEMPLATE =
 /**
  * Do the actual attack rolls and resolution.
  */
-export const rollAttack = async (actor, itemId, attackDR, targetArmor, autofire) => {
+export const rollAttack = async (
+  actor, itemId, attackDR, targetArmor, 
+  autofire, weakPoints, targetIsVehicle) => {
   const item = actor.items.get(itemId);
   const itemRollData = item.getRollData();
 
@@ -39,7 +41,7 @@ export const rollAttack = async (actor, itemId, attackDR, targetArmor, autofire)
   const value = actor.data.data.abilities[ability].value;
 
   // roll 1: attack
-  const attackRoll = new Roll(actor.d20Formula(value));
+  const attackRoll = new Roll(d20Formula(value));
   attackRoll.evaluate({ async: false });
   await showDice(attackRoll);
 
@@ -61,19 +63,30 @@ export const rollAttack = async (actor, itemId, attackDR, targetArmor, autofire)
     attackOutcome = game.i18n.localize(
       isCrit ? "CY.AttackCritText" : "CY.Hit"
     );
+    if (weakPoints) {
+      attackOutcome += ", " + game.i18n.localize("CY.IgnoreArmor");
+    }
     if (autofire) {
       attackOutcome += ". " + game.i18n.localize("CY.AutofireHit");
     }
     // roll 2: damage.
-    // Use parentheses for critical 2x in case damage die something like 1d6+1
-    const damageFormula = isCrit ? "(@damage) * 2" : "@damage";
-    damageRoll = new Roll(damageFormula, itemRollData);
+    const baseDamage = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
+    // TODO: use parentheses to protect multipliers, in case damage die something like 1d6+1?
+    //let damageFormula = `(${baseDamage})`;
+    let damageFormula = baseDamage;
+    if (weakPoints) {
+      damageFormula += "*2";
+    }
+    if (isCrit) {
+      damageFormula += "*2";
+    }
+    damageRoll = new Roll(damageFormula);
     damageRoll.evaluate({ async: false });
     const dicePromises = [];
     addShowDicePromise(dicePromises, damageRoll);
     let damage = damageRoll.total;
-    // roll 3: target damage reduction
-    if (targetArmor) {
+    // roll 3: target armor soak
+    if (targetArmor && !weakPoints) {
       targetArmorRoll = new Roll(targetArmor, {});
       targetArmorRoll.evaluate({ async: false });
       addShowDicePromise(dicePromises, targetArmorRoll);

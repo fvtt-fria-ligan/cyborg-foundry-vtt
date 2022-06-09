@@ -133,6 +133,7 @@
       "special": "",
       "targets": 1,
       "usesAmmo": false,
+      "vehicleDamage": "1d2",
       "weaponType": "ranged"
     }
   }

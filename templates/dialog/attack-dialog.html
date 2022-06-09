@@ -1,33 +1,49 @@
 <form class="dialog attack-dialog">
   <input type="hidden" name="itemid" value="{{itemId}}" />
   <div class="form-group">
-    <label>{{localize 'CY.Attack'}} {{localize 'CY.DR'}}:</label>
-    <input
-      type="number"
-      name="attack-dr"
-      value="{{attackDR}}"
-      placeholder="12"
-      data-dtype="Number"
-    />
-  </div>
-  <div class="form-group">
-    <label>{{localize 'CY.TargetArmor'}}:</label>
-    <input
-      type="text"
-      name="target-armor"
-      value="{{targetArmor}}"
-      placeholder="1d2"
-      data-dtype="String"
-    />
+    <label>{{localize 'CY.Attack'}} {{localize 'CY.DR'}}</label>
+    <div class="field-value">
+      <input
+        type="number"
+        name="attack-dr"
+        value="{{attackDR}}"
+        placeholder="12"
+        data-dtype="Number"
+      />
+    </div>
   </div>
   <div class="form-group {{autofireClass}}"> 
-    <label>{{ localize "CY.Autofire" }}?</label>
-    <div>
+    <label>{{ localize "CY.Autofire" }}</label>
+    <div class="field-value">
       {{#if autofireEnabled}}
         <input name="autofire" type="checkbox" value="1"/>
       {{else}}
         <input name="autofire" type="checkbox" value="1" disabled="disabled"" />
       {{/if}}
+    </div>
+  </div>
+  <div class="form-group"> 
+    <label>{{ localize "CY.WeakPoints" }}</label>
+    <div class="field-value">
+      <input name="weakPoints" type="checkbox" value="1"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CY.TargetArmor'}}</label>
+    <div class="field-value">
+      <input
+      type="text"
+      name="target-armor"
+      value="{{targetArmor}}"
+      placeholder="1d2"
+      data-dtype="String"
+      />
+    </div>
+  </div>
+  <div class="form-group"> 
+    <label>{{ localize "CY.TargetIsVehicle" }}</label>
+    <div class="field-value">
+      <input name="targetIsVehicle" type="checkbox" value="1"/>
     </div>
   </div>
   <div class="button-row">
