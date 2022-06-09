@@ -10,5 +10,83 @@
   .weapons {
   }
   .armor {
+    .tier-label {
+      float: left;
+      font-size: 20;
+      padding-top: 4px;
+      margin-right: 10px;
+    }
+
+    ul.tiers {
+      float: left;
+      list-style-type: none;
+      margin: 0;
+      margin-top: 3px;
+      padding: 0;
+
+      li {
+        float: left;
+        height: 45px;
+      }
+
+      label {
+        display: block;
+        padding: 4px;
+        position: relative;
+        padding-left: 32px;
+      }
+
+      input[type="radio"] {
+        display: none;
+
+        &:checked + span.tier-num {
+          background: $magenta;
+          color: $near-black;
+          border: none;
+        }
+
+        &:disabled {
+          + span.tier-num {
+            color: #444444;
+            border: 1px solid #444444;
+          }
+
+          ~ span.tier-dmg {
+            color: #444444;
+          }
+        }
+      }
+
+      span {
+        &.tier-num {
+          border: 1px solid #7a7971;
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          overflow: hidden;
+          line-height: 1.5;
+          text-align: center;
+          border-radius: 100%;
+          // font-size: 14pt;
+          font-family: $input-number-font;
+          left: 0;
+          top: 0;
+        }
+
+        &.tier-dmg {
+          width: 30px;
+          height: 15px;
+          position: absolute;
+          overflow: hidden;
+          // line-height: 1;
+          text-align: center;
+          // font-family: var(--item-font);
+          // font-size: 10pt;
+          font-size: 10pt;
+          left: -5px;
+          top: 30px;
+        }
+      }
+    }
   }
 }

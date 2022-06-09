@@ -309,6 +309,68 @@
   border-radius: 5;
   color: #F6EDDB;
 }
+.combat-tab .armor .tier-label {
+  float: left;
+  font-size: 20;
+  padding-top: 4px;
+  margin-right: 10px;
+}
+.combat-tab .armor ul.tiers {
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  margin-top: 3px;
+  padding: 0;
+}
+.combat-tab .armor ul.tiers li {
+  float: left;
+  height: 45px;
+}
+.combat-tab .armor ul.tiers label {
+  display: block;
+  padding: 4px;
+  position: relative;
+  padding-left: 32px;
+}
+.combat-tab .armor ul.tiers input[type=radio] {
+  display: none;
+}
+.combat-tab .armor ul.tiers input[type=radio]:checked + span.tier-num {
+  background: #F800F8;
+  color: #1C1E23;
+  border: none;
+}
+.combat-tab .armor ul.tiers input[type=radio]:disabled + span.tier-num {
+  color: #444444;
+  border: 1px solid #444444;
+}
+.combat-tab .armor ul.tiers input[type=radio]:disabled ~ span.tier-dmg {
+  color: #444444;
+}
+.combat-tab .armor ul.tiers span.tier-num {
+  border: 1px solid #7a7971;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  overflow: hidden;
+  line-height: 1.5;
+  text-align: center;
+  border-radius: 100%;
+  font-family: "Aldo the Apache";
+  left: 0;
+  top: 0;
+}
+.combat-tab .armor ul.tiers span.tier-dmg {
+  width: 30px;
+  height: 15px;
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  font-size: 10pt;
+  left: -5px;
+  top: 30px;
+}
+
 .sheet-body .dossier-tab {
   background-color: #F6EDDB;
   color: #1C1E23;

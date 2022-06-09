@@ -1,4 +1,5 @@
 import { CYActorSheet } from "./actor-sheet.js";
+import { CY } from "../config.js";
 import { showAttackDialog } from "../combat/attack-dialog.js";
 import { showDefendDialog } from "../combat/defend-dialog.js";
 import { rollPartyInitiative } from "../combat/initiative.js";
@@ -71,6 +72,7 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
     html.find(".initiative-button").on("click", this._initiative.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".tier-radio").click(this._onArmorTierRadio.bind(this));
     html.find(".weapon-icon").on("click", this._attack.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
@@ -152,4 +154,16 @@ export class CYCharacterSheet extends CYActorSheet {
     event.preventDefault();
     showAddItemDialog(this.actor);
   }
+
+  /**
+   * Handle a click on the armor current tier radio buttons.
+   */
+   async _onArmorTierRadio(event) {
+    event.preventDefault();
+    const input = $(event.currentTarget);
+    const newTier = parseInt(input[0].value);
+    const parent = input.parents(".item");
+    const item = this.actor.items.get(parent.data("itemId"));
+    await item.update({ ["data.tier.value"]: newTier });
+  }  
  }

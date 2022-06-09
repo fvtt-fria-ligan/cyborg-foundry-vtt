@@ -86,6 +86,14 @@ const registerHandlebarsHelpers = () => {
       return result;
     }
   });  
+
+  Handlebars.registerHelper("ifEq", function (arg1, arg2, options) {
+    return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("ifLt", function (arg1, arg2, options) {
+    return arg1 < arg2 ? options.fn(this) : options.inverse(this);
+  });  
 }
 
 
