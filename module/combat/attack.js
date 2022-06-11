@@ -71,14 +71,13 @@ export const rollAttack = async (
     }
     // roll 2: damage.
     const baseDamage = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
-    // TODO: use parentheses to protect multipliers, in case damage die something like 1d6+1?
-    //let damageFormula = `(${baseDamage})`;
     let damageFormula = baseDamage;
     if (weakPoints) {
-      damageFormula += "*2";
+      // wrap formula in parentheses for chainsaw 1d6+1
+      damageFormula = `(${damageFormula})*2`;
     }
     if (isCrit) {
-      damageFormula += "*2";
+      damageFormula += `(${damageFormula})*2`;
     }
     damageRoll = new Roll(damageFormula);
     damageRoll.evaluate({ async: false });
