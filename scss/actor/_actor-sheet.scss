@@ -1,4 +1,3 @@
-
 .cy.sheet.actor {
   section.window-content {
     .sheet-header {
@@ -31,6 +30,16 @@
         display: flex;
         flex: 0 0 88px;
         flex-direction: column;
+        .actor-type {
+          color: $cream;
+          align-items: center;
+          display: flex;
+          flex: 1;
+          font-family: $name-font;
+          font-size: 40px;
+          justify-content: center;
+          writing-mode: vertical-rl;
+        }        
         .hit-points {
           display: grid;
           flex: 0 0 88px;

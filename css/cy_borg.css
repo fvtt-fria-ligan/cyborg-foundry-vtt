@@ -106,18 +106,12 @@
   background-color: #F6EDDB;
   color: #1C1E23;
 }
-.cy.sheet section.window-content .sheet-body {
-  flex: 1;
-}
-.cy.sheet section.window-content .sheet-body .tab {
-  height: 100%;
-}
-.cy.sheet section.window-content .sheet-body .field-row {
+.cy.sheet section.window-content .field-row {
   display: flex;
   flex: 0 0 38px;
   margin-bottom: 5px;
 }
-.cy.sheet section.window-content .sheet-body .field-row .field-label {
+.cy.sheet section.window-content .field-row .field-label {
   align-items: center;
   background-color: #F6EDDB;
   color: #1C1E23;
@@ -129,22 +123,28 @@
   text-align: center;
   text-transform: uppercase;
 }
-.cy.sheet section.window-content .sheet-body .field-row .field-value {
+.cy.sheet section.window-content .field-row .field-value {
   align-items: center;
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
 }
-.cy.sheet section.window-content .sheet-body .field-row .field-value input {
+.cy.sheet section.window-content .field-row .field-value input {
   width: 100%;
 }
-.cy.sheet section.window-content .sheet-body .field-row button {
+.cy.sheet section.window-content .field-row button {
   color: #F6EDDB;
 }
-.cy.sheet section.window-content .sheet-body .field-row textarea {
+.cy.sheet section.window-content .field-row textarea {
   font-family: "QuanPixel 8px";
   line-height: 20px;
+}
+.cy.sheet section.window-content .sheet-body {
+  flex: 1;
+}
+.cy.sheet section.window-content .sheet-body .tab {
+  height: 100%;
 }
 .cy.sheet section.window-content .sheet-body .description-tab .description-wrapper {
   background-color: #F6EDDB;
@@ -185,6 +185,16 @@
   display: flex;
   flex: 0 0 88px;
   flex-direction: column;
+}
+.cy.sheet.actor section.window-content .sheet-header .right-col .actor-type {
+  color: #F6EDDB;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  font-family: "UAV OSD Sans Mono";
+  font-size: 40px;
+  justify-content: center;
+  writing-mode: vertical-rl;
 }
 .cy.sheet.actor section.window-content .sheet-header .right-col .hit-points {
   display: grid;
@@ -376,18 +386,12 @@
   color: #1C1E23;
 }
 
-.cy.sheet.foe section.window-content .sheet-header {
+.cy.sheet.actor.foe section.window-content .sheet-header {
   height: 396px;
 }
-.cy.sheet.foe section.window-content .sheet-header .right-col .actor-type {
-  color: #F6EDDB;
-  align-items: center;
-  display: flex;
-  flex: 1;
-  font-family: "UAV OSD Sans Mono";
-  font-size: 50px;
-  justify-content: center;
-  writing-mode: vertical-rl;
+
+.cy.sheet.actor.vehicle section.window-content .sheet-header {
+  height: 396px;
 }
 
 .roll-card .card-title {

@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <div class="sheet-header">
+    <div class="left-col">
+      <div class="widget portrait">
+        <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
+      </div>
+      <div class="widget name">
+        <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
+      </div>
+      <div class="widget field-row">
+        <div class="field-label">
+          {{ localize 'CY.Owner'}}
+        </div>
+        <div class="field-value">
+          <input class="field-input" type="text" name="data.owner" value="{{ data.data.owner }}"" />
+        </div>
+      </div>      
+    </div>
+    <div class="right-col">
+      <div class="actor-type">
+        {{ localize "CY.Vehicle" }}
+      </div>
+      {{> systems/cy_borg/templates/actor/hit-points.html}}
+    </div>
+  </div>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="dossier"><img class="tab-icon" title="{{localize 'CY.Dossier'}}" src="/systems/cy_borg/assets/images/ui/tab_dossier.png" /></a>
+    <a class="item" data-tab="combat"><img class="tab-icon" title="{{localize 'CY.Combat'}}" src="/systems/cy_borg/assets/images/ui/tab_combat.png" /></a>
+    <a class="item" data-tab="equipment"><img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy_borg/assets/images/ui/tab_equipment.png" /></a>
+  </nav>
+  
+  <div class="sheet-body">
+    {{> systems/cy_borg/templates/actor/dossier-tab.html}}
+    {{> systems/cy_borg/templates/actor/combat-tab.html}}
+    {{> systems/cy_borg/templates/actor/equipment-tab.html}}
+  </div> 
+</form>
+
