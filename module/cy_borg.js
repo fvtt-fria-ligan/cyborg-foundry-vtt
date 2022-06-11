@@ -56,11 +56,13 @@ const registerSheets = () => {
 
 const registerHandlebarsPartials = async () => {
   await loadTemplates([
+    "systems/cy_borg/templates/actor/abilities.html",
     "systems/cy_borg/templates/actor/apps-tab.html",
     "systems/cy_borg/templates/actor/combat-tab.html",
     "systems/cy_borg/templates/actor/dossier-tab.html",
     "systems/cy_borg/templates/actor/equipment-tab.html",
     "systems/cy_borg/templates/actor/feats-tab.html",
+    "systems/cy_borg/templates/actor/hit-points.html",
     "systems/cy_borg/templates/actor/nano-tab.html",
     "systems/cy_borg/templates/item/item-base-fields.html",
     "systems/cy_borg/templates/item/item-description-tab.html",

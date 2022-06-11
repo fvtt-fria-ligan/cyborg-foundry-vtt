@@ -132,7 +132,15 @@
           <div class="field-value">
             <input class="field-input" type="checkbox" name="data.onlyNano" {{checked data.data.onlyNano}} />
           </div>
-        </div>          
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.PostCreateMacro'}}
+          </div>
+          <div class="field-value">
+            <textarea name="data.postCreateMacro" rows="4">{{data.data.postCreateMacro}}</textarea> 
+          </div>
+        </div>
       </div>
     </div>      
   </div>

@@ -323,6 +323,7 @@ const rollScvmForClass = async (clazz) => {
     knowledge,
     name,
     npcs: npcData,
+    postCreateMacro: clazz.data.data.postCreateMacro,
     presence,
     strength,
     tokenImg: clazz.img,
@@ -369,7 +370,16 @@ const scvmToActorData = (s) => {
 const createActorWithScvm = async (s) => {
   const data = scvmToActorData(s);
   // use CYActor.create() so we get default disposition, actor link, vision, etc
-  const actor = await CYActor.create(data);
+  const actor = await CYActor.create(data);  
+  if (s.postCreateMacro) {
+    const [packName, macroName] = s.postCreateMacro.split(",");
+    const pack = game.packs.get(packName);
+    const content = await pack.getDocuments();
+    const macro = content.find(x => x.name === macroName);
+    if (macro) {
+      macro.execute({actor});
+    }
+  }
   actor.sheet.render(true);
 
   // create any npcs
