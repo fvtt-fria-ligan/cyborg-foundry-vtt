@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "foe"],
+    "types": ["character", "foe", "vehicle"],
     "templates": {
       "common": {
         "abilities": {
@@ -31,28 +31,27 @@
       "templates": ["common"],
       "appFumbleOn": 1,
       "credits": 0,
-      "currentObsession": "",
       "debt": {
         "amount": 0,
         "to": ""
       },
-      "feature": "",
       "glitches": {
         "min": 0,
         "max": 0,
         "value": 0
       },
-      "nanoFumbleOn": 1,
-      "quirk": "",
-      "style": "",
-      "wants": ""
+      "nanoFumbleOn": 1
     },
     "foe": {
       "armor": "",
       "attack": "",
       "morale": 7,
       "special": ""
-    }
+    },
+    "vehicle": {
+      "templates": ["common"],
+      "ownerId": null
+    }    
   },
   "Item": {
     "types": [
@@ -100,6 +99,7 @@
       "onlyApp": false,
       "onlyCybertech": false,
       "onlyNano": false,
+      "postCreateMacro": "",
       "presence": "3d6",
       "rolls": null,
       "strength": "3d6",
@@ -117,10 +117,12 @@
     },
     "infestation": {
       "description": "",
+      "nanoId": null,
       "triggered": ""
     },
     "nanoPower": {
-      "description": ""
+      "description": "",
+      "infestationId": null
     },
     "weapon": {
       "templates": ["baseEquipment"],
