@@ -1,7 +1,6 @@
 import { CY } from "../config.js";
 import { trackCarryingCapacity } from "../settings.js";
 
-
 /**
  * @extends {Actor}
  */
@@ -72,8 +71,16 @@ import { trackCarryingCapacity } from "../settings.js";
     return this._first(CY.itemTypes.armor);
   }
 
+  findItem(itemType, itemName) {
+    return this.data.items.filter(x => x.data.type === itemType && x.name === itemName).shift();
+  }
+
   cybertechCount() {
     return this.data.items
     .reduce((count, item) => count + (item.data.data.cybertech ? 1 : 0), 0);
+  }
+
+  ownedVehicles() {
+    return game.actors.filter(x => x.data.type === "vehicle" && x.data.data.ownerId == this.id);
   }
  }

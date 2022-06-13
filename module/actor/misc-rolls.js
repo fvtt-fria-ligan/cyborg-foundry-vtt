@@ -159,7 +159,6 @@ export const rollUseNano = async (actor, itemId) => {
     useOutcome = game.i18n.localize("CY.UseNanoFumble");
     // and trigger the nano's infestation
     // TODO
-    console.log(nano);
   } else if (useRoll.total < useDR) {
     // failure
     useOutcome = game.i18n.localize("CY.Failure");

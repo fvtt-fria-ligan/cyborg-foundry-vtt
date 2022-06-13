@@ -22,8 +22,11 @@ export class CYVehicleSheet extends CYActorSheet {
   /** @override */
   getData() {
     const superData = super.getData();
+    if (superData.data.data.ownerId) {
+      superData.data.data.owner = game.actors.get(superData.data.data.ownerId);
+    }
     return superData;
-  }
+  }  
 
   /** @override */
   activateListeners(html) {

@@ -108,7 +108,6 @@ const classStartingWeapons = async (clazz) => {
         mag.data.name = `${weapon.name} ${mag.name}`;
         // mag.data._source.data.quantity = magRoll.total;
         mag.data.data.quantity = magRoll.total;
-        console.log(mag);
         mags.push(mag);
       }      
     }
@@ -371,6 +370,18 @@ const createActorWithScvm = async (s) => {
   const data = scvmToActorData(s);
   // use CYActor.create() so we get default disposition, actor link, vision, etc
   const actor = await CYActor.create(data);  
+  actor.sheet.render(true);
+
+  // create any npcs
+  for (const npcData of s.npcs) {
+    if (npcData.type === "vehicle") {
+      npcData.data.ownerId = actor.id;
+    }
+    const npcActor = await CYActor.create(npcData);
+    npcActor.sheet.render(true);
+  }
+
+  // run post-create macro, if any
   if (s.postCreateMacro) {
     const [packName, macroName] = s.postCreateMacro.split(",");
     const pack = game.packs.get(packName);
@@ -379,13 +390,6 @@ const createActorWithScvm = async (s) => {
     if (macro) {
       macro.execute({actor});
     }
-  }
-  actor.sheet.render(true);
-
-  // create any npcs
-  for (const npcData of s.npcs) {
-    const npcActor = await CYActor.create(npcData);
-    npcActor.sheet.render(true);
   }
 };
 

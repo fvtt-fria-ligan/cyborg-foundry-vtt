@@ -1,5 +1,4 @@
 import { CYActorSheet } from "./actor-sheet.js";
-import { CY } from "../config.js";
 import { showAttackDialog } from "../combat/attack-dialog.js";
 import { showDefendDialog } from "../combat/defend-dialog.js";
 import { rollPartyInitiative } from "../combat/initiative.js";
@@ -9,7 +8,6 @@ import { rollLevelUp } from "./levelup.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
 import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
 
-const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
 
 export class CYCharacterSheet extends CYActorSheet {
   /** @override */
@@ -28,36 +26,6 @@ export class CYCharacterSheet extends CYActorSheet {
       ],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
     });
-  }
-
-  /** @override */
-  getData() {
-    const superData = super.getData();
-    superData.data.data.class = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.class)
-      .pop();
-    superData.data.data.apps = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.app)
-      .sort(byName);
-    superData.data.data.armor = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
-      .sort(byName);
-    superData.data.data.equipment = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
-      .sort(byName);
-    superData.data.data.feats = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.feat)
-      .sort(byName);
-    superData.data.data.infestations = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.infestation)
-      .sort(byName);
-    superData.data.data.nanoPowers = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
-      .sort(byName);
-    superData.data.data.weapons = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
-      .sort(byName);
-    return superData;
   }
 
   /** @override */
