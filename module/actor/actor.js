@@ -1,4 +1,5 @@
 import { CY } from "../config.js";
+import { CYItem } from "../item/item.js";
 import { trackCarryingCapacity } from "../settings.js";
 import { documentFromPack } from "../packutils.js";
 
@@ -29,14 +30,29 @@ import { documentFromPack } from "../packutils.js";
   }
 
   /** @override */
-  _onCreate(data, options, userId) {
+  async _onCreate(data, options, userId) {
     if (data.type === "character") {
       // give Characters a default class
       this.addDefaultClass();
       // give any nanos linked infestations
-      this.linkNanos();
+      await this.linkNanos();
     }
     super._onCreate(data, options, userId);
+  }
+
+  /** @override */
+  async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
+    console.log("_onCreateEmbeddedDocuments");
+    super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+    if (this.data.type === "character") {
+      console.log(documents);
+      for (const doc of documents) {
+        if (doc instanceof CYItem && doc.data.type === "nanoPower" && !doc.data.data.infestionId) {
+          await doc.createLinkedInfestation();
+        }
+      }
+      // this.linkNanos();
+    }
   }
 
   async addDefaultClass() {
