@@ -153,6 +153,8 @@
   "CY.ToughnessAbbrev": "TOU",
   "CY.Triggered": "Triggered",
   "CY.Use": "Use",
+  "CY.UseApp": "Use App",
+  "CY.UseNano": "Use Nano",
   "CY.UseAppFumble": "Fumble: app is burned for the day and you trigger a Backlash.",
   "CY.UseNanoFumble": "Fumble: infestation triggered!",
   "CY.UsesAmmo": "Uses Ammo",

@@ -30,7 +30,10 @@ const USE_NANO_ROLL_CARD_TEMPLATE =
   if (isFumble) {    
     useOutcome = game.i18n.localize("CY.UseNanoFumble");
     // and trigger the nano's infestation
-    // TODO
+    const infestation = nano.linkedInfestation();
+    if (infestation) {
+      useOutcome += ` ${infestation.name}: ${infestation.data.data.triggered}`;
+    }
   } else if (useRoll.total < useDR) {
     // failure
     useOutcome = game.i18n.localize("CY.Failure");
@@ -66,6 +69,8 @@ const USE_NANO_ROLL_CARD_TEMPLATE =
   });
 
   if (isFumble) {
+    // trigger infestation
+
   }
 
   // increment nanoFumbleOn

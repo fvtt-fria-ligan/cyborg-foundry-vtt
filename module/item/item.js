@@ -6,18 +6,21 @@ import { drawDocument } from "../packutils.js";
  export class CYItem extends Item {
   linkedNano() {
     if (this.data.data.nanoId) {
-      return game.items.find(x => x.id == this.data.data.nanoId);
+      return this.findParentItem(this.data.data.nanoId);
     }
   }
 
   linkedInfestation() {
     if (this.data.data.infestationId) {
-      return game.items.find(x => x.id == this.data.data.infestationId);
+      return this.findParentItem(this.data.data.infestationId);
     }
   }
 
+  findParentItem(id) {
+    return this.parent.data.items.filter(x => x.id === id).shift();
+  }
+
   async createLinkedInfestation() {
-    console.log("Creating linked infestion...");
     const infestation = await drawDocument("cy_borg-core.random-tables", "Infestations");
     if (!infestation) {
       console.error("Failed to draw an infestation");
