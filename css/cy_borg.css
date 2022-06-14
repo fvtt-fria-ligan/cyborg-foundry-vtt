@@ -761,17 +761,17 @@
 }
 
 .chat-message.emote {
-  background: #f3edde;
+  background: #1C1E23;
   border: 2px solid #887c5d;
 }
 
 .chat-message.whisper {
-  background: #e8e8ef;
+  background: #1C1E23;
   border: 2px solid #545469;
 }
 
 .chat-message.blind {
-  background: #f5eaf5;
+  background: #1C1E23;
   border: 2px solid #6b476b;
 }
 

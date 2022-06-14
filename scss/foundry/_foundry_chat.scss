@@ -94,15 +94,15 @@
   word-break: break-word;
 }
 .chat-message.emote {
-  background: #f3edde;
+  background: $near-black;
   border: 2px solid #887c5d;
 }
 .chat-message.whisper {
-  background: #e8e8ef;
+  background: $near-black;
   border: 2px solid #545469;
 }
 .chat-message.blind {
-  background: #f5eaf5;
+  background: $near-black;
   border: 2px solid #6b476b;
 }
 .chat-message .cards-notification {
