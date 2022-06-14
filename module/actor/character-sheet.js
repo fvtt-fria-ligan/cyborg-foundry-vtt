@@ -1,12 +1,14 @@
-import { CYActorSheet } from "./actor-sheet.js";
 import { showAttackDialog } from "../combat/attack-dialog.js";
 import { showDefendDialog } from "../combat/defend-dialog.js";
 import { rollPartyInitiative } from "../combat/initiative.js";
 import { showRestDialog } from "../combat/rest-dialog.js";
 import { rollBattered } from "../combat/battered.js";
-import { rollLevelUp } from "./levelup.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
-import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
+import { CYActorSheet } from "./actor-sheet.js";
+import { rollUseApp } from "./apps.js";
+import { rollLevelUp } from "./level-up.js";
+import { showGlitchesHelp } from "./glitches.js";
+import { rollUseNano } from "./nanos.js";
 import { byName } from "../utils.js";
 
 

@@ -1,5 +1,4 @@
 import { CYActorSheet } from "./actor-sheet.js";
-import { rollMorale, rollReaction } from "./misc-rolls.js";
 
 export class CYVehicleSheet extends CYActorSheet {
   /** @override */
@@ -26,11 +25,5 @@ export class CYVehicleSheet extends CYActorSheet {
       superData.data.data.owner = game.actors.get(superData.data.data.ownerId);
     }
     return superData;
-  }  
-
-  /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
   }
-
  }

@@ -1,5 +1,6 @@
 import { CYActorSheet } from "./actor-sheet.js";
-import { rollMorale, rollReaction } from "./misc-rolls.js";
+import { rollMorale } from "./morale.js";
+import { rollReaction } from "./reaction.js";
 
 export class CYFoeSheet extends CYActorSheet {
   /** @override */
