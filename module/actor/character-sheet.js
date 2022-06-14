@@ -7,6 +7,7 @@ import { rollBattered } from "../combat/battered.js";
 import { rollLevelUp } from "./levelup.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
 import { rollUseApp, rollUseNano, showGlitchesHelp } from "./misc-rolls.js";
+import { byName } from "../utils.js";
 
 
 export class CYCharacterSheet extends CYActorSheet {
@@ -26,6 +27,26 @@ export class CYCharacterSheet extends CYActorSheet {
       ],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
     });
+  }
+
+    //   this.data.data.nano = game.items.find(x => x.data._id === this.data.data.nanoId);
+
+  /** @override */
+  getData() {
+    const superData = super.getData();
+    superData.data.data.class = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.class)
+      .pop();
+    superData.data.data.apps = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.app)
+      .sort(byName);
+    superData.data.data.infestations = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.infestation)
+      .sort(byName);
+    superData.data.data.nanoPowers = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
+      .sort(byName);
+    return superData;
   }
 
   /** @override */

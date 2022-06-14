@@ -1,5 +1,6 @@
 import { CY } from "../config.js";
 import { trackCarryingCapacity } from "../settings.js";
+import { documentFromPack } from "../packutils.js";
 
 /**
  * @extends {Actor}
@@ -31,10 +32,26 @@ import { trackCarryingCapacity } from "../settings.js";
   _onCreate(data, options, userId) {
     if (data.type === "character") {
       // give Characters a default class
-      // TODO
-      // this._addDefaultClass();
+      this.addDefaultClass();
+      // give any nanos linked infestations
+      this.linkNanos();
     }
     super._onCreate(data, options, userId);
+  }
+
+  async addDefaultClass() {
+    const clazz = await documentFromPack("cy_borg-core.class-classless-punk", "Classless Punk");
+    if (clazz) {
+      await this.createEmbeddedDocuments("Item", [duplicate(clazz.data)]);
+    }
+  }
+
+  async linkNanos() {
+    for (const item of this.data.items) {
+      if (item.type === "nanoPower" && !item.data.data.infestionId) {
+        await item.createLinkedInfestation();
+      }
+    }
   }
 
   // ===== encumbrance =====
