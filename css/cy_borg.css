@@ -393,6 +393,10 @@
         text-align: center; }
     .window-app.cy.dialog .window-content form.dialog .form-group.disabled {
       color: gray; }
+      .window-app.cy.dialog .window-content form.dialog .form-group.disabled input[type="number"],
+      .window-app.cy.dialog .window-content form.dialog .form-group.disabled input[type="text"],
+      .window-app.cy.dialog .window-content form.dialog .form-group.disabled select {
+        color: gray; }
     .window-app.cy.dialog .window-content form.dialog input[type="number"],
     .window-app.cy.dialog .window-content form.dialog input[type="text"],
     .window-app.cy.dialog .window-content form.dialog select {

@@ -73,6 +73,9 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     takeDamage = `${game.i18n.localize(
       "CY.Take"
     )} ${damage} ${game.i18n.localize("CY.Damage")}`;
+    if (damage >= 5 && actor.unlinkedInfestations()) {
+      takeDamage += "... infestations may be triggered!"
+    }
   }
 
   const rollResult = {

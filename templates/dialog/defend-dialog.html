@@ -3,7 +3,7 @@
     <label>{{localize 'CY.Defend'}} {{localize 'CY.DR'}}:</label>
     <div class="field-value">
       <input
-      type="text"
+      type="number"
       name="defense-base-dr"
       value="{{defendDR}}"
       placeholder="12"
@@ -11,15 +11,14 @@
       />      
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group disabled">
     <label>{{localize 'CY.Modified'}} {{localize 'CY.DR'}}:</label>
     <div class="field-value">
       <input
-      type="text"
+      type="number"
       class="readonly"
       name="defense-modified-dr"
       value=""
-      placeholder="12"
       readonly
       />
     </div>
@@ -42,6 +41,6 @@
     </div>
   </div>
   <div class="button-row">
-    <button class="dialog-button defend-button" type="submit" name="Defend">{{ localize "CY.Defend" }}</button>
+    <button class="dialog-button defend-button" type="button" name="Defend">{{ localize "CY.Defend" }}</button>
   </div>
 </form>

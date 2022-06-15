@@ -30,6 +30,11 @@
       }
       .form-group.disabled {
         color: $disabled-color;
+        input[type="number"],
+        input[type="text"],
+        select {
+          color: $disabled-color;
+        }
       }
       input[type="number"],
       input[type="text"],

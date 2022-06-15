@@ -92,26 +92,26 @@ export class DefendDialog extends Application {
     if (this.actor.isEncumbered()) {
       drModifier += 2;
     }
-    const modifiedDr = parseInt(baseInput[0].value) + drModifier;
-    // TODO: this is a fragile way to find the other input field
-    const modifiedInput = baseInput
-      .parent()
-      .parent()
-      .find("input[name='defense-modified-dr']");
-    modifiedInput.val(modifiedDr.toString());
+    const modifiedDR = parseInt(baseInput.val()) + drModifier;
+    const form = $(baseInput).closest("form.defend-dialog");
+    const modifiedInput = $(form).find("input[name=defense-modified-dr]")
+    console.log(modifiedDR);
+    console.log(modifiedInput);
+    modifiedInput.val(modifiedDR);
   }
 
   async _onDefend(event) {
     event.preventDefault();
-    const form = $(event.currentTarget).parents(".defend-dialog")[0];
-    const baseDRStr = $(form).find("input[name=defense-base-dr]").val();
-    const baseDR = parseInt(baseDRStr);
-    const modifiedDRStr = $(form).find("input[name=defense-modified-dr]").val();
-    const modifiedDR = parseInt(modifiedDRStr);
+    const form = $(event.currentTarget).closest("form.defend-dialog");
+    const baseDR = parseInt($(form).find("input[name=defense-base-dr]").val());
+    const modifiedDR = parseInt($(form).find("input[name=defense-modified-dr]").val());
     const incomingAttack = $(form).find("input[name=incoming-attack]").val();
 
     if (!baseDR || !modifiedDR || !incomingAttack) {
       // TODO: prevent dialog/form submission w/ required field(s)
+      console.log(baseDR);
+      console.log(modifiedDR);
+      console.log(incomingAttack);
       return;
     }
 
