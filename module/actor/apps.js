@@ -1,7 +1,6 @@
 import { CY } from "../config.js";
-import { diceSound, showDice } from "../dice.js";
-import { d20Formula } from "../utils.js";
-
+import { showDice } from "../dice.js";
+import { d20Formula, showOutcomeRollCard } from "../utils.js";
   
 /**
  * Roll for actor to use an app.
@@ -46,15 +45,7 @@ import { d20Formula } from "../utils.js";
     outcome: useOutcome,
     roll: useRoll,
   };
-  const html = await renderTemplate(
-    "systems/cy_borg/templates/chat/outcome-roll-card.html",
-    rollResult
-  );
-  ChatMessage.create({
-    content: html,
-    sound: diceSound(),
-    speaker: ChatMessage.getSpeaker({ actor }),
-  });
+  await showOutcomeRollCard(actor, rollResult);
 
   if (isFumble) {
     // roll on the App Backlashes table

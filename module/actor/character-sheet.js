@@ -136,7 +136,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   async _initiative(event) {
     event.preventDefault();
-    await rollPartyInitiative();
+    await rollPartyInitiative(this.actor);
   }
 
   /**

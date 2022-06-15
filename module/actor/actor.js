@@ -2,6 +2,7 @@ import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { trackCarryingCapacity } from "../settings.js";
 import { documentFromPack } from "../packutils.js";
+import { rollCyRage } from "./cybertech.js";
 
 /**
  * @extends {Actor}
@@ -125,5 +126,9 @@ import { documentFromPack } from "../packutils.js";
 
   unlinkedInfestations() {
     return this.data.items.filter(x => x.data.type === CY.itemTypes.infestation && !x.data.data.nanoId);
+  }
+
+  async testCyRage() {
+    await rollCyRage(this);
   }
  }

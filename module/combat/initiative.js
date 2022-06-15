@@ -1,34 +1,26 @@
 import { diceSound, showDice } from "../dice.js";
+import { showOutcomeRollCard } from "../utils.js";
 
 const INDIVIDUAL_INITIATIVE_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/individual-initiative-roll-card.html";
 
-export const rollPartyInitiative = async () => {
+export const rollPartyInitiative = async (actor) => {
   const initiativeRoll = new Roll("d6", {});
   initiativeRoll.evaluate({ async: false });
   await showDice(initiativeRoll);
-
   let outcomeText = "";
   if (initiativeRoll.total <= 3) {
     outcomeText = game.i18n.localize("CY.InitiativeEnemiesActFirst");
   } else {
     outcomeText = game.i18n.localize("CY.InitiativePCsActFirst");
   }
-
   const rollResult = {
     cardTitle: game.i18n.localize('CY.PartyInitiative'),
     formula: "1d6",
     roll: initiativeRoll,
     outcome: outcomeText,
   };
-  const html = await renderTemplate(
-    "systems/cy_borg/templates/chat/outcome-roll-card.html",
-    rollResult
-  );
-  await ChatMessage.create({
-    content: html,
-    sound: diceSound(),
-  });
+  showOutcomeRollCard(actor, rollResult);
 
   // if a combat/encounter is happening, apply player/enemy ordering
   if (game.combats && game.combat) {

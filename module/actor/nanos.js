@@ -1,5 +1,5 @@
-import { diceSound, showDice } from "../dice.js";
-import { d20Formula } from "../utils.js";
+import { showDice } from "../dice.js";
+import { d20Formula, showOutcomeRollCard } from "../utils.js";
 
 
 /**
@@ -57,20 +57,7 @@ export const rollUseNano = async (actor, itemId) => {
     roll: useRoll,
     takeDamage,
   };
-  const html = await renderTemplate(
-    "systems/cy_borg/templates/chat/outcome-roll-card.html",
-    rollResult
-  );
-  ChatMessage.create({
-    content: html,
-    sound: diceSound(),
-    speaker: ChatMessage.getSpeaker({ actor }),
-  });
-
-  if (isFumble) {
-    // trigger infestation
-
-  }
+  await showOutcomeRollCard(actor, rollResult);
 
   // increment nanoFumbleOn
   const newNanoFumbleOn = actor.data.data.nanoFumbleOn + 1;

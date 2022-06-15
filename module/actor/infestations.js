@@ -1,5 +1,4 @@
-import { diceSound } from "../dice.js";
-import { d20Formula } from "../utils.js";
+import { d20Formula, showOutcomeRollCard } from "../utils.js";
 
 
 export const rollInfestationTriggers = async (actor) => {
@@ -16,7 +15,6 @@ export const rollInfestationTriggers = async (actor) => {
       // failed
       outcome = `${infestation.name} ${game.i18n.localize("CY.Triggered")}: ${infestation.data.data.triggered}`;
     }
-
     const rollResult = {
       cardCssClass: "trigger-infestation-roll-card",
       cardTitle: game.i18n.localize("CY.TriggerInfestation"),
@@ -24,15 +22,7 @@ export const rollInfestationTriggers = async (actor) => {
       formula: `1d20 + ${game.i18n.localize("CY.PresenceAbbrev")}`,
       outcome,
       roll,
-    };    
-    const html = await renderTemplate(
-      "systems/cy_borg/templates/chat/outcome-roll-card.html",
-      rollResult
-    );
-    ChatMessage.create({
-      content: html,
-      sound: diceSound(),
-      speaker: ChatMessage.getSpeaker({ actor }),
-    });
+    };
+    await showOutcomeRollCard(actor, rollResult);
   }
 };
