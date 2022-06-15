@@ -12,17 +12,23 @@ import { documentFromPack } from "../packutils.js";
   static async create(data, options = {}) {
     data.token = data.token || {};
     let defaults = {};
-    if (data.type === "character") {
+    if (data.type === CY.actorTypes.character) {
       defaults = {
         actorLink: true,
         disposition: 1,
         vision: true,
       };
-    } else if (data.type === "foe") {
+    } else if (data.type === CY.actorTypes.foe) {
       defaults = {
         actorLink: false,
         disposition: -1,
         vision: false,
+      };
+    } else if (data.type === CY.actorTypes.vehicle) {
+      defaults = {
+        actorLink: true,
+        disposition: 0,
+        vision: true,
       };
     } 
     mergeObject(data.token, defaults, { overwrite: false });
@@ -31,7 +37,7 @@ import { documentFromPack } from "../packutils.js";
 
   /** @override */
   async _onCreate(data, options, userId) {
-    if (data.type === "character") {
+    if (data.type === CY.actorTypes.character) {
       // give Characters a default class
       this.addDefaultClass();
       // give any nanos linked infestations
@@ -44,10 +50,10 @@ import { documentFromPack } from "../packutils.js";
   async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
     console.log("_onCreateEmbeddedDocuments");
     super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
-    if (this.data.type === "character") {
+    if (this.data.type === CY.actorTypes.character) {
       console.log(documents);
       for (const doc of documents) {
-        if (doc instanceof CYItem && doc.data.type === "nanoPower" && !doc.data.data.infestionId) {
+        if (doc instanceof CYItem && doc.data.type === CY.itemTypes.nanoPower && !doc.data.data.infestionId) {
           await doc.createLinkedInfestation();
         }
       }
@@ -64,7 +70,7 @@ import { documentFromPack } from "../packutils.js";
 
   async linkNanos() {
     for (const item of this.data.items) {
-      if (item.type === "nanoPower" && !item.data.data.infestionId) {
+      if (item.type === CY.itemTypes.nanoPower && !item.data.data.infestionId) {
         await item.createLinkedInfestation();
       }
     }
@@ -114,6 +120,10 @@ import { documentFromPack } from "../packutils.js";
   }
 
   ownedVehicles() {
-    return game.actors.filter(x => x.data.type === "vehicle" && x.data.data.ownerId == this.id);
+    return game.actors.filter(x => x.data.type === CY.actorTypes.vehicle && x.data.data.ownerId == this.id);
+  }
+
+  unlinkedInfestations() {
+    return this.data.items.filter(x => x.data.type === CY.itemTypes.infestation && !x.data.data.nanoId);
   }
  }

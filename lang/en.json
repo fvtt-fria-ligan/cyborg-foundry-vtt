@@ -152,6 +152,8 @@
   "CY.Toughness": "Toughness",
   "CY.ToughnessAbbrev": "TOU",
   "CY.Triggered": "Triggered",
+  "CY.TriggerInfestation": "Trigger Infestation",
+  "CY.Untriggered": "untriggered",
   "CY.Use": "Use",
   "CY.UseApp": "Use App",
   "CY.UseNano": "Use Nano",

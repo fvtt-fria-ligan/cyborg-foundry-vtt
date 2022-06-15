@@ -2,6 +2,12 @@ export const CY = {};
 
 CY.system = "cy_borg";
 
+CY.actorTypes = {
+  character: "character",
+  foe: "foe",
+  vehicle: "vehicle"
+};
+
 CY.itemTypes = {
   app: "app",
   armor: "armor",

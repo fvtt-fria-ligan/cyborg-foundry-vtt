@@ -1,0 +1,31 @@
+<form class="roll-card {{cardCssClass}}">
+  <div class="card-title">{{cardTitle}}</div>
+  <div class="roll">
+    <div class="roll-title">
+      <span
+        >{{formula}} {{localize 'CY.Vs'}}
+        {{localize 'CY.DR'}} {{dr}}</span
+      >
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal roll}}</span>
+    </div>
+  </div>
+  <div class="outcome-text">
+    <span class="attack-outcome">{{outcome}}</span>
+  </div>
+  {{#if damageRoll}}
+  <div class="damage-roll">
+    <div class="roll-title">
+      <span>{{localize 'CY.Damage'}}: {{damageRoll.formula}}</span>
+    </div>
+    <div class="roll-result">
+      <span>{{xtotal damageRoll}}</span>
+    </div>
+  </div>
+  {{/if}} {{#if takeDamage}}
+  <div class="outcome-text">
+    <span class="take-damage">{{takeDamage}}</span>
+  </div>
+  {{/if}}  
+</form>

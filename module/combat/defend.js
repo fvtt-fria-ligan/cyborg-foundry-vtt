@@ -1,5 +1,6 @@
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
-
+import { rollInfestationTriggers } from "../actor/infestations.js";
+import { d20Formula } from "../utils.js";
 
 const DEFEND_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/defend-roll-card.html";
@@ -9,7 +10,7 @@ const DEFEND_ROLL_CARD_TEMPLATE =
  */
 export const rollDefend = async (actor, defendDR, incomingAttack) => {
   const agility = actor.data.data.abilities.agility;
-  const defendFormula = actor.d20Formula(agility);
+  const defendFormula = d20Formula(agility);
 
   // roll 1: defend
   const defendRoll = new Roll(defendFormula);
@@ -24,6 +25,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
   let damageRoll = null;
   let armorRoll = null;
   let defendOutcome = null;
+  let damage = 0;
   let takeDamage = null;
 
   if (isCrit) {
@@ -49,7 +51,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     damageRoll.evaluate({ async: false });
     const dicePromises = [];
     addShowDicePromise(dicePromises, damageRoll);
-    let damage = damageRoll.total;
+    damage = damageRoll.total;
 
     // roll 3: damage reduction from equipped armor, if any
     let damageReductionDie = "";
@@ -85,6 +87,9 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     takeDamage,
   };
   await renderDefendRollCard(actor, rollResult);
+  if (damage >= 5) {
+    await rollInfestationTriggers(actor);
+  }
 };
 
 /**
