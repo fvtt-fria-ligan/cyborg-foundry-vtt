@@ -12,6 +12,17 @@
           <div class="item-field-row">        
             {{item.name}}
           </div>
+          <div class="item-field-row">        
+            {{localize 'CY.Quantity'}}: {{item.data.quantity}}
+            &nbsp;
+            <a class="item-control item-qty-plus" title="Add Quantity"
+            ><i class="fas fa-plus"></i
+          ></a>
+          <a class="item-control item-qty-minus" title="Subtract Quantity"
+            ><i class="fas fa-minus"></i
+          ></a>
+    
+          </div>
           <div class="item-field-row">
             <div class="item-controls">
               <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
