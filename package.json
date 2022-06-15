@@ -19,7 +19,6 @@
   "devDependencies": {
     "@typhonjs-fvtt/eslint-config-foundry.js": "^0.8.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-i18n-json": "^3.1.0",
     "husky": "^7.0.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.0",
