@@ -2,9 +2,6 @@ import { CY } from "../config.js";
 import { diceSound, showDice } from "../dice.js";
 import { d20Formula } from "../utils.js";
 
-const USE_APP_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/use-app-roll-card.html";
-
   
 /**
  * Roll for actor to use an app.
@@ -42,13 +39,15 @@ const USE_APP_ROLL_CARD_TEMPLATE =
   }
 
   const rollResult = {
-    useDR,
-    useFormula: `1d20 + ${game.i18n.localize("CY.KnowledgeAbbrev")}`,
-    useOutcome,
-    useRoll,
+    cardCssClass: "use-app-roll-card",
+    cardTitle: game.i18n.localize("CY.UseApp"),
+    dr: useDR,
+    formula: `1d20 + ${game.i18n.localize("CY.KnowledgeAbbrev")}`,
+    outcome: useOutcome,
+    roll: useRoll,
   };
   const html = await renderTemplate(
-    USE_APP_ROLL_CARD_TEMPLATE,
+    "systems/cy_borg/templates/chat/outcome-roll-card.html",
     rollResult
   );
   ChatMessage.create({

@@ -1,8 +1,6 @@
 import { diceSound } from "../dice.js";
 import { d20Formula } from "../utils.js";
 
-const OUTCOME_ROLL_CARD_TEMPLATE =
-"systems/cy_borg/templates/chat/outcome-roll-card.html";
 
 export const rollInfestationTriggers = async (actor) => {
   const dr = 10;
@@ -28,7 +26,7 @@ export const rollInfestationTriggers = async (actor) => {
       roll,
     };    
     const html = await renderTemplate(
-      OUTCOME_ROLL_CARD_TEMPLATE,
+      "systems/cy_borg/templates/chat/outcome-roll-card.html",
       rollResult
     );
     ChatMessage.create({

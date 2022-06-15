@@ -2,10 +2,7 @@
   <div class="card-title">{{cardTitle}}</div>
   <div class="roll">
     <div class="roll-title">
-      <span
-        >{{formula}} {{localize 'CY.Vs'}}
-        {{localize 'CY.DR'}} {{dr}}</span
-      >
+      <span>{{formula}}{{#if dr}} {{localize 'CY.Vs'}} {{localize 'CY.DR'}} {{dr}}{{/if}}</span>
     </div>
     <div class="roll-result">
       <span>{{xtotal roll}}</span>

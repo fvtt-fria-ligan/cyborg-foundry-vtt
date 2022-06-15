@@ -1,14 +1,11 @@
 import { diceSound, showDice } from "../dice.js";
 import { d20Formula } from "../utils.js";
 
-const USE_NANO_ROLL_CARD_TEMPLATE =
-"systems/cy_borg/templates/chat/use-nano-roll-card.html";
-
 
 /**
  * Roll for actor to use a nano power.
  */
- export const rollUseNano = async (actor, itemId) => {
+export const rollUseNano = async (actor, itemId) => {
   const nano = actor.items.get(itemId);
   if (!nano) {
     return;
@@ -51,15 +48,17 @@ const USE_NANO_ROLL_CARD_TEMPLATE =
   }
 
   const rollResult = {
+    cardCssClass: "use-nano-roll-card",
+    cardTitle: game.i18n.localize("CY.UseNano"),
     damageRoll,
-    useDR,
-    useFormula: `1d20 + ${game.i18n.localize("CY.PresenceAbbrev")}`,
-    useOutcome,
-    useRoll,
+    dr: useDR,
+    formula: `1d20 + ${game.i18n.localize("CY.PresenceAbbrev")}`,
+    outcome: useOutcome,
+    roll: useRoll,
     takeDamage,
   };
   const html = await renderTemplate(
-    USE_NANO_ROLL_CARD_TEMPLATE,
+    "systems/cy_borg/templates/chat/outcome-roll-card.html",
     rollResult
   );
   ChatMessage.create({

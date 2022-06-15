@@ -2,8 +2,6 @@ import { diceSound, showDice } from "../dice.js";
 
 const INDIVIDUAL_INITIATIVE_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/individual-initiative-roll-card.html";
-const PARTY_INITIATIVE_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/party-initiative-roll-card.html";
 
 export const rollPartyInitiative = async () => {
   const initiativeRoll = new Roll("d6", {});
@@ -12,17 +10,19 @@ export const rollPartyInitiative = async () => {
 
   let outcomeText = "";
   if (initiativeRoll.total <= 3) {
-    outcomeText = game.i18n.localize("MB.InitiativeEnemiesActFirst");
+    outcomeText = game.i18n.localize("CY.InitiativeEnemiesActFirst");
   } else {
-    outcomeText = game.i18n.localize("MB.InitiativePCsActFirst");
+    outcomeText = game.i18n.localize("CY.InitiativePCsActFirst");
   }
 
   const rollResult = {
-    initiativeRoll,
-    outcomeText,
+    cardTitle: game.i18n.localize('CY.PartyInitiative'),
+    formula: "1d6",
+    roll: initiativeRoll,
+    outcome: outcomeText,
   };
   const html = await renderTemplate(
-    PARTY_INITIATIVE_ROLL_CARD_TEMPLATE,
+    "systems/cy_borg/templates/chat/outcome-roll-card.html",
     rollResult
   );
   await ChatMessage.create({
@@ -47,7 +47,7 @@ export const rollIndividualInitiative = async (actor) => {
       game.combat.rollInitiative(combatant.id);
     } else {
       // the actor hasn't been added to the combat
-      ui.notifications.warn(`${game.i18n.localize("MB.ActorNotInEncounter")}!`);
+      ui.notifications.warn(`${game.i18n.localize("CY.ActorNotInEncounter")}!`);
     }
     return;
   }
