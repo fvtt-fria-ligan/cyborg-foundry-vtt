@@ -1,24 +1,28 @@
 <form class="dialog defend-dialog">
   <div class="form-group">
     <label>{{localize 'CY.Defend'}} {{localize 'CY.DR'}}:</label>
-    <input
+    <div class="field-value">
+      <input
       type="text"
       name="defense-base-dr"
       value="{{defendDR}}"
       placeholder="12"
       data-dtype="Number"
-    />
+      />      
+    </div>
   </div>
   <div class="form-group">
     <label>{{localize 'CY.Modified'}} {{localize 'CY.DR'}}:</label>
-    <input
+    <div class="field-value">
+      <input
       type="text"
       class="readonly"
       name="defense-modified-dr"
       value=""
       placeholder="12"
       readonly
-    />
+      />
+    </div>
   </div>
   {{# if drModifiers}}
   <div class="dr-modifier">
@@ -27,13 +31,15 @@
   {{/if}}
   <div class="form-group">
     <label>{{localize 'CY.IncomingAttack'}}:</label>
-    <input
+    <div class="field-value">
+      <input
       type="text"
       name="incoming-attack"
       value="{{incomingAttack}}"
       placeholder="1d6"
       data-dtype="String"
-    />
+      />      
+    </div>
   </div>
   <div class="button-row">
     <button class="dialog-button defend-button" type="submit" name="Defend">{{ localize "CY.Defend" }}</button>
