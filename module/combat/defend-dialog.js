@@ -61,7 +61,7 @@ export class DefendDialog extends Application {
         );
       }
     }
-    if (this.actor.isEncumbered()) {
+    if (this.actor.isEncumbered) {
       drModifiers.push(
         `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
           "CY.DR"
@@ -89,7 +89,7 @@ export class DefendDialog extends Application {
         drModifier += defenseModifier;
       }
     }
-    if (this.actor.isEncumbered()) {
+    if (this.actor.isEncumbered) {
       drModifier += 2;
     }
     const modifiedDR = parseInt(baseInput.val()) + drModifier;

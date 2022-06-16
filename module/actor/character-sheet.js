@@ -48,6 +48,8 @@ export class CYCharacterSheet extends CYActorSheet {
     superData.data.data.nanoPowers = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
       .sort(byName);
+    superData.data.data.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
+    console.log(superData);
     return superData;
   }
 

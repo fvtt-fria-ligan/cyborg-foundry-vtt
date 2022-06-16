@@ -39,5 +39,9 @@ export const registerHandlebarsHelpers = () => {
 
   Handlebars.registerHelper("ifLt", function (arg1, arg2, options) {
     return arg1 < arg2 ? options.fn(this) : options.inverse(this);
-  });  
+  });
+
+  Handlebars.registerHelper("ceil", function (num) {
+    return Math.ceil(num);
+  });
 }

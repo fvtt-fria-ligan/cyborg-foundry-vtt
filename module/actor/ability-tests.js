@@ -14,7 +14,7 @@ export const testAgility = async (actor) => {
       );
     }
   }
-  if (actor.isEncumbered()) {
+  if (actor.isEncumbered) {
     drModifiers.push(
       `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
         "CY.DR"
@@ -60,7 +60,7 @@ export const testStrength = async (actor) => {
       );
     }
   }
-  if (actor.isEncumbered()) {
+  if (actor.isEncumbered) {
     drModifiers.push(
       `${game.i18n.localize("CY.Encumbered")}: ${game.i18n.localize(
         "CY.DR"

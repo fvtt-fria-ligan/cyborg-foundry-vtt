@@ -79,24 +79,24 @@ import { rollCyRage } from "./cybertech.js";
 
   // ===== encumbrance =====
   
-  normalCarryingCapacity() {
+  get normalCarryingCapacity() {
     return this.data.data.abilities.strength.value + 8;
   }
 
-  maxCarryingCapacity() {
+  get maxCarryingCapacity() {
     return 2 * this.normalCarryingCapacity();
   }
 
-  carryingSlots() {
+  get carryingSlots() {
     return this.data.items
-      .reduce((slots, item) => slots + (item.data.data.carrySlots ?? 0), 0);
+      .reduce((slots, item) => slots + (item.data.data.carrySlots ? (item.data.data.carrySlots * item.data.data.quantity) : 0), 0);
   }
 
-  isEncumbered() {
+  get isEncumbered() {
     if (!trackCarryingCapacity()) {
       return false;
     }
-    return this.carryingSlots() > this.normalCarryingCapacity();
+    return this.carryingSlots > this.normalCarryingCapacity;
   }
 
   _firstEquipped(itemType) {

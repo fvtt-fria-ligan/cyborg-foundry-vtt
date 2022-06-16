@@ -1,4 +1,7 @@
 <div class="tab equipment-tab" data-group="primary" data-tab="equipment">
+  <div class="field-row carrying-row {{data.data.encumberedClass}}">
+    Carrying {{ceil actor.carryingSlots}} / {{actor.normalCarryingCapacity}}
+  </div>
   <div class="button-row add-item-row">
     <button type="button" class="sheet-button add-item-button">{{ localize 'CY.AddItem' }}</button>
   </div>
