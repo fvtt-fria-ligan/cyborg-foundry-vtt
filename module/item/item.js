@@ -1,9 +1,11 @@
+import { CY } from "../config.js";
 import { drawDocument } from "../packutils.js";
 
 /**
  * @extends {Item}
  */
  export class CYItem extends Item {
+
   linkedNano() {
     if (this.data.data.nanoId) {
       return this.findParentItem(this.data.data.nanoId);

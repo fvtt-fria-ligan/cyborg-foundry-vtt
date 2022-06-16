@@ -19,6 +19,11 @@ CY.itemTypes = {
   weapon: "weapon",
 };
 
+CY.weaponTypes = {
+  melee: "melee",
+  ranged: "ranged"
+};
+
 CY.armorTiers = {
   0: {
     tier: 0,

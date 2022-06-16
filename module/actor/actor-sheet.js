@@ -1,5 +1,6 @@
 import { showAddItemDialog } from "./add-item-dialog.js";
 import { byName } from "../utils.js";
+import { countBullets } from "../combat/count-bullets.js";
 
 /**
  * @extends {ActorSheet}
@@ -13,6 +14,7 @@ import { byName } from "../utils.js";
     html.find(".item-qty-plus").click(this._onItemAddQuantity.bind(this));
     html.find(".item-qty-minus").click(this._onItemSubtractQuantity.bind(this));
     html.find(".add-item-button").on("click", this._addItem.bind(this));
+    html.find(".item-count-bullets").click(this._onItemCountBullets.bind(this));
   }  
   
   /** @override */
@@ -80,5 +82,13 @@ import { byName } from "../utils.js";
     if (currQuantity > 1) {
       return item.update({ [attr]: currQuantity - 1 });
     }
-  }  
+  }
+
+  async _onItemCountBullets(event) {
+    event.preventDefault();
+    const anchor = $(event.currentTarget);
+    const parent = anchor.parents(".item");
+    const itemId = parent.data("itemId");
+    await countBullets(this.actor, itemId);
+  }
  }
