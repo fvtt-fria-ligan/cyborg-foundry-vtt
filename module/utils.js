@@ -4,18 +4,22 @@ import { diceSound } from "./dice.js";
 export const byName = (a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
 
 export const d20Formula = (modifier) => {
+  return rollFormula("d20");
+};
+
+export const rollFormula(roll, modifier) => {
   if (modifier < 0) {
-    return `d20-${-modifier}`;
+    return `${roll}-${-modifier}`;
   } else if (modifier > 0) {
-    return `d20+${modifier}`;
+    return `${roll}+${modifier}`;
   } else {
-    return "d20";
+    return roll;
   }
 };
 
 export const pluralize = (key1, key2, num) => {
   return game.i18n.localize(num == 1 ? key1 : key2);
-}
+};
 
 export const showOutcomeRollCard = async (actor, rollResult) => {
   const html = await renderTemplate(
@@ -27,4 +31,4 @@ export const showOutcomeRollCard = async (actor, rollResult) => {
     sound: diceSound(),
     speaker: ChatMessage.getSpeaker({ actor }),
   });  
-}
+};

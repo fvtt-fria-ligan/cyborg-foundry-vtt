@@ -1,8 +1,5 @@
-import { diceSound, showDice } from "../dice.js";
+import { showDice } from "../dice.js";
 import { showOutcomeRollCard } from "../utils.js";
-
-const INDIVIDUAL_INITIATIVE_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/individual-initiative-roll-card.html";
 
 export const rollPartyInitiative = async (actor) => {
   const initiativeRoll = new Roll("d6", {});
@@ -45,23 +42,14 @@ export const rollIndividualInitiative = async (actor) => {
   }
 
   // no encounter going on, so just show chat cards
-  const initiativeRoll = new Roll(
-    "d6+@abilities.agility.value",
-    actor.getRollData()
-  );
+  const formula = rollFormula("1d6", actor.data.data.abilities.agility.value);
+  const initiativeRoll = new Roll(formula);
   initiativeRoll.evaluate({ async: false });
   await showDice(initiativeRoll);
-
   const rollResult = {
-    initiativeRoll,
+    cardTitle: game.i18n.localize('CY.Initiative'),
+    formula: `1d6 + ${game.i18n.localize("CY.AgilityAbbrev")}`,
+    roll: initiativeRoll
   };
-  const html = await renderTemplate(
-    INDIVIDUAL_INITIATIVE_ROLL_CARD_TEMPLATE,
-    rollResult
-  );
-  ChatMessage.create({
-    content: html,
-    sound: diceSound(),
-    speaker: ChatMessage.getSpeaker({ actor: actor }),
-  });
+  showOutcomeRollCard(actor, rollResult);
 };
