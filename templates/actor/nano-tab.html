@@ -15,12 +15,16 @@
         </div>
         <div class="item-fields">
           <div class="item-field-row">        
-          {{item.name}}
+            {{item.name}}
           </div>
           <div class="item-field-row">
-          <button type="button" class="sheet-button use-nano-button">{{localize 'CY.Use'}}</button>
+            <button type="button" class="sheet-button use-nano-button">{{localize 'CY.Use'}}</button>
           </div>
-          linked to {{item.data.infestationId}}
+          {{#if item.data.infestationId}}
+          <div class="item-field-row">        
+            linked to {{item.data.infestationId}}
+          </div>
+          {{/if}}
           <div class="item-field-row">
             <div class="item-controls">
               <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
@@ -41,7 +45,11 @@
           <div class="item-field-row">        
           {{item.name}}
           </div>
-          linked to {{item.data.nanoId}}
+          {{#if item.data.nanoId}}
+          <div class="item-field-row">        
+            linked to {{item.data.nanoId}}
+          </div>
+          {{/if}}
           <div class="item-field-row">
             <div class="item-controls">
               <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
