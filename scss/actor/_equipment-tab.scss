@@ -1,0 +1,14 @@
+.equipment-tab {
+  .carrying-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .button-row {
+    margin-bottom: 5px;
+  }
+  .encumbered {
+    color: $magenta;
+  }
+}
