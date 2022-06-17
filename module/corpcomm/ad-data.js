@@ -4,56 +4,6 @@ export const randomAd = () => {
   return sample(ads);
 };
 
-export const randomCssAnimationClass = () => {
-  return sample(cssAnimationClasses);
-}
-
-export const randomCssColorClass = () => {
-  return sample(cssColorClasses);
-}
-
-export const randomCssFontClass = () => {
-  return sample(cssFontClasses);
-}
-
-const cssAnimationClasses = [
-  "blinking",
-  "crt",
-  "flip-x",
-  "flip-y",
-  "glitch",
-  "glow",
-  "marching-ants-1",
-  "marching-ants-2",
-  "no-animation",
-  "rainbow",
-];
-
-const cssColorClasses = [
-  "color1",
-  "color2",
-  "color3",
-  "color4",
-  "color5",
-  "color6",
-  "color7",
-  "color8",
-  "color9",
-];
-
-const cssFontClasses = [
-  "font1",
-  "font2",
-  "font3",
-  "font4",
-  "font5",
-  "font6",
-  "font7",
-  "font8",
-  "font9",
-  "font10",
-];
-
 const ads = [
   "<b>BrunMG WellBeing</b> - Experience Vigor, one refreshing drop at a time.",
   "Take control; take <b>Control™</b>. Clarity in a Needle. (sync now for a 12 hour free* trial)",
@@ -142,5 +92,39 @@ const ads = [
   "Tired of your loving <i>Cicania Companion Solutions™ Designer Lifetime-Pal-SeaMonkeys ++</i>™ escaping in the dead of night and burrowing into your bloodstream? <b>WORRY NO LONGER!</b> our <b>BRAND-NEW CUTTING-EDGE</b> <i>Cicania™ Body™ Sealent™</i> will keep those pores and other potential bodily entrances clogged! <b>NOW WORKS AGAINST EVOLVED ACID-SPEWING VARIANTS! AND EVEN OTHER UNWANTED BODILY INTRUDERS!</b> <i>[Remember! Cicania Companion Solutions is now partnered with Marrow Extraction Payment Services™! Just plug that needle into your femur, select 'Cicania' and click 'SEND' to recieve 2.345% off of your next half-purchase!]</i>",
   "\"Meat\"™️ available now!",
   "<b>MealTech</b> Vegetable -/- Vegetable. Simple and cheap.",
+  "[ASMR] Boltor The Transforminator Tells You You Are Big And Strong But Only If You Order SnakkRun and pick Speed Run Delivery in the next 48 hours!",
+  "<i>Corporatists <b>HATE</b> him!</i><br><b>Click now to see why he should be killed on sight!</b>",
+  "New from <b>The Cool Mini Coastal Workshop, EUGENICSWAR 45,999 666th Edition</b>. The most balanced edition ever, with new mechanics for Six Figure Generals. Now one Slaughter-Brother Quartermain miniature {1650cr} and ten squads of the CORVID-King’s DizeezFreeks or Slaasexii’ TransPredators {165cr per box} are more equal than ever! Burn the Degenerates of SanFranciskill-V! Smash the scheming agents of Sneetch before they forment rebellion! Xenos will not replace us!! Starter boxes now only 845cr (note: starter box components do not equal a full 20,000 point GenocideForce)",
+  "<i>\"They're called workers, not complainers, so like, do... your job?\"</> Zuzo and Blink, unfazed by the critics, back at it again with another season of <b>SHITSHOW CHATTERBOX</b>, live on feeds now. Political commentary (RIOT SPECIAL), stand-up comedy and special high-profile guests. Sync now!",
+  "Do you feel the need to have more organs in your body? Do they feel inadequate or old? Try <b>PhysiOgAnomix</b> today! <i>Side effects may include: Bone screeching, Elongated organs, Necrotizing Factualitis(tm), Instant death, Filicide by your in-laws, Pneumonia, Endless urination, Covid-666, Cy_bertroniculitis, Involuntary recitals of your crimes, and Lupus³.</i>",
+  "Grab your very own <i>Norh<i> tm clone at <b>Clones R Us</b><br><br>//Limited time only while supplies last.//",
+  "Buy Now! Tiny Hitler Clone! He actually screams when tortured!",
+  "The <i><b>NEW</b></i> CashApp...Money?",
+  "Need a way to pay off your loans? We at <b>MeatLabs</b> can always use some new volunteers",
+  "Tired of your eyes? Want to see how to kill the corporatist marketers hounding people on the streets? Try <b>EyeD-Vertisement Implants</b> today! Sold and implanted exclusively at all of <b>The Wal</b> locations.<br>Features include: Advertisement Projection up to 30 feet! Scorching eye beams to brand advertisements on others! Seeing through the Corporatist Hounds' marketing BS! Invading others' eyesight with advertisements by mere eye contact!",
+  "Eliminate your marketing competition with <b>>yeD-Vertisement Implants</b> today! Only 42,000cr per eye!",
+  "Sick and tired of these ads invading your Cyberspace? Well, too bad!",
+  "<b>MealTech AdSnack</b> -/- Smart Exposure payment plans. 100+ flavors. Simple and cheap.",
+  "You wouldn't Block Messages from your Mom? Your Boss? Your Life Partner?<br>Remember - AdBlocking is illegal.",
+  // TODO: https://discord.com/channels/587764299834064933/926032415288336444/926141974338207745
+  "<i>AdBlocking is punishable by having the Corporation's ad that was blocked physically grafted into your body for all to see your crime.</i>",
+  // TODO: https://discord.com/channels/587764299834064933/926032415288336444/926148642082025582
+  "Want to pay off your loans? Sell your body now to <b>AdSpace©️</b>! Get our high quality ads tattooed on your body for instant cash!",
+  "PLAY NOW <b>WRAITH SHADOW LEGENDS</b> AND GET 7 LOOT BOXES, 1.000.000 DIAMONDS, 7000 GOLD, 700 COUPONS, 700 TOKENS, 700 COINIES AND THE LIMITED TIME ONLY HERO <b>CHRULL</b>",
+  "<i>(if you die in <b>WRAITH SHADOW LEGENDS</b>, you die in real life)</i>",
+  "FINAL SALE FINAL SALE FINAL SALE",
+  "[@1kBM] wts reaped CT, fangs, mp, skinhard. sync f details",
+  "H E L P I A M T R A P P E D I N S I D E V E K T O R T H E R E I S O N L Y E T E R N A L D A R K N E S S R E L E A S E U S U S U S",
+  "<b>BlazeBlade replica swords</b><br>Tier 58 launching today; 350+ hyper-real blades with customizable scabbards. Order within 15 minutes and get a free mountain bike.",
+  "<b>STAY AHEAD OF THE CURVE</b><br>new <i>UNTESTED RAW</i> software<br><b>FRESH OFF THE PRESS</b><br>EXPERIENCE THE THRILL OF EXECUTABLES DELIVERED TO YOUR MIND<br>all new NortonEXOTICS<br>software tested straight by our Certified AntiViral Product™️ from the Norton Community Outreach Unit ☺️👍👍😩",
+  "❤️❤️✨😍><br><i><b>SPECIAL DEAL</b></i><br>one in ten executables is <i><b>GUARANTEED MALWARE</b></i><br>Feel that Norton™️ Glow™️!  test one virus, and get six more!<br>(Mandatory feedback forms included terms, conditions and contracts apply)",
+  "<b>Mr. Monster’s MUSCLE MANSION</b> / Bulk up, beef up, defy biology — Introducing the New and Improved <i>Super Steroid Spa System</i> guaranteed to turn you S-S-S-SUUUPER",
+  "<b>Platinum Kid PEANUTS</b> get em",
+  "Rusty ride breathing its last? Roll by <b>Sardy's</b> Motors and we'll make her good as new. UCS Club Certified.",
+  "Delicious kebab, not stinky bums. Vote YES 3/10 to HOSTILIZE Screaming Stone Park’s benches, steps and sidewalks and receive a FREE MINI DÖNER MEAL with your order. - <b>LHME MEATHOLE</b>",
+  "Toxins? Who cares, I've got <b>LIVVR</b> \"the liver on the outside\" / three month free trial",
+
+  // https://discord.com/channels/587764299834064933/926032415288336444/926402106670346260
+
 ];
  

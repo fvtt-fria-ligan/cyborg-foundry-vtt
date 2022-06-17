@@ -1,4 +1,5 @@
-import { randomAd, randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-data.js";
+import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-css.js";
+import { randomAd } from "./ad-data.js";
 import { documentFromPack } from "../packutils.js";
 
 const getAdBotActor = async () => {
