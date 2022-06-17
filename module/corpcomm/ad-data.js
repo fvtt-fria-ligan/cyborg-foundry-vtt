@@ -107,7 +107,7 @@ const ads = [
   "Buy Now! Tiny Hitler Clone! He actually screams when tortured!",
   "The <i><b>NEW</b></i> CashApp...Money?",
   "Need a way to pay off your loans? We at <b>MeatLabs</b> can always use some new volunteers",
-  "Tired of your eyes? Want to see how to kill the corporatist marketers hounding people on the streets? Try <b>EyeD-Vertisement Implants</b> today! Sold and implanted exclusively at all of <b>The Wal</b> locations.<br>Features include: Advertisement Projection up to 30 feet! Scorching eye beams to brand advertisements on others! Seeing through the Corporatist Hounds' marketing BS! Invading others' eyesight with advertisements by mere eye contact!",
+  "Tired of your eyes? Want to see how to kill the corporatist marketers hounding people on the streets? Try <b>EyeD-Vertisement Implants</b> today!",
   "Eliminate your marketing competition with <b>>yeD-Vertisement Implants</b> today! Only 42,000cr per eye!",
   "Sick and tired of these ads invading your Cyberspace? Well, too bad!",
   "<b>MealTech AdSnack</b> -/- Smart Exposure payment plans. 100+ flavors. Simple and cheap.",

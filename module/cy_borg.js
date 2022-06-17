@@ -11,8 +11,8 @@ import { MakePunkDialog } from "./generator/make-punk-dialog.js";
 import { registerHooks } from "./hooks.js";
 import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handlebars.js";
 
+import { initializeAdBot } from "./corpcomm/ad-bot.js";
 import { showChatAd } from "./corpcomm/chat-comm.js";
-
 
 Hooks.once("init", async function () {
   consoleBanner();
@@ -25,6 +25,7 @@ Hooks.once("init", async function () {
   await registerHandlebarsPartials();
   modifyFoundryUI();
   registerHooks();
+  initializeAdBot();
 });
 
 const consoleBanner = () => {

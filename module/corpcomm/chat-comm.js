@@ -16,7 +16,6 @@ export const showChatAd = async () => {
   };
   const html = await renderTemplate("systems/cy_borg/templates/chat/ad-card.html", data);
   const actor = await getAdBotActor();
-  console.log(actor);
   ChatMessage.create({
     content: html,
     // speaker: ChatMessage.getSpeaker({ actor }),
