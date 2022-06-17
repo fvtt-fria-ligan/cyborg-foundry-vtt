@@ -108,7 +108,7 @@ const ads = [
   "The <i><b>NEW</b></i> CashApp...Money?",
   "Need a way to pay off your loans? We at <b>MeatLabs</b> can always use some new volunteers",
   "Tired of your eyes? Want to see how to kill the corporatist marketers hounding people on the streets? Try <b>EyeD-Vertisement Implants</b> today!",
-  "Eliminate your marketing competition with <b>>yeD-Vertisement Implants</b> today! Only 42,000cr per eye!",
+  "Eliminate your marketing competition with <b>EyeD-Vertisement Implants</b> today! Only 42,000cr per eye!",
   "Sick and tired of these ads invading your Cyberspace? Well, too bad!",
   "<b>MealTech AdSnack</b> -/- Smart Exposure payment plans. 100+ flavors. Simple and cheap.",
   "You wouldn't Block Messages from your Mom? Your Boss? Your Life Partner?<br>Remember - AdBlocking is illegal.",
