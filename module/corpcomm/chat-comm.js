@@ -1,4 +1,4 @@
-import { randomAd, randomCssAnimationClass, randomCssFontClass } from "./ad-data.js";
+import { randomAd, randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-data.js";
 import { documentFromPack } from "../packutils.js";
 
 const getAdBotActor = async () => {
@@ -8,11 +8,9 @@ const getAdBotActor = async () => {
 
 export const showChatAd = async () => {
   const ad = randomAd();
-  const cssAnimationClass = randomCssAnimationClass();
-  const cssFontClass = randomCssFontClass();
+  const cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
   const data = {
-    cssAnimationClass,
-    cssFontClass,
+    cssAdClass,
     content: ad,
   };
   const html = await renderTemplate("systems/cy_borg/templates/chat/ad-card.html", data);

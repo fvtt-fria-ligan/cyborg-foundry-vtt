@@ -8,23 +8,50 @@ export const randomCssAnimationClass = () => {
   return sample(cssAnimationClasses);
 }
 
+export const randomCssColorClass = () => {
+  return sample(cssColorClasses);
+}
+
 export const randomCssFontClass = () => {
   return sample(cssFontClasses);
 }
 
 const cssAnimationClasses = [
   "blinking",
-  "marching-ants",
+  "crt",
+  "flip-x",
+  "flip-y",
+  "glitch",
+  "glow",
+  "marching-ants-1",
+  "marching-ants-2",
   "no-animation",
   "rainbow",
 ];
 
-// see _ad-card.scss
+const cssColorClasses = [
+  "color1",
+  "color2",
+  "color3",
+  "color4",
+  "color5",
+  "color6",
+  "color7",
+  "color8",
+  "color9",
+];
+
 const cssFontClasses = [
   "font1",
   "font2",
   "font3",
   "font4",
+  "font5",
+  "font6",
+  "font7",
+  "font8",
+  "font9",
+  "font10",
 ];
 
 const ads = [
@@ -95,6 +122,25 @@ const ads = [
   "GET THE BLOOD PUMPING +++ <b>GRATFLEISCH DOME GAMES</b>",
   "Tastes of real fruit; Synthe-fruit, the only choice that is 15% organic",
   "Nano infection? Don’t worry, we can study it. Sign up for body donation, sync for contract. <b>TG Labs Ministations</b>",
-  "<b>WATER</b>® Remember when it was free?",
+  "<b>WATER</b>®<br>Remember when it was free?",
+  "<b>YOU WON!!!</b> Claim 3.000.000.000c with this unique promo code: G3TPHUQ3D - synch now!</br><i>/Hey I am logging into your peripherals on a hidden channel, I am the princess of Sarkash and if you help me with a donation, I can get the riches that belong to me and you will be heavily rewarded! Synch now and donate as much as you can, this line is safe for now, quickly!/</i>",
+  "<b>NewGenics</b> gene treatment. Life extended. Mortality defeated. Pray for death.",
+  "<b>BUY NOW: MONEY!</b>",
+  "The Future and the Pasta. Eat Ravioli, Kill Demons, Score Points. <b>PASTA HELL</b>",
+  "<i><b>MeatLabs</b> prosthetics too expensive for you? Hop on down to the <b>Black Meat Market</b>!</i>",
+  "Poverty is just poor branding. Let us help you repackage your financial status; care for your personal brand. Sync for a free day0 analysis and roadmap preview. </ <b>ZeroCom Communication Agency</b>",
+  "People are numbers. Do the math. <b>InScense</b> SmartFragrance for Thinkers",
+  "<b>Ghostbusters 7</b> coming this Fiscal Quarter. Featuring state of the art CGI recreation, we’ve captured what Ivan Reitman’s REAL corpse looked like at his funeral to recreate beloved character Egon Spengler like he’s never been seen before: This time, he IS the ghost!!!",
+  "You're a spark in the fireworks of the now. Act the part. <b>Ahzer Noodles</b>",
+  "\"INSUFFICIENT!\" <b>Mr Nanohead Power nodes</b>",
+  "Sick and tired of that hologram of your deceased loved ones? Bring their bones and ashes to <b>MeatLabs</b>, and we'll make a new bodycopy of them for you! Guaranteed to not rot for at least 3 days",
+  "Prank your friends. Surprise Tattoos. 2¤ each.",
+  "<b>VEKTOR</b> Trauma Therapy _.- upload your mind to our Misery & Misanthropy Brainvironment and find how bad things can -Really- get. Return to a blissful life in CY with our PTS-Recovery bonus pack!<br><i>Requires purchase of VEKTOR base service and peripherals, full recovery not guaranteed</i>",
+  "<b>You are not invited to the party.</b><br><br>Wanna join? [QRCODEID #3577445447785]",
+  "<b>Fount Salted Cherry Soda</b> Mega Bundle Value Pack Deal Ending TONIGHT!",
+  "[39 Friends Disagree with you] Sync to Reveal WHO. Free Trial today.",
+  "Tired of your loving <i>Cicania Companion Solutions™ Designer Lifetime-Pal-SeaMonkeys ++</i>™ escaping in the dead of night and burrowing into your bloodstream? <b>WORRY NO LONGER!</b> our <b>BRAND-NEW CUTTING-EDGE</b> <i>Cicania™ Body™ Sealent™</i> will keep those pores and other potential bodily entrances clogged! <b>NOW WORKS AGAINST EVOLVED ACID-SPEWING VARIANTS! AND EVEN OTHER UNWANTED BODILY INTRUDERS!</b> <i>[Remember! Cicania Companion Solutions is now partnered with Marrow Extraction Payment Services™! Just plug that needle into your femur, select 'Cicania' and click 'SEND' to recieve 2.345% off of your next half-purchase!]</i>",
+  "\"Meat\"™️ available now!",
+  "<b>MealTech</b> Vegetable -/- Vegetable. Simple and cheap.",
 ];
  

@@ -1,10 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Press+Start+2P&family=VT323&display=swap");
 @font-face {
   font-family: "Aldo the Apache";
   src: url("../assets/fonts/AldotheApache.ttf") format("truetype"); }
 @font-face {
+  font-family: "LDFComicSans";
+  src: url("../assets/fonts/LDFComicSans.ttf") format("truetype"); }
+@font-face {
+  font-family: "Papyrus";
+  src: url("../assets/fonts/Papyrus.ttf") format("truetype"); }
+@font-face {
   font-family: "Perfect DOS VGA 437";
   src: url("../assets/fonts/Perfect DOS VGA 437.ttf") format("truetype"); }
+@font-face {
+  font-family: "Scanlines";
+  src: url("../assets/fonts/Scanlines.ttf") format("truetype"); }
 @font-face {
   font-family: "UAV OSD Sans Mono";
   src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype"); }
@@ -329,6 +338,30 @@
 .chat-ad .content {
   text-align: center; }
 
+.color2 {
+  color: #F800F8; }
+
+.color3 {
+  color: #F8F800; }
+
+.color4 {
+  color: white; }
+
+.color5 {
+  color: #ff321a; }
+
+.color6 {
+  color: #39ff14; }
+
+.color7 {
+  color: #ff901b; }
+
+.color8 {
+  color: #03edf4; }
+
+.color9 {
+  color: #fe86ff; }
+
 .font1 {
   font-family: helvetica; }
 
@@ -346,6 +379,28 @@
   font-size: 24px;
   text-transform: uppercase; }
 
+.font5 {
+  font-family: 'Courier New', monospace;
+  font-size: 20px; }
+
+.font6 {
+  font-family: Scanlines;
+  text-transform: uppercase; }
+
+.font7 {
+  font-family: "Fascinate Inline";
+  font-size: 20px; }
+
+.font8 {
+  font-family: "Press Start 2P"; }
+
+.font9 {
+  font-family: "Papyrus"; }
+
+.font10 {
+  font-family: "LDFComicSans";
+  font-size: 18px; }
+
 @keyframes blinker {
   50% {
     opacity: 0; } }
@@ -355,9 +410,16 @@
 @keyframes ants {
   to {
     background-position: 100% 100%; } }
-.marching-ants {
+.marching-ants-1 {
   animation: ants 12s linear infinite;
   background: linear-gradient(#1C1E23, #1C1E23) padding-box, repeating-linear-gradient(-45deg, #F800F8 0, #F800F8 25%, transparent 0, transparent 50%) 0/0.6em 0.6em;
+  border: 5px solid transparent;
+  max-width: 20em;
+  padding: 1em; }
+
+.marching-ants-2 {
+  animation: ants 12s linear infinite;
+  background: linear-gradient(#1C1E23, #1C1E23) padding-box, repeating-linear-gradient(45deg, #F8F800 0, #F8F800 25%, transparent 0, transparent 50%) 0/0.6em 0.6em;
   border: 5px solid transparent;
   max-width: 20em;
   padding: 1em; }
@@ -375,6 +437,125 @@
   animation: rainbow-animation 6s ease-in-out infinite;
   background-size: 400% 100%; }
 
+@keyframes textShadow {
+  0% {
+    text-shadow: 0.4389924193px 0 1px rgba(0, 30, 255, 0.5), -0.4389924193px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  5% {
+    text-shadow: 2.7928974011px 0 1px rgba(0, 30, 255, 0.5), -2.7928974011px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  10% {
+    text-shadow: 0.0295627584px 0 1px rgba(0, 30, 255, 0.5), -0.0295627584px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  15% {
+    text-shadow: 0.4021853855px 0 1px rgba(0, 30, 255, 0.5), -0.4021853855px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  20% {
+    text-shadow: 3.47940379px 0 1px rgba(0, 30, 255, 0.5), -3.47940379px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  25% {
+    text-shadow: 1.6125630401px 0 1px rgba(0, 30, 255, 0.5), -1.6125630401px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  30% {
+    text-shadow: 0.7015590085px 0 1px rgba(0, 30, 255, 0.5), -0.7015590085px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  35% {
+    text-shadow: 3.8969140477px 0 1px rgba(0, 30, 255, 0.5), -3.8969140477px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  40% {
+    text-shadow: 3.8709056148px 0 1px rgba(0, 30, 255, 0.5), -3.8709056148px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  45% {
+    text-shadow: 2.2310569634px 0 1px rgba(0, 30, 255, 0.5), -2.2310569634px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  50% {
+    text-shadow: 0.0808429042px 0 1px rgba(0, 30, 255, 0.5), -0.0808429042px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  55% {
+    text-shadow: 2.3758461067px 0 1px rgba(0, 30, 255, 0.5), -2.3758461067px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  60% {
+    text-shadow: 2.2021930511px 0 1px rgba(0, 30, 255, 0.5), -2.2021930511px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  65% {
+    text-shadow: 2.8638780615px 0 1px rgba(0, 30, 255, 0.5), -2.8638780615px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  70% {
+    text-shadow: 0.4887402516px 0 1px rgba(0, 30, 255, 0.5), -0.4887402516px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  75% {
+    text-shadow: 1.8948491306px 0 1px rgba(0, 30, 255, 0.5), -1.8948491306px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  80% {
+    text-shadow: 0.0833037308px 0 1px rgba(0, 30, 255, 0.5), -0.0833037308px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  85% {
+    text-shadow: 0.0976982726px 0 1px rgba(0, 30, 255, 0.5), -0.0976982726px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  90% {
+    text-shadow: 3.4433397615px 0 1px rgba(0, 30, 255, 0.5), -3.4433397615px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  95% {
+    text-shadow: 2.1841838853px 0 1px rgba(0, 30, 255, 0.5), -2.1841838853px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; }
+  100% {
+    text-shadow: 2.6208764474px 0 1px rgba(0, 30, 255, 0.5), -2.6208764474px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px; } }
+.crt {
+  animation: textShadow 1.6s infinite; }
+
+.flip-x {
+  animation: 3s anim-flip-x ease infinite; }
+
+@keyframes anim-flip-x {
+  0% {
+    opacity: 0;
+    transform: rotateX(90def); }
+  50% {
+    opacity: 1;
+    transform: rotateX(720deg); }
+  100% {
+    /* animate nothing to pause animation at the end */
+    opacity: 1;
+    transform: rotateX(720deg); } }
+.flip-y {
+  animation: 3s anim-flip-y ease infinite; }
+
+@keyframes anim-flip-y {
+  0% {
+    opacity: 0;
+    transform: rotateY(90def); }
+  50% {
+    opacity: 1;
+    transform: rotateY(720deg); }
+  100% {
+    /* animate nothing to pause animation at the end */
+    opacity: 1;
+    transform: rotateY(720deg); } }
+@keyframes glow-anim {
+  from {
+    text-shadow: 0 0 20px #2d9da9; }
+  to {
+    text-shadow: 0 0 30px #34b3c1, 0 0 10px #4dbbc7; } }
+.glow {
+  animation: glow-anim 2s ease-in-out infinite alternate; }
+
+.glitch .content {
+  animation: glitch 2s linear infinite; }
+  .glitch .content div:before,
+  .glitch .content div:after {
+    content: attr(title);
+    left: 0;
+    position: absolute; }
+  .glitch .content div:before {
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
+  .glitch .content div:after {
+    animation: glitchBottom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
+
+@keyframes glitch {
+  2%,64% {
+    transform: translate(2px, 0) skew(0deg); }
+  4%,60% {
+    transform: translate(-2px, 0) skew(0deg); }
+  62% {
+    transform: translate(0, 0) skew(5deg); } }
+@keyframes glitchTop {
+  2%,64% {
+    transform: translate(2px, -2px); }
+  4%,60% {
+    transform: translate(-2px, 2px); }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg); } }
+@keyframes glitchBottom {
+  2%,64% {
+    transform: translate(-2px, 0); }
+  4%,60% {
+    transform: translate(-2px, 0); }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg); } }
 .roll-card .card-title {
   font-size: 20px;
   margin-bottom: 5px;
