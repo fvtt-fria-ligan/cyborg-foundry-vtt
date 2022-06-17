@@ -32,3 +32,10 @@ export const showOutcomeRollCard = async (actor, rollResult) => {
     speaker: ChatMessage.getSpeaker({ actor }),
   });  
 };
+
+export const sample = (array) => {
+  if (!array) {
+    return;
+  }
+  return array[Math.floor(Math.random() * array.length)];
+}

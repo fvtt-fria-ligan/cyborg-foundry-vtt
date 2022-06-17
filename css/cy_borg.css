@@ -326,6 +326,55 @@
 .cy.sheet.actor.vehicle section.window-content .sheet-header {
   height: 396px; }
 
+.chat-ad .content {
+  text-align: center; }
+
+.font1 {
+  font-family: helvetica; }
+
+.font2 {
+  font: 100%/1.6 Baskerville, Palatino, serif; }
+
+.font3 {
+  font-family: monospace;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-decoration: underline; }
+
+.font4 {
+  font-family: futura;
+  font-size: 24px;
+  text-transform: uppercase; }
+
+@keyframes blinker {
+  50% {
+    opacity: 0; } }
+.blinking {
+  animation: blinker 1s linear infinite; }
+
+@keyframes ants {
+  to {
+    background-position: 100% 100%; } }
+.marching-ants {
+  animation: ants 12s linear infinite;
+  background: linear-gradient(#1C1E23, #1C1E23) padding-box, repeating-linear-gradient(-45deg, #F800F8 0, #F800F8 25%, transparent 0, transparent 50%) 0/0.6em 0.6em;
+  border: 5px solid transparent;
+  max-width: 20em;
+  padding: 1em; }
+
+@keyframes rainbow-animation {
+  0%,100% {
+    background-position: 0 0; }
+  50% {
+    background-position: 100% 0; } }
+.rainbow {
+  background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-animation 6s ease-in-out infinite;
+  background-size: 400% 100%; }
+
 .roll-card .card-title {
   font-size: 20px;
   margin-bottom: 5px;

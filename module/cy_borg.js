@@ -11,9 +11,13 @@ import { MakePunkDialog } from "./generator/make-punk-dialog.js";
 import { registerHooks } from "./hooks.js";
 import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handlebars.js";
 
+import { showChatAd } from "./corpcomm/chat-comm.js";
+
+
 Hooks.once("init", async function () {
   consoleBanner();
   CONFIG.CY = CY;
+  window.showChatAd = showChatAd;
   registerSystemSettings();
   registerDocumentClasses();
   registerSheets();
