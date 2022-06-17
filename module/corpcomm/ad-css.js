@@ -23,6 +23,7 @@ const cssAnimationClasses = [
   "marching-ants-2",
   "no-animation",
   "rainbow",
+  "shadow-bounce",
 ];
 
 const cssColorClasses = [
