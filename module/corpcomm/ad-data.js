@@ -41,7 +41,13 @@ const ads = [
   "<b>Ommos Pro Social Chair</b>, step up your mingle—become a Net elite. Update, share, refresh like a boss. Sync for leasing plans.",
   "<b>MealTech Healthcare Plans</b> -/- Medical Life Insurance. Simple and cheap.",
   "<b>OnceN4All plastic bags</b> - single use, endless possibilities",
-  "<b>The Wal</b> is your one-stop shop for all essentials.<br><br><b>The Wal</b> is the most secure shopping facility in the world.<br><br><b>The Wal</b> is protected by our secure 20-foot thick entryway barrier, a variety of affordable but durable protective sentries from the household .45 to home-defensive 50cal ordnance and beyond, and a vast selection of loyal and friendly automated associates ready to cater to your every need.<br><br><b>The Wal</b> is more than a store. It's a family. It's a friendship. It's an exclusive club.<br><br>Save yourself. Live free. <b>The Wal</b>.<br><br>ENTRY TO <b>The Wal</b> WILL NOT BE PERMITTED WITHOUT A WalKlub Pass (only 4500c annual fee).<br><br>ALL UNAUTHORIZED ATTEMPTS TO ENTER <b>The Wal</b> WILL BE PERSECUTED TO THE FULL EXTENT OF LOCAL AUTHORITY.",
+  "<b>The Wal</b> is your one-stop shop for all essentials.",
+  "<b>The Wal</b> is the most secure shopping facility in the world.",
+  "<b>The Wal</b> is protected by our secure 20-foot thick entryway barrier, a variety of affordable but durable protective sentries from the household .45 to home-defensive 50cal ordnance and beyond, and a vast selection of loyal and friendly automated associates ready to cater to your every need.",
+  "<b>The Wal</b> is more than a store. It's a family. It's a friendship. It's an exclusive club.",
+  "Save yourself. Live free. <b>The Wal</b>.",
+  "ENTRY TO <b>The Wal</b> WILL NOT BE PERMITTED WITHOUT A WalKlub Pass (only 4500c annual fee).",
+  "ALL UNAUTHORIZED ATTEMPTS TO ENTER <b>The Wal</b> WILL BE PERSECUTED TO THE FULL EXTENT OF LOCAL AUTHORITY.",
   "<b>Delta Max Robotics</b> _ Assistance, safeguarding or just a trusted friend. Let us build it for you.<br><i>Say [88371103472510] within 10 seconds to decline offer</i>",
   "Say <b>MacCarthy’s</b> to terminate VR gyro-punishment",
   "<b>LD-Multipass</b> GeT A¢¢€$$ 2 aLL Hyperstations, SelfKleans, SelfKills, BAssGun Pro Shops, The Wals and møre with a $ingLe transaction, super verified!",
@@ -118,13 +124,17 @@ const ads = [
   "<b>BlazeBlade replica swords</b><br>Tier 58 launching today; 350+ hyper-real blades with customizable scabbards. Order within 15 minutes and get a free mountain bike.",
   "<b>STAY AHEAD OF THE CURVE</b><br>new <i>UNTESTED RAW</i> software<br><b>FRESH OFF THE PRESS</b><br>EXPERIENCE THE THRILL OF EXECUTABLES DELIVERED TO YOUR MIND<br>all new NortonEXOTICS<br>software tested straight by our Certified AntiViral Product™️ from the Norton Community Outreach Unit ☺️👍👍😩",
   "❤️❤️✨😍><br><i><b>SPECIAL DEAL</b></i><br>one in ten executables is <i><b>GUARANTEED MALWARE</b></i><br>Feel that Norton™️ Glow™️!  test one virus, and get six more!<br>(Mandatory feedback forms included terms, conditions and contracts apply)",
-  "<b>Mr. Monster’s MUSCLE MANSION</b> / Bulk up, beef up, defy biology — Introducing the New and Improved <i>Super Steroid Spa System</i> guaranteed to turn you S-S-S-SUUUPER",
+  "<b>Mr. Monster's MUSCLE MANSION</b> / Bulk up, beef up, defy biology — Introducing the New and Improved <i>Super Steroid Spa System</i> guaranteed to turn you S-S-S-SUUUPER",
   "<b>Platinum Kid PEANUTS</b> get em",
   "Rusty ride breathing its last? Roll by <b>Sardy's</b> Motors and we'll make her good as new. UCS Club Certified.",
-  "Delicious kebab, not stinky bums. Vote YES 3/10 to HOSTILIZE Screaming Stone Park’s benches, steps and sidewalks and receive a FREE MINI DÖNER MEAL with your order. - <b>LHME MEATHOLE</b>",
+  "Delicious kebab, not stinky bums. Vote YES 3/10 to HOSTILIZE Screaming Stone Park's benches, steps and sidewalks and receive a FREE MINI DÖNER MEAL with your order. - <b>LHME MEATHOLE</b>",
   "Toxins? Who cares, I've got <b>LIVVR</b> \"the liver on the outside\" / three month free trial",
-
-  // https://discord.com/channels/587764299834064933/926032415288336444/926402106670346260
-
+  "<b>DELI-SLAVE</b> deliver food anywhere, anytime, guaranteed no drones to be jacked on the way to you! Our <i>'certified'</i> messenger gets to you in 15 minutes or he doesn't get paid!<br><i>Delivers from Burger Pal, Klip-Klop, MealTech Express or SaladFun</i>",
+  "Eat, discard, repeat. The external, detachable <b>TasteLife Dummy Tummy</b> lets you eat whatever you want, how much you want, without it ever getting into your system. Taste, chew, swallow, throw away and keep eating. <i>Why stop the feast?</i>",
+  "<i>Sell your discarded, chewed TasteLife Dummy Tummy food to the poor. Earn TL Altruist Points and feed the world. Sync for license plans</i>",
+  "<b>Haemo-Phos</b> Blood Replacement System now available in Red, Blood Red And Original Off-white!",
+  "Try <b>Haemo-Phos</b> Plus for our scented line of Long Lasting* blood replacements!",
+  "Good morning! Enjoy a bowl of the healthiest breakfast! <b>Sugar Pops</b> taste like real sugar! Nom nom, enjoy!",
+  // https://discord.com/channels/587764299834064933/926032415288336444/926431826917077032
 ];
  
