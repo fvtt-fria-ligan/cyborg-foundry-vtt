@@ -258,5 +258,13 @@ const ads = [
   "Changing your Mind with SCIENCE and TECHNOLOGY. <b>Sunscope Empathy Link</b>",
   "Don't forget to smile today! We're watching you!",
   "<IGNORE THE PURPLE GLOW. KEEP MOVING. REMAIN INDOORS.>",
+  "Feeling lost? Get your LOCATECH tracking implant today! Now in 5,836 fun colors!",
+  "Dealing with wily deadbeats? Get ChamBuster today! 85% guaranteed success rates in tracking down debtors--we're good for it!",
+  "Frustrated with ChamBusters tracking you down? Get Chameleon Pro and vanish from the grid!",
+  "Rhino's Bug Bierocks. A taste of the wild.",
+  "<i>Midnight offer</i>: Can you beat the REAPER RAT KING? Eat it without puking and get the legendary T-shirt.",
+  "👁️ Why keep all the data when you can have free money? Link your eyesight to our Optinet Security and get a reward everytime you stand by a crime and watch!👁️",
+  "sU evaS sU pleH namdaM A sI poolF",
+  "<b>PAY YOUR DEPT? SYNCH TO KLEPT!</b>",
 ];
  
