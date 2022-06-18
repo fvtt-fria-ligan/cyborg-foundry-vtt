@@ -49,4 +49,5 @@ const cssFontClasses = [
   "font8",
   "font9",
   "font10",
+  "font11",
 ];
