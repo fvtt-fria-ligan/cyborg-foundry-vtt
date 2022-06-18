@@ -36,6 +36,7 @@ const cssColorClasses = [
   "color7",
   "color8",
   "color9",
+  "color10",
 ];
 
 const cssFontClasses = [
