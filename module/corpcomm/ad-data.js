@@ -265,6 +265,26 @@ const ads = [
   "<i>Midnight offer</i>: Can you beat the REAPER RAT KING? Eat it without puking and get the legendary T-shirt.",
   "👁️ Why keep all the data when you can have free money? Link your eyesight to our Optinet Security and get a reward everytime you stand by a crime and watch!👁️",
   "sU evaS sU pleH namdaM A sI poolF",
-  "<b>PAY YOUR DEPT? SYNCH TO KLEPT!</b>",
+  "<b>PAY YOUR DEPT? SYNC TO KLEPT!</b>",
+  // https://discord.com/channels/587764299834064933/926032415288336444/927895150166933514
+  "HAVE YOUR RIGHTS BEEN INFRINGED!, DO YOU WANT TO KNOW WHO'S RESPONSIBLE?, DOWNLOAD <b>ACCUTROCITY</b> TODAY",
+  "<b>Public Health Alert #4421BF</b><br>A recent inspection at five Rampart Quickstop restaurants found traces of sixteen Serious, eight Severe and twelve Fatal biological health risks and the advice is to avoid all UCS owned restaurants until further notice. Thank you.<br><i></i>This PHA was provided by BioAkta, an Alliansen Inc. company</i>",
+  "<b>3 for 1 Lunch Special</b> at Rampart Quickstop Burnchurch! <b>LIMITED TIME OFFER!</b> Free Rotblack Sundae with every purchase!*",
+  "RAMPART QUICKSTOP - Best meal in the city!!! 5 stars! Five stars! 5 strrrs! Five **ss!!!;;#; ffiiieeeee ssssss;;;,??...",
+  "hey chop off your arm to have a cool robo arm",
+  "Thank for downloading Wool lenses, an augmented reality addition from Meta.",
+  "ERROR I see you're trying to disable Wool, a meta filter from Meta.",
+  "Join <b>Fan Force</b>, the premium parasocial platform. Become buddies with the best brands. Get Mentioned. Get Hyped. Subscription only.",
+  "<b>Primo Homefinder</b>. Find and secure real estate hidden gems—regardless of the current owner or tenant. When it comes to real estate, a no can be a yes. Our legal department helps you with eviction forms, sudden termination detail and end-of-lease clauses.<br><i>Say goodbye. Welcome home</i>",
+  "[ WARNING - IT IS NOT SAFE TO DISCONNECT - WARNING ]",
+  "[ WARNING - UNPLUGGING FROM BIOLINK COULD CAUSE CORRUPTED DNA - WARNING ]",
+  "[ WARNING - LIMITED 50% OFF SALE AT :BIRDS OF PREY: ENDS IN 43 MINUTES 6 SECONDS - WARNING ]",
+  "<b>PuppyPep Dogfood</b> High in protein and and intensely flavourful for the loved ones in your family, <b>Now with 57% more dog per bite! Arff!</b>",
+  "Worried about your children's future after your gone? Funeral prices too high? Sign up for a organ donation plan today! <i>Let nothing go to waste!</i>",
+  "-/- - ./<br><b>Directive Response</b> <i>We offer a wide variety of defensive and offensive security solutions for thousands of discerning businesses. From Personal Security Detail to Aerial Strike Plans you are guaranteed effective, no compromise services</i> [<b>ELItech Pass Needed</b> to ~sync~]",
+  "<b>MealTech</b> Safe Water -/- You can safely drink it. Simple and cheap.",
+  // https://discord.com/channels/587764299834064933/926032415288336444/928310904708292608
+  "<b>HELIX RENEGAID<b>! MURDER YOUR GROWTH WITH <b>HELIX RENEGAID</b> EXTREME GENE BOOST DRINKS! FEEL YOUR MUSCLES SWELL! HEAR YOUR BONES EXPAND IN REAL-TIME! ALWAYS WITH <b>HELIX ADRENOCHROME ENERGY BLEND!</b><br>Comes in flavours <b>BODYCOUNT ICE TEA</b>, <b>AGGRO FIRE BLOOD</b>, and <b>Lime</b>",
+  "<b>Finger salad</b>. It's green.",
 ];
  
