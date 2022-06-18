@@ -1,4 +1,5 @@
 import { showChatAd } from "./chat-comm.js";
+import { showPopupAd } from "./popup-comm.js";
 
 const adTimerInterval = 1000;
 const quietTimeBeforeAd = 10000;

@@ -348,7 +348,7 @@
   color: white; }
 
 .color5 {
-  color: #ff321a; }
+  color: #FF3131; }
 
 .color6 {
   color: #39ff14; }
@@ -361,6 +361,9 @@
 
 .color9 {
   color: #fe86ff; }
+
+.color10 {
+  color: #C724B1; }
 
 .font1 {
   font-family: helvetica; }
@@ -528,9 +531,7 @@
   animation: glitch 2s linear infinite; }
   .glitch .content div:before,
   .glitch .content div:after {
-    content: attr(title);
-    left: 0;
-    position: absolute; }
+    content: attr(content); }
   .glitch .content div:before {
     animation: glitchTop 1s linear infinite;
     clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
@@ -697,6 +698,10 @@
 
 .allowed-scvm-classes-dialog .class-name {
   text-transform: capitalize; }
+
+.corpcomm-dialog {
+  display: flex;
+  flex-direction: column; }
 
 .rest-dialog ul {
   list-style-type: none; }

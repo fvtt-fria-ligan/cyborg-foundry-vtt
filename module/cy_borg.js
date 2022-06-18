@@ -13,11 +13,15 @@ import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handleb
 
 import { initializeAdBot } from "./corpcomm/ad-bot.js";
 import { showChatAd } from "./corpcomm/chat-comm.js";
+import { showPopupAd } from "./corpcomm/popup-comm.js";
+
 
 Hooks.once("init", async function () {
   consoleBanner();
   CONFIG.CY = CY;
+  // TODO: for debugging
   window.showChatAd = showChatAd;
+  window.showPopupAd = showPopupAd;
   registerSystemSettings();
   registerDocumentClasses();
   registerSheets();
