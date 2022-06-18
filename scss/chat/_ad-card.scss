@@ -255,9 +255,7 @@
     animation: glitch 2s linear infinite;
     div:before,
     div:after{
-      content: attr(title);
-      left: 0;
-      position: absolute;
+      content: attr(content);
     }
     div:before{
       animation: glitchTop 1s linear infinite;
