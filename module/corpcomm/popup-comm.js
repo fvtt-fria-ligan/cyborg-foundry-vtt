@@ -8,10 +8,15 @@ export const showPopupAd = () => {
   popup.render(true);
 };
 
+const moveDelta = 10;
+
 class CorpcommDialog extends Application {
   constructor() {
     super();
-    this.scheduleAnimate();
+    this.animationTimerId =
+    this.ad = randomAd();
+    this.cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
+    this.animationTimerId = setInterval(() => this.animationTick(), 500);
   }
 
   /** @override */
@@ -30,16 +35,32 @@ class CorpcommDialog extends Application {
 
   /** @override */
   getData() {
-    const ad = randomAd();
-    const cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
     return {
-      cssAdClass,
-      content: ad,
+      cssAdClass: this.cssAdClass,
+      content: this.ad,
     };
   }
 
+  /** @override */
+  async close(options={}) {
+    clearInterval(this.animationTimerId);
+    return super.close(options);
+  }
+
   // might as well use setInterval, so we have id to cancel
-  
+
+  randomDelta() {
+    return -moveDelta + Math.random() * 2 * moveDelta; 
+  }
+
+  animationTick() {
+    const deltaX = this.randomDelta();
+    const deltaY = this.randomDelta();
+    const left = this.position.left + deltaX;
+    const top = this.position.top + deltaY;
+    this.setPosition({left, top});
+  }
+
   // scheduleAnimation() {
   //   setTimeout(() => {
   //     this.animate();
