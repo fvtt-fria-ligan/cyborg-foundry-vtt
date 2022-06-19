@@ -12,15 +12,66 @@ export const registerSystemSettings = () => {
     default: true,
   });
 
-    /** Whether to keep track of carrying capacity */
-    game.settings.register(CY.system, "soundEffects", {
-      name: "CY.SettingsSoundEffects",
-      hint: "CY.SettingsSoundEffectsHint",
-      scope: "world",
-      config: true,
-      type: Boolean,
-      default: true,
-    });
+  /** Whether to show chat message ads */
+  game.settings.register(CY.system, "showChatAds", {
+    name: "CY.SettingsShowChatAds",
+    hint: "CY.SettingsShowChatAdsHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
+  /** Delay between showing chat ads */
+  game.settings.register(CY.system, "chatAdDelay", {
+    name: "CY.SettingsChatAdDelay",
+    hint: "CY.SettingsChatAdDelay",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 10,
+  });
+
+  /** Whether to show popup ads */
+  game.settings.register(CY.system, "showPopupAds", {
+    name: "CY.SettingsShowPopupAds",
+    hint: "CY.SettingsShowPopupAdsHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
+  /** Chance to show a popup ad */
+  game.settings.register(CY.system, "popupAdChance", {
+    name: "CY.SettingsPopupAdChance",
+    hint: "CY.SettingsPopupAdChanceHint",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 50,
+  });
+
+  /** Whether to show popup ad instead of intended function (vs. in addition to) */
+  game.settings.register(CY.system, "popupAdInstead", {
+    name: "CY.SettingsPopupAdInstead",
+    hint: "CY.SettingsPopupAdInsteadHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
+
+  /** Whether to play sound effects */
+  game.settings.register(CY.system, "soundEffects", {
+    name: "CY.SettingsSoundEffects",
+    hint: "CY.SettingsSoundEffectsHint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+  });
 
   /** The allowed classes menu */
   game.settings.registerMenu(CY.system, "EditAllowedScvmClassesMenu", {
@@ -49,6 +100,26 @@ export const registerSystemSettings = () => {
     scope: "client",
     config: false,
   });
+};
+
+export const showChatAds = () => {
+  return game.settings.get(CY.system, "showChatAds");
+};
+
+export const chatAdDelay = () => {
+  return game.settings.get(CY.system, "chatAdDelay");
+};
+
+export const showPopupAds = () => {
+  return game.settings.get(CY.system, "showPopupAds");
+};
+
+export const popupAdChance = () => {
+  return game.settings.get(CY.system, "popupAdChance");
+};
+
+export const popupAdInstead = () => {
+  return game.settings.get(CY.system, "popupAdInstead");
 };
 
 export const soundEffects = () => {

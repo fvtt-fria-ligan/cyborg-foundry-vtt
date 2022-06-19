@@ -1,9 +1,9 @@
 import { showChatAd } from "./chat-comm.js";
 import { showPopupAd } from "./popup-comm.js";
+import { chatAdDelay, popupAdChance, popupAdInstead, showChatAds, showPopupAds } from "../settings.js";
 
-const adTimerInterval = 1000;
-const quietTimeBeforeAd = 10000;
-let adTimerID;
+const chatAdTimerInterval = 1000;
+let chatAdTimerID;
 let lastChatMessageTime;
 
 export const initializeAdBot = () => {
@@ -13,25 +13,44 @@ export const initializeAdBot = () => {
   //   return;
   // }
 
-  Hooks.on("createChatMessage", (chatLog, message, chatData) => {
+  if (showChatAds()) {
+    Hooks.on("createChatMessage", (chatLog, message, chatData) => {
+      lastChatMessageTime = new Date().getTime();
+    });
+  
     lastChatMessageTime = new Date().getTime();
-  });
-
-  lastChatMessageTime = new Date().getTime();
-  startAdTimer();
+    startChatAdTimer();      
+  }
 }
 
-const stopAdTimer = () => {
-  clearInterval(adTimerId);
+export const terminateAdBot = () => {
+  // TODO: Hooks.off?  
+  stopChatAdTimer();
+};
+
+const stopChatAdTimer = () => {
+  clearInterval(chatAdTimerId);
 }
 
-const startAdTimer = () => {
-  adTimerID = setInterval(adTimerTick, adTimerInterval);
+const startChatAdTimer = () => {
+  chatAdTimerID = setInterval(adTimerTick, chatAdTimerInterval);
 };
 
 const adTimerTick = () => {
   const timeSinceLastChatMessage = new Date().getTime() - lastChatMessageTime;
-  if (timeSinceLastChatMessage > quietTimeBeforeAd) {
+  if (timeSinceLastChatMessage > (chatAdDelay() * 1000)) {
     showChatAd();
+  }
+};
+
+export const nopeShowAd = (originalFn) => {
+  const percent = Math.random() * 100;
+  if (showPopupAds() && percent < popupAdChance()) {
+    showPopupAd();
+    if (!popupAdInstead()) {
+      originalFn();
+    }
+  } else {
+    originalFn();
   }
 };

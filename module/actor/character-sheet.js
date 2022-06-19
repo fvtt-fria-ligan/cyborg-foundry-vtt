@@ -10,6 +10,7 @@ import { rollLevelUp } from "./level-up.js";
 import { showGlitchesHelp } from "./glitches.js";
 import { rollUseNano } from "./nanos.js";
 import { byName } from "../utils.js";
+import { nopeShowAd } from "../corpcomm/ad-bot.js";
 
 
 export class CYCharacterSheet extends CYActorSheet {
@@ -69,75 +70,104 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
   }
 
-  async _testAbility(event) {
+  _testAbility(event) {
     event.preventDefault();
     const ability = event.currentTarget.dataset.ability;
     switch(ability) {
       case "agility":
-        await testAgility(this.actor);
+        nopeShowAd(() => {
+          testAgility(this.actor);
+        });        
         break;
       case "glitches":
-        await showGlitchesHelp(this.actor);
+        nopeShowAd(() => {
+          showGlitchesHelp(this.actor);
+        });        
         break;
       case "knowledge":
-        await testKnowledge(this.actor);
+        nopeShowAd(() => {
+          testKnowledge(this.actor);
+        });        
         break;
       case "presence":
-        await testPresence(this.actor);
+        nopeShowAd(() => {
+          testPresence(this.actor);
+        });        
         break;
       case "strength":
-        await testStrength(this.actor);
+        nopeShowAd(() => {
+          testStrength(this.actor);
+        });        
         break;
       case "toughness":
-        await testToughness(this.actor);
+        nopeShowAd(() => {
+          testToughness(this.actor);
+        });        
         break;
     }
   }
 
-  async _attack(event) {
+  _attack(event) {
     event.preventDefault();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
-    showAttackDialog(this.actor, itemId);
+    nopeShowAd(() => {
+      showAttackDialog(this.actor, itemId);
+    });
   }
 
   async _defend(event) {
     event.preventDefault();
-    await showDefendDialog(this.actor);
+    // await showDefendDialog(this.actor);
+    nopeShowAd(() => {
+      showDefendDialog(this.actor);
+    });
   }
 
-  async _rest(event) {
+  _rest(event) {
     event.preventDefault();
-    await showRestDialog(this.actor);
+    nopeShowAd(() => {
+      showRestDialog(this.actor);
+    });
   }
 
-  async _battered(event) {
+  _battered(event) {
     event.preventDefault();
-    await rollBattered(this.actor);
+    nopeShowAd(() => {
+      rollBattered(this.actor);
+    });
   }
 
-  async _levelUp(event) {
+  _levelUp(event) {
     event.preventDefault();
-    await rollLevelUp(this.actor);
+    nopeShowAd(() => {
+      rollLevelUp(this.actor);
+    });
   }
 
-  async _useApp(event) {
+  _useApp(event) {
     event.preventDefault();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
-    await rollUseApp(this.actor, itemId);
+    nopeShowAd(() => {
+      rollUseApp(this.actor, itemId);
+    });
   }
 
-  async _useNano(event) {
+  _useNano(event) {
     event.preventDefault();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
-    await rollUseNano(this.actor, itemId);
+    nopeShowAd(() => {
+      rollUseNano(this.actor, itemId);
+    });
   }
 
-  async _initiative(event) {
+  _initiative(event) {
     event.preventDefault();
-    await rollPartyInitiative(this.actor);
+    nopeShowAd(() => {
+      rollPartyInitiative(this.actor);
+    });
   }
 
   /**
