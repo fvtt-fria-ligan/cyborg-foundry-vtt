@@ -12,36 +12,19 @@ export const initializeAdBot = () => {
     return;
   }
 
-  console.log("Initializing AdBot2000...");
+  console.log("Initializing ▁ ▂ ▄ ▅ ▆ ▇ █ [ AdBot2000 ] █ ▇ ▆ ▅ ▄ ▂ ▁");
 
   if (showChatAds()) {
-    Hooks.on("createChatMessage", (chatLog, message, chatData) => {
-      lastChatMessageTime = new Date().getTime();
-    });
-  
+    Hooks.on("createChatMessage", onCreateChatMessage);
     lastChatMessageTime = new Date().getTime();
-    startChatAdTimer();      
+    chatAdTimerID = setInterval(adTimerTick, chatAdTimerInterval);
   }
 }
 
 export const terminateAdBot = () => {
-  // TODO: Hooks.off?  
+  Hooks.off("createChatMessage", onCreateChatMessage);
   stopChatAdTimer();
-};
-
-const stopChatAdTimer = () => {
   clearInterval(chatAdTimerId);
-}
-
-const startChatAdTimer = () => {
-  chatAdTimerID = setInterval(adTimerTick, chatAdTimerInterval);
-};
-
-const adTimerTick = () => {
-  const timeSinceLastChatMessage = new Date().getTime() - lastChatMessageTime;
-  if (timeSinceLastChatMessage > (chatAdDelay() * 1000)) {
-    showChatAd();
-  }
 };
 
 export const nopeShowAd = (originalFn) => {
@@ -53,5 +36,16 @@ export const nopeShowAd = (originalFn) => {
     }
   } else {
     originalFn();
+  }
+};
+
+const onCreateChatMessage = (chatLog, message, chatData) => {
+  lastChatMessageTime = new Date().getTime();
+};
+
+const adTimerTick = () => {
+  const timeSinceLastChatMessage = new Date().getTime() - lastChatMessageTime;
+  if (timeSinceLastChatMessage > (chatAdDelay() * 1000)) {
+    showChatAd();
   }
 };

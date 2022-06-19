@@ -9,6 +9,11 @@ export const showPopupAd = () => {
 };
 
 class CorpcommDialog extends Application {
+  constructor() {
+    super();
+    this.scheduleAnimate();
+  }
+
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;
@@ -32,4 +37,20 @@ class CorpcommDialog extends Application {
       content: ad,
     };
   }
+
+  // might as well use setInterval, so we have id to cancel
+  
+  // scheduleAnimation() {
+  //   setTimeout(() => {
+  //     this.animate();
+  //   }, 1000);
+  // }
+
+  // animate() {
+  //   console.log("***** animation tick");
+  //   this.scheduleAnimate();
+  // }
+
+  // async close(options={}) {
+  // };
 }
