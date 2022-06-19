@@ -29,7 +29,7 @@ export const registerSystemSettings = () => {
     scope: "world",
     config: true,
     type: Number,
-    default: 10,
+    default: 20,
   });
 
   /** Whether to show popup ads */

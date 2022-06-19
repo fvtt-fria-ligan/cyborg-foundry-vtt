@@ -259,7 +259,7 @@ const ads = [
   "Live the ~MOMENT~ with <b>Hephamaude</b>. All automated. Say farewell to the flesh.",
   "Changing your Mind with SCIENCE and TECHNOLOGY. <b>Sunscope Empathy Link</b>",
   "Don't forget to smile today! We're watching you!",
-  "<IGNORE THE PURPLE GLOW. KEEP MOVING. REMAIN INDOORS.>",
+  "&lt;IGNORE THE PURPLE GLOW. KEEP MOVING. REMAIN INDOORS.&gt;",
   "Feeling lost? Get your LOCATECH tracking implant today! Now in 5,836 fun colors!",
   "Dealing with wily deadbeats? Get ChamBuster today! 85% guaranteed success rates in tracking down debtors--we're good for it!",
   "Frustrated with ChamBusters tracking you down? Get Chameleon Pro and vanish from the grid!",
@@ -341,7 +341,7 @@ const ads = [
   "Last decade: Tired<br>20X3: <b>PulseWired</b><br>Humanity enhanced. Compatible with all bioports and neural highways. <i>Get wired</i>.",
   "Are you a people person?<br>Become a guardian to a tech stripped drool-goon today!<br>Man's best friend",
   "430+ stores, 120 restaurants, state-of-the-art holo entertainment zone — in space. Live, laugh, shop among the stars, with the stars. Welcome to ✩ <b>StarMall by Alliansen Inc.</b> ✩ 557F 4th Elevator Stratosphere tier.",
-  "[This ad-link is CURSED! Share it with 5 contacts or you’ll frag!]",
+  "[This ad-link is CURSED! Share it with 5 contacts or you'll frag!]",
   "Surrender or Die—the <b>MIU 66 BEHEMOTH</b> Destructor class Mechanized Combat Walker comes with 12 clusterstorm Tiger rockets, dual quad cannons and a (detachable) FireScream Ion Coil. Only 8.99. Scale 1:32. Assembly required.",
   "<b>Booly</b> / Shots, chips, enhancers and escapers—straight to your doorstep. 100% legal.",
   // https://discord.com/channels/587764299834064933/926032415288336444/935875734294126662
