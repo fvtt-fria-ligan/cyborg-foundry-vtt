@@ -47,8 +47,6 @@ class CorpcommDialog extends Application {
     return super.close(options);
   }
 
-  // might as well use setInterval, so we have id to cancel
-
   randomDelta() {
     return -moveDelta + Math.random() * 2 * moveDelta; 
   }
@@ -60,18 +58,4 @@ class CorpcommDialog extends Application {
     const top = this.position.top + deltaY;
     this.setPosition({left, top});
   }
-
-  // scheduleAnimation() {
-  //   setTimeout(() => {
-  //     this.animate();
-  //   }, 1000);
-  // }
-
-  // animate() {
-  //   console.log("***** animation tick");
-  //   this.scheduleAnimate();
-  // }
-
-  // async close(options={}) {
-  // };
 }
