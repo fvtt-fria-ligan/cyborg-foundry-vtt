@@ -95,8 +95,6 @@ export class DefendDialog extends Application {
     const modifiedDR = parseInt(baseInput.val()) + drModifier;
     const form = $(baseInput).closest("form.defend-dialog");
     const modifiedInput = $(form).find("input[name=defense-modified-dr]")
-    console.log(modifiedDR);
-    console.log(modifiedInput);
     modifiedInput.val(modifiedDR);
   }
 
@@ -109,9 +107,6 @@ export class DefendDialog extends Application {
 
     if (!baseDR || !modifiedDR || !incomingAttack) {
       // TODO: prevent dialog/form submission w/ required field(s)
-      console.log(baseDR);
-      console.log(modifiedDR);
-      console.log(incomingAttack);
       return;
     }
 

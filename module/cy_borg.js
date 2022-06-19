@@ -16,7 +16,7 @@ import { showChatAd } from "./corpcomm/chat-comm.js";
 import { showPopupAd } from "./corpcomm/popup-comm.js";
 
 
-Hooks.once("init", async function () {
+Hooks.once("init", async () => {
   consoleBanner();
   CONFIG.CY = CY;
   // TODO: for debugging
@@ -29,6 +29,9 @@ Hooks.once("init", async function () {
   await registerHandlebarsPartials();
   modifyFoundryUI();
   registerHooks();
+});
+
+Hooks.once("ready", async () => {
   initializeAdBot();
 });
 

@@ -7,11 +7,12 @@ let chatAdTimerID;
 let lastChatMessageTime;
 
 export const initializeAdBot = () => {
+  if (!game.user.isGM) {
+    // adbot only runs for gm
+    return;
+  }
+
   console.log("Initializing AdBot2000...");
-  // if (!game.user.isGM) {
-  //   // adbot only runs for gm
-  //   return;
-  // }
 
   if (showChatAds()) {
     Hooks.on("createChatMessage", (chatLog, message, chatData) => {
