@@ -1,7 +1,7 @@
 
 import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-css.js";
 import { randomAd } from "./ad-data.js";
-import { adClose, adOpen } from "./ad-sound.js";
+import { playSound } from "../sound.js";
 
 
 export const showPopupAd = () => {
@@ -11,6 +11,7 @@ export const showPopupAd = () => {
 
 const moveDelta = 10;
 
+
 class CorpcommDialog extends Application {
   constructor() {
     super();
@@ -18,7 +19,7 @@ class CorpcommDialog extends Application {
     this.ad = randomAd();
     this.cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
     this.animationTimerId = setInterval(() => this.animationTick(), 500);
-    adOpen();
+    playSound("systems/cy_borg/assets/audio/sfx/popup-ad-open.wav");
   }
 
   /** @override */
@@ -46,7 +47,7 @@ class CorpcommDialog extends Application {
   /** @override */
   async close(options={}) {
     clearInterval(this.animationTimerId);
-    adClose();
+    playSound("systems/cy_borg/assets/audio/sfx/popup-ad-close.wav");
     return super.close(options);
   }
 

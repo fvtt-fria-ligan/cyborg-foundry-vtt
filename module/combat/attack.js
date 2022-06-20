@@ -1,5 +1,4 @@
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
-import { soundEffects } from "../settings.js";
 import { d20Formula } from "../utils.js";
 
 const ATTACK_ROLL_CARD_TEMPLATE =
@@ -14,8 +13,8 @@ export const rollAttack = async (
   const item = actor.items.get(itemId);
   const itemRollData = item.getRollData();
 
-  if (soundEffects && item.data.data.sound) {
-    AudioHelper.play({src: item.data.data.sound, volume: 0.8, loop: false}, true);
+  if (item.data.data.sound) {
+    playSound(item.data.data.sound);
   }
 
   // decide relevant attack ability
