@@ -1,6 +1,7 @@
 
 import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-css.js";
 import { randomAd } from "./ad-data.js";
+import { adClose, adOpen } from "./ad-sound.js";
 
 
 export const showPopupAd = () => {
@@ -17,6 +18,7 @@ class CorpcommDialog extends Application {
     this.ad = randomAd();
     this.cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
     this.animationTimerId = setInterval(() => this.animationTick(), 500);
+    adOpen();
   }
 
   /** @override */
@@ -44,6 +46,7 @@ class CorpcommDialog extends Application {
   /** @override */
   async close(options={}) {
     clearInterval(this.animationTimerId);
+    adClose();
     return super.close(options);
   }
 

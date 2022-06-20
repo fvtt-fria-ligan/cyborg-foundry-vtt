@@ -1,6 +1,8 @@
 import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-css.js";
 import { randomAd } from "./ad-data.js";
 import { documentFromPack } from "../packutils.js";
+import { adOpen } from "./ad-sound.js";
+
 
 const getAdBotActor = async () => {
   const adbot = await documentFromPack("cy_borg-core.npcs", "AdBot2000");
@@ -16,9 +18,9 @@ export const showChatAd = async () => {
   };
   const html = await renderTemplate("systems/cy_borg/templates/chat/ad-card.html", data);
   const actor = await getAdBotActor();
+  adOpen();
   ChatMessage.create({
     content: html,
-    // speaker: ChatMessage.getSpeaker({ actor }),
     speaker: ChatMessage.getSpeaker({ actor }),
   });
 };
