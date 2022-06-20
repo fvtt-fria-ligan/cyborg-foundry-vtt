@@ -2,6 +2,7 @@ import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from
 import { randomAd } from "./ad-data.js";
 import { documentFromPack } from "../packutils.js";
 import { playSound } from "../sound.js";
+import { sample } from "../utils.js";
 
 
 const getAdBotActor = async () => {
@@ -10,7 +11,11 @@ const getAdBotActor = async () => {
 }
 
 const playChatAdSound = () => {
-  const sound = Math.random() < 0.5 ? "chat-ad-1.wav" : "chat-ad-2.mp3";
+  const sound = sample([
+    "chat-ad-1.wav",
+    "chat-ad-2.mp3",
+    "chat-ad-3.wav"
+  ]);
   const src = `systems/cy_borg/assets/audio/sfx/${sound}`;
   playSound(src);
 }
