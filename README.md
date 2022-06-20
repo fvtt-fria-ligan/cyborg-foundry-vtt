@@ -6,6 +6,23 @@ https://morkborg.com/cb-license/
 
 CY_BORG IS ©2022 STOCKHOLM KARTELL.
 
+## Reporting issues and suggestions
+
+Please [file a github issue](https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/issues/new).
+
+## AdBot2000
+
+The CY_BORG system for Foundry comes with its own fake ad engine. You're welcome.
+
+Because you aren't actually stuck in CY, you can use system settings to turn off ads or tailor their behavior.
+
+* Show chat ads - whether to display ads in chat.
+* Chat ad delay - how many seconds between each ad. Note that other, regular chat messages will reset this delay.
+* Show popup ads - whether to show popup ads, which can be triggered by various actions on the character sheet.
+* Popup ad chance - percent chance to show a popup ad.
+* Popup ad instead - extra-special evil... whether the popup ad blocks the original intended action or not.
+* Sound effects - whether to play various system sound effects, including ad open/close.
+
 
 ## Credits
 
