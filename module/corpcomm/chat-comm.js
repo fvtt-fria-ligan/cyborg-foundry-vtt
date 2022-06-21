@@ -12,12 +12,13 @@ const getAdBotActor = async () => {
 
 const playChatAdSound = () => {
   const sound = sample([
-    "chat-ad-1.wav",
+    "chat-ad-1.ogg",
     "chat-ad-2.mp3",
-    "chat-ad-3.wav",
+    "chat-ad-3.ogg",
     "chat-ad-4.ogg",
+    "chat-ad-5.mp3",
   ]);
-  const src = `systems/cy_borg/assets/audio/sfx/${sound}`;
+  const src = `systems/cy_borg/assets/audio/sfx/${sound}`;  
   playSound(src);
 }
 
