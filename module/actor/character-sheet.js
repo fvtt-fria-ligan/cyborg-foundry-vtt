@@ -38,16 +38,19 @@ export class CYCharacterSheet extends CYActorSheet {
   getData() {
     const superData = super.getData();
     superData.data.data.class = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.class)
+      .filter(item => item.type === CONFIG.CY.itemTypes.class)
       .pop();
     superData.data.data.apps = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.app)
+      .filter(item => item.type === CONFIG.CY.itemTypes.app)
+      .sort(byName);
+    superData.data.data.feats = superData.data.items
+      .filter(item => item.type === CONFIG.CY.itemTypes.feat)
       .sort(byName);
     superData.data.data.infestations = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.infestation)
+      .filter(item => item.type === CONFIG.CY.itemTypes.infestation)
       .sort(byName);
     superData.data.data.nanoPowers = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.nanoPower)
+      .filter(item => item.type === CONFIG.CY.itemTypes.nanoPower)
       .sort(byName);
     superData.data.data.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
     return superData;

@@ -49,23 +49,23 @@ import { rollCyRage } from "./cybertech.js";
 
   /** @override */
   async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
-    console.log("_onCreateEmbeddedDocuments");
     super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
     if (this.data.type === CY.actorTypes.character) {
-      console.log(documents);
       for (const doc of documents) {
         if (doc instanceof CYItem && doc.data.type === CY.itemTypes.nanoPower && !doc.data.data.infestionId) {
           await doc.createLinkedInfestation();
         }
       }
-      // this.linkNanos();
     }
   }
 
   async addDefaultClass() {
-    const clazz = await documentFromPack("cy_borg-core.class-classless-punk", "Classless Punk");
-    if (clazz) {
-      await this.createEmbeddedDocuments("Item", [duplicate(clazz.data)]);
+    // add classless punk if a class doesn't already exist
+    if (!this._first(CY.itemTypes.class)) {
+      const clazz = await documentFromPack("cy_borg-core.class-classless-punk", "Classless Punk");
+      if (clazz) {
+        await this.createEmbeddedDocuments("Item", [duplicate(clazz.data)]);
+      }  
     }
   }
 

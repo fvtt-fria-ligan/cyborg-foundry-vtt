@@ -14,7 +14,8 @@ const playChatAdSound = () => {
   const sound = sample([
     "chat-ad-1.wav",
     "chat-ad-2.mp3",
-    "chat-ad-3.wav"
+    "chat-ad-3.wav",
+    "chat-ad-4.ogg",
   ]);
   const src = `systems/cy_borg/assets/audio/sfx/${sound}`;
   playSound(src);
