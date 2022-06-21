@@ -190,7 +190,7 @@ const startingEquipment = async (clazz) => {
     if (table) {
       const draw = await table.draw({ displayChat: false });
       let items = await docsFromResults(draw.results);
-      if (clazz.data.data.onlyApp && (hasCybertech(items) || hasNano(items))) {
+      if (clazz.data.data.onlyApps && (hasCybertech(items) || hasNano(items))) {
         // replace with a draw from apps
         const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Apps");
         items = [item];

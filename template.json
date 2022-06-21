@@ -96,7 +96,7 @@
       "hitPoints": "1d8",
       "items": null,
       "knowledge": "3d6",
-      "onlyApp": false,
+      "onlyApps": false,
       "onlyCybertech": false,
       "onlyNano": false,
       "postCreateMacro": "",
