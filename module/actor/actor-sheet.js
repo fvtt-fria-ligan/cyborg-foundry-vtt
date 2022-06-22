@@ -1,24 +1,26 @@
 import { showAddItemDialog } from "./add-item-dialog.js";
 import { byName } from "../utils.js";
 import { countBullets } from "../combat/count-bullets.js";
-import { uiWindowClose, uiWindowOpen } from "../sound.js";
+import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
 
 /**
  * @extends {ActorSheet}
  */
  export class CYActorSheet extends ActorSheet {
 
-    /** @override */
-    render(force=false, options={}) {
+  /** @override */
+  render(force=false, options={}) {
+    if (!this.rendered && this._state != Application.RENDER_STATES.RENDERING) {
       uiWindowOpen();
-      return super.render(force, options);
     }
+    return super.render(force, options);
+  }
 
-    /** @override */
-    async close(options={}) {
-      uiWindowClose();
-      return super.close(options);
-    }
+  /** @override */
+  async close(options={}) {
+    uiWindowClose();
+    return super.close(options);
+  }
 
   /** @override */
   activateListeners(html) {
@@ -29,6 +31,10 @@ import { uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".item-qty-minus").click(this._onItemSubtractQuantity.bind(this));
     html.find(".add-item-button").on("click", this._addItem.bind(this));
     html.find(".item-count-bullets").click(this._onItemCountBullets.bind(this));
+    html.find(".initiative-button").on("click", this._initiative.bind(this));
+    html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".tier-radio").click(this._onArmorTierRadio.bind(this));
+    html.find(".weapon-icon").on("click", this._attack.bind(this));
   }  
   
   /** @override */
@@ -104,5 +110,26 @@ import { uiWindowClose, uiWindowOpen } from "../sound.js";
     const parent = anchor.parents(".item");
     const itemId = parent.data("itemId");
     await countBullets(this.actor, itemId);
+  }
+
+  _initiative(event) {
+    event.preventDefault();
+    // uiClick();
+    nopeShowAd(() => {
+      rollPartyInitiative(this.actor);
+    });
+  }
+
+  /**
+   * Handle a click on the armor current tier radio buttons.
+   */
+   async _onArmorTierRadio(event) {
+    event.preventDefault();
+    uiClick();
+    const input = $(event.currentTarget);
+    const newTier = parseInt(input[0].value);
+    const parent = input.parents(".item");
+    const item = this.actor.items.get(parent.data("itemId"));
+    await item.update({ ["data.tier.value"]: newTier });
   }
  }
