@@ -1,5 +1,7 @@
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { d20Formula } from "../utils.js";
+import { playSound } from "../sound.js";
+
 
 const ATTACK_ROLL_CARD_TEMPLATE =
   "systems/cy_borg/templates/chat/attack-roll-card.html";

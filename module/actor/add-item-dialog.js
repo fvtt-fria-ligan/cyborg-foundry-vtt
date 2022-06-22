@@ -1,10 +1,12 @@
+import { CYApplication } from "../ui/application.js";
+
 export const showAddItemDialog = (actor) => {
   const dialog = new AddItemDialog();
   dialog.actor = actor;
   dialog.render(true);
 }
 
-export class AddItemDialog extends Application {
+export class AddItemDialog extends CYApplication {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;

@@ -1,4 +1,5 @@
 import { rollRest } from "./rest.js";
+import { CYApplication } from "../ui/application.js";
 
 export const showRestDialog = async (actor) => {
   const restDialog = new RestDialog();
@@ -6,7 +7,7 @@ export const showRestDialog = async (actor) => {
   restDialog.render(true);
 };
 
-export class RestDialog extends Application {
+export class RestDialog extends CYApplication {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;

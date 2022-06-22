@@ -9,6 +9,7 @@ import { rollUseApp } from "./apps.js";
 import { rollLevelUp } from "./level-up.js";
 import { showGlitchesHelp } from "./glitches.js";
 import { rollUseNano } from "./nanos.js";
+// import {  uiClick } from "../sound.js";
 import { byName } from "../utils.js";
 import { nopeShowAd } from "../corpcomm/ad-bot.js";
 
@@ -75,6 +76,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _testAbility(event) {
     event.preventDefault();
+    // uiClick();
     const ability = event.currentTarget.dataset.ability;
     switch(ability) {
       case "agility":
@@ -112,6 +114,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _attack(event) {
     event.preventDefault();
+    // uiClick();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
     nopeShowAd(() => {
@@ -121,7 +124,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   async _defend(event) {
     event.preventDefault();
-    // await showDefendDialog(this.actor);
+    // uiClick();
     nopeShowAd(() => {
       showDefendDialog(this.actor);
     });
@@ -129,6 +132,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _rest(event) {
     event.preventDefault();
+    // uiClick();
     nopeShowAd(() => {
       showRestDialog(this.actor);
     });
@@ -136,6 +140,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _battered(event) {
     event.preventDefault();
+    // uiClick();
     nopeShowAd(() => {
       rollBattered(this.actor);
     });
@@ -143,6 +148,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _levelUp(event) {
     event.preventDefault();
+    // uiClick();
     nopeShowAd(() => {
       rollLevelUp(this.actor);
     });
@@ -150,6 +156,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _useApp(event) {
     event.preventDefault();
+    // uiClick();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
     nopeShowAd(() => {
@@ -159,6 +166,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _useNano(event) {
     event.preventDefault();
+    // uiClick();
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
     nopeShowAd(() => {
@@ -168,6 +176,7 @@ export class CYCharacterSheet extends CYActorSheet {
 
   _initiative(event) {
     event.preventDefault();
+    // uiClick();
     nopeShowAd(() => {
       rollPartyInitiative(this.actor);
     });
@@ -178,6 +187,7 @@ export class CYCharacterSheet extends CYActorSheet {
    */
    async _onArmorTierRadio(event) {
     event.preventDefault();
+    // uiClick();
     const input = $(event.currentTarget);
     const newTier = parseInt(input[0].value);
     const parent = input.parents(".item");

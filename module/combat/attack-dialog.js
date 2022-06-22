@@ -1,4 +1,5 @@
 import { rollAttack } from "./attack.js";
+import { CYApplication } from "../ui/application.js";
 
 
 export const showAttackDialog = async (actor, itemId) => {
@@ -12,7 +13,7 @@ export const showAttackDialog = async (actor, itemId) => {
   attackDialog.render(true);
 }
 
-export class AttackDialog extends Application {
+export class AttackDialog extends CYApplication {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;

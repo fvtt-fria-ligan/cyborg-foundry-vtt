@@ -1,4 +1,6 @@
-export class CYItemSheet extends ItemSheet {
+import { uiWindowClose, uiWindowOpen } from "../sound.js";
+
+export class CYItemSheet extends ItemSheet {  
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -13,6 +15,18 @@ export class CYItemSheet extends ItemSheet {
         },
       ],
     });
+  }
+
+  /** @override */
+  render(force=false, options={}) {
+    uiWindowOpen();
+    return super.render(force, options);
+  }
+
+  /** @override */
+  async close(options={}) {
+    uiWindowClose();
+    return super.close(options);
   }
 
   /** @inheritdoc */

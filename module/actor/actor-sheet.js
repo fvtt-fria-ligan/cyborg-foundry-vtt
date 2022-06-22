@@ -1,11 +1,25 @@
 import { showAddItemDialog } from "./add-item-dialog.js";
 import { byName } from "../utils.js";
 import { countBullets } from "../combat/count-bullets.js";
+import { uiWindowClose, uiWindowOpen } from "../sound.js";
 
 /**
  * @extends {ActorSheet}
  */
  export class CYActorSheet extends ActorSheet {
+
+    /** @override */
+    render(force=false, options={}) {
+      uiWindowOpen();
+      return super.render(force, options);
+    }
+
+    /** @override */
+    async close(options={}) {
+      uiWindowClose();
+      return super.close(options);
+    }
+
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);

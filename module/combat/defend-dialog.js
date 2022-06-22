@@ -1,4 +1,5 @@
 import { rollDefend } from "./defend.js";
+import { CYApplication } from "../ui/application.js";
 
 /**
  * Show a defend dialog for the given actor.
@@ -9,7 +10,7 @@ import { rollDefend } from "./defend.js";
   attackDialog.render(true);
 }
 
-export class DefendDialog extends Application {
+export class DefendDialog extends CYApplication {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;
