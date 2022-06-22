@@ -1,3 +1,8 @@
+# 0.4.0
+
+- AdBot popups and system settings.
+- Sound effects for various UI events.
+
 # 0.3.0
 
 - AdBot2000. You're welcome.
