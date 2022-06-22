@@ -1,3 +1,7 @@
+# 0.4.2
+
+- Fix/instrument various UI sounds.
+
 # 0.4.1
 
 - Defend using armor with highest current tier.
