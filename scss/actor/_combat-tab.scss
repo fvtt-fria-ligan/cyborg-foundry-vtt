@@ -7,8 +7,6 @@
       color: $cream;
     }
   }
-  .weapons {
-  }
   .armor {
     .tier-label {
       float: left;
@@ -38,19 +36,18 @@
 
       input[type="radio"] {
         display: none;
-
-        &:checked + span.tier-num {
-          background: $magenta;
-          color: $near-black;
-          border: none;
+        &:checked {
+          + span.tier-num {
+            background: $magenta;
+            color: $near-black;
+            border: none;
+          }
         }
-
         &:disabled {
           + span.tier-num {
             color: #444444;
             border: 1px solid #444444;
           }
-
           ~ span.tier-dmg {
             color: #444444;
           }

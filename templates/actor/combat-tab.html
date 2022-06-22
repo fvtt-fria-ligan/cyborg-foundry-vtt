@@ -50,7 +50,7 @@
               <li>
                 <label
                   ><input class="tier-radio" type="radio"
-                  name="tier.value" value="0" {{#ifEq
+                  name="{{item._id}}.tier.value" value="0" {{#ifEq
                   item.data.tier.value
                   0}}checked{{/ifEq}}/><span class="tier-num">0</span
                   ><span class="tier-dmg">-0</span></label
@@ -59,7 +59,7 @@
               <li>
                 <label
                   ><input class="tier-radio" type="radio"
-                  name="tier.value" value="1" {{#ifEq
+                  name="{{item._id}}.tier.value" value="1" {{#ifEq
                   item.data.tier.value
                   1}}checked{{/ifEq}}/><span class="tier-num">1</span
                   ><span class="tier-dmg">-d2</span></label
@@ -68,7 +68,7 @@
               <li>
                 <label
                   ><input class="tier-radio" type="radio"
-                  name="tier.value" value="2" {{#ifEq
+                  name="{{item._id}}.tier.value" value="2" {{#ifEq
                   item.data.tier.value
                   2}}checked{{/ifEq}} {{#ifLt
                   item.data.tier.max
@@ -80,7 +80,7 @@
               <li>
                 <label
                   ><input class="tier-radio" type="radio"
-                  name="tier.value" value="3" {{#ifEq
+                  name="{{item._id}}.tier.value" value="3" {{#ifEq
                   item.data.tier.value
                   3}}checked{{/ifEq}} {{#ifLt
                   item.data.tier.max
@@ -92,7 +92,7 @@
               <li>
                 <label
                   ><input class="tier-radio" type="radio"
-                  name="tier.value" value="4" {{#ifEq
+                  name="{{item._id}}.tier.value" value="4" {{#ifEq
                   item.data.tier.value
                   4}}checked{{/ifEq}} {{#ifLt
                   item.data.tier.max

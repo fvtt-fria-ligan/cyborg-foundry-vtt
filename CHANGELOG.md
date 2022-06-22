@@ -1,3 +1,8 @@
+# 0.4.1
+
+- Defend using armor with highest current tier.
+- Fix tier radio display bug for multiple armor on combat tab.
+
 # 0.4.0
 
 - AdBot popups and system settings.
