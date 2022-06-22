@@ -1,7 +1,12 @@
 import { showAddItemDialog } from "./add-item-dialog.js";
-import { byName } from "../utils.js";
+import { showAttackDialog } from "../combat/attack-dialog.js";
 import { countBullets } from "../combat/count-bullets.js";
+import { showDefendDialog } from "../combat/defend-dialog.js";
+import { rollPartyInitiative } from "../combat/initiative.js";
+import { nopeShowAd } from "../corpcomm/ad-bot.js";
 import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
+import { byName } from "../utils.js";
+
 
 /**
  * @extends {ActorSheet}
