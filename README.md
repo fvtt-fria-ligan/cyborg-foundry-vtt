@@ -31,8 +31,12 @@ Because you aren't actually stuck in CY, you can use system settings to turn off
   * UI
     * https://freesound.org/people/Divoljud/sounds/520579/
     * https://freesound.org/people/plasterbrain/sounds/423166/
-    * UI window open https://freesound.org/people/nezuai/sounds/582600/
-    * UI window close https://freesound.org/people/nezuai/sounds/582593/
+    * UI add https://freesound.org/people/nezuai/sounds/582600/
+    * UI delete https://freesound.org/people/nezuai/sounds/582593/
+    * UI click 1
+    * UI click 2
+    * UI error
+    * UI success https://freesound.org/people/nezuai/sounds/577025/
   * Ads
     * https://freesound.org/people/thisusernameis/sounds/426888/
     * https://freesound.org/people/FiveBrosStopMosYT/sounds/537031/

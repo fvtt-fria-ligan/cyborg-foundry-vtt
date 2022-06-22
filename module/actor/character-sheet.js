@@ -1,13 +1,14 @@
 import { showRestDialog } from "../combat/rest-dialog.js";
 import { rollBattered } from "../combat/battered.js";
+import { nopeShowAd } from "../corpcomm/ad-bot.js";
 import { testAgility, testKnowledge, testPresence, testStrength, testToughness } from "./ability-tests.js";
 import { CYActorSheet } from "./actor-sheet.js";
 import { rollUseApp } from "./apps.js";
 import { showGlitchesHelp } from "./glitches.js";
 import { rollLevelUp } from "./level-up.js";
 import { rollUseNano } from "./nanos.js";
+import { uiSuccess } from "../sound.js";
 import { byName } from "../utils.js";
-import { nopeShowAd } from "../corpcomm/ad-bot.js";
 
 
 export class CYCharacterSheet extends CYActorSheet {
@@ -73,31 +74,37 @@ export class CYCharacterSheet extends CYActorSheet {
     switch(ability) {
       case "agility":
         nopeShowAd(() => {
+          uiSuccess();
           testAgility(this.actor);
         });        
         break;
       case "glitches":
         nopeShowAd(() => {
+          uiSuccess();
           showGlitchesHelp(this.actor);
         });        
         break;
       case "knowledge":
         nopeShowAd(() => {
+          uiSuccess();
           testKnowledge(this.actor);
         });        
         break;
       case "presence":
         nopeShowAd(() => {
+          uiSuccess();
           testPresence(this.actor);
         });        
         break;
       case "strength":
         nopeShowAd(() => {
+          uiSuccess();
           testStrength(this.actor);
         });        
         break;
       case "toughness":
         nopeShowAd(() => {
+          uiSuccess();
           testToughness(this.actor);
         });        
         break;
@@ -116,6 +123,7 @@ export class CYCharacterSheet extends CYActorSheet {
     event.preventDefault();
     // uiClick();
     nopeShowAd(() => {
+      uiSuccess();
       rollBattered(this.actor);
     });
   }
@@ -124,6 +132,7 @@ export class CYCharacterSheet extends CYActorSheet {
     event.preventDefault();
     // uiClick();
     nopeShowAd(() => {
+      uiSuccess();
       rollLevelUp(this.actor);
     });
   }
@@ -134,6 +143,7 @@ export class CYCharacterSheet extends CYActorSheet {
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
     nopeShowAd(() => {
+      uiSuccess();
       rollUseApp(this.actor, itemId);
     });
   }
@@ -144,8 +154,8 @@ export class CYCharacterSheet extends CYActorSheet {
     const item = $(event.currentTarget).parents(".item");
     const itemId = item.data("itemId");
     nopeShowAd(() => {
+      uiSuccess();
       rollUseNano(this.actor, itemId);
     });
   }
-
  }

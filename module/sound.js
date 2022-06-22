@@ -18,6 +18,14 @@ export const uiDelete = () => {
   playSound("systems/cy_borg/assets/audio/sfx/ui-delete.ogg");
 };
 
+export const uiError = () => {
+  playSound("systems/cy_borg/assets/audio/sfx/ui-error.ogg");
+};
+
+export const uiSuccess = () => {
+  playSound("systems/cy_borg/assets/audio/sfx/ui-success.ogg");
+};
+
 export const uiWindowClose = () => {
   // playSound("systems/cy_borg/assets/audio/sfx/ui-window-close.ogg");
   playSound("systems/cy_borg/assets/audio/sfx/ui-click-2.ogg");
