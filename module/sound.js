@@ -6,9 +6,17 @@ export const playSound = (src, volume=0.8) => {
   }
 };
 
+export const uiAdd = () => {
+  playSound("systems/cy_borg/assets/audio/sfx/ui-add.ogg");
+};
+
 export const uiClick = () => {
   playSound("systems/cy_borg/assets/audio/sfx/ui-click-1.ogg");
-}
+};
+
+export const uiDelete = () => {
+  playSound("systems/cy_borg/assets/audio/sfx/ui-delete.ogg");
+};
 
 export const uiWindowClose = () => {
   // playSound("systems/cy_borg/assets/audio/sfx/ui-window-close.ogg");

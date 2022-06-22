@@ -1,4 +1,4 @@
-import { uiWindowClose, uiWindowOpen } from "../sound.js";
+import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
 
 export class CYItemSheet extends ItemSheet {  
   /** @override */
@@ -29,6 +29,12 @@ export class CYItemSheet extends ItemSheet {
     return super.close(options);
   }
 
+  /** @override */
+  activateListeners(html) {
+    super.activateListeners(html);
+    html.find(".tabs a.item").on("click", this._onTabClick.bind(this));  
+  }
+
   /** @inheritdoc */
   get template() {
     const path = "systems/cy_borg/templates/item/";
@@ -41,4 +47,8 @@ export class CYItemSheet extends ItemSheet {
     superData.cssCyberClass = superData.data.data.cybertech ? "cyber": "";
     return superData;
   }
+
+  _onTabClick(event) {
+    uiClick();
+  }  
 }

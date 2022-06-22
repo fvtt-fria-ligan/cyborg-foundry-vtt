@@ -1,14 +1,24 @@
+import { uiAdd, uiDelete } from "./sound.js";
+
 export const registerHooks = () => {
 
-  // Hooks.on("createItem", async (item, options, userId) => {
-  //   if (userId != game.user.id) {
-  //     return;
-  //   }
-  //   console.log("******* createItem");
-  //   console.log(item);
-  //   console.log(options);
-  //   console.log(userId);
-  // });
+  Hooks.on("createItem", async (item, options, userId) => {
+    if (userId != game.user.id) {
+      return;
+    }
+    if (item.parent?._sheet?._state == Application.RENDER_STATES.RENDERED) {
+      uiAdd();
+    }
+  });
+
+  Hooks.on("deleteItem", async (item, options, userId) => {
+    if (userId != game.user.id) {
+      return;
+    }
+    if (item.parent?._sheet?._state == Application.RENDER_STATES.RENDERED) {
+      uiDelete();
+    }
+  });
 
   // Hooks.on("createOwnedItem", async (item, options, userId) => {
   //   if (userId != game.user.id) {

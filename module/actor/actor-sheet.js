@@ -25,6 +25,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+    html.find(".tabs a.item").on("click", this._onTabClick.bind(this));
     html.find(".item-edit").click(this._onItemEdit.bind(this));
     html.find(".item-delete").click(this._onItemDelete.bind(this));
     html.find(".item-qty-plus").click(this._onItemAddQuantity.bind(this));
@@ -37,6 +38,10 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".weapon-icon").on("click", this._attack.bind(this));
   }  
   
+  _onTabClick(event) {
+    uiClick();
+  }
+
   /** @override */
   getData() {
     const superData = super.getData();
