@@ -4,6 +4,8 @@ import { trackCarryingCapacity } from "../settings.js";
 import { documentFromPack } from "../packutils.js";
 import { rollCyRage } from "./cybertech.js";
 
+const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.value ? 1 : b.data.data.tier.value < a.data.data.tier.value ? -1 : 0);
+
 /**
  * @extends {Actor}
  */
@@ -108,7 +110,7 @@ import { rollCyRage } from "./cybertech.js";
   }
 
   equippedArmor() {
-    return this._first(CY.itemTypes.armor);
+    return this.data.items.filter(x => x.data.type === CY.itemTypes.armor).sort(byCurrentTierDesc).shift();
   }
 
   findItem(itemType, itemName) {
