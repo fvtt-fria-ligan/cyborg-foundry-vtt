@@ -108,24 +108,6 @@ export class CYCharacterSheet extends CYActorSheet {
     }
   }
 
-  _attack(event) {
-    event.preventDefault();
-    // uiClick();
-    const item = $(event.currentTarget).parents(".item");
-    const itemId = item.data("itemId");
-    nopeShowAd(() => {
-      showAttackDialog(this.actor, itemId);
-    });
-  }
-
-  async _defend(event) {
-    event.preventDefault();
-    // uiClick();
-    nopeShowAd(() => {
-      showDefendDialog(this.actor);
-    });
-  }
-
   _rest(event) {
     event.preventDefault();
     // uiClick();

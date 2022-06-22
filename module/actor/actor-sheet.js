@@ -125,6 +125,24 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     });
   }
 
+  _attack(event) {
+    event.preventDefault();
+    // uiClick();
+    const item = $(event.currentTarget).parents(".item");
+    const itemId = item.data("itemId");
+    nopeShowAd(() => {
+      showAttackDialog(this.actor, itemId);
+    });
+  }
+
+  async _defend(event) {
+    event.preventDefault();
+    // uiClick();
+    nopeShowAd(() => {
+      showDefendDialog(this.actor);
+    });
+  }
+  
   /**
    * Handle a click on the armor current tier radio buttons.
    */
