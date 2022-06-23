@@ -1,7 +1,7 @@
 .cy.sheet {
   border: 2px solid $aqua;
   border-radius: 5px;
-
+  
   section.window-content {
     background: $near-black;
     background-image: none;
@@ -9,6 +9,7 @@
     color: $cream;
     font-family: $sheet-font;
     font-size: 15px;
+    overflow-y: scroll;
     padding: $widget-margin;
 
     form {

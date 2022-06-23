@@ -33,6 +33,7 @@
     color: #F6EDDB;
     font-family: "QuanPixel 8px";
     font-size: 15px;
+    overflow-y: scroll;
     padding: 5px; }
     .cy.sheet section.window-content form {
       padding: 0;

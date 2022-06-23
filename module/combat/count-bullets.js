@@ -1,4 +1,5 @@
 import { showDice } from "../dice.js";
+import { CYApplication } from "../ui/application.js";
 import { showOutcomeRollCard } from "../utils.js";
 
 export const countBullets = async (actor, itemId) => {
@@ -51,7 +52,7 @@ export const showCountBulletsDialog = async (actor, itemId) => {
   countDialog.render(true);
 }
 
-export class CountBulletsDialog extends Application {
+export class CountBulletsDialog extends CYApplication {
   /** @override */
   static get defaultOptions() {
     const options = super.defaultOptions;

@@ -88,6 +88,7 @@ import { byName } from "../utils.js";
    */
    async _onItemAddQuantity(event) {
     event.preventDefault();
+    uiClick();
     const anchor = $(event.currentTarget);
     const li = anchor.parents(".item");
     const itemId = li.data("itemId");
@@ -102,6 +103,7 @@ import { byName } from "../utils.js";
    */
   async _onItemSubtractQuantity(event) {
     event.preventDefault();
+    uiClick();
     const anchor = $(event.currentTarget);
     const li = anchor.parents(".item");
     const itemId = li.data("itemId");

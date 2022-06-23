@@ -1,3 +1,8 @@
+# 0.4.3
+
+- Fix some actor sheet bugs.
+- Fix some sounds.
+
 # 0.4.2
 
 - Fix/instrument various UI sounds.
