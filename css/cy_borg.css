@@ -320,11 +320,9 @@
   background-color: #F6EDDB;
   color: #1C1E23; }
 
-.equipment-tab .carrying-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
-  margin-bottom: 5px; }
+.equipment-tab .carrying-value {
+  padding-bottom: 2px;
+  padding-top: 5px; }
 .equipment-tab .button-row {
   margin-bottom: 5px; }
 .equipment-tab .encumbered {

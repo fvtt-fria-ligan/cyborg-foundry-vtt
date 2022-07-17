@@ -25,6 +25,7 @@
   "CY.BatteredUnconscious": "Fall unconscious for {rounds} {roundsWord}, awaken with {hp} HP.",
   "CY.Burned": "Burned",
   "CY.Cancel": "Cancel",
+  "CY.Carrying": "Carrying",
   "CY.CarrySlots": "Carry Slots",
   "CY.CharacterSheet": "CY_BORG Character Sheet",
   "CY.Combat": "Combat",

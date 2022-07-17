@@ -1,7 +1,20 @@
 <div class="tab equipment-tab" data-group="primary" data-tab="equipment">
-  <div class="field-row carrying-row {{data.data.encumberedClass}}">
-    Carrying {{ceil actor.carryingSlots}} / {{actor.normalCarryingCapacity}}
-  </div>
+  <div class="widget field-row">
+    <div class="field-label">
+      {{ localize 'CY.Credits'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="data.credits" value="{{data.data.credits}}"/>
+    </div>
+  </div>  
+  <div class="widget field-row {{data.data.encumberedClass}}">
+    <div class="field-label">
+      {{ localize 'CY.Carrying'}}
+    </div>
+    <div class="field-value carrying-value">
+      {{ceil actor.carryingSlots}} / {{actor.normalCarryingCapacity}}
+    </div>
+  </div>    
   <div class="button-row add-item-row">
     <button type="button" class="sheet-button add-item-button">{{ localize 'CY.AddItem' }}</button>
   </div>
