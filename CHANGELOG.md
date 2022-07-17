@@ -1,3 +1,7 @@
+# 0.4.4
+
+- Fix some styling.
+
 # 0.4.3
 
 - Fix some actor sheet bugs.
