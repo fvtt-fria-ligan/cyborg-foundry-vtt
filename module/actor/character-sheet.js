@@ -35,6 +35,15 @@ export class CYCharacterSheet extends CYActorSheet {
   /** @override */
   getData() {
     const superData = super.getData();
+    superData.data.data.armor = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
+      .sort(byName);
+    superData.data.data.equipment = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
+      .sort(byName);
+    superData.data.data.weapons = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
+      .sort(byName);
     superData.data.data.class = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.class)
       .pop();

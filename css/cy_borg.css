@@ -117,8 +117,6 @@
         justify-content: center; }
         .cy.sheet section.window-content .field-row .field-value input {
           width: 100%; }
-      .cy.sheet section.window-content .field-row button {
-        color: #F6EDDB; }
       .cy.sheet section.window-content .field-row textarea {
         font-family: "QuanPixel 8px";
         line-height: 20px; }

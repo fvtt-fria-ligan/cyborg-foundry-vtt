@@ -24,6 +24,15 @@ export class CYVehicleSheet extends CYActorSheet {
     if (superData.data.data.ownerId) {
       superData.data.data.owner = game.actors.get(superData.data.data.ownerId);
     }
+    superData.data.data.armor = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
+      .sort(byName);
+    superData.data.data.equipment = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
+      .sort(byName);
+    superData.data.data.weapons = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
+      .sort(byName);
     return superData;
   }
  }
