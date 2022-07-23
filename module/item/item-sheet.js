@@ -38,13 +38,14 @@ export class CYItemSheet extends ItemSheet {
   /** @inheritdoc */
   get template() {
     const path = "systems/cy_borg/templates/item/";
-    return `${path}/${this.item.data.type}-sheet.html`;
+    return `${path}/${this.item.type}-sheet.html`;
   }
 
   /** @override */
   getData() {
     const superData = super.getData();
-    superData.cssCyberClass = superData.data.data.cybertech ? "cyber": "";
+    superData.cssCyberClass = superData.data.system.cybertech ? "cyber" : "";
+    console.log(superData);
     return superData;
   }
 
