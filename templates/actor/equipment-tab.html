@@ -4,10 +4,10 @@
       {{ localize 'CY.Credits'}}
     </div>
     <div class="field-value">
-      <input class="field-input" type="number" name="data.credits" value="{{data.data.credits}}"/>
+      <input class="field-input" type="number" name="system.credits" value="{{data.system.credits}}"/>
     </div>
   </div>  
-  <div class="widget field-row {{data.data.encumberedClass}}">
+  <div class="widget field-row {{data.system.encumberedClass}}">
     <div class="field-label">
       {{ localize 'CY.Carrying'}}
     </div>
@@ -19,7 +19,7 @@
     <button type="button" class="sheet-button add-item-button">{{ localize 'CY.AddItem' }}</button>
   </div>
   <div class="equipment item-list">
-    {{#each data.data.equipment as |item id|}}
+    {{#each data.system.equipment as |item id|}}
       <div class="item item-row equipment-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
@@ -29,7 +29,7 @@
             {{item.name}}
           </div>
           <div class="item-field-row">        
-            {{localize 'CY.Quantity'}}: {{item.data.quantity}}
+            {{localize 'CY.Quantity'}}: {{item.system.quantity}}
             &nbsp;
             <a class="item-control item-qty-plus" title="Add Quantity"
             ><i class="fas fa-plus"></i

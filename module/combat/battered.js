@@ -27,7 +27,7 @@ export const rollBattered = async (actor) => {
   } else if (batteredRoll.total <= 4) {
     // maybe cy-rage
     const rageDR = 10 + actor.cybertechCount();
-    const presenceRoll = new Roll(`1d20+${actor.data.data.abilities.presence.value}`).evaluate({ async: false });
+    const presenceRoll = new Roll(`1d20+${actor.system.abilities.presence.value}`).evaluate({ async: false });
     if (presenceRoll.total >= rageDR) {
       // passed presence test, so just unconscious
       const roundsRoll = new Roll("1d4").evaluate({ async: false });
@@ -53,7 +53,7 @@ export const rollBattered = async (actor) => {
     }
   } else if (batteredRoll.total <= 6) {
     // critical injury
-    const bodyPart = actor.randomBodyPart();
+    const bodyPart = randomBodyPart();
     const roundsRoll = new Roll("1d4").evaluate({ async: false });
     const roundsWord = pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
     const hpRoll = new Roll("1d4").evaluate({ async: false });

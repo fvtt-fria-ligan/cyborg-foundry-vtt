@@ -29,7 +29,7 @@ export const rollIndividualInitiative = async (actor) => {
   if (game.combats && game.combat) {
     // there is an encounter started in the Combat Tracker
     const combatant = game.combat.combatants.find(
-      (i) => i.data.actorId === actor.id
+      (i) => i.system.actorId === actor.id
     );
     if (combatant) {
       // the actor is part of the combat, so roll initiative
@@ -42,7 +42,7 @@ export const rollIndividualInitiative = async (actor) => {
   }
 
   // no encounter going on, so just show chat cards
-  const formula = rollFormula("1d6", actor.data.data.abilities.agility.value);
+  const formula = rollFormula("1d6", actor.system.abilities.agility.value);
   const initiativeRoll = new Roll(formula);
   initiativeRoll.evaluate({ async: false });
   await showDice(initiativeRoll);

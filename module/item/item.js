@@ -7,14 +7,14 @@ import { drawDocument } from "../packutils.js";
  export class CYItem extends Item {
 
   linkedNano() {
-    if (this.data.data.nanoId) {
-      return this.findParentItem(this.data.data.nanoId);
+    if (this.data.system.nanoId) {
+      return this.findParentItem(this.data.system.nanoId);
     }
   }
 
   linkedInfestation() {
-    if (this.data.data.infestationId) {
-      return this.findParentItem(this.data.data.infestationId);
+    if (this.data.system.infestationId) {
+      return this.findParentItem(this.data.system.infestationId);
     }
   }
 
@@ -29,8 +29,8 @@ import { drawDocument } from "../packutils.js";
       return;
     }
     const data = duplicate(infestation.data);
-    data.data.nanoId = this.id;
+    data.system.nanoId = this.id;
     const docs = await this.parent.createEmbeddedDocuments("Item", [data]);
-    await this.update({["data.infestationId"]: docs[0].id})
+    await this.update({["system.infestationId"]: docs[0].id})
   }
 }

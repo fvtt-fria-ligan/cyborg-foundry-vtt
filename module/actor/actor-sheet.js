@@ -5,7 +5,6 @@ import { showDefendDialog } from "../combat/defend-dialog.js";
 import { rollPartyInitiative } from "../combat/initiative.js";
 import { nopeShowAd } from "../corpcomm/ad-bot.js";
 import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
-import { byName } from "../utils.js";
 
 
 /**
@@ -78,8 +77,8 @@ import { byName } from "../utils.js";
     const li = anchor.parents(".item");
     const itemId = li.data("itemId");
     const item = this.actor.items.get(itemId);
-    const attr = "data.quantity";
-    const currQuantity = getProperty(item.data, attr);
+    const attr = "system.quantity";
+    const currQuantity = getProperty(item, attr);
     return item.update({ [attr]: currQuantity + 1 });
   }
 
@@ -93,8 +92,8 @@ import { byName } from "../utils.js";
     const li = anchor.parents(".item");
     const itemId = li.data("itemId");
     const item = this.actor.items.get(itemId);
-    const attr = "data.quantity";
-    const currQuantity = getProperty(item.data, attr);
+    const attr = "system.quantity";
+    const currQuantity = getProperty(item, attr);
     // can't reduce quantity below one
     if (currQuantity > 1) {
       return item.update({ [attr]: currQuantity - 1 });
@@ -145,6 +144,6 @@ import { byName } from "../utils.js";
     const newTier = parseInt(input[0].value);
     const parent = input.parents(".item");
     const item = this.actor.items.get(parent.data("itemId"));
-    await item.update({ ["data.tier.value"]: newTier });
+    await item.update({ ["system.tier.value"]: newTier });
   }
  }

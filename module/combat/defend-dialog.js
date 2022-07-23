@@ -54,7 +54,7 @@ export class DefendDialog extends CYApplication {
     if (armor) {
       // armor defense adjustment is based on its max tier, not current
       // TODO: maxTier is getting stored as a string
-      const maxTier = parseInt(armor.data.data.tier.max);
+      const maxTier = parseInt(armor.data.system.tier.max);
       const defenseModifier = CONFIG.CY.armorTiers[maxTier].defenseModifier;
       if (defenseModifier) {
         drModifiers.push(
@@ -84,7 +84,7 @@ export class DefendDialog extends CYApplication {
     const armor = this.actor.equippedArmor();
     if (armor) {
       // TODO: maxTier is getting stored as a string
-      const maxTier = parseInt(armor.data.data.tier.max);
+      const maxTier = parseInt(armor.data.system.tier.max);
       const defenseModifier = CONFIG.CY.armorTiers[maxTier].defenseModifier;
       if (defenseModifier) {
         drModifier += defenseModifier;

@@ -13,10 +13,14 @@ export const rollAttack = async (
   actor, itemId, attackDR, targetArmor, 
   autofire, weakPoints, targetIsVehicle) => {
   const item = actor.items.get(itemId);
+  console.log(itemId);
+  console.log(actor);
+  console.log(actor.items);
+  console.log(item);
   const itemRollData = item.getRollData();
 
-  if (item.data.data.sound) {
-    playSound(item.data.data.sound);
+  if (item.system.sound) {
+    playSound(item.system.sound);
   }
 
   // decide relevant attack ability
@@ -28,7 +32,7 @@ export const rollAttack = async (
     ability = "agility";
     abilityAbbrevKey = "CY.AgilityAbbrev";
     attackTypeKey = "CY.Autofire";
-  } else if(itemRollData.weaponType === "ranged") {
+  } else if (itemRollData.weaponType === "ranged") {
     // ranged
     ability = "presence";
     abilityAbbrevKey = "CY.PresenceAbbrev";
@@ -39,7 +43,7 @@ export const rollAttack = async (
     abilityAbbrevKey = "CY.StrengthAbbrev";
     attackTypeKey = "CY.Melee";
   }
-  const value = actor.data.data.abilities[ability].value;
+  const value = actor.system.abilities[ability].value;
 
   // roll 1: attack
   const attackRoll = new Roll(d20Formula(value));
@@ -71,7 +75,7 @@ export const rollAttack = async (
       attackOutcome += ". " + game.i18n.localize("CY.AutofireHit");
     }
     // roll 2: damage.
-    const baseDamage = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
+    const baseDamage = targetIsVehicle ? item.system.vehicleDamage : item.system.damage;
     let damageFormula = baseDamage;
     if (weakPoints) {
       // wrap formula in parentheses for chainsaw 1d6+1

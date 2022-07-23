@@ -7,7 +7,7 @@ export const countBullets = async (actor, itemId) => {
   if (!item) {
     return;
   }
-  if (item.data.data.autofire) {
+  if (item.system.autofire) {
     showCountBulletsDialog(actor, itemId);
   } else {
     rollCountBullets(actor, itemId);

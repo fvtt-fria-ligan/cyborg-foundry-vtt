@@ -33,7 +33,7 @@ const pickRandomClass = async () => {
   // TODO: debugging hardcodes
   const pack = game.packs.get(packName);
   const content = await pack.getDocuments();
-  return content.find((i) => i.data.type === "class");
+  return content.find((i) => i.system.type === "class");
 };
 
 export const findClassPacks = () => {
@@ -56,7 +56,7 @@ export const findClassPacks = () => {
 export const classItemFromPack = async (packName) => {
   const pack = game.packs.get(packName);
   const content = await pack.getDocuments();
-  return content.find((i) => i.data.type === "class");
+  return content.find((i) => i.system.type === "class");
 };
 
 const rollTotal = (formula) => {
@@ -70,8 +70,8 @@ const abilityRoll = (formula) => {
 const classStartingArmor = async (clazz) => {
   const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
   const ccContent = await ccPack.getDocuments();
-  if (CY.scvmFactory.startingArmorTable && clazz.data.data.armorTable) {
-    const armorRoll = new Roll(clazz.data.data.armorTable);
+  if (CY.scvmFactory.startingArmorTable && clazz.data.system.armorTable) {
+    const armorRoll = new Roll(clazz.data.system.armorTable);
     const armorTable = ccContent.find(
       (i) => i.name === CY.scvmFactory.startingArmorTable
     );
@@ -87,8 +87,8 @@ const classStartingArmor = async (clazz) => {
 const classStartingWeapons = async (clazz) => {
   const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
   const ccContent = await ccPack.getDocuments();
-  if (CY.scvmFactory.startingWeaponTable && clazz.data.data.weaponTable) {
-    const weaponRoll = new Roll(clazz.data.data.weaponTable);
+  if (CY.scvmFactory.startingWeaponTable && clazz.data.system.weaponTable) {
+    const weaponRoll = new Roll(clazz.data.system.weaponTable);
     const weaponTable = ccContent.find(
       (i) => i.name === CY.scvmFactory.startingWeaponTable
     );
@@ -100,14 +100,14 @@ const classStartingWeapons = async (clazz) => {
     // add ammo mags if starting weapon uses ammo
     const mags = [];
     for (const weapon of weapons) {
-      if (weapon.data.data.usesAmmo) {
+      if (weapon.data.system.usesAmmo) {
         const mag = await documentFromPack(CY.scvmFactory.ammoPack, CY.scvmFactory.ammoItem);
         const magRoll = new Roll("1d4").evaluate({async: false});
         // TODO: need to mutate _data to get it to change for our owned item creation.
         // Is there a better way to do this?
-        mag.data.name = `${weapon.name} ${mag.name}`;
-        // mag.data._source.data.quantity = magRoll.total;
-        mag.data.data.quantity = magRoll.total;
+        mag.system.name = `${weapon.name} ${mag.name}`;
+        // mag.system._source.system.quantity = magRoll.total;
+        mag.data.system.quantity = magRoll.total;
         mags.push(mag);
       }      
     }
@@ -125,7 +125,7 @@ const classStartingItems = async (clazz) => {
       const pack = game.packs.get(packName);
       if (pack) {
         const content = await pack.getDocuments();
-        const item = content.find((i) => i.data.name === itemName);
+        const item = content.find((i) => i.system.name === itemName);
         if (item) {
           startingItems.push(item);
         }
@@ -139,14 +139,14 @@ const classDescriptionLines = async (clazz) => {
   const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
   const ccContent = await ccPack.getDocuments();
   const descriptionLines = [];
-  descriptionLines.push(clazz.data.data.description);
+  descriptionLines.push(clazz.data.system.description);
   descriptionLines.push("<p>&nbsp;</p>");
   let descriptionLine = "";
   for (const dt of CY.scvmFactory.descriptionTables) {
     const table = ccContent.find((i) => i.name === dt.tableName);
     if (table) {
       const draw = await table.draw({ displayChat: false });
-      const text = draw.results[0].data.text;
+      const text = draw.results[0].system.text;
       descriptionLine += game.i18n.format(dt.formatKey, {text}) + " ";  
     } else {
       console.error(`Could not find table ${dt.tableName}`);
@@ -160,15 +160,15 @@ const classDescriptionLines = async (clazz) => {
 };
 
 const hasApp = (items) => {
-  return items.filter(x => x.data.type === CY.itemTypes.app).length > 0;
+  return items.filter(x => x.system.type === CY.itemTypes.app).length > 0;
 }
 
 const hasCybertech = (items) => {
-  return items.filter(x => x.data.data.cybertech).length > 0;
+  return items.filter(x => x.data.system.cybertech).length > 0;
 }
 
 const hasNano = (items) => {
-  return items.filter(x => x.data.type === CY.itemTypes.nanoPower).length > 0;
+  return items.filter(x => x.system.type === CY.itemTypes.nanoPower).length > 0;
 }
 
 const startingEquipment = async (clazz) => {
@@ -178,7 +178,7 @@ const startingEquipment = async (clazz) => {
     const itemPack = game.packs.get(CY.scvmFactory.startingItemsPack);
     const items = await itemPack.getDocuments();
     for (const itemName of CY.scvmFactory.startingItems) {
-      const item = items.find(x => x.data.name === itemName);
+      const item = items.find(x => x.system.name === itemName);
       equipment.push(item);
     }
   }
@@ -190,15 +190,15 @@ const startingEquipment = async (clazz) => {
     if (table) {
       const draw = await table.draw({ displayChat: false });
       let items = await docsFromResults(draw.results);
-      if (clazz.data.data.onlyApps && (hasCybertech(items) || hasNano(items))) {
+      if (clazz.data.system.onlyApps && (hasCybertech(items) || hasNano(items))) {
         // replace with a draw from apps
         const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Apps");
         items = [item];
-      } else if (clazz.data.data.onlyCybertech && (hasApp(items) || hasNano(items))) {
+      } else if (clazz.data.system.onlyCybertech && (hasApp(items) || hasNano(items))) {
         // replace with a draw from cybertech
         const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Cybertech", "1d12");
         items = [item];
-      } else if (clazz.data.data.onlyNano && (hasApp(items) || hasCybertech(items))) {
+      } else if (clazz.data.system.onlyNano && (hasApp(items) || hasCybertech(items))) {
         // replace with a draw from nano powers
         const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Nano Powers");
         items = [item];
@@ -212,7 +212,7 @@ const startingEquipment = async (clazz) => {
 };
 
 const rollScvmForClass = async (clazz) => {
-  console.log(`Creating new ${clazz.data.name}`);
+  console.log(`Creating new ${clazz.system.name}`);
   const allDocs = [clazz];
 
   // all-character starting equipment tables
@@ -245,8 +245,8 @@ const rollScvmForClass = async (clazz) => {
   // class-specific starting rolls
   // these may add items, actors, or description lines
   const startingRollItems = [];
-  if (clazz.data.data.rolls) {
-    const lines = clazz.data.data.rolls.split("\n");
+  if (clazz.data.system.rolls) {
+    const lines = clazz.data.system.rolls.split("\n");
     for (const line of lines) {
       const [packName, tableName, rolls, formula] = line.split(",");
       // assume 1 roll unless otherwise specified in the csv
@@ -259,15 +259,15 @@ const rollScvmForClass = async (clazz) => {
           const results = await compendiumTableDrawMany(table, numRolls, formula);
           for (const result of results) {
             // draw result type: text (0), entity (1), or compendium (2)
-            if (result.data.type === 0) {
+            if (result.system.type === 0) {
               // text
               descriptionLines.push(
-                `<p>${table.data.name}: ${result.data.text}</p>`
+                `<p>${table.system.name}: ${result.system.text}</p>`
               );
-            } else if (result.data.type === 1) {
+            } else if (result.system.type === 1) {
               // entity
               // TODO: what do we want to do here?
-            } else if (result.data.type === 2) {
+            } else if (result.system.type === 2) {
               // compendium
               const entity = await entityFromResult(result);
               startingRollItems.push(entity);
@@ -286,30 +286,30 @@ const rollScvmForClass = async (clazz) => {
   // make simple data structure for embedded items
   const items = allDocs.filter((e) => e instanceof CYItem);
   const itemData = items.map((i) => ({
-    data: i.data.data,
-    img: i.data.img,
-    name: i.data.name,
-    type: i.data.type,
+    data: i.data.system,
+    img: i.system.img,
+    name: i.system.name,
+    type: i.system.type,
   }));
 
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
   const npcData = npcs.map(e => ({
-    data: e.data.data,
-    img: e.data.img,
-    name: `${name}'s ${e.data.name}`,
-    type: e.data.type
+    data: e.data.system,
+    img: e.system.img,
+    name: `${name}'s ${e.system.name}`,
+    type: e.system.type
   }));
 
-  const strength = abilityRoll(clazz.data.data.strength);
-  const agility = abilityRoll(clazz.data.data.agility);
-  const presence = abilityRoll(clazz.data.data.presence);
-  const toughness = abilityRoll(clazz.data.data.toughness);
-  const knowledge = abilityRoll(clazz.data.data.knowledge);
+  const strength = abilityRoll(clazz.data.system.strength);
+  const agility = abilityRoll(clazz.data.system.agility);
+  const presence = abilityRoll(clazz.data.system.presence);
+  const toughness = abilityRoll(clazz.data.system.toughness);
+  const knowledge = abilityRoll(clazz.data.system.knowledge);
   const hitPoints = Math.max(1,
-    rollTotal(clazz.data.data.hitPoints) + toughness);
-  const credits = rollTotal(clazz.data.data.credits);
-  const glitches = rollTotal(clazz.data.data.glitches);
+    rollTotal(clazz.data.system.hitPoints) + toughness);
+  const credits = rollTotal(clazz.data.system.credits);
+  const glitches = rollTotal(clazz.data.system.glitches);
 
   return {
     actorImg: clazz.img,
@@ -322,7 +322,7 @@ const rollScvmForClass = async (clazz) => {
     knowledge,
     name,
     npcs: npcData,
-    postCreateMacro: clazz.data.data.postCreateMacro,
+    postCreateMacro: clazz.data.system.postCreateMacro,
     presence,
     strength,
     tokenImg: clazz.img,
@@ -334,7 +334,7 @@ const scvmToActorData = (s) => {
   return {
     name: s.name,
     // TODO: do we need to set folder or sort?
-    // folder: folder.data._id,
+    // folder: folder.system._id,
     // sort: 12000,
     data: {
       abilities: {
@@ -374,8 +374,8 @@ const createActorWithScvm = async (s) => {
 
   // create any npcs
   for (const npcData of s.npcs) {
-    if (npcData.type === "vehicle") {
-      npcData.data.ownerId = actor.id;
+    if (npcsystem.type === "vehicle") {
+      npcdata.system.ownerId = actor.id;
     }
     const npcActor = await CYActor.create(npcData);
     npcActor.sheet.render(true);
@@ -404,7 +404,7 @@ const updateActorWithScvm = async (actor, s) => {
   // update any actor tokens in the scene, too
   for (const token of actor.getActiveTokens()) {
     await token.document.update({
-      img: actor.data.img,
+      img: actor.system.img,
       name: actor.name,
     });
   }
@@ -423,17 +423,17 @@ const docsFromResults = async (results) => {
 
 const entityFromResult = async (result) => {
   // draw result type: text (0), entity (1), or compendium (2)
-  if (result.data.type === 2) {
+  if (result.system.type === 2) {
     // grab the item from the compendium
-    const collection = game.packs.get(result.data.collection);
+    const collection = game.packs.get(result.system.collection);
     if (collection) {
       // TODO: should we use pack.getEntity(entryId) ?
       // const item = await collection.getEntity(result._id);
       const content = await collection.getDocuments();
-      const entity = content.find((i) => i.name === result.data.text);
+      const entity = content.find((i) => i.name === result.system.text);
       return entity;
     } else {
-      console.log(`Could not find pack ${result.data.collection}`);
+      console.log(`Could not find pack ${result.system.collection}`);
     }
   }
 };

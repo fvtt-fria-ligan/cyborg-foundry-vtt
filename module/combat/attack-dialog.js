@@ -35,7 +35,7 @@ export class AttackDialog extends CYApplication {
 
   /** @override */
   async getData() {
-    const autofireEnabled = this.item.data.data.autofire;
+    const autofireEnabled = this.item.system.autofire;
     let attackDR = await this.actor.getFlag(
       CONFIG.CY.flagScope,
       CONFIG.CY.flags.ATTACK_DR
@@ -78,7 +78,7 @@ export class AttackDialog extends CYApplication {
 
     rollAttack(
       this.actor,
-      this.item.data._id,
+      this.item._id,
       attackDR,
       targetArmor,
       autofire,

@@ -12,7 +12,7 @@ export class CYCombat extends Combat {
     const updates = this.turns.map((t) => {
       return {
         _id: t.id,
-        initiative: t.data.initiative,
+        initiative: t.system.initiative,
       };
     });
     await game.combat.resetAll();
@@ -22,10 +22,10 @@ export class CYCombat extends Combat {
   isFriendlyCombatant(combatant) {
     if (combatant._token) {
       // v8 compatible
-      return combatant._token.data.disposition === 1;
+      return combatant._token.system.disposition === 1;
     } else {
       // v9+
-      return combatant.token.data.disposition === 1;
+      return combatant.token.system.disposition === 1;
     }
   }
 

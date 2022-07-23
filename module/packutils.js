@@ -22,7 +22,7 @@ export const drawFromTable = async (packName, tableName, formula) => {
 
 export const drawText = async (packName, tableName) => {
   const draw = await drawFromTable(packName, tableName);
-  return draw.results[0].data.text;
+  return draw.results[0].system.text;
 };
 
 export const drawDocument = async (packName, tableName) => {
@@ -38,7 +38,7 @@ export const drawDocuments = async (packName, tableName) => {
 };
 
 export const documentsFromDraw = async (draw) => {
-  const docResults = draw.results.filter((r) => r.data.type === 2);
+  const docResults = draw.results.filter((r) => r.system.type === 2);
   return Promise.all(docResults.map((r) => documentFromResult(r)));
 };
 
@@ -48,15 +48,15 @@ export const documentFromDraw = async (draw) => {
 };
 
 export const documentFromResult = async (result) => {
-  if (!result.data.collection) {
-    console.log("No data.collection for result; skipping");
+  if (!result.system.collection) {
+    console.log("No system.collection for result; skipping");
     return;
   }
   const collectionName =
-    result.data.type === 2
-      ? "Compendium." + result.data.collection
-      : result.data.collection;
-  const uuid = `${collectionName}.${result.data.resultId}`;
+    result.system.type === 2
+      ? "Compendium." + result.system.collection
+      : result.system.collection;
+  const uuid = `${collectionName}.${result.system.resultId}`;
   const doc = await fromUuid(uuid);
   return doc;
 };

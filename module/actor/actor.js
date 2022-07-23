@@ -4,7 +4,7 @@ import { trackCarryingCapacity } from "../settings.js";
 import { documentFromPack } from "../packutils.js";
 import { rollCyRage } from "./cybertech.js";
 
-const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.value ? 1 : b.data.data.tier.value < a.data.data.tier.value ? -1 : 0);
+const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.tier.value ? 1 : b.data.system.tier.value < a.data.system.tier.value ? -1 : 0);
 
 /**
  * @extends {Actor}
@@ -13,34 +13,34 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
 
   /** @override */
   static async create(data, options = {}) {
-    data.token = data.token || {};
+    system.token = system.token || {};
     let defaults = {};
-    if (data.type === CY.actorTypes.character) {
+    if (system.type === CY.actorTypes.character) {
       defaults = {
         actorLink: true,
         disposition: 1,
         vision: true,
       };
-    } else if (data.type === CY.actorTypes.foe) {
+    } else if (system.type === CY.actorTypes.foe) {
       defaults = {
         actorLink: false,
         disposition: -1,
         vision: false,
       };
-    } else if (data.type === CY.actorTypes.vehicle) {
+    } else if (system.type === CY.actorTypes.vehicle) {
       defaults = {
         actorLink: true,
         disposition: 0,
         vision: true,
       };
     } 
-    mergeObject(data.token, defaults, { overwrite: false });
+    mergeObject(system.token, defaults, { overwrite: false });
     return super.create(data, options);
   }
 
   /** @override */
   async _onCreate(data, options, userId) {
-    if (data.type === CY.actorTypes.character) {
+    if (system.type === CY.actorTypes.character) {
       // give Characters a default class
       this.addDefaultClass();
       // give any nanos linked infestations
@@ -52,9 +52,9 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   /** @override */
   async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
     super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
-    if (this.data.type === CY.actorTypes.character) {
+    if (this.system.type === CY.actorTypes.character) {
       for (const doc of documents) {
-        if (doc instanceof CYItem && doc.data.type === CY.itemTypes.nanoPower && !doc.data.data.infestionId) {
+        if (doc instanceof CYItem && doc.system.type === CY.itemTypes.nanoPower && !doc.data.system.infestionId) {
           await doc.createLinkedInfestation();
         }
       }
@@ -72,8 +72,8 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   }
 
   async linkNanos() {
-    for (const item of this.data.items) {
-      if (item.type === CY.itemTypes.nanoPower && !item.data.data.infestionId) {
+    for (const item of this.items) {
+      if (item.type === CY.itemTypes.nanoPower && !item.system.infestionId) {
         await item.createLinkedInfestation();
       }
     }
@@ -82,7 +82,7 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   // ===== encumbrance =====
   
   get normalCarryingCapacity() {
-    return this.data.data.abilities.strength.value + 8;
+    return this.system.abilities.strength.value + 8;
   }
 
   get maxCarryingCapacity() {
@@ -90,8 +90,8 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   }
 
   get carryingSlots() {
-    return this.data.items
-      .reduce((slots, item) => slots + (item.data.data.carrySlots ? (item.data.data.carrySlots * item.data.data.quantity) : 0), 0);
+    return this.items
+      .reduce((slots, item) => slots + (item.system.carrySlots ? (item.system.carrySlots * item.system.quantity) : 0), 0);
   }
 
   get isEncumbered() {
@@ -102,32 +102,32 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   }
 
   _firstEquipped(itemType) {
-    return this.data.items.filter(x => x.data.type === itemType && x.data.data.equipped).shift();
+    return this.items.filter(x => x.system.type === itemType && x.data.system.equipped).shift();
   }
 
   _first(itemType) {
-    return this.data.items.filter(x => x.data.type === itemType).shift();
+    return this.items.filter(x => x.system.type === itemType).shift();
   }
 
   equippedArmor() {
-    return this.data.items.filter(x => x.data.type === CY.itemTypes.armor).sort(byCurrentTierDesc).shift();
+    return this.items.filter(x => x.system.type === CY.itemTypes.armor).sort(byCurrentTierDesc).shift();
   }
 
   findItem(itemType, itemName) {
-    return this.data.items.filter(x => x.data.type === itemType && x.name === itemName).shift();
+    return this.items.filter(x => x.system.type === itemType && x.name === itemName).shift();
   }
 
   cybertechCount() {
-    return this.data.items
-    .reduce((count, item) => count + (item.data.data.cybertech ? 1 : 0), 0);
+    return this.items
+    .reduce((count, item) => count + (item.system.cybertech ? 1 : 0), 0);
   }
 
   ownedVehicles() {
-    return game.actors.filter(x => x.data.type === CY.actorTypes.vehicle && x.data.data.ownerId == this.id);
+    return game.actors.filter(x => x.system.type === CY.actorTypes.vehicle && x.data.system.ownerId == this.id);
   }
 
   unlinkedInfestations() {
-    return this.data.items.filter(x => x.data.type === CY.itemTypes.infestation && !x.data.data.nanoId);
+    return this.items.filter(x => x.system.type === CY.itemTypes.infestation && !x.data.system.nanoId);
   }
 
   async testCyRage() {

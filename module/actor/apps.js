@@ -10,20 +10,20 @@ import { d20Formula, showOutcomeRollCard } from "../utils.js";
   if (!app) {
     return;
   }
-  if (app.data.data.burned) {    
+  if (app.system.burned) {    
     ui.notifications.warn(
       `${game.i18n.localize("CY.AppIsBurned")}!`
     );
     return;
   }
 
-  const useFormula = d20Formula(actor.data.data.abilities.knowledge.value);
+  const useFormula = d20Formula(actor.system.abilities.knowledge.value);
   const useRoll = new Roll(useFormula);
   useRoll.evaluate({ async: false });
   await showDice(useRoll);
 
   const d20Result = useRoll.terms[0].results[0].result;
-  const isFumble = d20Result <= actor.data.data.appFumbleOn;
+  const isFumble = d20Result <= actor.system.appFumbleOn;
   const useDR = 12;
 
   let useOutcome = null;
@@ -55,10 +55,10 @@ import { d20Formula, showOutcomeRollCard } from "../utils.js";
     await table.draw();
 
     // and burn the app
-    await app.update({ ["data.burned"]: true});
+    await app.update({ ["system.burned"]: true});
   }
 
   // increment appFumbleOn
-  const newAppFumbleOn = actor.data.data.appFumbleOn + 1;
-  await actor.update({ ["data.appFumbleOn"]: newAppFumbleOn });
+  const newAppFumbleOn = actor.system.appFumbleOn + 1;
+  await actor.update({ ["system.appFumbleOn"]: newAppFumbleOn });
 }
