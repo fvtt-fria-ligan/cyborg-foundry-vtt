@@ -58,7 +58,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     const armor = actor.equippedArmor();
     if (armor) {
       damageReductionDie =
-        CONFIG.CY.armorTiers[armor.data.system.tier.value].damageReductionDie;
+        CONFIG.CY.armorTiers[armor.system.tier.value].damageReductionDie;
       items.push(armor);
     }
     if (damageReductionDie) {

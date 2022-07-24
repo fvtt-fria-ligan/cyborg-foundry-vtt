@@ -13,7 +13,7 @@ export const rollInfestationTriggers = async (actor) => {
       outcome = `${infestation.name} ${game.i18n.localize("CY.Untriggered")}`;
     } else {
       // failed
-      outcome = `${infestation.name} ${game.i18n.localize("CY.Triggered")}: ${infestation.data.system.triggered}`;
+      outcome = `${infestation.name} ${game.i18n.localize("CY.Triggered")}: ${infestation.system.triggered}`;
     }
     const rollResult = {
       cardCssClass: "trigger-infestation-roll-card",

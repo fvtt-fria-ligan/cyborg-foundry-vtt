@@ -13,10 +13,6 @@ export const rollAttack = async (
   actor, itemId, attackDR, targetArmor, 
   autofire, weakPoints, targetIsVehicle) => {
   const item = actor.items.get(itemId);
-  console.log(itemId);
-  console.log(actor);
-  console.log(actor.items);
-  console.log(item);
   const itemRollData = item.getRollData();
 
   if (item.system.sound) {

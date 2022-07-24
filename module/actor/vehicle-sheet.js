@@ -21,16 +21,16 @@ export class CYVehicleSheet extends CYActorSheet {
   /** @override */
   getData() {
     const superData = super.getData();
-    if (superdata.data.system.ownerId) {
-      superdata.data.system.owner = game.actors.get(superdata.data.system.ownerId);
+    if (superData.data.system.ownerId) {
+      superData.data.system.owner = game.actors.get(superData.data.system.ownerId);
     }
-    superdata.data.system.armor = superdata.data.items
+    superData.data.system.armor = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
       .sort(byName);
-    superdata.data.system.equipment = superdata.data.items
+    superData.data.system.equipment = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
       .sort(byName);
-    superdata.data.system.weapons = superdata.data.items
+    superData.data.system.weapons = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
       .sort(byName);
     return superData;

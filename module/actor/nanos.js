@@ -29,7 +29,7 @@ export const rollUseNano = async (actor, itemId) => {
     // and trigger the nano's infestation
     const infestation = nano.linkedInfestation();
     if (infestation) {
-      useOutcome += ` ${infestation.name}: ${infestation.data.system.triggered}`;
+      useOutcome += ` ${infestation.name}: ${infestation.system.triggered}`;
     }
   } else if (useRoll.total < useDR) {
     // failure

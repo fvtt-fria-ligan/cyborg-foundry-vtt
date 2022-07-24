@@ -5,7 +5,7 @@ export const testAgility = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.system.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.agilityModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} +${
@@ -51,7 +51,7 @@ export const testStrength = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.system.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.strengthModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} ${
@@ -79,7 +79,7 @@ export const testToughness = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.system.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.strengthModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} ${

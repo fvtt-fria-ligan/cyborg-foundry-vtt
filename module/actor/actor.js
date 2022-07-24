@@ -1,10 +1,10 @@
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { trackCarryingCapacity } from "../settings.js";
-import { documentFromPack } from "../packutils.js";
+import { documentFromPack, dupeData } from "../packutils.js";
 import { rollCyRage } from "./cybertech.js";
 
-const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.tier.value ? 1 : b.data.system.tier.value < a.data.system.tier.value ? -1 : 0);
+const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ? 1 : b.system.tier.value < a.system.tier.value ? -1 : 0);
 
 /**
  * @extends {Actor}
@@ -13,34 +13,34 @@ const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.ti
 
   /** @override */
   static async create(data, options = {}) {
-    system.token = system.token || {};
+    data.token = data.token || {};
     let defaults = {};
-    if (system.type === CY.actorTypes.character) {
+    if (data.type === CY.actorTypes.character) {
       defaults = {
         actorLink: true,
         disposition: 1,
         vision: true,
       };
-    } else if (system.type === CY.actorTypes.foe) {
+    } else if (data.type === CY.actorTypes.foe) {
       defaults = {
         actorLink: false,
         disposition: -1,
         vision: false,
       };
-    } else if (system.type === CY.actorTypes.vehicle) {
+    } else if (data.type === CY.actorTypes.vehicle) {
       defaults = {
         actorLink: true,
         disposition: 0,
         vision: true,
       };
     } 
-    mergeObject(system.token, defaults, { overwrite: false });
+    mergeObject(data.token, defaults, { overwrite: false });
     return super.create(data, options);
   }
 
   /** @override */
   async _onCreate(data, options, userId) {
-    if (system.type === CY.actorTypes.character) {
+    if (data.type === CY.actorTypes.character) {
       // give Characters a default class
       this.addDefaultClass();
       // give any nanos linked infestations
@@ -52,9 +52,9 @@ const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.ti
   /** @override */
   async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
     super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
-    if (this.system.type === CY.actorTypes.character) {
+    if (this.type === CY.actorTypes.character) {
       for (const doc of documents) {
-        if (doc instanceof CYItem && doc.system.type === CY.itemTypes.nanoPower && !doc.data.system.infestionId) {
+        if (doc instanceof CYItem && doc.type === CY.itemTypes.nanoPower && !doc.system.infestionId) {
           await doc.createLinkedInfestation();
         }
       }
@@ -66,7 +66,7 @@ const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.ti
     if (!this._first(CY.itemTypes.class)) {
       const clazz = await documentFromPack("cy_borg-core.class-classless-punk", "Classless Punk");
       if (clazz) {
-        await this.createEmbeddedDocuments("Item", [duplicate(clazz.data)]);
+        await this.createEmbeddedDocuments("Item", [dupeData(clazz)]);
       }  
     }
   }
@@ -102,19 +102,19 @@ const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.ti
   }
 
   _firstEquipped(itemType) {
-    return this.items.filter(x => x.system.type === itemType && x.data.system.equipped).shift();
+    return this.items.filter(x => x.type === itemType && x.system.equipped).shift();
   }
 
   _first(itemType) {
-    return this.items.filter(x => x.system.type === itemType).shift();
+    return this.items.filter(x => x.type === itemType).shift();
   }
 
   equippedArmor() {
-    return this.items.filter(x => x.system.type === CY.itemTypes.armor).sort(byCurrentTierDesc).shift();
+    return this.items.filter(x => x.type === CY.itemTypes.armor).sort(byCurrentTierDesc).shift();
   }
 
   findItem(itemType, itemName) {
-    return this.items.filter(x => x.system.type === itemType && x.name === itemName).shift();
+    return this.items.filter(x => x.type === itemType && x.name === itemName).shift();
   }
 
   cybertechCount() {
@@ -123,11 +123,11 @@ const byCurrentTierDesc = (a, b) => (a.data.system.tier.value < b.data.system.ti
   }
 
   ownedVehicles() {
-    return game.actors.filter(x => x.system.type === CY.actorTypes.vehicle && x.data.system.ownerId == this.id);
+    return game.actors.filter(x => x.type === CY.actorTypes.vehicle && x.system.ownerId == this.id);
   }
 
   unlinkedInfestations() {
-    return this.items.filter(x => x.system.type === CY.itemTypes.infestation && !x.data.system.nanoId);
+    return this.items.filter(x => x.type === CY.itemTypes.infestation && !x.system.nanoId);
   }
 
   async testCyRage() {
