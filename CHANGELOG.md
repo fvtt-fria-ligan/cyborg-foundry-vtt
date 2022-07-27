@@ -1,3 +1,7 @@
+# 0.4.5
+
+- Fix missing import on vehicle sheet.
+
 # 0.4.4
 
 - Fix some styling.
