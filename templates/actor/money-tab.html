@@ -1,0 +1,26 @@
+<div class="tab money-tab" data-group="primary" data-tab="money">
+  <div class="widget field-row">
+    <div class="field-label">
+      {{ localize 'CY.Credits'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="data.credits" value="{{data.data.credits}}"/>
+    </div>
+  </div>  
+  <div class="widget field-row">
+    <div class="field-label">
+      {{ localize 'CY.Debt'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="data.debt.amount" value="{{data.data.debt.amount}}"/>
+    </div>
+  </div>  
+  <div class="widget field-row">
+    <div class="field-label">
+      {{ localize 'CY.OwedTo'}}
+    </div>
+    <div class="field-value">
+      <textarea name="data.debt.to" rows="4">{{data.data.debt.to}}</textarea> 
+    </div>
+  </div>  
+</div>

@@ -239,7 +239,7 @@
       flex: 0 0 40px; }
   .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row {
     display: flex;
-    flex: 0 0 38px;
+    flex: 0 0 30px;
     margin-bottom: 5px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon {
       align-items: center;
@@ -249,12 +249,12 @@
       flex: 1;
       justify-content: center; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a {
-        height: 34px;
-        width: 34px; }
+        height: 30px;
+        width: 30px; }
         .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a img {
           border: none;
-          height: 34px;
-          width: 34px; }
+          height: 30px;
+          width: 30px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
       flex: 1; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score input[type="number"] {

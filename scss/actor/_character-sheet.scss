@@ -33,7 +33,7 @@
       .right-col {
         .ability-row {
           display: flex;
-          flex: 0 0 $field-height;
+          flex: 0 0 30px;
           margin-bottom: $widget-margin;
           .ability-icon {
             align-items: center;
@@ -43,12 +43,12 @@
             flex: 1;
             justify-content: center;
             a {
-              height: 34px;
-              width: 34px;
+              height: 30px;
+              width: 30px;
               img {
                 border: none;
-                height: 34px;
-                width: 34px;
+                height: 30px;
+                width: 30px;
               }  
             }
           }

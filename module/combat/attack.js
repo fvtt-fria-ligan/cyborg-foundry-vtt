@@ -77,14 +77,18 @@ export const rollAttack = async (
       attackOutcome += ". " + game.i18n.localize("CY.AutofireHit");
     }
     // roll 2: damage.
-    const baseDamage = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
-    let damageFormula = baseDamage;
+    let damageFormula = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
+    if (damageFormula.includes("+") || damageFormula.includes("-")) {
+      // wrap formula in parentheses in case of weak points / crit multiplying
+      // e.g., chainsaw 1d6+1
+      damageFormula = `(${damageFormula})`;
+    }
     if (weakPoints) {
-      // wrap formula in parentheses for chainsaw 1d6+1
-      damageFormula = `(${damageFormula})*2`;
+      damageFormula = `${damageFormula} * 2`;
     }
     if (isCrit) {
-      damageFormula += `(${damageFormula})*2`;
+      const critMultiplier = item.data.data.critMultiplier ?? 2;
+      damageFormula = `${damageFormula} * ${critMultiplier}`;
     }
     damageRoll = new Roll(damageFormula);
     damageRoll.evaluate({ async: false });
