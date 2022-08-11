@@ -6,6 +6,7 @@ import { randomName } from "./names.js";
 import {
   documentFromPack,
   drawFromTable,
+  drawText,
 } from "../packutils.js";
 
 export const createRandomScvm = async () => {
@@ -309,12 +310,18 @@ const rollScvmForClass = async (clazz) => {
   const hitPoints = Math.max(1,
     rollTotal(clazz.data.data.hitPoints) + toughness);
   const credits = rollTotal(clazz.data.data.credits);
+  const debtAmount = rollTotal("3d6*1000");
+  const debtTo = await drawText(CY.scvmFactory.characterCreationPack, "Debt");
   const glitches = rollTotal(clazz.data.data.glitches);
 
   return {
     actorImg: clazz.img,
     agility,
     credits,
+    debt: {
+      amount: debtAmount,
+      to: debtTo
+    },
     description: descriptionLines.join(""),
     glitches,
     hitPoints,
@@ -333,9 +340,6 @@ const rollScvmForClass = async (clazz) => {
 const scvmToActorData = (s) => {
   return {
     name: s.name,
-    // TODO: do we need to set folder or sort?
-    // folder: folder.data._id,
-    // sort: 12000,
     data: {
       abilities: {
         strength: { value: s.strength },
@@ -345,6 +349,7 @@ const scvmToActorData = (s) => {
         knowledge: { value: s.knowledge },
       },
       credits: s.credits,
+      debt: s.debt,
       description: s.description,
       glitches: {
         max: s.glitches,
