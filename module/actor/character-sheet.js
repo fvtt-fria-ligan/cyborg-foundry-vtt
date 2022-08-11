@@ -72,6 +72,7 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".battered-button").on("click", this._battered.bind(this));
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
+    html.find(".reroll-button").on("click", this._reroll.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
   }
@@ -142,7 +143,31 @@ export class CYCharacterSheet extends CYActorSheet {
     // uiClick();
     nopeShowAd(() => {
       uiSuccess();
-      rollLevelUp(this.actor);
+      // confirm before leveling
+      const d = new Dialog({
+        title: game.i18n.localize("CY.LevelUp"),
+        content: `<p>${game.i18n.localize("CY.LevelUpHelp")}</p>`,
+        buttons: {
+          cancel: {
+            label: game.i18n.localize("CY.Cancel"),
+          },
+          getbetter: {
+            icon: '<i class="fas fa-check"></i>',
+            label: game.i18n.localize("CY.LevelUp"),
+            callback: () => rollLevelUp(this.actor),
+          },
+        },
+        default: "cancel",
+      });
+      d.render(true);
+    });
+  }
+
+  _reroll(event) {
+    event.preventDefault();
+    nopeShowAd(() => {
+      uiSuccess();
+      this.actor.reroll();
     });
   }
 

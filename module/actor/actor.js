@@ -3,6 +3,8 @@ import { CYItem } from "../item/item.js";
 import { trackCarryingCapacity } from "../settings.js";
 import { documentFromPack } from "../packutils.js";
 import { rollCyRage } from "./cybertech.js";
+import { MakePunkDialog } from "../generator/make-punk-dialog.js";
+
 
 const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.value ? 1 : b.data.data.tier.value < a.data.data.tier.value ? -1 : 0);
 
@@ -133,4 +135,8 @@ const byCurrentTierDesc = (a, b) => (a.data.data.tier.value < b.data.data.tier.v
   async testCyRage() {
     await rollCyRage(this);
   }
+
+  async reroll() {
+    new MakePunkDialog(this).render(true);
+  }  
  }
