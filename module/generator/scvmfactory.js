@@ -212,6 +212,14 @@ const startingEquipment = async (clazz) => {
   return equipment;
 };
 
+const simpleData = (e) => ({
+  data: e.data.data,
+  img: e.data.img,
+  items: e.items?.map(i => simpleData(i)),
+  name: e.data.name,
+  type: e.data.type,
+});
+
 const rollScvmForClass = async (clazz) => {
   console.log(`Creating new ${clazz.data.name}`);
   const allDocs = [clazz];
@@ -285,22 +293,13 @@ const rollScvmForClass = async (clazz) => {
   allDocs.push(...startingRollItems);
 
   // make simple data structure for embedded items
-  const items = allDocs.filter((e) => e instanceof CYItem);
-  const itemData = items.map((i) => ({
-    data: i.data.data,
-    img: i.data.img,
-    name: i.data.name,
-    type: i.data.type,
-  }));
+  const items = allDocs.filter(e => e instanceof CYItem);
+  const itemData = items.map(i => simpleData(i));
 
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
-  const npcData = npcs.map(e => ({
-    data: e.data.data,
-    img: e.data.img,
-    name: `${name}'s ${e.data.name}`,
-    type: e.data.type
-  }));
+  const npcData = npcs.map(n => simpleData(n));
+  npcData.forEach(n => n.name = `${name}'s ${n.name}`);
 
   const strength = abilityRoll(clazz.data.data.strength);
   const agility = abilityRoll(clazz.data.data.agility);

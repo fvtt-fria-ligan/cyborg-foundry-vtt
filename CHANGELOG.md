@@ -2,6 +2,7 @@
 
 - Only show "linked" for linked nano/infestation.
 - Create npcs and run post-create macros for rerolled punks, too.
+- Fix generator npcs not including npc items.
 
 # 0.5.0
 
