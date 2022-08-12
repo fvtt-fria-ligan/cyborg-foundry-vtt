@@ -1,3 +1,8 @@
+# 0.5.1
+
+- Only show "linked" for linked nano/infestation.
+- Create npcs and run post-create macros for rerolled punks, too.
+
 # 0.5.0
 
 - Character sheet - add money tab to show credits and debt.

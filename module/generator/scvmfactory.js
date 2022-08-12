@@ -401,11 +401,9 @@ const createActorWithScvm = async (s) => {
 const updateActorWithScvm = async (actor, s) => {
   const data = scvmToActorData(s);
   // Explicitly nuke all items before updating.
-  // Before Foundry 0.8.x, actor.update() used to overwrite items,
-  // but now doesn't. Maybe because we're passing items: [item.data]?
-  // Dunno.
   await actor.deleteEmbeddedDocuments("Item", [], { deleteAll: true });
   await actor.update(data);
+
   // update any actor tokens in the scene, too
   for (const token of actor.getActiveTokens()) {
     await token.document.update({
@@ -413,6 +411,26 @@ const updateActorWithScvm = async (actor, s) => {
       name: actor.name,
     });
   }
+
+  // create any npcs
+  for (const npcData of s.npcs) {
+    if (npcData.type === "vehicle") {
+      npcData.data.ownerId = actor.id;
+    }
+    const npcActor = await CYActor.create(npcData);
+    npcActor.sheet.render(true);
+  }
+
+  // run post-create macro, if any
+  if (s.postCreateMacro) {
+    const [packName, macroName] = s.postCreateMacro.split(",");
+    const pack = game.packs.get(packName);
+    const content = await pack.getDocuments();
+    const macro = content.find(x => x.name === macroName);
+    if (macro) {
+      macro.execute({actor});
+    }
+  }  
 };
 
 const docsFromResults = async (results) => {
