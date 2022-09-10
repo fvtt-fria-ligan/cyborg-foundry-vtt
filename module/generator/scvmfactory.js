@@ -213,11 +213,11 @@ const startingEquipment = async (clazz) => {
 };
 
 const simpleData = (e) => ({
-  data: e.data.data,
-  img: e.data.img,
+  data: e.system,
+  img: e.img,
   items: e.items?.map(i => simpleData(i)),
-  name: e.data.name,
-  type: e.data.type,
+  name: e.name,
+  type: e.type,  
 });
 
 const rollScvmForClass = async (clazz) => {
@@ -321,6 +321,8 @@ const rollScvmForClass = async (clazz) => {
   const hitPoints = Math.max(1,
     rollTotal(clazz.system.hitPoints) + toughness);
   const credits = rollTotal(clazz.system.credits);
+  const debtAmount = rollTotal("3d6*1000");
+  const debtTo = await drawText(CY.scvmFactory.characterCreationPack, "Debt");
   const glitches = rollTotal(clazz.system.glitches);
 
   return {
@@ -387,9 +389,10 @@ const createActorWithScvm = async (s) => {
   actor.sheet.render(true);
 
   // create any npcs
+  console.log(s);
   for (const npcData of s.npcs) {
     if (npcData.type === "vehicle") {
-      npcData.system.ownerId = actor.id;
+      npcData.data.ownerId = actor.id;
     }
     const npcActor = await CYActor.create(npcData);
     npcActor.sheet.render(true);

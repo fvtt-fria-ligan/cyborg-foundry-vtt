@@ -8,8 +8,8 @@
         <div class="widget name">
           <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
         </div>
-        <div class="widget class-row item" data-item-id="{{data.data.class._id}}">
-          <div class="class-name">{{data.data.class.name}}</div>
+        <div class="widget class-row item" data-item-id="{{data.system.class._id}}">
+          <div class="class-name">{{data.system.class.name}}</div>
           <div class="item-controls">
             <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
           </div>
@@ -23,7 +23,7 @@
             <a class="ability-link" data-ability="glitches" title="{{ localize 'CY.Glitches' }}"><img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
           </div>
           <div class="ability-score">
-            <input class="glitches" type="number" name="data.glitches.value" value="{{data.data.glitches.value}}" />
+            <input class="glitches" type="number" name="data.glitches.value" value="{{data.system.glitches.value}}" />
           </div>
         </div>
       </div>
