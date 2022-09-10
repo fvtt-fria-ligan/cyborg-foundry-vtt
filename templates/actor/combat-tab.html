@@ -4,7 +4,7 @@
     <button type="button" class="sheet-button defend-button">{{ localize 'CY.Defend' }}</button>
   </div>
   <div class="item-list weapons">
-    {{#each data.data.weapons as |item id|}}
+    {{#each data.system.weapons as |item id|}}
       <div class="item item-row weapon-row" data-item-id="{{item._id}}">
         <div class="icon weapon-icon">
           <img src="{{item.img}}" />
@@ -14,16 +14,16 @@
             {{item.name}}
           </div>
           <div class="item-field-row">
-            {{item.data.damage}} {{item.data.weaponType}}
+            {{item.system.damage}} {{item.system.weaponType}}
           </div>
-          {{#if item.data.special}}
+          {{#if item.system.special}}
             <div class="item-field-row">
-              {{ item.data.special }}
+              {{ item.system.special }}
             </div>
           {{/if}}
           <div class="item-field-row">
             <div class="item-controls">
-              {{#if item.data.usesAmmo}}
+              {{#if item.system.usesAmmo}}
                 <a class="item-control item-count-bullets"><i class="fas fa-calculator"></i></a>
               {{/if}}
               <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
@@ -35,7 +35,7 @@
     {{/each}}
   </div>
   <div class="item-list armor">
-    {{#each data.data.armor as |item id|}}
+    {{#each data.system.armor as |item id|}}
       <div class="item item-row armor-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
@@ -51,7 +51,7 @@
                 <label
                   ><input class="tier-radio" type="radio"
                   name="{{item._id}}.tier.value" value="0" {{#ifEq
-                  item.data.tier.value
+                  item.system.tier.value
                   0}}checked{{/ifEq}}/><span class="tier-num">0</span
                   ><span class="tier-dmg">-0</span></label
                 >
@@ -60,7 +60,7 @@
                 <label
                   ><input class="tier-radio" type="radio"
                   name="{{item._id}}.tier.value" value="1" {{#ifEq
-                  item.data.tier.value
+                  item.system.tier.value
                   1}}checked{{/ifEq}}/><span class="tier-num">1</span
                   ><span class="tier-dmg">-d2</span></label
                 >
@@ -69,9 +69,9 @@
                 <label
                   ><input class="tier-radio" type="radio"
                   name="{{item._id}}.tier.value" value="2" {{#ifEq
-                  item.data.tier.value
+                  item.system.tier.value
                   2}}checked{{/ifEq}} {{#ifLt
-                  item.data.tier.max
+                  item.system.tier.max
                   2}}disabled="true"{{/ifLt}}/><span class="tier-num"
                     >2</span
                   ><span class="tier-dmg">-d4</span></label
@@ -81,9 +81,9 @@
                 <label
                   ><input class="tier-radio" type="radio"
                   name="{{item._id}}.tier.value" value="3" {{#ifEq
-                  item.data.tier.value
+                  item.system.tier.value
                   3}}checked{{/ifEq}} {{#ifLt
-                  item.data.tier.max
+                  item.system.tier.max
                   3}}disabled="true"{{/ifLt}}/><span class="tier-num"
                     >3</span
                   ><span class="tier-dmg">-d6</span></label
@@ -93,9 +93,9 @@
                 <label
                   ><input class="tier-radio" type="radio"
                   name="{{item._id}}.tier.value" value="4" {{#ifEq
-                  item.data.tier.value
+                  item.system.tier.value
                   4}}checked{{/ifEq}} {{#ifLt
-                  item.data.tier.max
+                  item.system.tier.max
                   4}}disabled="true"{{/ifLt}}/><span class="tier-num"
                     >4</span
                   ><span class="tier-dmg">-d8</span></label

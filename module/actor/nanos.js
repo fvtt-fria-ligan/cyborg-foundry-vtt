@@ -11,13 +11,13 @@ export const rollUseNano = async (actor, itemId) => {
     return;
   }
 
-  const useFormula = d20Formula(actor.data.data.abilities.presence.value);
+  const useFormula = d20Formula(actor.system.abilities.presence.value);
   const useRoll = new Roll(useFormula);
   useRoll.evaluate({ async: false });
   await showDice(useRoll);
 
   const d20Result = useRoll.terms[0].results[0].result;
-  const isFumble = d20Result <= actor.data.data.nanoFumbleOn;
+  const isFumble = d20Result <= actor.system.nanoFumbleOn;
   const useDR = 12;
 
   let useOutcome = null;
@@ -29,7 +29,7 @@ export const rollUseNano = async (actor, itemId) => {
     // and trigger the nano's infestation
     const infestation = nano.linkedInfestation();
     if (infestation) {
-      useOutcome += ` ${infestation.name}: ${infestation.data.data.triggered}`;
+      useOutcome += ` ${infestation.name}: ${infestation.system.triggered}`;
     }
   } else if (useRoll.total < useDR) {
     // failure
@@ -60,6 +60,6 @@ export const rollUseNano = async (actor, itemId) => {
   await showOutcomeRollCard(actor, rollResult);
 
   // increment nanoFumbleOn
-  const newNanoFumbleOn = actor.data.data.nanoFumbleOn + 1;
-  await actor.update({ ["data.nanoFumbleOn"]: newNanoFumbleOn });
+  const newNanoFumbleOn = actor.system.nanoFumbleOn + 1;
+  await actor.update({ ["system.nanoFumbleOn"]: newNanoFumbleOn });
 };

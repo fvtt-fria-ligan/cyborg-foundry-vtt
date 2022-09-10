@@ -16,8 +16,8 @@ export const rollAttack = async (
   const item = actor.items.get(itemId);
   const itemRollData = item.getRollData();
 
-  if (item.data.data.sound) {
-    playSound(item.data.data.sound);
+  if (item.system.sound) {
+    playSound(item.system.sound);
   }
 
   // decide relevant attack ability
@@ -45,7 +45,7 @@ export const rollAttack = async (
     abilityAbbrevKey = "CY.StrengthAbbrev";
     attackTypeKey = "CY.Melee";
   }
-  const value = actor.data.data.abilities[ability].value;
+  const value = actor.system.abilities[ability].value;
 
   // roll 1: attack
   const attackRoll = new Roll(d20Formula(value));
@@ -77,7 +77,8 @@ export const rollAttack = async (
       attackOutcome += ". " + game.i18n.localize("CY.AutofireHit");
     }
     // roll 2: damage.
-    let damageFormula = targetIsVehicle ? item.data.data.vehicleDamage : item.data.data.damage;
+    const baseDamage = targetIsVehicle ? item.system.vehicleDamage : item.system.damage;
+    let damageFormula = baseDamage;
     if (damageFormula.includes("+") || damageFormula.includes("-")) {
       // wrap formula in parentheses in case of weak points / crit multiplying
       // e.g., chainsaw 1d6+1

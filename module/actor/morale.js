@@ -5,7 +5,7 @@
   const moraleRoll = new Roll("2d6");
   moraleRoll.evaluate({ async: false });
   let key = "";
-  if (moraleRoll.total > actor.data.data.morale) {
+  if (moraleRoll.total > actor.system.morale) {
     const resultRoll = new Roll("1d6");
     resultRoll.evaluate({ async: false });
     if (resultRoll.total <= 3) {

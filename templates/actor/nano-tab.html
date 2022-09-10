@@ -4,11 +4,11 @@
     {{ localize 'CY.FumbleOn'}}
     </div>
     <div class="field-value">
-      <input class="field-input" type="number" name="data.nanoFumbleOn" value="{{data.data.nanoFumbleOn}}"/>
+      <input class="field-input" type="number" name="system.nanoFumbleOn" value="{{data.system.nanoFumbleOn}}"/>
     </div>
   </div>  
   <div class="nano-powers item-list">
-    {{#each data.data.nanoPowers as |item id|}}
+    {{#each data.system.nanoPowers as |item id|}}
       <div class="item item-row nano-power-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
@@ -20,9 +20,13 @@
           <div class="item-field-row">
             <button type="button" class="sheet-button use-nano-button">{{localize 'CY.Use'}}</button>
           </div>
-          {{#if item.data.infestationId}}
+          {{#if item.system.infestationId}}
           <div class="item-field-row">        
+<<<<<<< HEAD
+            linked to {{item.system.infestationId}}
+=======
             [{{localize 'CY.Linked'}}]
+>>>>>>> main
           </div>
           {{/if}}
           <div class="item-field-row">
@@ -36,7 +40,7 @@
     {{/each}}
   </div>
   <div class="infestations item-list">
-    {{#each data.data.infestations as |item id|}}
+    {{#each data.system.infestations as |item id|}}
       <div class="item item-row infestation-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
@@ -45,9 +49,13 @@
           <div class="item-field-row">        
           {{item.name}}
           </div>
-          {{#if item.data.nanoId}}
+          {{#if item.system.nanoId}}
           <div class="item-field-row">        
+<<<<<<< HEAD
+            linked to {{item.system.nanoId}}
+=======
             [{{localize 'CY.Linked'}}]
+>>>>>>> main
           </div>
           {{/if}}
           <div class="item-field-row">

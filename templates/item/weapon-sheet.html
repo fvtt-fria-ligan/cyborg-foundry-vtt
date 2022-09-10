@@ -10,7 +10,7 @@
           {{ localize 'CY.Cybertech'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="checkbox" name="data.cybertech" {{checked data.data.cybertech}} />
+          <input class="field-input" type="checkbox" name="system.cybertech" {{checked data.system.cybertech}} />
         </div>
       </div>
       <div class="widget field-row">
@@ -18,7 +18,7 @@
           {{ localize 'CY.WeaponType'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="text" name="data.weaponType" value="{{data.data.weaponType}}" spellcheck="false"/>
+          <input class="field-input" type="text" name="system.weaponType" value="{{data.system.weaponType}}" spellcheck="false"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -26,7 +26,7 @@
           {{ localize 'CY.Damage'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="text" name="data.damage" value="{{data.data.damage}}" spellcheck="false"/>
+          <input class="field-input" type="text" name="system.damage" value="{{data.system.damage}}" spellcheck="false"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -34,7 +34,7 @@
           {{ localize 'CY.VehicleDamage'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="text" name="data.vehicleDamage" value="{{data.data.vehicleDamage}}" spellcheck="false"/>
+          <input class="field-input" type="text" name="system.vehicleDamage" value="{{data.system.vehicleDamage}}" spellcheck="false"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -42,7 +42,7 @@
           {{ localize 'CY.Special'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="text" name="data.special" value="{{data.data.special}}" spellcheck="false"/>
+          <input class="field-input" type="text" name="system.special" value="{{data.system.special}}" spellcheck="false"/>
         </div>
       </div>          
       <div class="widget field-row">
@@ -50,7 +50,7 @@
           {{ localize 'CY.UsesAmmo'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="checkbox" name="data.usesAmmo" {{checked data.data.usesAmmo}} />
+          <input class="field-input" type="checkbox" name="system.usesAmmo" {{checked data.system.usesAmmo}} />
         </div>
       </div>
       <div class="widget field-row">
@@ -58,7 +58,7 @@
           {{ localize 'CY.Autofire'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="checkbox" name="data.autofire" {{checked data.data.autofire}} />
+          <input class="field-input" type="checkbox" name="system.autofire" {{checked data.system.autofire}} />
         </div>
       </div>
       <div class="widget field-row">
@@ -66,7 +66,7 @@
           {{ localize 'CY.Targets'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="text" name="data.targets" value="{{data.data.targets}}"/>
+          <input class="field-input" type="text" name="system.targets" value="{{data.system.targets}}"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -74,7 +74,7 @@
           {{ localize 'CY.FumbleOn'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="number" name="data.fumbleOn" value="{{data.data.fumbleOn}}"/>
+          <input class="field-input" type="number" name="system.fumbleOn" value="{{data.system.fumbleOn}}"/>
         </div>
       </div>        
       <div class="widget field-row">
@@ -82,7 +82,7 @@
           {{ localize 'CY.CritOn'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="number" name="data.critOn" value="{{data.data.critOn}}"/>
+          <input class="field-input" type="number" name="system.critOn" value="{{data.system.critOn}}"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -90,7 +90,7 @@
           {{ localize 'CY.CritMultiplier'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="number" name="data.critMultiplier" value="{{data.data.critMultiplier}}"/>
+          <input class="field-input" type="number" name="system.critMultiplier" value="{{data.system.critMultiplier}}"/>
         </div>
       </div>
       <div class="widget field-row">
@@ -102,7 +102,7 @@
           type="button"
           class="file-picker"
           data-type="audio"
-          data-target="data.sound"
+          data-target="system.sound"
           title="Browse Files"
           tabindex="-1"
         >
@@ -111,8 +111,8 @@
         <input
           class="sound"
           type="text"
-          name="data.sound"
-          value="{{data.data.sound}}"
+          name="system.sound"
+          value="{{data.system.sound}}"
           data-dtype="String"
           placeholder="File Path"
         />

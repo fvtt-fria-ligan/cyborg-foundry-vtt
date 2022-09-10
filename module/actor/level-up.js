@@ -3,19 +3,19 @@ const LEVEL_UP_ROLL_CARD_TEMPLATE =
 
 
 export const rollLevelUp = async (actor) => {
-  const oldHp = actor.data.data.hitPoints.max;
+  const oldHp = actor.system.hitPoints.max;
   const newHp = betterHp(oldHp);
-  const oldStr = actor.data.data.abilities.strength.value;
+  const oldStr = actor.system.abilities.strength.value;
   const newStr = betterAbility(oldStr);
-  const oldAgi = actor.data.data.abilities.agility.value;
+  const oldAgi = actor.system.abilities.agility.value;
   const newAgi = betterAbility(oldAgi);
-  const oldPre = actor.data.data.abilities.presence.value;
+  const oldPre = actor.system.abilities.presence.value;
   const newPre = betterAbility(oldPre);
-  const oldTou = actor.data.data.abilities.toughness.value;
+  const oldTou = actor.system.abilities.toughness.value;
   const newTou = betterAbility(oldTou);
-  const oldKno = actor.data.data.abilities.knowledge.value;
+  const oldKno = actor.system.abilities.knowledge.value;
   const newKno = betterAbility(oldKno);
-  let newCredits = actor.data.data.credits;
+  let newCredits = actor.system.credits;
 
   const hpOutcome = abilityOutcome(
     game.i18n.localize("CY.HitPoints"),
@@ -97,13 +97,13 @@ export const rollLevelUp = async (actor) => {
 
   // set new stats on the actor
   await actor.update({
-    ["data.abilities.strength.value"]: newStr,
-    ["data.abilities.agility.value"]: newAgi,
-    ["data.abilities.presence.value"]: newPre,
-    ["data.abilities.toughness.value"]: newTou,
-    ["data.abilities.knowledge.value"]: newKno,
-    ["data.hitPoints.max"]: newHp,
-    ["data.credits"]: newCredits,
+    ["system.abilities.strength.value"]: newStr,
+    ["system.abilities.agility.value"]: newAgi,
+    ["system.abilities.presence.value"]: newPre,
+    ["system.abilities.toughness.value"]: newTou,
+    ["system.abilities.knowledge.value"]: newKno,
+    ["system.hitPoints.max"]: newHp,
+    ["system.credits"]: newCredits,
   });
 }
 

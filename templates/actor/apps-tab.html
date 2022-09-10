@@ -4,11 +4,11 @@
     {{ localize 'CY.FumbleOn'}}
     </div>
     <div class="field-value">
-      <input class="field-input" type="number" name="data.appFumbleOn" value="{{data.data.appFumbleOn}}"/>
+      <input class="field-input" type="number" name="system.appFumbleOn" value="{{data.system.appFumbleOn}}"/>
     </div>
   </div>  
   <div class="apps">
-    {{#each data.data.apps as |item id|}}
+    {{#each data.system.apps as |item id|}}
       <div class="item item-row app-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />

@@ -11,7 +11,7 @@
     <button type="button" class="sheet-button add-item-button">{{ localize 'CY.AddItem' }}</button>
   </div>
   <div class="equipment item-list">
-    {{#each data.data.equipment as |item id|}}
+    {{#each data.system.equipment as |item id|}}
       <div class="item item-row equipment-row" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
@@ -21,7 +21,7 @@
             {{item.name}}
           </div>
           <div class="item-field-row">        
-            {{localize 'CY.Quantity'}}: {{item.data.quantity}}
+            {{localize 'CY.Quantity'}}: {{item.system.quantity}}
             &nbsp;
             <a class="item-control item-qty-plus" title="Add Quantity"
             ><i class="fas fa-plus"></i

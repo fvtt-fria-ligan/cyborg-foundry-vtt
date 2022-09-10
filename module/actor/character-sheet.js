@@ -30,36 +30,36 @@ export class CYCharacterSheet extends CYActorSheet {
     });
   }
 
-    //   this.data.data.nano = game.items.find(x => x.data._id === this.data.data.nanoId);
+    //   this.data.system.nano = game.items.find(x => x.system._id === this.data.system.nanoId);
 
   /** @override */
   getData() {
     const superData = super.getData();
-    superData.data.data.armor = superData.data.items
+    superData.data.system.armor = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
       .sort(byName);
-    superData.data.data.equipment = superData.data.items
+    superData.data.system.equipment = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
       .sort(byName);
-    superData.data.data.weapons = superData.data.items
+    superData.data.system.weapons = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
       .sort(byName);
-    superData.data.data.class = superData.data.items
+    superData.data.system.class = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.class)
       .pop();
-    superData.data.data.apps = superData.data.items
+    superData.data.system.apps = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.app)
       .sort(byName);
-    superData.data.data.feats = superData.data.items
+    superData.data.system.feats = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.feat)
       .sort(byName);
-    superData.data.data.infestations = superData.data.items
+    superData.data.system.infestations = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.infestation)
       .sort(byName);
-    superData.data.data.nanoPowers = superData.data.items
+    superData.data.system.nanoPowers = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.nanoPower)
       .sort(byName);
-    superData.data.data.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
+    superData.data.system.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
     return superData;
   }
 

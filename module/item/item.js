@@ -1,5 +1,5 @@
 import { CY } from "../config.js";
-import { drawDocument } from "../packutils.js";
+import { drawDocument, dupeData } from "../packutils.js";
 
 /**
  * @extends {Item}
@@ -7,14 +7,14 @@ import { drawDocument } from "../packutils.js";
  export class CYItem extends Item {
 
   linkedNano() {
-    if (this.data.data.nanoId) {
-      return this.findParentItem(this.data.data.nanoId);
+    if (this.data.system.nanoId) {
+      return this.findParentItem(this.data.system.nanoId);
     }
   }
 
   linkedInfestation() {
-    if (this.data.data.infestationId) {
-      return this.findParentItem(this.data.data.infestationId);
+    if (this.data.system.infestationId) {
+      return this.findParentItem(this.data.system.infestationId);
     }
   }
 
@@ -28,9 +28,9 @@ import { drawDocument } from "../packutils.js";
       console.error("Failed to draw an infestation");
       return;
     }
-    const data = duplicate(infestation.data);
-    data.data.nanoId = this.id;
+    const data = dupeData(infestation);
+    data.system.nanoId = this.id;
     const docs = await this.parent.createEmbeddedDocuments("Item", [data]);
-    await this.update({["data.infestationId"]: docs[0].id})
+    await this.update({["system.infestationId"]: docs[0].id})
   }
 }

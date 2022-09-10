@@ -5,7 +5,7 @@ export const testAgility = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.agilityModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} +${
@@ -51,7 +51,7 @@ export const testStrength = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.strengthModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} ${
@@ -79,7 +79,7 @@ export const testToughness = async (actor) => {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
-    const armorTier = CONFIG.CY.armorTiers[armor.data.data.tier.max];
+    const armorTier = CONFIG.CY.armorTiers[armor.system.tier.max];
     if (armorTier.strengthModifier) {
       drModifiers.push(
         `${armor.name}: ${game.i18n.localize("CY.DR")} ${
@@ -104,7 +104,7 @@ const drModifiersToHtml = (drModifiers) => {
 };
 
 const testAbility = async (actor, ability, abilityKey, drModifiers) => {
-  const value = actor.data.data.abilities[ability].value;
+  const value = actor.system.abilities[ability].value;
   const formula = d20Formula(value);
   const abilityRoll = new Roll(formula);
   const flavor = `${game.i18n.localize('CY.Test')} ${game.i18n.localize(abilityKey)} ${drModifiersToHtml(drModifiers)}`;

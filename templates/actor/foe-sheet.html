@@ -28,7 +28,7 @@
   <div class="sheet-body">  
     <div class="tab description-tab" data-group="primary" data-tab="description">
       <div class="description-wrapper">
-        {{editor content=data.data.description target="data.description"
+        {{editor data.system.description target="system.description"
         button=true owner=owner editable=true}}  
       </div>
     </div>      
@@ -38,7 +38,7 @@
           {{ localize 'CY.Morale'}}
         </div>
         <div class="field-value">
-          <input class="field-input" type="number" name="data.morale" value="{{ data.data.morale }}" />
+          <input class="field-input" type="number" name="system.morale" value="{{ data.system.morale }}" />
         </div>
       </div>
       <div class="widget field-row">
@@ -46,7 +46,7 @@
           {{ localize 'CY.Armor'}}
         </div>
         <div class="field-value">
-          <textarea class="field-input" name="data.armor" rows="2">{{data.data.armor}}</textarea>
+          <textarea class="field-input" name="system.armor" rows="2">{{data.system.armor}}</textarea>
         </div>
       </div>
       <div class="widget field-row">
@@ -54,7 +54,7 @@
           {{ localize 'CY.Attack'}}
         </div>
         <div class="field-value">
-          <textarea class="field-input" name="data.attack" rows="2">{{data.data.attack}}</textarea>
+          <textarea class="field-input" name="system.attack" rows="2">{{data.system.attack}}</textarea>
         </div>
       </div>
       <div class="widget field-row">
@@ -62,7 +62,7 @@
           {{ localize 'CY.Special'}}
         </div>
         <div class="field-value">
-          <textarea class="field-input" name="data.special" rows="10">{{data.data.special}}</textarea>
+          <textarea class="field-input" name="system.special" rows="10">{{data.system.special}}</textarea>
         </div>
       </div>
     </div>
