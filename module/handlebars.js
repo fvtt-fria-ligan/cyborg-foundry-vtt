@@ -7,6 +7,7 @@ export const registerHandlebarsPartials = async () => {
     "systems/cy_borg/templates/actor/equipment-tab.html",
     "systems/cy_borg/templates/actor/feats-tab.html",
     "systems/cy_borg/templates/actor/hit-points.html",
+    "systems/cy_borg/templates/actor/money-tab.html",
     "systems/cy_borg/templates/actor/nano-tab.html",
     "systems/cy_borg/templates/item/item-base-fields.html",
     "systems/cy_borg/templates/item/item-description-tab.html",

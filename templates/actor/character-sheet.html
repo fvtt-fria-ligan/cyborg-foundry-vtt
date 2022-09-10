@@ -1,36 +1,38 @@
 <form class="{{cssClass}}" autocomplete="off">
   <div class="sheet-header">
-    <div class="left-col">
-      <div class="widget portrait">
-        <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
-      </div>
-      <div class="widget name">
-        <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
-      </div>
-      <div class="widget class-row item" data-item-id="{{data.system.class._id}}">
-        <div class="class-name">{{data.system.class.name}}</div>
-        <div class="item-controls">
-          <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
-          <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+    <div class="header-cols">
+      <div class="left-col">
+        <div class="widget portrait">
+          <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
+        </div>
+        <div class="widget name">
+          <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
+        </div>
+        <div class="widget class-row item" data-item-id="{{data.data.class._id}}">
+          <div class="class-name">{{data.data.class.name}}</div>
+          <div class="item-controls">
+            <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+          </div>
         </div>
       </div>
-      <div class="button-row">
-        <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
-        <button type="button" class="sheet-button battered-button">{{ localize "CY.Battered" }}</button>
-        <button type="button" class="sheet-button level-up-button">{{ localize "CY.LevelUp" }}</button>
+      <div class="right-col">
+        {{> systems/cy_borg/templates/actor/hit-points.html}}
+        {{> systems/cy_borg/templates/actor/abilities.html}}
+        <div class="widget ability-row">
+          <div class="ability-icon">
+            <a class="ability-link" data-ability="glitches" title="{{ localize 'CY.Glitches' }}"><img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
+          </div>
+          <div class="ability-score">
+            <input class="glitches" type="number" name="data.glitches.value" value="{{data.data.glitches.value}}" />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="right-col">
-      {{> systems/cy_borg/templates/actor/hit-points.html}}
-      {{> systems/cy_borg/templates/actor/abilities.html}}
-      <div class="widget ability-row">
-        <div class="ability-icon">
-          <a class="ability-link" data-ability="glitches" title="{{ localize 'CY.Glitches' }}"><img src="/systems/cy_borg/assets/images/ui/icon_glitches.png" /></a>
-        </div>
-        <div class="ability-score">
-          <input class="glitches" type="number" name="system.glitches.value" value="{{data.system.glitches.value}}" />
-        </div>
-      </div>        
+    <div class="header-button-row">
+      <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
+      <button type="button" class="sheet-button battered-button">{{ localize "CY.Battered" }}</button>
+      <button type="button" class="sheet-button level-up-button">{{ localize "CY.LevelUp" }}</button>
+      <button type="button" class="sheet-button reroll-button">{{ localize "CY.Reroll" }}</button>
     </div>
   </div>
 
@@ -41,6 +43,7 @@
     <a class="item" data-tab="nano"><img class="tab-icon" title="{{localize 'CY.Nano'}}" src="/systems/cy_borg/assets/images/ui/tab_nano.png" /></a>
     <a class="item" data-tab="apps"><img class="tab-icon" title="{{localize 'CY.Apps'}}" src="/systems/cy_borg/assets/images/ui/tab_apps.png" /></a>
     <a class="item" data-tab="equipment"><img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy_borg/assets/images/ui/tab_equipment.png" /></a>
+    <a class="item" data-tab="money"><img class="tab-icon" title="{{localize 'CY.Money'}}" src="/systems/cy_borg/assets/images/ui/tab_money.png" /></a>
   </nav>
   
 
@@ -52,6 +55,7 @@
     {{> systems/cy_borg/templates/actor/nano-tab.html}}
     {{> systems/cy_borg/templates/actor/apps-tab.html}}
     {{> systems/cy_borg/templates/actor/equipment-tab.html}}
+    {{> systems/cy_borg/templates/actor/money-tab.html}}
 
   </div>  
 </form>

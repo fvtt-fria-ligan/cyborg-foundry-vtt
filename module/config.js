@@ -21,7 +21,8 @@ CY.itemTypes = {
 
 CY.weaponTypes = {
   melee: "melee",
-  ranged: "ranged"
+  ranged: "ranged",
+  thrown: "thrown"
 };
 
 CY.armorTiers = {
@@ -84,6 +85,7 @@ CY.armorTiersList = [CY.armorTiers[0], CY.armorTiers[1],
 CY.flagScope = CY.system;
 CY.flags = {
   ATTACK_DR: "attackDR",
+  AUTOFIRE: "autofire",
   DEFEND_DR: "defendDR",
   INCOMING_ATTACK: "incomingAttack",
   TARGET_ARMOR: "targetArmor",

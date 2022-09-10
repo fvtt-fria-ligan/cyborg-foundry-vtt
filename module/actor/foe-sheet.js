@@ -8,8 +8,8 @@ export class CYFoeSheet extends CYActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "foe"],
       template: "systems/cy_borg/templates/actor/foe-sheet.html",
-      width: 402,
-      height: 900,
+      width: 406,
+      height: 880,
       tabs: [
         {
           navSelector: ".sheet-tabs",

@@ -11,10 +11,12 @@
         .portrait {
           display: flex;
           flex: 0 0 $portrait-size;
+          height: $portrait-size;
           justify-content: center;
           margin-bottom: $widget-margin;
           img {
             height: 100%;
+            width: auto;
           }
         } 
         .name {
@@ -34,9 +36,10 @@
           color: $cream;
           align-items: center;
           display: flex;
-          flex: 1;
+          flex: 0 0 $portrait-size;
           font-family: $name-font;
           font-size: 40px;
+          margin-bottom: $widget-margin;
           justify-content: center;
           writing-mode: vertical-rl;
         }        

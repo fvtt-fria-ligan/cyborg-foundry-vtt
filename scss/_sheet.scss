@@ -3,14 +3,18 @@
   border-radius: 5px;
   
   section.window-content {
-    background: $near-black;
+    // background: $near-black;
+    background-color: #333;
     background-image: none;
     border: 2px solid $cream;
     color: $cream;
     font-family: $sheet-font;
     font-size: 15px;
     overflow-y: scroll;
-    padding: $widget-margin;
+    padding-bottom: $widget-margin;
+    padding-left: $widget-margin;
+    padding-right: 0;
+    padding-top: $widget-margin;
 
     form {
       padding: 0;

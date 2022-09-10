@@ -91,7 +91,7 @@ export const testToughness = async (actor) => {
   await testAbility(
     actor,
     "toughness",
-    "CY.Knowledge",
+    "CY.Toughness",
     drModifiers
   );
 };

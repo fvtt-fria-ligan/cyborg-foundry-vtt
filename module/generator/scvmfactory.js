@@ -6,6 +6,7 @@ import { randomName } from "./names.js";
 import {
   documentFromPack,
   drawFromTable,
+  drawText,
 } from "../packutils.js";
 
 export const createRandomScvm = async () => {
@@ -211,6 +212,14 @@ const startingEquipment = async (clazz) => {
   return equipment;
 };
 
+const simpleData = (e) => ({
+  data: e.data.data,
+  img: e.data.img,
+  items: e.items?.map(i => simpleData(i)),
+  name: e.data.name,
+  type: e.data.type,
+});
+
 const rollScvmForClass = async (clazz) => {
   console.log(`Creating new ${clazz.name}`);
   const allDocs = [clazz];
@@ -285,21 +294,24 @@ const rollScvmForClass = async (clazz) => {
 
   // make simple data structure for embedded items
   const items = allDocs.filter((e) => e instanceof CYItem);
-  const itemData = items.map((i) => ({
-    data: i.system,
-    img: i.img,
-    name: i.name,
-    type: i.type,
-  }));
+  // const itemData = items.map((i) => ({
+  //   data: i.system,
+  //   img: i.img,
+  //   name: i.name,
+  //   type: i.type,
+  // }));
+  const itemData = items.map(i => simpleData(i));
 
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
-  const npcData = npcs.map(e => ({
-    data: e.system,
-    img: e.img,
-    name: `${name}'s ${e.name}`,
-    type: e.type
-  }));
+  // const npcData = npcs.map(e => ({
+  //   data: e.system,
+  //   img: e.img,
+  //   name: `${name}'s ${e.name}`,
+  //   type: e.type
+  // }));
+  const npcData = npcs.map(n => simpleData(n));
+  npcData.forEach(n => n.name = `${name}'s ${n.name}`);
 
   const strength = abilityRoll(clazz.system.strength);
   const agility = abilityRoll(clazz.system.agility);
@@ -315,6 +327,10 @@ const rollScvmForClass = async (clazz) => {
     actorImg: clazz.img,
     agility,
     credits,
+    debt: {
+      amount: debtAmount,
+      to: debtTo
+    },
     description: descriptionLines.join(""),
     glitches,
     hitPoints,
@@ -333,9 +349,6 @@ const rollScvmForClass = async (clazz) => {
 const scvmToActorData = (s) => {
   return {
     name: s.name,
-    // TODO: do we need to set folder or sort?
-    // folder: folder.system._id,
-    // sort: 12000,
     data: {
       abilities: {
         strength: { value: s.strength },
@@ -345,6 +358,7 @@ const scvmToActorData = (s) => {
         knowledge: { value: s.knowledge },
       },
       credits: s.credits,
+      debt: s.debt,
       description: s.description,
       glitches: {
         max: s.glitches,
@@ -396,11 +410,9 @@ const createActorWithScvm = async (s) => {
 const updateActorWithScvm = async (actor, s) => {
   const data = scvmToActorData(s);
   // Explicitly nuke all items before updating.
-  // Before Foundry 0.8.x, actor.update() used to overwrite items,
-  // but now doesn't. Maybe because we're passing items: [item.data]?
-  // Dunno.
   await actor.deleteEmbeddedDocuments("Item", [], { deleteAll: true });
   await actor.update(data);
+
   // update any actor tokens in the scene, too
   for (const token of actor.getActiveTokens()) {
     await token.document.update({
@@ -408,6 +420,26 @@ const updateActorWithScvm = async (actor, s) => {
       name: actor.name,
     });
   }
+
+  // create any npcs
+  for (const npcData of s.npcs) {
+    if (npcData.type === "vehicle") {
+      npcData.data.ownerId = actor.id;
+    }
+    const npcActor = await CYActor.create(npcData);
+    npcActor.sheet.render(true);
+  }
+
+  // run post-create macro, if any
+  if (s.postCreateMacro) {
+    const [packName, macroName] = s.postCreateMacro.split(",");
+    const pack = game.packs.get(packName);
+    const content = await pack.getDocuments();
+    const macro = content.find(x => x.name === macroName);
+    if (macro) {
+      macro.execute({actor});
+    }
+  }  
 };
 
 const docsFromResults = async (results) => {

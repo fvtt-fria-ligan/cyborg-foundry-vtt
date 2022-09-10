@@ -2,7 +2,17 @@
 .cy.sheet.actor.character {
   section.window-content {
     .sheet-header {
-      height: 436px;
+      flex-direction: column;
+      height: 438px;
+      .header-cols {
+        display: flex;
+        flex: 1;
+      }
+      .header-button-row {
+        flex: 0 0 40px;
+        display: flex;
+        justify-content: space-between;
+      }
       .left-col {
         .name {
           flex: 0 0 52px;
@@ -33,7 +43,7 @@
       .right-col {
         .ability-row {
           display: flex;
-          flex: 0 0 $field-height;
+          flex: 0 0 30px;
           margin-bottom: $widget-margin;
           .ability-icon {
             align-items: center;
@@ -43,12 +53,12 @@
             flex: 1;
             justify-content: center;
             a {
-              height: 34px;
-              width: 34px;
+              height: 30px;
+              width: 30px;
               img {
                 border: none;
-                height: 34px;
-                width: 34px;
+                height: 30px;
+                width: 30px;
               }  
             }
           }

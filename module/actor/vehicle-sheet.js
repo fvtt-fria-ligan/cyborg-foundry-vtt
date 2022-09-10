@@ -1,4 +1,5 @@
 import { CYActorSheet } from "./actor-sheet.js";
+import { byName } from "../utils.js";
 
 export class CYVehicleSheet extends CYActorSheet {
   /** @override */

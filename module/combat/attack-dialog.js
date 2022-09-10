@@ -40,9 +40,14 @@ export class AttackDialog extends CYApplication {
       CONFIG.CY.flagScope,
       CONFIG.CY.flags.ATTACK_DR
     );
+
     if (!attackDR) {
       attackDR = 12; // default
     }
+    const autofire = await this.actor.getFlag(
+      CONFIG.CY.flagScope,
+      CONFIG.CY.flags.AUTOFIRE
+    );
     const targetArmor = await this.actor.getFlag(
       CONFIG.CY.flagScope,
       CONFIG.CY.flags.TARGET_ARMOR
@@ -50,6 +55,7 @@ export class AttackDialog extends CYApplication {
     return {
       attackDR,
       autofireClass: autofireEnabled ? "enabled" : "disabled",
+      autofire: autofireEnabled && autofire,
       autofireEnabled,
       targetArmor,
     };
@@ -69,6 +75,11 @@ export class AttackDialog extends CYApplication {
       CONFIG.CY.flagScope,
       CONFIG.CY.flags.ATTACK_DR,
       attackDR
+    );
+    await this.actor.setFlag(
+      CONFIG.CY.flagScope,
+      CONFIG.CY.flags.AUTOFIRE,
+      autofire
     );
     await this.actor.setFlag(
       CONFIG.CY.flagScope,

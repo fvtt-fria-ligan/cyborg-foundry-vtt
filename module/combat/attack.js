@@ -1,3 +1,4 @@
+import { CY } from "../config.js";
 import { addShowDicePromise, diceSound, showDice } from "../dice.js";
 import { d20Formula } from "../utils.js";
 import { playSound } from "../sound.js";
@@ -28,11 +29,16 @@ export const rollAttack = async (
     ability = "agility";
     abilityAbbrevKey = "CY.AgilityAbbrev";
     attackTypeKey = "CY.Autofire";
-  } else if (itemRollData.weaponType === "ranged") {
+  } else if (itemRollData.weaponType?.toLowerCase() === CY.weaponTypes.ranged) {
     // ranged
     ability = "presence";
     abilityAbbrevKey = "CY.PresenceAbbrev";
     attackTypeKey = "CY.Ranged";
+  } else if (itemRollData.weaponType?.toLowerCase() === CY.weaponTypes.thrown) {
+    // thrown
+    ability = "strength";
+    abilityAbbrevKey = "CY.StrengthAbbrev";
+    attackTypeKey = "CY.Thrown";
   } else {
     // melee
     ability = "strength";
@@ -73,12 +79,17 @@ export const rollAttack = async (
     // roll 2: damage.
     const baseDamage = targetIsVehicle ? item.system.vehicleDamage : item.system.damage;
     let damageFormula = baseDamage;
+    if (damageFormula.includes("+") || damageFormula.includes("-")) {
+      // wrap formula in parentheses in case of weak points / crit multiplying
+      // e.g., chainsaw 1d6+1
+      damageFormula = `(${damageFormula})`;
+    }
     if (weakPoints) {
-      // wrap formula in parentheses for chainsaw 1d6+1
-      damageFormula = `(${damageFormula})*2`;
+      damageFormula = `${damageFormula} * 2`;
     }
     if (isCrit) {
-      damageFormula += `(${damageFormula})*2`;
+      const critMultiplier = item.data.data.critMultiplier ?? 2;
+      damageFormula = `${damageFormula} * ${critMultiplier}`;
     }
     damageRoll = new Roll(damageFormula);
     damageRoll.evaluate({ async: false });

@@ -27,14 +27,17 @@
   border: 2px solid #71C5C9;
   border-radius: 5px; }
   .cy.sheet section.window-content {
-    background: #1C1E23;
+    background-color: #333;
     background-image: none;
     border: 2px solid #F6EDDB;
     color: #F6EDDB;
     font-family: "QuanPixel 8px";
     font-size: 15px;
     overflow-y: scroll;
-    padding: 5px; }
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 0;
+    padding-top: 5px; }
     .cy.sheet section.window-content form {
       padding: 0;
       display: flex;
@@ -143,10 +146,12 @@
     .cy.sheet.actor section.window-content .sheet-header .left-col .portrait {
       display: flex;
       flex: 0 0 292px;
+      height: 292px;
       justify-content: center;
       margin-bottom: 5px; }
       .cy.sheet.actor section.window-content .sheet-header .left-col .portrait img {
-        height: 100%; }
+        height: 100%;
+        width: auto; }
     .cy.sheet.actor section.window-content .sheet-header .left-col .name {
       flex: 0 0 38px;
       margin-bottom: 5px; }
@@ -161,9 +166,10 @@
       color: #F6EDDB;
       align-items: center;
       display: flex;
-      flex: 1;
+      flex: 0 0 292px;
       font-family: "UAV OSD Sans Mono";
       font-size: 40px;
+      margin-bottom: 5px;
       justify-content: center;
       writing-mode: vertical-rl; }
     .cy.sheet.actor section.window-content .sheet-header .right-col .hit-points {
@@ -212,7 +218,15 @@
       margin: 2px; }
 
 .cy.sheet.actor.character section.window-content .sheet-header {
-  height: 436px; }
+  flex-direction: column;
+  height: 438px; }
+  .cy.sheet.actor.character section.window-content .sheet-header .header-cols {
+    display: flex;
+    flex: 1; }
+  .cy.sheet.actor.character section.window-content .sheet-header .header-button-row {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: space-between; }
   .cy.sheet.actor.character section.window-content .sheet-header .left-col .name {
     flex: 0 0 52px; }
     .cy.sheet.actor.character section.window-content .sheet-header .left-col .name input[type="text"] {
@@ -233,7 +247,7 @@
       flex: 0 0 40px; }
   .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row {
     display: flex;
-    flex: 0 0 38px;
+    flex: 0 0 30px;
     margin-bottom: 5px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon {
       align-items: center;
@@ -243,12 +257,12 @@
       flex: 1;
       justify-content: center; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a {
-        height: 34px;
-        width: 34px; }
+        height: 30px;
+        width: 30px; }
         .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a img {
           border: none;
-          height: 34px;
-          width: 34px; }
+          height: 30px;
+          width: 30px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
       flex: 1; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score input[type="number"] {
@@ -327,7 +341,7 @@
   color: #F800F8; }
 
 .cy.sheet.actor.foe section.window-content .sheet-header {
-  height: 396px; }
+  height: 388px; }
 
 .cy.sheet.actor.vehicle section.window-content .sheet-header {
   height: 396px; }

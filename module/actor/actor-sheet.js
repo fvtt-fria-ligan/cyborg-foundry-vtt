@@ -27,6 +27,19 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
   }
 
   /** @override */
+  _getHeaderButtons() {
+    const buttons = super._getHeaderButtons();
+    // workaround for our sheet being too narrow and hiding the close button :P
+    buttons.forEach(b => {
+      if (b.label === "TOKEN.TitlePrototype") {
+        b.label = "Token";
+      }
+    });
+    return buttons;
+  }
+
+
+  /** @override */
   activateListeners(html) {
     super.activateListeners(html);
     html.find(".tabs a.item").on("click", this._onTabClick.bind(this));

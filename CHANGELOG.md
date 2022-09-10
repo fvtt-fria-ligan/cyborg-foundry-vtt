@@ -1,3 +1,25 @@
+# 0.5.1
+
+- Only show "linked" for linked nano/infestation.
+- Create npcs and run post-create macros for rerolled punks, too.
+- Fix generator npcs not including npc items.
+
+# 0.5.0
+
+- Character sheet - add money tab to show credits and debt.
+- Character sheet - add reroll button.
+- Character sheet - remove delete button from class.
+- Rearrange weak points on attack dialog.
+- Add thrown weapon type which uses strength for attack modifier.
+- Attack dialog now remembers autofire checkbox.
+- Fix critical damage multiplier for attack.
+- Move old motorcycle and taxi to vehicles.
+- Fix toughness check using wrong stat label.
+
+# 0.4.5
+
+- Fix missing import on vehicle sheet.
+
 # 0.4.4
 
 - Fix some styling.
