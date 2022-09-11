@@ -1,5 +1,6 @@
 {
   "name": "cy_borg",
+  "id": "cy_borg",
   "title": "CY_BORG",
   "description": "Foundry VTT system for CY_BORG.",
   "version": "1.0.0",
@@ -23,8 +24,12 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "10",
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10
+  },  
   "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",
   "manifest": "https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/releases/latest/download/system.json",
   "download": "https://github.com/fvtt-fria-ligan/cy_borg-foundry-vtt/releases/latest/download/system.zip"

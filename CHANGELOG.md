@@ -1,3 +1,7 @@
+# 1.0 0
+
+- Foundry v10 compatibility.
+
 # 0.5.1
 
 - Only show "linked" for linked nano/infestation.
