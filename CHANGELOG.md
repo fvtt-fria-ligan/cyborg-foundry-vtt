@@ -1,3 +1,10 @@
+# 1.0.1
+
+- Tweak character sheet UI styling and sizing.
+- Combine nano and app tabs.
+- Eliminate money tab in favor of credits up top and debt in char description.
+- Fix git merge conflict bug in nano/infestation link display.
+
 # 1.0 0
 
 - Foundry v10 compatibility.
