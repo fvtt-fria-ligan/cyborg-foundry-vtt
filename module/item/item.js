@@ -7,19 +7,19 @@ import { drawDocument, dupeData } from "../packutils.js";
  export class CYItem extends Item {
 
   linkedNano() {
-    if (this.data.system.nanoId) {
-      return this.findParentItem(this.data.system.nanoId);
+    if (this.system.nanoId) {
+      return this.findParentItem(this.system.nanoId);
     }
   }
 
   linkedInfestation() {
-    if (this.data.system.infestationId) {
-      return this.findParentItem(this.data.system.infestationId);
+    if (this.system.infestationId) {
+      return this.findParentItem(this.system.infestationId);
     }
   }
 
   findParentItem(id) {
-    return this.parent.data.items.filter(x => x.id === id).shift();
+    return this.parent.items.filter(x => x.id === id).shift();
   }
 
   async createLinkedInfestation() {
@@ -29,8 +29,19 @@ import { drawDocument, dupeData } from "../packutils.js";
       return;
     }
     const data = dupeData(infestation);
-    data.system.nanoId = this.id;
+    data.data.nanoId = this.id;
     const docs = await this.parent.createEmbeddedDocuments("Item", [data]);
     await this.update({["system.infestationId"]: docs[0].id})
+  }
+
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    if (this.system.nanoId) {
+      this.system.nanoName = this.linkedNano()?.name;
+    }
+    if (this.system.infestationId) {
+      this.system.infestationName = this.linkedInfestation()?.name;
+    }
   }
 }

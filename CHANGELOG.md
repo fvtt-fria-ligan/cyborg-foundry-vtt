@@ -1,3 +1,9 @@
+# 1.0.4
+
+- Fix linked nanos/infestations.
+- Show linked-to name on nano-apps tab.
+- Set shorter name for pc-owned npcs, like gearhead's.
+
 # 1.0.3
 
 - Fix count bullets button.
