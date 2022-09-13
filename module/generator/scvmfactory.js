@@ -311,7 +311,10 @@ const rollScvmForClass = async (clazz) => {
   //   type: e.type
   // }));
   const npcData = npcs.map(n => simpleData(n));
-  npcData.forEach(n => n.name = `${name}'s ${n.name}`);
+  npcData.forEach(n => {
+    const lastWord = n.name.split(" ").pop();
+    n.name = `${name}'s ${lastWord}`;
+  });
 
   const strength = abilityRoll(clazz.system.strength);
   const agility = abilityRoll(clazz.system.agility);
