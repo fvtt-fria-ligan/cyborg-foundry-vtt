@@ -48,11 +48,11 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".item-qty-plus").click(this._onItemAddQuantity.bind(this));
     html.find(".item-qty-minus").click(this._onItemSubtractQuantity.bind(this));
     html.find(".add-item-button").on("click", this._addItem.bind(this));
-    html.find(".item-count-bullets").click(this._onItemCountBullets.bind(this));
     html.find(".initiative-button").on("click", this._initiative.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
     html.find(".tier-radio").click(this._onArmorTierRadio.bind(this));
-    html.find(".weapon-icon").on("click", this._attack.bind(this));
+    html.find(".attack-button").on("click", this._attack.bind(this));
+    html.find(".count-bullet-button").click(this._countBullets.bind(this));
   }  
   
   _onTabClick(event) {
@@ -113,7 +113,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     }
   }
 
-  async _onItemCountBullets(event) {
+  async _countBullets(event) {
     event.preventDefault();
     const anchor = $(event.currentTarget);
     const parent = anchor.parents(".item");

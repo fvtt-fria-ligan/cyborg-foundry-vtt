@@ -25,6 +25,10 @@
       height: 100%;
     }
 
+    nav.sheet-tabs.tabs {
+      border-radius: $border-radius;
+    }
+  
     .sheet-tabs {
       background-color: $cream;
       border: none;
@@ -37,10 +41,10 @@
         width: 84;
         border: 4px solid $cream;
         &:hover {
-          border: 4px solid $magenta;
+          background-color: $magenta;
         }
         &.active {
-          border: 4px solid $magenta;
+          background-color: $magenta;
         }
         img {
           border: none;
@@ -85,17 +89,20 @@
 
     .widget {
       border: 4px solid $cream;
-      border-radius: 5px;
+      border-radius: $border-radius;
     }
 
     .button-row {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   
     .sheet-button {
       background-color: $cream;
       color: $near-black;
+      font-size: 14px;
+      height: 20px;
+      line-height: 1.2;
     }
 
     .field-row {
@@ -124,9 +131,6 @@
           width: 100%;
         }
       }
-      button {
-        // color: $cream;
-      }
       textarea {
         font-family: $textarea-font;
         line-height: $textarea-line-height;
@@ -136,11 +140,9 @@
     // style shared by foe actor sheet and item sheets
     .sheet-body {
       flex: 1;
-
       .tab {
         height: 100%;
       }
-      
       .description-tab {
         .description-wrapper {
           background-color: $cream;
@@ -151,10 +153,6 @@
           width: 100%;
         }
       }
-
-      .data-tab {
-
-      }  
     }  
   }
 }

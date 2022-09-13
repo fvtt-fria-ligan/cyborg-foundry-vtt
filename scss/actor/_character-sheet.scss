@@ -2,25 +2,19 @@
 .cy.sheet.actor.character {
   section.window-content {
     .sheet-header {
+      margin-bottom: 4px;;
       flex-direction: column;
-      height: 438px;
+      height: 410px;
       .header-cols {
         display: flex;
         flex: 1;
       }
       .header-button-row {
-        flex: 0 0 40px;
+        flex: 0 0 20px;
         display: flex;
         justify-content: space-between;
       }
       .left-col {
-        .name {
-          flex: 0 0 52px;
-          input[type="text"] {
-            font-size: 18px;
-            height: 46px;
-          }
-        }
         .class-row {
           align-items: center;
           display: flex;
@@ -41,10 +35,17 @@
         }
       }
       .right-col {
+        .abilities-wrapper {
+          justify-content: space-between;
+          display: flex;
+          flex: 0 0 292px;
+          flex-direction: column;
+          margin-bottom: $widget-margin;
+        }
         .ability-row {
           display: flex;
-          flex: 0 0 30px;
-          margin-bottom: $widget-margin;
+          flex: 0 0 37px;
+          // margin-bottom: $widget-margin;
           .ability-icon {
             align-items: center;
             background-color: $cream;
@@ -53,20 +54,40 @@
             flex: 1;
             justify-content: center;
             a {
-              height: 30px;
-              width: 30px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              // text-align: center;
+              // height: 29.5px;
+              // width: 29.5px;
               img {
                 border: none;
-                height: 30px;
-                width: 30px;
+                height: 28px;
+                width: 28px;
               }  
             }
           }
           .ability-score {
             flex: 1;
             input[type="number"] {
-              font-size: 24px;
+              font-size: 20px;
               // padding-top: 6px;
+            }
+          }
+        }
+        .credits-row {
+          display: flex;
+          flex-direction: column;
+          .credits-label {
+            background-color: $cream;
+            color: black;
+            text-align: center;
+            font-size: 8px;
+          }
+          .credits-input {
+            input[type="text"] {
+              font-size: 4px;
+              height: 10px;  
             }
           }
         }

@@ -84,13 +84,13 @@
       .item-row {
         display: flex;
         .icon {
-          flex: 0 0 100px;
+          flex: 0 0 75px;
           margin-right: 5px;
           img {
             border: 4px solid $cream;
             border-radius: 5px;
-            height: 100px;
-            width: 100px;
+            height: 75px;
+            width: 75px;
           }  
         }
         .item-fields {
@@ -98,9 +98,24 @@
           flex: 1;
           flex-direction: column;
           .item-field-row {
+            display: flex;
             line-height: $textarea-line-height;
             margin: 2px;
-          }  
+            button {
+              min-width: 80px;
+              width: fit-content;
+            }
+          }
+          .item-name-row {
+            display: flex;
+            .item-name {
+              flex: 1;
+            }
+            .item-controls {
+              flex: 0 0 80px;
+              text-align: right;
+            }
+          }
         }          
       }
     }

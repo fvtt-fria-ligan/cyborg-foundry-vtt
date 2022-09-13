@@ -45,6 +45,8 @@
       flex-wrap: nowrap;
       justify-content: flex-start;
       height: 100%; }
+    .cy.sheet section.window-content nav.sheet-tabs.tabs {
+      border-radius: 5px; }
     .cy.sheet section.window-content .sheet-tabs {
       background-color: #F6EDDB;
       border: none;
@@ -57,9 +59,9 @@
         width: 84;
         border: 4px solid #F6EDDB; }
         .cy.sheet section.window-content .sheet-tabs a.item:hover {
-          border: 4px solid #F800F8; }
+          background-color: #F800F8; }
         .cy.sheet section.window-content .sheet-tabs a.item.active {
-          border: 4px solid #F800F8; }
+          background-color: #F800F8; }
         .cy.sheet section.window-content .sheet-tabs a.item img {
           border: none;
           border-radius: 0;
@@ -93,10 +95,13 @@
       border-radius: 5px; }
     .cy.sheet section.window-content .button-row {
       display: flex;
-      justify-content: space-around; }
+      justify-content: space-between; }
     .cy.sheet section.window-content .sheet-button {
       background-color: #F6EDDB;
-      color: #1C1E23; }
+      color: #1C1E23;
+      font-size: 14px;
+      height: 20px;
+      line-height: 1.2; }
     .cy.sheet section.window-content .field-row {
       display: flex;
       flex: 0 0 38px;
@@ -202,36 +207,43 @@
 .cy.sheet.actor section.window-content .sheet-body .item-row {
   display: flex; }
   .cy.sheet.actor section.window-content .sheet-body .item-row .icon {
-    flex: 0 0 100px;
+    flex: 0 0 75px;
     margin-right: 5px; }
     .cy.sheet.actor section.window-content .sheet-body .item-row .icon img {
       border: 4px solid #F6EDDB;
       border-radius: 5px;
-      height: 100px;
-      width: 100px; }
+      height: 75px;
+      width: 75px; }
   .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields {
     display: flex;
     flex: 1;
     flex-direction: column; }
     .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-field-row {
+      display: flex;
       line-height: 20px;
       margin: 2px; }
+      .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-field-row button {
+        min-width: 80px;
+        width: fit-content; }
+    .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row {
+      display: flex; }
+      .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row .item-name {
+        flex: 1; }
+      .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row .item-controls {
+        flex: 0 0 80px;
+        text-align: right; }
 
 .cy.sheet.actor.character section.window-content .sheet-header {
+  margin-bottom: 4px;
   flex-direction: column;
-  height: 438px; }
+  height: 410px; }
   .cy.sheet.actor.character section.window-content .sheet-header .header-cols {
     display: flex;
     flex: 1; }
   .cy.sheet.actor.character section.window-content .sheet-header .header-button-row {
-    flex: 0 0 40px;
+    flex: 0 0 20px;
     display: flex;
     justify-content: space-between; }
-  .cy.sheet.actor.character section.window-content .sheet-header .left-col .name {
-    flex: 0 0 52px; }
-    .cy.sheet.actor.character section.window-content .sheet-header .left-col .name input[type="text"] {
-      font-size: 18px;
-      height: 46px; }
   .cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row {
     align-items: center;
     display: flex;
@@ -245,10 +257,15 @@
       display: flex;
       justify-content: space-around;
       flex: 0 0 40px; }
+  .cy.sheet.actor.character section.window-content .sheet-header .right-col .abilities-wrapper {
+    justify-content: space-between;
+    display: flex;
+    flex: 0 0 292px;
+    flex-direction: column;
+    margin-bottom: 5px; }
   .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row {
     display: flex;
-    flex: 0 0 30px;
-    margin-bottom: 5px; }
+    flex: 0 0 37px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon {
       align-items: center;
       background-color: #F6EDDB;
@@ -257,16 +274,28 @@
       flex: 1;
       justify-content: center; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a {
-        height: 30px;
-        width: 30px; }
+        display: flex;
+        flex-direction: column;
+        justify-content: center; }
         .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a img {
           border: none;
-          height: 30px;
-          width: 30px; }
+          height: 28px;
+          width: 28px; }
     .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
       flex: 1; }
       .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score input[type="number"] {
-        font-size: 24px; }
+        font-size: 20px; }
+  .cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row {
+    display: flex;
+    flex-direction: column; }
+    .cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row .credits-label {
+      background-color: #F6EDDB;
+      color: black;
+      text-align: center;
+      font-size: 8px; }
+    .cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row .credits-input input[type="text"] {
+      font-size: 4px;
+      height: 10px; }
   .cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches {
     flex: 0 0 38px; }
 

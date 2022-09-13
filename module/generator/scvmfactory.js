@@ -325,6 +325,9 @@ const rollScvmForClass = async (clazz) => {
   const debtTo = await drawText(CY.scvmFactory.characterCreationPack, "Debt");
   const glitches = rollTotal(clazz.system.glitches);
 
+  descriptionLines.push("<p>&nbsp;</p>");
+  descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
+
   return {
     actorImg: clazz.img,
     agility,
