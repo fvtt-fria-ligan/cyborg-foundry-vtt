@@ -1,3 +1,7 @@
+# 1.0.2
+
+- Fix handlebars template registration error.
+
 # 1.0.1
 
 - Tweak character sheet UI styling and sizing.
