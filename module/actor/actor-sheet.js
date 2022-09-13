@@ -52,7 +52,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".defend-button").on("click", this._defend.bind(this));
     html.find(".tier-radio").click(this._onArmorTierRadio.bind(this));
     html.find(".attack-button").on("click", this._attack.bind(this));
-    html.find(".count-bullet-button").click(this._countBullets.bind(this));
+    html.find(".count-bullets-button").click(this._countBullets.bind(this));
   }  
   
   _onTabClick(event) {

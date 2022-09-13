@@ -1,3 +1,7 @@
+# 1.0.3
+
+- Fix count bullets button.
+
 # 1.0.2
 
 - Fix handlebars template registration error.
