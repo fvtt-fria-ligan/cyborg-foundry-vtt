@@ -53,11 +53,12 @@
       flex: 0 0 30px;
       padding: 0; }
       .cy.sheet section.window-content .sheet-tabs a.item {
+        border: 4px solid #F6EDDB;
+        border-radius: 5px;
         height: 57;
+        flex: 1;
         padding: 4px;
-        text-align: center;
-        width: 84;
-        border: 4px solid #F6EDDB; }
+        text-align: center; }
         .cy.sheet section.window-content .sheet-tabs a.item:hover {
           background-color: #F800F8; }
         .cy.sheet section.window-content .sheet-tabs a.item.active {
