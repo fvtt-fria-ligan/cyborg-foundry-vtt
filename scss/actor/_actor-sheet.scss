@@ -84,6 +84,9 @@
       .item-row {
         display: flex;
         .icon {
+          &:hover {
+            cursor: pointer;
+          }
           flex: 0 0 75px;
           margin-right: 5px;
           img {

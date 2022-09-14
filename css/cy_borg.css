@@ -218,6 +218,8 @@
   .cy.sheet.actor section.window-content .sheet-body .item-row .icon {
     flex: 0 0 75px;
     margin-right: 5px; }
+    .cy.sheet.actor section.window-content .sheet-body .item-row .icon:hover {
+      cursor: pointer; }
     .cy.sheet.actor section.window-content .sheet-body .item-row .icon img {
       border: 4px solid var(--cy-foreground-color);
       border-radius: 5px;

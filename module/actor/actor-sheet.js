@@ -44,6 +44,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     super.activateListeners(html);
     html.find(".tabs a.item").on("click", this._onTabClick.bind(this));
     html.find(".item-edit").click(this._onItemEdit.bind(this));
+    html.find(".item-row .icon").click(this._onItemEdit.bind(this));
     html.find(".item-delete").click(this._onItemDelete.bind(this));
     html.find(".item-qty-plus").click(this._onItemAddQuantity.bind(this));
     html.find(".item-qty-minus").click(this._onItemSubtractQuantity.bind(this));
