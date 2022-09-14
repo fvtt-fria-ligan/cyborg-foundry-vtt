@@ -11,6 +11,7 @@ export const registerSystemSettings = () => {
     default: "flintwyrm",
     type: String,
     choices: {
+      amber: "CY.ColorSchemeAmber",
       c64: "CY.ColorSchemeC64",
       chalk: "CY.ColorSchemeChalk",
       defcon27: "CY.ColorSchemeDefcon27",

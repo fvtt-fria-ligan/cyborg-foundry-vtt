@@ -132,6 +132,15 @@ CY.scvmFactory = {
 };
 
 CY.colorSchemes = {
+  amber: {
+    accent: "gray",
+    background: "#282828",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#FFB000",
+    highlight: "#FFCC00",
+    windowBackground: "#282828",
+  },  
   c64: {
     accent: "#8B4096",
     background: "#41328D",
