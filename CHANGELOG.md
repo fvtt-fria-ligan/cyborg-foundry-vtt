@@ -1,3 +1,7 @@
+# 1.0.6
+
+- Fix glitches update on long rest.
+
 # 1.0.5
 
 - Add color scheme setting and some initial schemes.

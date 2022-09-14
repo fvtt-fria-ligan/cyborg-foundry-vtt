@@ -46,11 +46,11 @@ const rollHealHitPoints = async (actor, dieRoll) => {
 };
 
 const rollGlitches = async (actor) => {
-  const classItem = actor.items.filter((x) => x.type === CY.itemTypes.class).pop();
-  if (!classItem || !classitem.system.glitches) {
+  const classItem = actor.items.filter(x => x.type === CY.itemTypes.class).pop();
+  if (!classItem || !classItem.system.glitches) {
     return;
   }
-  const roll = new Roll(classitem.system.glitches);
+  const roll = new Roll(classItem.system.glitches);
   await roll.toMessage({
     flavor: game.i18n.localize("CY.Glitches"),
     speaker: ChatMessage.getSpeaker({ actor }),
