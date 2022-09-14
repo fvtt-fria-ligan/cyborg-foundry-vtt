@@ -1,5 +1,6 @@
 # 1.0.5
 
+- Add color scheme setting and some initial schemes.
 - Make item icons hot.
 
 # 1.0.4
