@@ -55,6 +55,13 @@
       }
     }
 
+    button {
+      border: 2px solid var(--cy-foreground-color);
+      &:hover {
+        border: 2px solid var(--cy-highlight-color);
+      }
+    }
+
     input[type="number"],
     input[type="text"] {
       color: var(--cy-foreground-color);

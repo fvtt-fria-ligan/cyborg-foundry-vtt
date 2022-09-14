@@ -29,6 +29,7 @@ export const registerHooks = () => {
     const colorSchemeSetting = game.settings.get(CY.system, "colorScheme");
     const colorScheme = CONFIG.CY.colorSchemes[colorSchemeSetting];
     const r = document.querySelector(":root");
+    // CY css variables
     r.style.setProperty("--cy-accent-color", colorScheme.accent);
     r.style.setProperty("--cy-background-color", colorScheme.background);
     r.style.setProperty("--cy-cybertext-color", colorScheme.cybertext);
@@ -36,6 +37,15 @@ export const registerHooks = () => {
     r.style.setProperty("--cy-foreground-color", colorScheme.foreground);
     r.style.setProperty("--cy-highlight-color", colorScheme.highlight);
     r.style.setProperty("--cy-window-background-color", colorScheme.windowBackground);
+    // Foundry css variables
+    r.style.setProperty("--color-text-hyperlink", colorScheme.highlight);
+    r.style.setProperty("--color-shadow-primary", colorScheme.highlight);
+    r.style.setProperty("--color-shadow-highlight", colorScheme.highlight);
+    r.style.setProperty("--color-border-highlight", colorScheme.highlight);
+    r.style.setProperty("--color-border-highlight-alt", colorScheme.highlight);
+
+    // TODO: fonts
+    // --font-primary: 'Perfect DOS VGA 437';                
   };
 
   // Hooks.on("createOwnedItem", async (item, options, userId) => {

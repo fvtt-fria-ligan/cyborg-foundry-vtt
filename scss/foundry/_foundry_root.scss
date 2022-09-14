@@ -12,7 +12,7 @@
   --color-text-dark-header: #23221d;
   --color-text-dark-inactive: #7a7971;
   // --color-text-hyperlink: #ff6400;
-  --color-text-hyperlink: #F800F8;
+  --color-text-hyperlink: var(--cy-highlight-color);
   --color-text-light-0: #fff;
   --color-text-light-1: #eee;
   --color-text-light-2: #ddd;
@@ -35,9 +35,9 @@
   --color-border-dark-4: #444;
   --color-border-dark-5: #666;
   // --color-shadow-primary: #ff0000;
-  --color-shadow-primary: #F800F8;
+  --color-shadow-primary: var(--cy-highlight-color);
   // --color-shadow-highlight: #ff6400;
-  --color-shadow-highlight: #F800F8;
+  --color-shadow-highlight: var(--cy-highlight-color);
   --color-shadow-dark: #000;
   --color-underline-inactive: #7a7971;
   --color-underline-active: #44191A;
@@ -51,9 +51,9 @@
   --color-border-dark-secondary: #23221d;
   --color-border-dark-tertiary: #4b4a44;
   // --color-border-highlight: #ff6400;
-  --color-border-highlight: #F800F8;
+  --color-border-highlight: var(--cy-highlight-color);
   // --color-border-highlight-alt: #ff0000;
-  --color-border-highlight-alt: #F800F8;
+  --color-border-highlight-alt: var(--cy-highlight-color);
   --color-bg-btn-minor-inactive: #c9c7b8;
   --color-bg-btn-minor-active: #b5b3a4;
   --color-bg-option: #dad8cc;
@@ -109,10 +109,10 @@
 ::-webkit-scrollbar-thumb {
   outline: none;
   border-radius: 3px;
-  background: #F800F8;
+  background: var(--cy-highlight-color);
   border: none;
 }
 :root {
   scrollbar-width: thin;
-  scrollbar-color: #F800F8;
+  scrollbar-color: var(--cy-highlight-color);
 }
