@@ -7,6 +7,6 @@
     margin-bottom: 5px;
   }
   .encumbered {
-    color: $magenta;
+    color: var(--cy-highlight-color);
   }
 }

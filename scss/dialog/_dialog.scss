@@ -1,20 +1,20 @@
 
 
 .window-app.cy.dialog {
-  border: 4px solid $cream;
+  border: 4px solid var(--cy-foreground-color);
   .window-header {
-    background-color: $cream;
-    color: $near-black;
+    background-color: var(--cy-foreground-color);
+    color: var(--cy-background-color);
   }
   .window-content {
-    background-color: $near-black;  
+    background-color: var(--cy-background-color);  
     background-image: none;
-    color: $cream;
+    color: var(--cy-foreground-color);
 
     form.dialog {
       button {
-        background-color: $cream;
-        color: $near-black;
+        background-color: var(--cy-foreground-color);
+        color: var(--cy-background-color);
       }
       .form-group {
         display: flex;
@@ -29,17 +29,17 @@
         }
       }
       .form-group.disabled {
-        color: $disabled-color;
+        color: var(--cy-disabled-color);
         input[type="number"],
         input[type="text"],
         select {
-          color: $disabled-color;
+          color: var(--cy-disabled-color);
         }
       }
       input[type="number"],
       input[type="text"],
       select {
-        color: $cream;
+        color: var(--cy-foreground-color);
       }
     }    
   }

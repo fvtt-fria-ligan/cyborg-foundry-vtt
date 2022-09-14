@@ -1,6 +1,6 @@
 .sheet-body {
   .dossier-tab {
-    background-color: $cream;
-    color: $near-black;
+    background-color: var(--cy-foreground-color);
+    color: var(--cy-background-color);
   }
 }

@@ -33,7 +33,7 @@
         flex: 0 0 88px;
         flex-direction: column;
         .actor-type {
-          color: $cream;
+          color: var(--cy-foreground-color);
           align-items: center;
           display: flex;
           flex: 0 0 $portrait-size;
@@ -52,10 +52,10 @@
           width: 88px;
           .hit-points-ur,
           .hit-points-ll {              
-            background-image: -webkit-linear-gradient(135deg, $cream 50%, $near-black 50%);              
+            background-image: -webkit-linear-gradient(135deg, var(--cy-foreground-color) 50%, var(--cy-background-color) 50%);              
           }
           .hit-points-ll {
-            color: $near-black;
+            color: var(--cy-background-color);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -67,9 +67,9 @@
             }
           }
           .hit-points-lr {              
-            background-color: $cream;
+            background-color: var(--cy-foreground-color);
             input[type="number"] {
-              color: $near-black;
+              color: var(--cy-background-color);
             }          
           }
           input[type="number"] {
@@ -87,7 +87,7 @@
           flex: 0 0 75px;
           margin-right: 5px;
           img {
-            border: 4px solid $cream;
+            border: 4px solid var(--cy-foreground-color);
             border-radius: 5px;
             height: 75px;
             width: 75px;

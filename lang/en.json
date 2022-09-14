@@ -60,6 +60,7 @@
   "CY.Feats": "Feats",
   "CY.Foe": "Foe",
   "CY.FoeSheet": "CY_BORG Foe Sheet",
+  "CY.FumbleOn": "Fumble on",
   "CY.GlitchDie": "Glitch Die",
   "CY.Glitches": "Glitches",
   "CY.GlitchesHelpHtml":  "<ul><li>Deal maximum damage<li>Reroll a dice roll<li>Lower damage taken by d6<li>Neutralize a Crit or Fumble<li>Lower one test's DR by -4 (before rolling)</ul>",

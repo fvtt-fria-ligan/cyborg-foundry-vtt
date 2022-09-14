@@ -48,8 +48,8 @@
           // margin-bottom: $widget-margin;
           .ability-icon {
             align-items: center;
-            background-color: $cream;
-            border-right: 4px solid $cream;
+            background-color: var(--cy-foreground-color);
+            border-right: 4px solid var(--cy-foreground-color);
             display: flex;
             flex: 1;
             justify-content: center;
@@ -79,7 +79,7 @@
           display: flex;
           flex-direction: column;
           .credits-label {
-            background-color: $cream;
+            background-color: var(--cy-foreground-color);
             color: black;
             text-align: center;
             font-size: 8px;

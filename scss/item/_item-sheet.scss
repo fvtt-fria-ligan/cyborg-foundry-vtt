@@ -1,6 +1,6 @@
 .cy.sheet.item {
   .cyber .sheet-header .portrait-row .item-type {
-    color: $yellow;
+    color: var(--cy-cyber-text-color);
   }
   .sheet-header {
     display: flex;

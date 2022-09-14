@@ -23,3 +23,12 @@ $textarea-line-height: 20px;
 $input-number-font: "Aldo the Apache";
 $input-text-font: "QuanPixel 8px";
 $type-font: "UAV OSD Sans Mono";
+
+:root {
+  --cy-background-color: #1C1E23;
+  --cy-foreground-color: #F6EDDB;
+  --cy-highlight-color: #F800F8;
+  --cy-accent-color: #71C5C9;
+  --cy-disabled-color: gray;
+  --cy-cyber-text-color: #F8F800;
+}

@@ -8,10 +8,10 @@
   // original
 }
 .color2 {
-  color: $magenta;
+  color: var(--cy-highlight-color);
 }
 .color3 {
-  color: $yellow;
+  color: #F8F800;
 }
 .color4 {
   color: white;
@@ -91,8 +91,8 @@
 
 .marching-ants-1 {
 	animation: ants 12s linear infinite;
-	background: linear-gradient($near-black, $near-black) padding-box,
-	            repeating-linear-gradient(-45deg, $magenta 0, $magenta 25%, transparent 0, transparent 50%) 0 / .6em .6em;
+	background: linear-gradient(var(--cy-background-color), var(--cy-background-color)) padding-box,
+	            repeating-linear-gradient(-45deg, var(--cy-highlight-color) 0, var(--cy-highlight-color) 25%, transparent 0, transparent 50%) 0 / .6em .6em;
 	border: 5px solid transparent;
 	max-width: 20em;
 	padding: 1em;	
@@ -100,8 +100,8 @@
 
 .marching-ants-2 {
 	animation: ants 12s linear infinite;
-	background: linear-gradient($near-black, $near-black) padding-box,
-	            repeating-linear-gradient(45deg, $yellow 0, $yellow 25%, transparent 0, transparent 50%) 0 / .6em .6em;
+	background: linear-gradient(var(--cy-background-color), var(--cy-background-color)) padding-box,
+	            repeating-linear-gradient(45deg, #F8F800 0, #F8F800 25%, transparent 0, transparent 50%) 0 / .6em .6em;
 	border: 5px solid transparent;
 	max-width: 20em;
 	padding: 1em;	
