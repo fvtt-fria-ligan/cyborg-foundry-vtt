@@ -130,3 +130,51 @@ CY.scvmFactory = {
     },
   ],
 };
+
+CY.colorSchemes = {
+  c64: {
+    accent: "#8B4096",
+    background: "#41328D",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#68B6BD",
+    highlight: "#8B4096",
+    windowBackground: "#41328D",
+  },    
+  chalk: {
+    accent: "#656565",
+    background: "#2E2E2E",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#D4D4D4",
+    highlight: "#656565",
+    windowBackground: "#2E2E2E",
+  },  
+  defcon27: {
+    accent: "#FF63BE",
+    background: "#000000",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#07CAF9",
+    highlight: "#B55AFC",
+    windowBackground: "#000000",
+  },
+  flintwyrm: {
+    accent: "#71C5C9",
+    background: "#000000",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#F6EDDB",
+    highlight: "#F800F8",
+    windowBackground: "#333333",
+  },
+  greenHell: {
+    accent: "gray",
+    background: "#062C01",
+    cyberText: "#F8F800",
+    disabled: "gray",
+    foreground: "#0CFF01",
+    highlight: "#068001",
+    windowBackground: "#062C01",
+  },  
+}

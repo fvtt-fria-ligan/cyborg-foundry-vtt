@@ -1,3 +1,7 @@
+# 1.0.5
+
+- Make item icons hot.
+
 # 1.0.4
 
 - Fix linked nanos/infestations.

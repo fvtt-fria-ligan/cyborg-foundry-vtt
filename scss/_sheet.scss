@@ -4,7 +4,7 @@
   
   section.window-content {
     // background: var(--cy-background-color);
-    background-color: #333;
+    background-color: var(--cy-window-background-color);
     background-image: none;
     border: 2px solid var(--cy-foreground-color);
     color: var(--cy-foreground-color);

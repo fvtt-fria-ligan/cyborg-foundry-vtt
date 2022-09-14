@@ -1,4 +1,5 @@
 import { uiAdd, uiDelete } from "./sound.js";
+import { CY } from "./config.js";
 
 export const registerHooks = () => {
 
@@ -19,6 +20,23 @@ export const registerHooks = () => {
       uiDelete();
     }
   });
+
+  Hooks.once("ready", () => {
+    applyFontsAndColors();
+  });
+
+  const applyFontsAndColors = () => {
+    const colorSchemeSetting = game.settings.get(CY.system, "colorScheme");
+    const colorScheme = CONFIG.CY.colorSchemes[colorSchemeSetting];
+    const r = document.querySelector(":root");
+    r.style.setProperty("--cy-accent-color", colorScheme.accent);
+    r.style.setProperty("--cy-background-color", colorScheme.background);
+    r.style.setProperty("--cy-cybertext-color", colorScheme.cybertext);
+    r.style.setProperty("--cy-disabled-color", colorScheme.disabled);
+    r.style.setProperty("--cy-foreground-color", colorScheme.foreground);
+    r.style.setProperty("--cy-highlight-color", colorScheme.highlight);
+    r.style.setProperty("--cy-window-background-color", colorScheme.windowBackground);
+  };
 
   // Hooks.on("createOwnedItem", async (item, options, userId) => {
   //   if (userId != game.user.id) {

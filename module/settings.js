@@ -2,6 +2,26 @@ import { CY } from "./config.js";
 import { AllowedScvmClassesDialog } from "./generator/allowed-scvm-classes-dialog.js";
 
 export const registerSystemSettings = () => {
+  /** UI Color scheme */
+  game.settings.register(CY.system, "colorScheme", {
+    name: "CY.SettingsColorScheme",
+    hint: "CY.SettingsColorSchemeHint",
+    scope: "client",
+    config: true,
+    default: "flintwyrm",
+    type: String,
+    choices: {
+      c64: "CY.ColorSchemeC64",
+      chalk: "CY.ColorSchemeChalk",
+      defcon27: "CY.ColorSchemeDefcon27",
+      flintwyrm: "CY.ColorSchemeFlintwyrm",
+      greenHell: "CY.ColorSchemeGreenHell",
+    },
+    onChange: () => {
+      location.reload();
+    },
+  });
+
   /** Whether to keep track of carrying capacity */
   game.settings.register(CY.system, "trackCarryingCapacity", {
     name: "CY.SettingsApplyOvercapacityPenalty",
