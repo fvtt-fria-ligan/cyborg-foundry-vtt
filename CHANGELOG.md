@@ -1,3 +1,8 @@
+# 1.0.7
+
+- Only play sound effects for the current user (and don't push to other clients).
+- Add Virtua Boi red color scheme.
+
 # 1.0.6
 
 - Fix glitches update on long rest.
