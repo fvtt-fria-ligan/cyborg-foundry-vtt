@@ -17,6 +17,7 @@ export const registerSystemSettings = () => {
       defcon27: "CY.ColorSchemeDefcon27",
       flintwyrm: "CY.ColorSchemeFlintwyrm",
       greenHell: "CY.ColorSchemeGreenHell",
+      virtuaBoi: "CY.ColorSchemeVirtuaBoi",
     },
     onChange: () => {
       location.reload();
