@@ -1,5 +1,10 @@
 # CY_BORG for Foundry VTT
 
+A system for playing the CY_BORG ttrpg on Foundry VTT.
+
+Coding by mcglintlock; UI design and pixel art by [Flintwyrm](https://flintwyrm.itch.io/). 
+Special thanks to VinceFox for extensive testing and bug reporting
+
 cy_borg-foundry-vtt is an independent production by community contributors,
 and is not affiliated with Stockholm Kartell. It is published under the CY_BORG Third Party License. 
 https://morkborg.com/cb-license/
