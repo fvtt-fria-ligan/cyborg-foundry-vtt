@@ -1,7 +1,8 @@
 # 1.0.7
 
 - Only play sound effects for the current user (and don't push to other clients).
-- Add Virtua Boi and p0w3rsh3ll color schemes.
+- Add lo-fi AI-generated portraits, and use them in the punkfactory.
+- Add Virtua Boi, p0w3rsh3ll, and MORK color schemes.
 
 # 1.0.6
 

@@ -17,6 +17,7 @@ export const registerSystemSettings = () => {
       defcon27: "CY.ColorSchemeDefcon27",
       flintwyrm: "CY.ColorSchemeFlintwyrm",
       greenHell: "CY.ColorSchemeGreenHell",
+      mork: "CY.ColorSchemeMork",
       p0w3rsh3ll: "CY.ColorSchemeP0w3rsh3ll",
       virtuaBoi: "CY.ColorSchemeVirtuaBoi",
     },
