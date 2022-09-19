@@ -220,6 +220,13 @@ const simpleData = (e) => ({
   type: e.type,  
 });
 
+const randomPortrait = (clazz) => {
+  const maxImgNum = 47;
+  const imgNum = Math.ceil(Math.random() * maxImgNum);
+  const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  return `systems/cy_borg/assets/images/portraits/punks/punk_${imgNumStr}.png`;
+};
+
 const rollScvmForClass = async (clazz) => {
   console.log(`Creating new ${clazz.name}`);
   const allDocs = [clazz];
@@ -294,22 +301,10 @@ const rollScvmForClass = async (clazz) => {
 
   // make simple data structure for embedded items
   const items = allDocs.filter((e) => e instanceof CYItem);
-  // const itemData = items.map((i) => ({
-  //   data: i.system,
-  //   img: i.img,
-  //   name: i.name,
-  //   type: i.type,
-  // }));
   const itemData = items.map(i => simpleData(i));
 
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
-  // const npcData = npcs.map(e => ({
-  //   data: e.system,
-  //   img: e.img,
-  //   name: `${name}'s ${e.name}`,
-  //   type: e.type
-  // }));
   const npcData = npcs.map(n => simpleData(n));
   npcData.forEach(n => {
     const lastWord = n.name.split(" ").pop();
@@ -327,12 +322,11 @@ const rollScvmForClass = async (clazz) => {
   const debtAmount = rollTotal("3d6*1000");
   const debtTo = await drawText(CY.scvmFactory.characterCreationPack, "Debt");
   const glitches = rollTotal(clazz.system.glitches);
-
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
-
+  const img = randomPortrait(clazz);
   return {
-    actorImg: clazz.img,
+    actorImg: img,
     agility,
     credits,
     debt: {
@@ -349,7 +343,7 @@ const rollScvmForClass = async (clazz) => {
     postCreateMacro: clazz.system.postCreateMacro,
     presence,
     strength,
-    tokenImg: clazz.img,
+    tokenImg: img,
     toughness,
   };
 };
