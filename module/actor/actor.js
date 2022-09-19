@@ -136,7 +136,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
     await rollCyRage(this);
   }
 
-  async reroll() {
+  async reboot() {
     new MakePunkDialog(this).render(true);
   }  
  }

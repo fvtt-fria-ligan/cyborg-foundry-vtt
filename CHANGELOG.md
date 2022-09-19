@@ -1,3 +1,7 @@
+# 1.0.8
+
+- Rename Reroll button to Reboot.
+
 # 1.0.7
 
 - Only play sound effects for the current user (and don't push to other clients).

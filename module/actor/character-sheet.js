@@ -72,7 +72,7 @@ export class CYCharacterSheet extends CYActorSheet {
     html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".battered-button").on("click", this._battered.bind(this));
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
-    html.find(".reroll-button").on("click", this._reroll.bind(this));
+    html.find(".reboot-button").on("click", this._reboot.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
   }
@@ -163,11 +163,11 @@ export class CYCharacterSheet extends CYActorSheet {
     });
   }
 
-  _reroll(event) {
+  _reboot(event) {
     event.preventDefault();
     nopeShowAd(() => {
       uiSuccess();
-      this.actor.reroll();
+      this.actor.reboot();
     });
   }
 
