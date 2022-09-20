@@ -15,7 +15,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
 
   /** @override */
   static async create(data, options = {}) {
-    data.token = data.token || {};
+    data.prototypeToken = data.prototypeToken || {};
     let defaults = {};
     if (data.type === CY.actorTypes.character) {
       defaults = {
@@ -36,7 +36,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
         vision: true,
       };
     } 
-    mergeObject(data.token, defaults, { overwrite: false });
+    mergeObject(data.prototypeToken, defaults, { overwrite: false });
     return super.create(data, options);
   }
 

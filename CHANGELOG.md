@@ -1,3 +1,7 @@
+# 1.0.9
+
+- Fix actor create for v10.
+
 # 1.0.8
 
 - Rename Reroll button to Reboot.
