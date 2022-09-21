@@ -91,7 +91,7 @@ export const registerSystemSettings = () => {
   game.settings.register(CY.system, "soundEffects", {
     name: "CY.SettingsSoundEffects",
     hint: "CY.SettingsSoundEffectsHint",
-    scope: "world",
+    scope: "client",
     config: true,
     type: Boolean,
     default: true,
