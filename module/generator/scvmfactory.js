@@ -306,10 +306,6 @@ const rollScvmForClass = async (clazz) => {
   const name = randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
   const npcData = npcs.map(n => simpleData(n));
-  npcData.forEach(n => {
-    const lastWord = n.name.split(" ").pop();
-    n.name = `${name}'s ${lastWord}`;
-  });
 
   const strength = abilityRoll(clazz.system.strength);
   const agility = abilityRoll(clazz.system.agility);
@@ -374,9 +370,11 @@ const scvmToActorData = (s) => {
     img: s.actorImg,
     items: s.items,
     flags: {},
-    token: {
-      img: s.actorImg,
+    prototypeToken: {
       name: s.name,
+      texture: {
+        src: s.actorImg,
+      },
     },
     type: "character",
   };
@@ -389,8 +387,9 @@ const createActorWithScvm = async (s) => {
   actor.sheet.render(true);
 
   // create any npcs
-  console.log(s);
   for (const npcData of s.npcs) {
+    const lastWord = npcData.name.split(" ").pop();
+    npcData.name = `${actor.name}'s ${lastWord}`;
     if (npcData.type === "vehicle") {
       npcData.data.ownerId = actor.id;
     }
@@ -415,22 +414,32 @@ const updateActorWithScvm = async (actor, s) => {
   // Explicitly nuke all items before updating.
   await actor.deleteEmbeddedDocuments("Item", [], { deleteAll: true });
   await actor.update(data);
+  await actor.linkNanos();
 
-  // update any actor tokens in the scene, too
+  // update any actor tokens in the scene
   for (const token of actor.getActiveTokens()) {
+    console.log(token);
     await token.document.update({
-      img: actor.system.img,
       name: actor.name,
+      texture: {
+        src: actor.prototypeToken.texture.src,
+      },
     });
-  }
+  }  
 
-  // create any npcs
+  // create any npcs, if player has perms
   for (const npcData of s.npcs) {
-    if (npcData.type === "vehicle") {
-      npcData.data.ownerId = actor.id;
+    if (game.user.can("ACTOR_CREATE")) {
+      const lastWord = npcData.name.split(" ").pop();
+      npcData.name = `${actor.name}'s ${lastWord}`;
+      if (npcData.type === "vehicle") {
+        npcData.data.ownerId = actor.id;
+      }  
+      const npcActor = await CYActor.create(npcData);
+      npcActor.sheet.render(true);      
+    } else {
+      ui.notifications.info(`Ask the GM to create an NPC for you: ${npcData.name}`, {permanent: true});
     }
-    const npcActor = await CYActor.create(npcData);
-    npcActor.sheet.render(true);
   }
 
   // run post-create macro, if any
@@ -467,7 +476,7 @@ const entityFromResult = async (result) => {
       const content = await collection.getDocuments();
       const entity = content.find((i) => i.name === result.text);
       return entity;
-    } else {
+    } else {      
       console.log(`Could not find pack ${result.documentCollection}`);
     }
   }

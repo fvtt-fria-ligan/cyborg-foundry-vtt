@@ -1,9 +1,11 @@
-# 1.0.9
-
-- Fix actor create for v10.
-
 # 1.0.8
 
+- Make sound effect setting per-client.
+- Reboot fix: show notification if user can't create their own npc actor.
+- Reboot fix: create linked infestation for nanos.
+- Reboot fix: update token and proto token texture.src.
+- Fix infestation item button placement.
+- Fix actor create for v10.
 - Rename Reroll button to Reboot.
 
 # 1.0.7
