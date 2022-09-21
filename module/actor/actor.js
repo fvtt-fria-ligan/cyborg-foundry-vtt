@@ -52,8 +52,8 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
   }
 
   /** @override */
-  async _onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId) {
-    super._onCreateEmbeddedDocuments(embeddedName, documents, result, options, userId);
+  async _onCreateEmbeddedDocuments(type, documents, result, options, userId) {
+    super._onCreateEmbeddedDocuments(type, documents, result, options, userId);
     if (this.type === CY.actorTypes.character) {
       for (const doc of documents) {
         if (doc instanceof CYItem && doc.type === CY.itemTypes.nanoPower && !doc.system.infestionId) {
