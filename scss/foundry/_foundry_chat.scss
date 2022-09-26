@@ -1,6 +1,8 @@
-/* ----------------------------------------- */
-/*  1.0 - Chat Panel
-/* ----------------------------------------- */
+a.content-link,
+a.inline-roll {
+  background-color: transparent;
+  color: var(--cy-highlight-color);
+}
 .notification-pip {
   color: var(--color-text-hyperlink);
   text-shadow: 1px 1px 3px var(--color-shadow-dark);

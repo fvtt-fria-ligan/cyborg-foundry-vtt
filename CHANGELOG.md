@@ -1,3 +1,8 @@
+# 1.0.9
+
+- Style Foundry content links (e.g., table draws in chat) to use color schemes.
+- Clean up warnings in system.json.
+
 # 1.0.8
 
 - Make sound effect setting per-client.
