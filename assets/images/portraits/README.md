@@ -259,28 +259,6 @@ punk_46.png
 punk_47.png
 </td>
 
-<td valign="bottom">
-<img src="./punks/punk_48.png" width="200"><br>
-punk_48.png
-</td>
-
-</tr>
-<tr>
-<td valign="bottom">
-<img src="./punks/punk_49.png" width="200"><br>
-punk_49.png
-</td>
-
-<td valign="bottom">
-<img src="./punks/punk_50.png" width="200"><br>
-punk_50.png
-</td>
-
-<td valign="bottom">
-<img src="./punks/punk_51.png" width="200"><br>
-punk_51.png
-</td>
-
 </tr>
 </table>
 
