@@ -619,7 +619,6 @@ corpo_07.png
 corpo_08.png
 </td>
 
-<tr>
 <td valign="bottom">
 <img src="./corpos/corpo_09.png" width="200"><br>
 corpo_09.png
