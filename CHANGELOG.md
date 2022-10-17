@@ -1,3 +1,7 @@
+# 1.1.0
+
+- More punk portraits.
+
 # 1.0.9
 
 - Style Foundry content links (e.g., table draws in chat) to use color schemes.
