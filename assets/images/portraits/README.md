@@ -565,11 +565,6 @@ punk_96.png
 punk_97.png
 </td>
 
-<td valign="bottom">
-<img src="./punks/punk_98.png" width="200"><br>
-punk_98.png
-</td>
-
 </tr>
 </table>
 
