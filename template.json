@@ -45,6 +45,11 @@
     "foe": {
       "armor": "",
       "attack": "",
+      "description": "",
+      "hitPoints": {
+        "max": 1,
+        "value": 1
+      },
       "morale": 7,
       "special": ""
     },

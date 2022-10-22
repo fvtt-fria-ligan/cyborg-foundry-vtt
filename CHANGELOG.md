@@ -1,3 +1,7 @@
+# 1.1.1
+
+- Add hitPoints and description to Foe template.json, also fixing token rt-click hitPoints editing.
+
 # 1.1.0
 
 - More punk portraits.
