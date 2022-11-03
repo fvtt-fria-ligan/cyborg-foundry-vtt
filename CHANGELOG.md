@@ -1,3 +1,7 @@
+# 1.2.0
+
+- Merge cy_borg-core content module into cy_borg system.
+
 # 1.1.0
 
 - Add hitPoints and description to Foe template.json, also fixing token rt-click hitPoints editing.

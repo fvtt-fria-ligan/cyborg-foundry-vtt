@@ -66,7 +66,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
   async addDefaultClass() {
     // add classless punk if a class doesn't already exist
     if (!this._first(CY.itemTypes.class)) {
-      const clazz = await documentFromPack("cy_borg-core.class-classless-punk", "Classless Punk");
+      const clazz = await documentFromPack("cy_borg.class-classless-punk", "Classless Punk");
       if (clazz) {
         await this.createEmbeddedDocuments("Item", [dupeData(clazz)]);
       }  
