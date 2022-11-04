@@ -118,6 +118,13 @@
       "type": "Item"
     },
     {
+      "name": "cyborg",
+      "label": "CY_BORG",
+      "system": "cy_borg",
+      "path": "./packs/cyborg.db",
+      "type": "JournalEntry"
+    },    
+    {
       "name": "macros-discharged-corpkiller",
       "label": "Macros - Discharged CorpKiller",
       "system": "cy_borg",
