@@ -11,7 +11,7 @@ export class AllowedScvmClassesDialog extends FormApplication {
       id: "allowed-scvm-classes-dialog",
       title: game.i18n.localize("CY.AllowedScvmClassesEdit"),
       template:
-        "systems/cy_borg/templates/dialog/allowed-scvm-classes-dialog.html",
+        "systems/cy-borg/templates/dialog/allowed-scvm-classes-dialog.html",
       classes: ["form", "cy"],
       popOut: true,
       width: 420,

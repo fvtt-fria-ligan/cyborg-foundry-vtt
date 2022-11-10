@@ -5,7 +5,7 @@ import { playSound } from "../sound.js";
 
 
 const ATTACK_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/attack-roll-card.html";
+  "systems/cy-borg/templates/chat/attack-roll-card.html";
 
 /**
  * Do the actual attack rolls and resolution.

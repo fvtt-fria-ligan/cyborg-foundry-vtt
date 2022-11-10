@@ -3,7 +3,7 @@ import { rollInfestationTriggers } from "../actor/infestations.js";
 import { d20Formula } from "../utils.js";
 
 const DEFEND_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/defend-roll-card.html";
+  "systems/cy-borg/templates/chat/defend-roll-card.html";
 
 /**
  * Do the actual defend rolls and resolution.

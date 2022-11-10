@@ -60,7 +60,7 @@ export class CountBulletsDialog extends CYApplication {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.CountBullets");
     options.template =
-      "systems/cy_borg/templates/dialog/count-bullets-dialog.html";
+      "systems/cy-borg/templates/dialog/count-bullets-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;

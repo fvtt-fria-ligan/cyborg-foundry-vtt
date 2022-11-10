@@ -23,7 +23,7 @@ export const pluralize = (key1, key2, num) => {
 
 export const showOutcomeRollCard = async (actor, rollResult) => {
   const html = await renderTemplate(
-    "systems/cy_borg/templates/chat/outcome-roll-card.html",
+    "systems/cy-borg/templates/chat/outcome-roll-card.html",
     rollResult
   );
   ChatMessage.create({

@@ -14,7 +14,7 @@ export class AddItemDialog extends CYApplication {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.AddItem");
     options.template =
-      "systems/cy_borg/templates/dialog/add-item-dialog.html";
+      "systems/cy-borg/templates/dialog/add-item-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;

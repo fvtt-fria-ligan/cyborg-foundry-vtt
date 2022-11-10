@@ -26,7 +26,7 @@ class CorpcommDialog extends Application {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("AdBot2000");
     options.template =
-      "systems/cy_borg/templates/dialog/corpcomm-dialog.html";
+      "systems/cy-borg/templates/dialog/corpcomm-dialog.html";
     options.width =300;
     options.height = "auto";
     options.top = window.innerHeight * Math.random()

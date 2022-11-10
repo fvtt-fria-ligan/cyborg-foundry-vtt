@@ -21,7 +21,7 @@ export class AttackDialog extends CYApplication {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.Attack");
     options.template =
-      "systems/cy_borg/templates/dialog/attack-dialog.html";
+      "systems/cy-borg/templates/dialog/attack-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;

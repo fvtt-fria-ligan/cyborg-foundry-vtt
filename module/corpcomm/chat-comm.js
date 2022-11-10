@@ -6,7 +6,7 @@ import { sample } from "../utils.js";
 
 
 const getAdBotActor = async () => {
-  const adbot = await documentFromPack("cy_borg-core.npcs", "AdBot2000");
+  const adbot = await documentFromPack("cy-borg-core.npcs", "AdBot2000");
   return adbot;
 }
 
@@ -18,7 +18,7 @@ const playChatAdSound = () => {
     "chat-ad-4.ogg",
     "chat-ad-5.mp3",
   ]);
-  const src = `systems/cy_borg/assets/audio/sfx/${sound}`;  
+  const src = `systems/cy-borg/assets/audio/sfx/${sound}`;  
   playSound(src);
 }
 
@@ -29,7 +29,7 @@ export const showChatAd = async () => {
     cssAdClass,
     content: ad,
   };
-  const html = await renderTemplate("systems/cy_borg/templates/chat/ad-card.html", data);
+  const html = await renderTemplate("systems/cy-borg/templates/chat/ad-card.html", data);
   const actor = await getAdBotActor();
   playChatAdSound();
   ChatMessage.create({

@@ -23,7 +23,7 @@ import { drawDocument, dupeData } from "../packutils.js";
   }
 
   async createLinkedInfestation() {
-    const infestation = await drawDocument("cy_borg-core.random-tables", "Infestations");
+    const infestation = await drawDocument("cy-borg-core.random-tables", "Infestations");
     if (!infestation) {
       console.error("Failed to draw an infestation");
       return;

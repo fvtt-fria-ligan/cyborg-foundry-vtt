@@ -1,5 +1,5 @@
 {
-  "name": "cy_borg",
+  "name": "cy-borg",
   "version": "1.0.0",
   "description": "Unofficial system for CY_BORG on Foundry VTT.",
   "scripts": {
@@ -13,7 +13,7 @@
     "validate": "npm-run-all pretty-check lint",
     "watch": "sass --watch ./scss:./css"
   },
-  "repository": "https://github.com/fvtt-fria-ligan/morkborg-foundry-vtt.git",
+  "repository": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt.git",
   "author": "mcglincy",
   "license": "MIT",
   "devDependencies": {

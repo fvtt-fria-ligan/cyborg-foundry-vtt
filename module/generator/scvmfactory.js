@@ -224,7 +224,7 @@ const randomPortrait = (clazz) => {
   const maxImgNum = 96;
   const imgNum = Math.floor(Math.random() * (maxImgNum + 1));
   const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  return `systems/cy_borg/assets/images/portraits/punks/punk_${imgNumStr}.png`;
+  return `systems/cy-borg/assets/images/portraits/punks/punk_${imgNumStr}.png`;
 };
 
 const rollScvmForClass = async (clazz) => {

@@ -1,6 +1,6 @@
 export const CY = {};
 
-CY.system = "cy_borg";
+CY.system = "cy-borg";
 
 CY.actorTypes = {
   character: "character",
@@ -91,19 +91,19 @@ CY.flags = {
   TARGET_ARMOR: "targetArmor",
 };
 
-CY.appBacklashesPack = "cy_borg-core.random-tables";
+CY.appBacklashesPack = "cy-borg-core.random-tables";
 CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
   ammoItem: "Ammo Mag",
-  ammoPack: "cy_borg-core.weapons",
-  startingItemsPack: "cy_borg-core.equipment",
+  ammoPack: "cy-borg-core.weapons",
+  startingItemsPack: "cy-borg-core.equipment",
   startingItems: [
     "Cheap clothes",
     "Retinal Com Device",
   ],
-  characterCreationPack: "cy_borg-core.random-tables",
+  characterCreationPack: "cy-borg-core.random-tables",
   startingEquipmentTables: [
     "Cash & Gear 1",
     "Cash & Gear 2",

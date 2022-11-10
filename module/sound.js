@@ -8,39 +8,39 @@ export const playSound = (src, volume=0.8) => {
 };
 
 export const uiAdd = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/ui-add.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-add.ogg");
 };
 
 export const uiClick = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/ui-click-1.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-click-1.ogg");
 };
 
 export const uiDelete = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/ui-delete.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-delete.ogg");
 };
 
 export const uiError = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/ui-error.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-error.ogg");
 };
 
 export const uiSuccess = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/ui-success.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-success.ogg");
 };
 
 export const uiWindowClose = () => {
-  // playSound("systems/cy_borg/assets/audio/sfx/ui-window-close.ogg");
-  playSound("systems/cy_borg/assets/audio/sfx/ui-click-2.ogg");
+  // playSound("systems/cy-borg/assets/audio/sfx/ui-window-close.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-click-2.ogg");
 };
 
 export const uiWindowOpen = () => {
-  // playSound("systems/cy_borg/assets/audio/sfx/ui-window-open.ogg");
-  playSound("systems/cy_borg/assets/audio/sfx/ui-click-2.ogg");
+  // playSound("systems/cy-borg/assets/audio/sfx/ui-window-open.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/ui-click-2.ogg");
 };
 
 export const popupAdClose = () => {
-  playSound("systems/cy_borg/assets/audio/sfx/popup-ad-close.ogg");
+  playSound("systems/cy-borg/assets/audio/sfx/popup-ad-close.ogg");
 };
 
 export const popupAdOpen = () => {
- playSound("systems/cy_borg/assets/audio/sfx/popup-ad-open.ogg");
+ playSound("systems/cy-borg/assets/audio/sfx/popup-ad-open.ogg");
 };

@@ -2,7 +2,7 @@ import { diceSound, showDice } from "../dice.js";
 import { pluralize } from "../utils.js";
 
 const BATTERED_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/battered-roll-card.html";
+  "systems/cy-borg/templates/chat/battered-roll-card.html";
 
 
 export const rollBattered = async (actor) => {

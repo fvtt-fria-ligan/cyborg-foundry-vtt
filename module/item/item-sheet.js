@@ -37,7 +37,7 @@ export class CYItemSheet extends ItemSheet {
 
   /** @inheritdoc */
   get template() {
-    const path = "systems/cy_borg/templates/item/";
+    const path = "systems/cy-borg/templates/item/";
     return `${path}/${this.item.type}-sheet.html`;
   }
 

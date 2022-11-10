@@ -7,7 +7,7 @@ export class CYFoeSheet extends CYActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "foe"],
-      template: "systems/cy_borg/templates/actor/foe-sheet.html",
+      template: "systems/cy-borg/templates/actor/foe-sheet.html",
       width: 406,
       height: 880,
       tabs: [

@@ -15,7 +15,7 @@ export class RestDialog extends CYApplication {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.Rest");
     options.template =
-      "systems/cy_borg/templates/dialog/rest-dialog.html";
+      "systems/cy-borg/templates/dialog/rest-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;

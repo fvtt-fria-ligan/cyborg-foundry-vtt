@@ -1,5 +1,5 @@
 const LEVEL_UP_ROLL_CARD_TEMPLATE =
-  "systems/cy_borg/templates/chat/level-up-roll-card.html";
+  "systems/cy-borg/templates/chat/level-up-roll-card.html";
 
 
 export const rollLevelUp = async (actor) => {
@@ -89,7 +89,7 @@ export const rollLevelUp = async (actor) => {
 
   if (rollTableName) {
     // roll a scroll
-    const pack = game.packs.get("cy_borg-core.random-tables");
+    const pack = game.packs.get("cy-borg-core.random-tables");
     const content = await pack.getDocuments();
     const table = content.find((i) => i.name === rollTableName);
     await table.draw();

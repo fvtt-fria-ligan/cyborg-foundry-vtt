@@ -18,7 +18,7 @@ export class DefendDialog extends CYApplication {
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.Defend");
     options.template =
-      "systems/cy_borg/templates/dialog/defend-dialog.html";
+      "systems/cy-borg/templates/dialog/defend-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;

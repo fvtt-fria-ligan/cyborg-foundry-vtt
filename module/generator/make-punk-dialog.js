@@ -39,7 +39,7 @@ export class MakePunkDialog extends Application {
     options.id = "make-punk-dialog";
     options.classes = ["cy", "dialog"];
     options.title = game.i18n.localize("CY.MakeAPunk");
-    options.template = "systems/cy_borg/templates/dialog/make-punk-dialog.html";
+    options.template = "systems/cy-borg/templates/dialog/make-punk-dialog.html";
     options.width = 420;
     options.height = "auto";
     return options;
