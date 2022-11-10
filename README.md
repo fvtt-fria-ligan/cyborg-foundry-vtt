@@ -1,6 +1,6 @@
 # CY_BORG for Foundry VTT
 
-A system for playing the CY_BORG ttrpg on Foundry VTT.
+An unofficial, community-supported system for playing the CY_BORG ttrpg on Foundry VTT.
 
 Coding by mcglintlock; UI design and pixel art by [Flintwyrm](https://flintwyrm.itch.io/). 
 Special thanks to VinceFox for extensive testing and bug reporting
