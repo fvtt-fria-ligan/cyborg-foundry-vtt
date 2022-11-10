@@ -89,7 +89,7 @@ export const rollLevelUp = async (actor) => {
 
   if (rollTableName) {
     // roll a scroll
-    const pack = game.packs.get("cy_borg.random-tables");
+    const pack = game.packs.get("cy-borg.random-tables");
     const content = await pack.getDocuments();
     const table = content.find((i) => i.name === rollTableName);
     await table.draw();
