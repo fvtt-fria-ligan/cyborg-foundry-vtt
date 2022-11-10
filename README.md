@@ -4,7 +4,7 @@ An unofficial, community-supported system for playing the CY_BORG ttrpg on Found
 
   * Coding by mcglintlock
   * UI design and pixel art by [Flintwyrm](https://flintwyrm.itch.io/).
-  * Explicit permission to use a limited subset of (the CY_BORG book)[https://freeleaguepublishing.com/en/store/?product_id=7856009150722\] content graciously granted by the creators, Christian Sahlén and Johan Nohr.
+  * Explicit permission to use a limited subset of (the CY_BORG book)[https://freeleaguepublishing.com/en/store/?product_id=7856009150722] content graciously granted by the creators, Christian Sahlén and Johan Nohr.
   * Special thanks to VinceFox for extensive testing and bug reporting
 
 cy_borg-foundry-vtt is an independent production by community contributors,
