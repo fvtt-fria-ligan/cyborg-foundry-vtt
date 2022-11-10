@@ -91,19 +91,19 @@ CY.flags = {
   TARGET_ARMOR: "targetArmor",
 };
 
-CY.appBacklashesPack = "cy-borg-core.random-tables";
+CY.appBacklashesPack = "cy-borg.random-tables";
 CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
   ammoItem: "Ammo Mag",
-  ammoPack: "cy-borg-core.weapons",
-  startingItemsPack: "cy-borg-core.equipment",
+  ammoPack: "cy-borg.weapons",
+  startingItemsPack: "cy-borg.equipment",
   startingItems: [
     "Cheap clothes",
     "Retinal Com Device",
   ],
-  characterCreationPack: "cy-borg-core.random-tables",
+  characterCreationPack: "cy-borg.random-tables",
   startingEquipmentTables: [
     "Cash & Gear 1",
     "Cash & Gear 2",

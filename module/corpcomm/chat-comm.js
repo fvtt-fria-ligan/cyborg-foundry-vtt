@@ -6,7 +6,7 @@ import { sample } from "../utils.js";
 
 
 const getAdBotActor = async () => {
-  const adbot = await documentFromPack("cy-borg-core.npcs", "AdBot2000");
+  const adbot = await documentFromPack("cy-borg.npcs", "AdBot2000");
   return adbot;
 }
 
