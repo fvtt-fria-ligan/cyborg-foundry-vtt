@@ -129,6 +129,28 @@ CY.scvmFactory = {
       formatKey: "CY.WantFormat"
     },
   ],
+  npcDescriptionTables: [
+    {
+      tableName: "Roles",
+      formatKey: "CY.RoleFormat"
+    },
+    {
+      tableName: "Styles",
+      formatKey: "CY.StyleFormat"
+    },
+    {
+      tableName: "Features",
+      formatKey: "CY.FeatureFormat"
+    },
+    {
+      tableName: "Quirks",
+      formatKey: "CY.QuirkFormat"
+    },
+    {
+      tableName: "Wants",
+      formatKey: "CY.WantFormat"
+    },
+  ],  
 };
 
 CY.colorSchemes = {

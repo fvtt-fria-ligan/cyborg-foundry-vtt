@@ -7,7 +7,7 @@ import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
 import { registerSystemSettings } from "./settings.js";
 import { MakePunkDialog } from "./generator/make-punk-dialog.js";
-
+import { createNpc } from "./generator/scvmfactory.js";
 import { registerHooks } from "./hooks.js";
 import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handlebars.js";
 
@@ -78,27 +78,46 @@ const registerSheets = () => {
 
 const modifyFoundryUI = () => {
   Hooks.on("renderActorDirectory", (app, html) => {
+    // only show the Create Punk button to users who can create actors
     if (game.user.can("ACTOR_CREATE")) {
-      // only show the Create Punk button to users who can create actors
-      const section = document.createElement("header");
-      section.classList.add("make-punk");
-      section.classList.add("directory-header");
-      // Add menu before directory header
+      // Add buttons before directory header
       const dirHeader = html[0].querySelector(".directory-header");
-      dirHeader.parentNode.insertBefore(section, dirHeader);
-      section.insertAdjacentHTML(
+
+      const punkHeader = document.createElement("header");
+      punkHeader.classList.add("make-punk");
+      punkHeader.classList.add("directory-header");
+      dirHeader.parentNode.insertBefore(punkHeader, dirHeader);
+      punkHeader.insertAdjacentHTML(
         "afterbegin",
         `
         <div class="header-actions action-buttons flexrow">
-          <button type="button" class="make-punk-button"><i class="fas fa-skull"></i> ${game.i18n.localize('CY.MakeAPunk')}</button>
+          <button type="button" class="make-punk-button"><i class="fas fa-skull"></i> ${game.i18n.localize('CY.MakePunk')}</button>
         </div>
         `
       );
-      section
+      punkHeader
         .querySelector(".make-punk-button")
         .addEventListener("click", () => {
           new MakePunkDialog().render(true);
         });
+
+      const npcHeader = document.createElement("header");
+      npcHeader.classList.add("make-npc");
+      npcHeader.classList.add("directory-header");
+      dirHeader.parentNode.insertBefore(npcHeader, dirHeader);
+      npcHeader.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class="header-actions action-buttons flexrow">
+          <button type="button" class="make-npc-button"><i class="fas fa-user"></i> ${game.i18n.localize('CY.MakeNpc')}</button>
+        </div>
+        `
+      );
+      npcHeader
+        .querySelector(".make-npc-button")
+        .addEventListener("click", () => {
+          createNpc();
+        });  
     }
   });
 }

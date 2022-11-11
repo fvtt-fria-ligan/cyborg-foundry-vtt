@@ -24,6 +24,62 @@ export const scvmifyActor = async (actor, clazz) => {
   await updateActorWithScvm(actor, scvm);
 };
 
+export const createNpc = async () => {
+  const npc = await randomNpc();
+  const actor = await CYActor.create(npc);
+  actor.sheet.render(true);
+};
+
+const randomNpc = async () => {
+  const name = randomName();
+  const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
+  const img = randomNpcPortrait();
+  const hp = rollTotal("1d8");
+  const morale = rollTotal("1d8+4");
+  return {
+    name,
+    data: {
+      description,
+      hitPoints: {
+        max: hp,
+        value: hp,
+      },
+      morale,
+    },
+    img,
+    items: [],
+    prototypeToken: {
+      name,
+      texture: {
+        src: img,
+      },
+    },    
+    type: "foe",
+  };  
+};
+
+const capitalizeFirst = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const makeDescription = async (descriptionTables) => {
+  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
+  const ccContent = await ccPack.getDocuments();
+  let descriptionLine = "";
+  for (const dt of descriptionTables) {
+    const table = ccContent.find((i) => i.name === dt.tableName);
+    if (table) {
+      const draw = await table.draw({ displayChat: false });
+      const text = draw.results[0].text.toLowerCase();
+      const formatted = game.i18n.format(dt.formatKey, {text});
+      descriptionLine += capitalizeFirst(formatted) + " ";  
+    } else {
+      console.error(`Could not find table ${dt.tableName}`);
+    }
+  }
+  return descriptionLine;
+};
+
 const pickRandomClass = async () => {
   const classPacks = findClassPacks();
   if (classPacks.length === 0) {
@@ -137,22 +193,10 @@ const classStartingItems = async (clazz) => {
 };
 
 const classDescriptionLines = async (clazz) => {
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
   const descriptionLines = [];
   descriptionLines.push(clazz.system.description);
   descriptionLines.push("<p>&nbsp;</p>");
-  let descriptionLine = "";
-  for (const dt of CY.scvmFactory.descriptionTables) {
-    const table = ccContent.find((i) => i.name === dt.tableName);
-    if (table) {
-      const draw = await table.draw({ displayChat: false });
-      const text = draw.results[0].text;
-      descriptionLine += game.i18n.format(dt.formatKey, {text}) + " ";  
-    } else {
-      console.error(`Could not find table ${dt.tableName}`);
-    }
-  }
+  let descriptionLine = await makeDescription(CY.scvmFactory.descriptionTables);
   if (descriptionLine) {
     descriptionLines.push(descriptionLine);
     descriptionLines.push("<p>&nbsp;</p>");
@@ -220,11 +264,33 @@ const simpleData = (e) => ({
   type: e.type,  
 });
 
-const randomPortrait = (clazz) => {
-  const maxImgNum = 96;
+const randomPortrait = (dir, prefix, maxImgNum) => {
   const imgNum = Math.floor(Math.random() * (maxImgNum + 1));
   const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  return `systems/cy-borg/assets/images/portraits/punks/punk_${imgNumStr}.png`;
+  return `systems/cy-borg/assets/images/portraits/${dir}/${prefix}${imgNumStr}.png`;
+};
+
+const randomNpcPortrait = () => {
+  const rand = Math.random();
+  if (rand < 0.50) {
+    return randomCorpoPortrait();
+  } else if (rand < 0.70) {
+    return randomSecopPortrait();
+  } else {
+    return randomPunkPortrait();
+  }
+};
+
+const randomCorpoPortrait = () => {
+  return randomPortrait("corpos", "corpo_", 16);
+};
+
+const randomPunkPortrait = () => {
+  return randomPortrait("punks", "punk_", 96);
+};
+
+const randomSecopPortrait = () => {
+  return randomPortrait("secops", "secop_", 11);
 };
 
 const rollScvmForClass = async (clazz) => {
@@ -320,7 +386,7 @@ const rollScvmForClass = async (clazz) => {
   const glitches = rollTotal(clazz.system.glitches);
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
-  const img = randomPortrait(clazz);
+  const img = randomPunkPortrait();
   return {
     actorImg: img,
     agility,
