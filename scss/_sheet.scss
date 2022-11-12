@@ -27,6 +27,7 @@
 
     nav.sheet-tabs.tabs {
       border-radius: $border-radius;
+      width: 385px;
     }
   
     .sheet-tabs {
@@ -111,6 +112,10 @@
       font-size: 14px;
       height: 20px;
       line-height: 1.2;
+      margin-right: 4px;
+      &:last-child {
+        margin-right: 0px;
+      }
     }
 
     .field-row {
@@ -148,6 +153,7 @@
     // style shared by foe actor sheet and item sheets
     .sheet-body {
       flex: 1;
+      width: 385px;
       .tab {
         height: 100%;
       }

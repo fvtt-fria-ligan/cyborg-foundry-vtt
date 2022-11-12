@@ -10,9 +10,10 @@
         flex: 1;
       }
       .header-button-row {
-        flex: 0 0 20px;
         display: flex;
+        flex: 0 0 20px;
         justify-content: space-between;
+        width: 385px;
       }
       .left-col {
         .class-row {

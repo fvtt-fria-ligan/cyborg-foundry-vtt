@@ -55,7 +55,8 @@
       justify-content: flex-start;
       height: 100%; }
     .cy.sheet section.window-content nav.sheet-tabs.tabs {
-      border-radius: 5px; }
+      border-radius: 5px;
+      width: 385px; }
     .cy.sheet section.window-content .sheet-tabs {
       background-color: var(--cy-foreground-color);
       border: none;
@@ -115,7 +116,10 @@
       color: var(--cy-background-color);
       font-size: 14px;
       height: 20px;
-      line-height: 1.2; }
+      line-height: 1.2;
+      margin-right: 4px; }
+      .cy.sheet section.window-content .sheet-button:last-child {
+        margin-right: 0px; }
     .cy.sheet section.window-content .field-row {
       display: flex;
       flex: 0 0 38px;
@@ -143,7 +147,8 @@
         font-family: "QuanPixel 8px";
         line-height: 20px; }
     .cy.sheet section.window-content .sheet-body {
-      flex: 1; }
+      flex: 1;
+      width: 385px; }
       .cy.sheet section.window-content .sheet-body .tab {
         height: 100%; }
       .cy.sheet section.window-content .sheet-body .description-tab .description-wrapper {
@@ -256,9 +261,10 @@
     display: flex;
     flex: 1; }
   .cy.sheet.actor.character section.window-content .sheet-header .header-button-row {
-    flex: 0 0 20px;
     display: flex;
-    justify-content: space-between; }
+    flex: 0 0 20px;
+    justify-content: space-between;
+    width: 385px; }
   .cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row {
     align-items: center;
     display: flex;
@@ -389,10 +395,7 @@
   .cy.sheet.actor.foe section.window-content .sheet-header .sheet-button {
     font-size: 16px;
     height: 38px;
-    line-height: 1.0;
-    margin-right: 4px; }
-    .cy.sheet.actor.foe section.window-content .sheet-header .sheet-button:last-child {
-      margin-right: 0px; }
+    line-height: 1.0; }
 
 .cy.sheet.actor.vehicle section.window-content .sheet-header {
   height: 388px; }
