@@ -2,6 +2,7 @@ import { CYActor } from "../actor/actor.js";
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
+import { lowerCaseFirst, upperCaseFirst, sample } from "../utils.js";
 
 import {
   documentFromPack,
@@ -36,9 +37,13 @@ const randomNpc = async () => {
   const img = randomNpcPortrait();
   const hp = rollTotal("1d8");
   const morale = rollTotal("1d8+4");
+  const attack = npcAttack();
+  const armor = npcArmor();
   return {
     name,
     data: {
+      armor,
+      attack,
       description,
       hitPoints: {
         max: hp,
@@ -58,8 +63,24 @@ const randomNpc = async () => {
   };  
 };
 
-const capitalizeFirst = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+const npcAttack = () => {
+  return sample([
+    "Unarmed d2",
+    "Shiv d3",
+    "Machete d6",
+    "Throwing knives d4",
+    "Revolver d8",
+    "Smartgun d6a",
+    "Shotgun d8",
+  ]);
+}
+
+const npcArmor = () => {
+  return sample([
+    "No armor",
+    "Styleguard -d2",
+    "Rough -d4",
+  ]);
 }
 
 const makeDescription = async (descriptionTables) => {
@@ -70,9 +91,9 @@ const makeDescription = async (descriptionTables) => {
     const table = ccContent.find((i) => i.name === dt.tableName);
     if (table) {
       const draw = await table.draw({ displayChat: false });
-      const text = draw.results[0].text.toLowerCase();
+      const text = lowerCaseFirst(draw.results[0].text);
       const formatted = game.i18n.format(dt.formatKey, {text});
-      descriptionLine += capitalizeFirst(formatted) + " ";  
+      descriptionLine += upperCaseFirst(formatted) + " ";  
     } else {
       console.error(`Could not find table ${dt.tableName}`);
     }

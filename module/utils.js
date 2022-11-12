@@ -38,4 +38,20 @@ export const sample = (array) => {
     return;
   }
   return array[Math.floor(Math.random() * array.length)];
-}
+};
+
+export const upperCaseFirst = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const lowerCaseFirst = (str) => {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+};
+
+export const articalize = (str) => {
+  const c0 = str.charAt(0).toLowerCase();
+  if (c0 == "a" || c0 == "e" || c0 == "o" || c0 == "u") {
+    return `An ${str}`;
+  }
+  return `A ${str}`;
+};
