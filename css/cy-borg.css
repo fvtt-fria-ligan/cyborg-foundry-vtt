@@ -155,8 +155,7 @@
         width: 100%; }
 
 .cy.sheet.actor section.window-content .sheet-header {
-  display: flex;
-  height: 443px; }
+  display: flex; }
   .cy.sheet.actor section.window-content .sheet-header .left-col {
     display: flex;
     flex-direction: column;
@@ -387,9 +386,16 @@
 
 .cy.sheet.actor.foe section.window-content .sheet-header {
   height: 388px; }
+  .cy.sheet.actor.foe section.window-content .sheet-header .sheet-button {
+    font-size: 16px;
+    height: 38px;
+    line-height: 1.0;
+    margin-right: 4px; }
+    .cy.sheet.actor.foe section.window-content .sheet-header .sheet-button:last-child {
+      margin-right: 0px; }
 
 .cy.sheet.actor.vehicle section.window-content .sheet-header {
-  height: 396px; }
+  height: 388px; }
 
 .chat-ad .content {
   text-align: center; }
