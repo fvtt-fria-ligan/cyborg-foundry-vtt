@@ -226,6 +226,30 @@ CY.colorSchemes = {
     highlight: "#F7F00D",
     windowBackground: "#032556",
   },
+  solarizedDark: {
+    // blue 1F88D2
+    // cream FDF6E3
+    // almost black 002B36
+    // gray light 93A1A1
+    // magenta D33682 
+    // orange B58900
+    accent: "#B58900",
+    background: "#002B36",
+    cyberText: "#D33682",
+    disabled: "gray",
+    foreground: "#93A1A1",
+    highlight: "#1F88D2",    
+    windowBackground: "#002B36",
+  },
+  solarizedLight: {
+    accent: "#B58900",
+    background: "#FDF6E3",
+    cyberText: "#D33682",
+    disabled: "gray",
+    foreground: "#657B83",
+    highlight: "#268BD2",
+    windowBackground: "#FDF6E3",
+  },
   virtuaBoi: {
     accent: "gray",
     background: "#530300",
