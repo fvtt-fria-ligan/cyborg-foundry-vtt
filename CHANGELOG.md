@@ -5,6 +5,7 @@
 - Add "Make NPC" button.
 - Add Roles random table.
 - Tweak various random description tables to be third-person.
+- Tweak foe and vehicle sheet top spacing.
 
 # 1.1.0
 
