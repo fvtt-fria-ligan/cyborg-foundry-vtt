@@ -2,7 +2,7 @@ import { CYActor } from "../actor/actor.js";
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
-import { lowerCaseFirst, upperCaseFirst, sample } from "../utils.js";
+import { lowerCaseFirst, upperCaseFirst, sample, articalize } from "../utils.js";
 
 import {
   documentFromPack,
@@ -91,7 +91,11 @@ const makeDescription = async (descriptionTables) => {
     const table = ccContent.find((i) => i.name === dt.tableName);
     if (table) {
       const draw = await table.draw({ displayChat: false });
-      const text = lowerCaseFirst(draw.results[0].text);
+      let text = lowerCaseFirst(draw.results[0].text);
+      if (dt.articalize) {
+        text = articalize(text);
+      }
+      console.log(text);
       const formatted = game.i18n.format(dt.formatKey, {text});
       descriptionLine += upperCaseFirst(formatted) + " ";  
     } else {

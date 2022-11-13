@@ -50,8 +50,8 @@ export const lowerCaseFirst = (str) => {
 
 export const articalize = (str) => {
   const c0 = str.charAt(0).toLowerCase();
-  if (c0 == "a" || c0 == "e" || c0 == "o" || c0 == "u") {
-    return `An ${str}`;
+  if (c0 == "a" || c0 == "e" || c0 == "i" || c0 == "o" || c0 == "u") {
+    return `an ${str}`;
   }
-  return `A ${str}`;
+  return `a ${str}`;
 };

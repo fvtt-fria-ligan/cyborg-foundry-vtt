@@ -150,6 +150,11 @@ CY.scvmFactory = {
       tableName: "Wants",
       formatKey: "CY.WantFormat"
     },
+    {
+      tableName: "Trinkets",
+      formatKey: "CY.CarriesFormat",
+      articalize: true
+    },
   ],  
 };
 

@@ -2,7 +2,7 @@
 
 - Merge cy_borg-core content module into cy_borg system.
 - Add in-game README as a journal entry compendium.
-- Add "Make NPC" button.
+- Add NPC generator and "Make NPC" button.
 - Add Roles random table.
 - Tweak various random description tables to be third-person.
 - Tweak foe and vehicle sheet top spacing.
