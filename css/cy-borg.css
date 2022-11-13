@@ -390,9 +390,9 @@
 .equipment-tab .encumbered {
   color: var(--cy-highlight-color); }
 
-.cy.sheet.actor.foe section.window-content .sheet-header {
+.cy.sheet.actor.npc section.window-content .sheet-header {
   height: 388px; }
-  .cy.sheet.actor.foe section.window-content .sheet-header .sheet-button {
+  .cy.sheet.actor.npc section.window-content .sheet-header .sheet-button {
     font-size: 16px;
     height: 38px;
     line-height: 1.0; }

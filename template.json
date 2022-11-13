@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "foe", "vehicle"],
+    "types": ["character", "npc", "vehicle"],
     "templates": {
       "common": {
         "abilities": {
@@ -42,7 +42,7 @@
       },
       "nanoFumbleOn": 1
     },
-    "foe": {
+    "npc": {
       "armor": "",
       "attack": "",
       "description": "",

@@ -2,12 +2,12 @@ import { CYActorSheet } from "./actor-sheet.js";
 import { rollMorale } from "./morale.js";
 import { rollReaction } from "./reaction.js";
 
-export class CYFoeSheet extends CYActorSheet {
+export class CYNpcSheet extends CYActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["cy", "sheet", "actor", "foe"],
-      template: "systems/cy-borg/templates/actor/foe-sheet.html",
+      classes: ["cy", "sheet", "actor", "npc"],
+      template: "systems/cy-borg/templates/actor/npc-sheet.html",
       width: 406,
       height: 880,
       tabs: [

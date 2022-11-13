@@ -23,7 +23,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
         disposition: 1,
         vision: true,
       };
-    } else if (data.type === CY.actorTypes.foe) {
+    } else if (data.type === CY.actorTypes.npc) {
       defaults = {
         actorLink: false,
         disposition: -1,

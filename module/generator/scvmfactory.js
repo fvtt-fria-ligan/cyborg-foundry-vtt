@@ -59,7 +59,7 @@ const randomNpc = async () => {
         src: img,
       },
     },    
-    type: "foe",
+    type: "npc",
   };  
 };
 

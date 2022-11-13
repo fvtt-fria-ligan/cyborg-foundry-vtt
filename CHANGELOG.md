@@ -7,6 +7,7 @@
 - Tweak various random description tables to be third-person.
 - Tweak foe and vehicle sheet top spacing.
 - Add solarized color schemes.
+- Rename "foe" to "npc".
 
 # 1.1.0
 

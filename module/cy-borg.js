@@ -1,7 +1,7 @@
 import { CYActor } from "./actor/actor.js";
 import { CY } from "./config.js";
 import { CYCharacterSheet } from "./actor/character-sheet.js";
-import { CYFoeSheet } from "./actor/foe-sheet.js";
+import { CYNpcSheet } from "./actor/npc-sheet.js";
 import { CYVehicleSheet } from "./actor/vehicle-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
@@ -59,10 +59,10 @@ const registerSheets = () => {
     makeDefault: true,
     label: "CY.CharacterSheet",
   });
-  Actors.registerSheet(CY.system, CYFoeSheet, {
-    types: ["foe"],
+  Actors.registerSheet(CY.system, CYNpcSheet, {
+    types: ["npc"],
     makeDefault: true,
-    label: "CY.FoeSheet",
+    label: "CY.NpcSheet",
   });
   Actors.registerSheet(CY.system, CYVehicleSheet, {
     types: ["vehicle"],

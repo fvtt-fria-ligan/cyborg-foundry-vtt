@@ -4,7 +4,7 @@ CY.system = "cy-borg";
 
 CY.actorTypes = {
   character: "character",
-  foe: "foe",
+  npc: "npc",
   vehicle: "vehicle"
 };
 
