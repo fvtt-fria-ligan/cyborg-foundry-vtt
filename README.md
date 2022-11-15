@@ -15,7 +15,7 @@ CY_BORG IS ©2022 STOCKHOLM KARTELL.
 
 ## User manual
 
-A user manual is included as in-game Journal Entry in the CY_BORG compendium.
+A user manual is included as an in-game Journal Entry inside a "CY_BORG" compendium.
 
 ## Reporting issues and suggestions
 
