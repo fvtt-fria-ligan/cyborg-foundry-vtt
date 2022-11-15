@@ -1,3 +1,7 @@
+# 1.2.1
+
+- Set grenades, flashbangs, and epulse grenades to 0.25 carry slots.
+
 # 1.2.0
 
 - Merge cy_borg-core content module into cy_borg system.
