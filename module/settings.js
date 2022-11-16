@@ -46,6 +46,9 @@ export const registerSystemSettings = () => {
     config: true,
     type: Boolean,
     default: true,
+    onChange: () => {
+      location.reload();
+    },
   });
 
   /** Delay between showing chat ads */
@@ -56,6 +59,9 @@ export const registerSystemSettings = () => {
     config: true,
     type: Number,
     default: 20,
+    onChange: () => {
+      location.reload();
+    },
   });
 
   /** Whether to show popup ads */
@@ -87,7 +93,6 @@ export const registerSystemSettings = () => {
     type: Boolean,
     default: true,
   });
-
 
   /** Whether to play sound effects */
   game.settings.register(CY.system, "soundEffects", {
@@ -157,21 +162,14 @@ export const trackCarryingCapacity = () => {
 };
 
 export const isScvmClassAllowed = (classPack) => {
-  const allowedScvmClasses = game.settings.get(
-    CY.system,
-    "allowedScvmClasses"
-  );
+  const allowedScvmClasses = game.settings.get(CY.system, "allowedScvmClasses");
   return typeof allowedScvmClasses[classPack] === "undefined"
     ? true
     : !!allowedScvmClasses[classPack];
 };
 
 export const setAllowedScvmClasses = (allowedScvmClasses) => {
-  return game.settings.set(
-    CY.system,
-    "allowedScvmClasses",
-    allowedScvmClasses
-  );
+  return game.settings.set(CY.system, "allowedScvmClasses", allowedScvmClasses);
 };
 
 export const getLastScvmfactorySelection = () => {
