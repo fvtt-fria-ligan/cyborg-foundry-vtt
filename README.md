@@ -13,6 +13,8 @@ https://morkborg.com/cb-license/
 
 CY_BORG IS ©2022 STOCKHOLM KARTELL.
 
+![Latest Release Download Count](https://img.shields.io/github/downloads/fvtt-fria-ligan/cyborg-foundry-vtt/latest/system.zip)
+
 ## User manual
 
 A user manual is included as an in-game Journal Entry inside a "CY_BORG" compendium.
