@@ -1,6 +1,8 @@
 # 1.2.1
 
 - Set grenades, flashbangs, and epulse grenades to 0.25 carry slots.
+- Reload page after changing AdBot chat message settings, so those changes take effect immediately.
+- Un-burn apps after a long rest.
 
 # 1.2.0
 

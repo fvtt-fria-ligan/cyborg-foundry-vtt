@@ -12,7 +12,8 @@ export const rollRest = async (actor, restLength, starving) => {
     if (actor.system.glitches.value === 0) {
       await rollGlitches(actor);
     }
-    await resetFumbles(actor);    
+    await resetFumbles(actor);
+    await unburnApps(actor);
   }
 };
 
@@ -63,4 +64,12 @@ const resetFumbles = async (actor) => {
     ["system.appFumbleOn"]: 1,
     ["system.nanoFumbleOn"]: 1,
   });
+};
+
+const unburnApps = async (actor) => {
+  for (const item of actor.items) {
+    if (item.type === CY.itemTypes.app && item.system.burned) {
+      await item.update({ ["system.burned"]: false});
+    }
+  }
 };
