@@ -5,7 +5,7 @@ export class CYItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "item"],
-      width: 402,
+      width: 411,
       height: 900,
       tabs: [
         {

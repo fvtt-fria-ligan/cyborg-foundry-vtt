@@ -8,7 +8,7 @@ export class CYNpcSheet extends CYActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "npc"],
       template: "systems/cy-borg/templates/actor/npc-sheet.html",
-      width: 406,
+      width: 411,
       height: 880,
       tabs: [
         {

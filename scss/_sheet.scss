@@ -2,19 +2,26 @@
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
   
+  header.window-header {
+    border-bottom: 2px solid var(--cy-accent-color);
+  }
+
   section.window-content {
     // background: var(--cy-background-color);
     background-color: var(--cy-window-background-color);
     background-image: none;
-    border: 2px solid var(--cy-foreground-color);
+    // border: 2px solid var(--cy-foreground-color);
+    // border-radius: $border-radius;
     color: var(--cy-foreground-color);
     font-family: $sheet-font;
     font-size: 15px;
     overflow-y: scroll;
-    padding-bottom: $widget-margin;
-    padding-left: $widget-margin;
+    padding-bottom: $sheet-padding;
+    padding-left: $sheet-padding;
     padding-right: 0;
-    padding-top: $widget-margin;
+    padding-top: $sheet-padding;
+    scrollbar-color: var(--cy-highlight-color) var(--cy-window-background-color);
+    scrollbar-width: thin;
 
     form {
       padding: 0;
@@ -85,6 +92,7 @@
       font-family: $textarea-font;
       font-size: 15px;
       line-height: $textarea-line-height;
+      resize: none;
     }
 
     .editor,

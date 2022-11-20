@@ -99,20 +99,20 @@
 
 // scrollbar
 ::-webkit-scrollbar {
-  width: 6px;
   height: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: 0 0 1px #999 inset;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  outline: none;
-  border-radius: 3px;
   background: var(--cy-highlight-color);
   border: none;
+  border-radius: 3px;
+  outline: none;
 }
 :root {
-  scrollbar-width: thin;
   scrollbar-color: var(--cy-highlight-color);
+  scrollbar-width: thin;
 }

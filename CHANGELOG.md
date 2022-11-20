@@ -1,3 +1,8 @@
+# 1.2.2
+
+- Fix bug where defend wasn't using agility.
+- Tweak sheet widths and padding + scrollbar styling, so sheets look good on both chrome/webkit and firefox.
+
 # 1.2.1
 
 - Set grenades, flashbangs, and epulse grenades to 0.25 carry slots.
