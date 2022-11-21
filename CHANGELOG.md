@@ -1,3 +1,7 @@
+# 1.2.3
+
+- Add d3-slots cyberdeck used in 3rd starting gear table.
+
 # 1.2.2
 
 - Fix bug where defend wasn't using agility.
