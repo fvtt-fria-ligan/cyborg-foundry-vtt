@@ -118,24 +118,17 @@
       "type": "Item"
     },
     {
-      "name": "cyborg",
-      "label": "CY_BORG",
+      "name": "cyborg-docs",
+      "label": "CY_BORG Docs",
       "system": "cy-borg",
-      "path": "./packs/cyborg.db",
+      "path": "./packs/cyborg-docs.db",
       "type": "JournalEntry"
-    },    
-    {
-      "name": "macros-discharged-corpkiller",
-      "label": "Macros - Discharged CorpKiller",
-      "system": "cy-borg",
-      "path": "./packs/macros-discharged-corpkiller.db",
-      "type": "Macro"
     },
     {
-      "name": "macros-orphaned-gearhead",
-      "label": "Macros - Orphaned Gearhead",
+      "name": "cyborg-macros",
+      "label": "CY_BORG Macros",
       "system": "cy-borg",
-      "path": "./packs/macros-orphaned-gearhead.db",
+      "path": "./packs/cyborg-macros.db",
       "type": "Macro"
     },    
     {

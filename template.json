@@ -63,6 +63,7 @@
       "app",
       "armor",
       "class",
+      "cyberdeck",
       "equipment",
       "feat",
       "infestation",
@@ -92,6 +93,7 @@
       }
     },
     "class": {
+      "actorCreateMacro": "",
       "agility": "3d6",
       "armorTable": "1d3",
       "credits": "2d6*10",
@@ -104,12 +106,17 @@
       "onlyApps": false,
       "onlyCybertech": false,
       "onlyNano": false,
-      "postCreateMacro": "",
       "presence": "3d6",
       "rolls": null,
       "strength": "3d6",
       "toughness": "3d6",
       "weaponTable": "1d12"
+    },
+    "cyberdeck": {
+      "templates": ["baseEquipment"],
+      "createMacro": "",      
+      "cybertech": false,
+      "slotFormula": ""
     },
     "equipment": {
       "templates": ["baseEquipment"],

@@ -39,7 +39,7 @@ export class CYCharacterSheet extends CYActorSheet {
       .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
       .sort(byName);
     superData.data.system.equipment = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
+      .filter((item) => [CONFIG.CY.itemTypes.equipment, CONFIG.CY.itemTypes.cyberdeck].includes(item.type))
       .sort(byName);
     superData.data.system.weapons = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
@@ -58,6 +58,9 @@ export class CYCharacterSheet extends CYActorSheet {
       .sort(byName);
     superData.data.system.nanoPowers = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.nanoPower)
+      .sort(byName);
+    superData.data.system.cyberdecks = superData.data.items
+      .filter((item) => item.type === CONFIG.CY.itemTypes.cyberdecks)
       .sort(byName);
     superData.data.system.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
     return superData;

@@ -1,3 +1,10 @@
+# 1.3.0
+
+- Add cyberdeck item type, sheet, and items.
+- Add createMacro field & handling for items.
+- Rename "postCreateMacro" field to "actorCreateMacro".
+- Add CYBORG Macros compendium, and move CorpKiller and Gearhead macros there.
+
 # 1.2.3
 
 - Add d3-slots cyberdeck used in 3rd starting gear table.

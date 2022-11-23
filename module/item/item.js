@@ -6,6 +6,28 @@ import { drawDocument, dupeData } from "../packutils.js";
  */
  export class CYItem extends Item {
 
+  /** @override */
+  async _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+    // run create macro, if any
+    if (s.createMacro) {
+      const [packName, macroName] = s.createMacro.split(",");
+      const pack = game.packs.get(packName);
+      if (pack) {
+        const content = await pack.getDocuments();
+        const macro = content.find(x => x.name === macroName);
+        if (macro) {
+          console.log("Executing macro ${macroName} from pack ${packName}");          
+          macro.execute({item: this});
+        } else {
+          console.error(`Could not find macro named ${macroName}.`);
+        }  
+      } else {
+        console.error(`Could not find pack named ${packName}.`);
+      }
+    }  
+  }
+  
   linkedNano() {
     if (this.system.nanoId) {
       return this.findParentItem(this.system.nanoId);

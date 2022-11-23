@@ -12,6 +12,7 @@ CY.itemTypes = {
   app: "app",
   armor: "armor",
   class: "class",
+  cyberdeck: "cyberdeck",
   equipment: "equipment",
   feat: "feat",
   infestation: "infestation",

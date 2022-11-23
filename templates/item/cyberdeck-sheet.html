@@ -1,0 +1,36 @@
+<form class="{{cssClass}} {{cssCyberClass}}" autocomplete="off">
+  {{> systems/cy-borg/templates/item/item-sheet-header.html itemType='DECK'}}
+  {{> systems/cy-borg/templates/item/item-sheet-tabs.html }}
+  <div class="sheet-body">
+    {{> systems/cy-borg/templates/item/item-description-tab.html }}
+    <div class="tab data-tab" data-group="primary" data-tab="data">
+      <div class="fields">
+        {{> systems/cy-borg/templates/item/item-base-fields.html }} 
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.Cybertech'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="checkbox" name="system.cybertech" {{checked data.system.cybertech}} />
+          </div>
+        </div>          
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.SlotFormula'}}
+          </div>
+          <div class="field-value">
+            <input class="field-input" type="text" name="system.slotFormula" value="{{data.system.slotFormula}}"/>
+          </div>
+        </div>
+        <div class="widget field-row">
+          <div class="field-label">
+            {{ localize 'CY.CreateMacro'}}
+          </div>
+          <div class="field-value">
+            <textarea name="system.createMacro" rows="4">{{data.system.createMacro}}</textarea> 
+          </div>
+        </div>        
+      </div>
+    </div>      
+  </div>
+</form>
