@@ -125,12 +125,12 @@
       "type": "JournalEntry"
     },
     {
-      "name": "cyborg-macros",
-      "label": "CY_BORG Macros",
+      "name": "macros",
+      "label": "Macros",
       "system": "cy-borg",
-      "path": "./packs/cyborg-macros.db",
+      "path": "./packs/macros.db",
       "type": "Macro"
-    },    
+    },
     {
       "name": "nanopowers",
       "label": "Nano Powers",
