@@ -2,7 +2,7 @@ import { CYActor } from "../actor/actor.js";
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
-import { lowerCaseFirst, upperCaseFirst, sample, articalize } from "../utils.js";
+import { lowerCaseFirst, rollTotal, upperCaseFirst, sample, articalize } from "../utils.js";
 
 import {
   documentFromPack,
@@ -95,7 +95,6 @@ const makeDescription = async (descriptionTables) => {
       if (dt.articalize) {
         text = articalize(text);
       }
-      console.log(text);
       const formatted = game.i18n.format(dt.formatKey, {text});
       descriptionLine += upperCaseFirst(formatted) + " ";  
     } else {
@@ -139,10 +138,6 @@ export const classItemFromPack = async (packName) => {
   const pack = game.packs.get(packName);
   const content = await pack.getDocuments();
   return content.find((i) => i.type === "class");
-};
-
-const rollTotal = (formula) => {
-  return new Roll(formula).evaluate({async: false}).total
 };
 
 const abilityRoll = (formula) => {
@@ -413,6 +408,7 @@ const rollScvmForClass = async (clazz) => {
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
   const img = randomPunkPortrait();
   return {
+    actorCreateMacro: clazz.system.actorCreateMacro,
     actorImg: img,
     agility,
     credits,
@@ -427,7 +423,6 @@ const rollScvmForClass = async (clazz) => {
     knowledge,
     name,
     npcs: npcData,
-    postCreateMacro: clazz.system.postCreateMacro,
     presence,
     strength,
     tokenImg: img,
@@ -489,13 +484,20 @@ const createActorWithScvm = async (s) => {
   }
 
   // run post-create macro, if any
-  if (s.postCreateMacro) {
-    const [packName, macroName] = s.postCreateMacro.split(",");
+  if (s.actorCreateMacro) {
+    const [packName, macroName] = s.actorCreateMacro.split(",");
     const pack = game.packs.get(packName);
-    const content = await pack.getDocuments();
-    const macro = content.find(x => x.name === macroName);
-    if (macro) {
-      macro.execute({actor});
+    if (pack) {
+      const content = await pack.getDocuments();
+      const macro = content.find(x => x.name === macroName);
+      if (macro) {
+        console.log(`Executing macro ${macroName} from pack ${packName}`);
+        macro.execute({actor});
+      } else {
+        console.error(`Could not find macro ${macroName}.`);
+      }
+    } else {
+      console.error(`Could not find pack ${packName}.`);
     }
   }
 };
@@ -534,12 +536,13 @@ const updateActorWithScvm = async (actor, s) => {
   }
 
   // run post-create macro, if any
-  if (s.postCreateMacro) {
-    const [packName, macroName] = s.postCreateMacro.split(",");
+  if (s.actorCreateMacro) {
+    const [packName, macroName] = s.actorCreateMacro.split(",");
     const pack = game.packs.get(packName);
     const content = await pack.getDocuments();
     const macro = content.find(x => x.name === macroName);
     if (macro) {
+      console.log("Executing macro ${macroName} from pack ${packName}...");
       macro.execute({actor});
     }
   }  
