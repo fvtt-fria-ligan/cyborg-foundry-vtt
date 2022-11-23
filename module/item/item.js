@@ -10,15 +10,15 @@ import { drawDocument, dupeData } from "../packutils.js";
   async _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
     // run create macro, if any
-    if (s.createMacro) {
-      const [packName, macroName] = s.createMacro.split(",");
+    if (data.system.createMacro) {
+      const [packName, macroName] = data.system.createMacro.split(",");
       const pack = game.packs.get(packName);
       if (pack) {
         const content = await pack.getDocuments();
         const macro = content.find(x => x.name === macroName);
         if (macro) {
-          console.log("Executing macro ${macroName} from pack ${packName}");          
-          macro.execute({item: this});
+          console.log(`Executing macro ${macroName} from pack ${packName}`);
+          macro.execute({actor: this.actor});
         } else {
           console.error(`Could not find macro named ${macroName}.`);
         }  
