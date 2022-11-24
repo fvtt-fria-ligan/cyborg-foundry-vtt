@@ -1,0 +1,22 @@
+.nano-tab {
+  .app-row.slotted-app {
+    .slotted-indent {
+      display:grid;
+      grid-template-columns: 50% 50%;
+      grid-row: auto auto;
+      flex: 0 0 75px;
+      .ur {
+        border-bottom: 2px solid var(--cy-highlight-color);
+        border-left: 2px solid var(--cy-highlight-color);
+      }
+      .lr {
+        border-left: 2px solid var(--cy-highlight-color);
+      }
+    }
+  }
+  .app-row.slotted-app:last-child {
+    .lr {
+      border-left: none;
+    }
+  }
+}

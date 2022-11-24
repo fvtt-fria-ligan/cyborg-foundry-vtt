@@ -81,6 +81,7 @@
     },
     "app": {
       "burned": false,
+      "cyberdeckId": null,
       "description": ""
     },
     "armor": {

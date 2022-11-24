@@ -9,6 +9,7 @@ import { rollLevelUp } from "./level-up.js";
 import { rollUseNano } from "./nanos.js";
 import { uiSuccess } from "../sound.js";
 import { byName } from "../utils.js";
+import { CY } from "../config.js";
 
 
 export class CYCharacterSheet extends CYActorSheet {
@@ -30,8 +31,6 @@ export class CYCharacterSheet extends CYActorSheet {
     });
   }
 
-    //   this.data.system.nano = game.items.find(x => x.system._id === this.data.system.nanoId);
-
   /** @override */
   getData() {
     const superData = super.getData();
@@ -39,7 +38,7 @@ export class CYCharacterSheet extends CYActorSheet {
       .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
       .sort(byName);
     superData.data.system.equipment = superData.data.items
-      .filter((item) => [CONFIG.CY.itemTypes.equipment, CONFIG.CY.itemTypes.cyberdeck].includes(item.type))
+      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
       .sort(byName);
     superData.data.system.weapons = superData.data.items
       .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
@@ -47,9 +46,6 @@ export class CYCharacterSheet extends CYActorSheet {
     superData.data.system.class = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.class)
       .pop();
-    superData.data.system.apps = superData.data.items
-      .filter(item => item.type === CONFIG.CY.itemTypes.app)
-      .sort(byName);
     superData.data.system.feats = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.feat)
       .sort(byName);
@@ -60,8 +56,13 @@ export class CYCharacterSheet extends CYActorSheet {
       .filter(item => item.type === CONFIG.CY.itemTypes.nanoPower)
       .sort(byName);
     superData.data.system.cyberdecks = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.cyberdecks)
+      .filter((item) => item.type === CONFIG.CY.itemTypes.cyberdeck)
       .sort(byName);
+    superData.data.system.unslottedApps = superData.data.items
+      .filter(item => item.type === CONFIG.CY.itemTypes.app)
+      .filter(item => !item.system.cyberdeckId)
+      .sort(byName);
+
     superData.data.system.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
     return superData;
   }
@@ -72,14 +73,50 @@ export class CYCharacterSheet extends CYActorSheet {
     html
       .find(".ability-link")
       .on("click", this._testAbility.bind(this));
-    html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".battered-button").on("click", this._battered.bind(this));
+    html.find(".item-eject").on("click", this._ejectApp.bind(this));
     html.find(".level-up-button").on("click", this._levelUp.bind(this));
     html.find(".reboot-button").on("click", this._reboot.bind(this));
+    html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".use-app-button").on("click", this._useApp.bind(this));
     html.find(".use-nano-button").on("click", this._useNano.bind(this));
   }
 
+  /** @override */
+  async _onDropItem(event, itemData) {
+    await this._tryToSlotApp(event, itemData);
+  }
+
+  async _tryToSlotApp(event, itemData) {
+    const item = ((await super._onDropItem(event, itemData)) || []).pop();
+    if (!item || item.type !== CY.itemTypes.app) {
+      // we only slot apps...
+      return;
+    }
+    const deck = this._findDropCyberdeck(event);
+    console.log(deck);
+    if (deck && deck.type === CY.itemTypes.cyberdeck) {
+      // ...onto cyberdecks
+      await deck.slotApp(item);
+    }
+  }
+
+  _findDropCyberdeck(event) {
+    console.log(event);
+    const dropIntoItem = $(event.srcElement).closest(".cyberdeck-row-wrapper");
+    return dropIntoItem.length > 0
+      ? this.actor.items.get(dropIntoItem.attr("data-item-id"))
+      : null;
+  }
+  
+  async _ejectApp(event) {
+    event.preventDefault();
+    const itemDiv = $(event.currentTarget).parents(".item");
+    const itemId = itemDiv.data("itemId");
+    const app = this.actor.items.get(itemId);
+    await app.eject();
+  }
+    
   _testAbility(event) {
     event.preventDefault();
     // uiClick();

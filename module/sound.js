@@ -19,8 +19,16 @@ export const uiDelete = () => {
   playSound("systems/cy-borg/assets/audio/sfx/ui-delete.ogg");
 };
 
+export const uiEject = () => {
+  playSound("systems/cy-borg/assets/audio/sfx/ui-eject.ogg");
+};
+
 export const uiError = () => {
   playSound("systems/cy-borg/assets/audio/sfx/ui-error.ogg");
+};
+
+export const uiSlot = () => {
+  playSound("systems/cy-borg/assets/audio/sfx/ui-slot.ogg");
 };
 
 export const uiSuccess = () => {

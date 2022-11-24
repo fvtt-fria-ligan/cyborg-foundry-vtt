@@ -2,6 +2,7 @@
 
 - Add cyberdeck item type, sheet, and items.
 - Add createMacro field & handling for items.
+- Make starting cyberdeck run a create macro to set its slots.
 - Rename "postCreateMacro" field to "actorCreateMacro".
 - Add Macros compendium, and move CorpKiller and Gearhead macros there.
 

@@ -1,6 +1,84 @@
 <div class="tab nano-tab" data-group="primary" data-tab="nano">
   <div class="widget field-row">
     <div class="field-label">
+    {{ localize 'CY.AppFumbleOn'}}
+    </div>
+    <div class="field-value">
+      <input class="field-input" type="number" name="system.appFumbleOn" value="{{data.system.appFumbleOn}}"/>
+    </div>
+  </div>
+  <div class="cyberdecks item-list">
+    {{#each data.system.cyberdecks as |item id|}}
+      <div class="cyberdeck-row-wrapper" data-item-id="{{item._id}}">
+        <div class="item item-row cyberdeck-row" data-item-id="{{item._id}}">
+          <div class="icon">
+            <img src="{{item.img}}" />
+          </div>
+          <div class="item-fields">
+            <div class="item-field-row item-name-row">        
+              <div class="item-name">{{item.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit" title="{{localize 'CY.Edit'}}"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="{{localize 'CY.Delete'}}"><i class="fas fa-trash"></i></a>
+              </div>
+            </div>          
+            <div class="item-field-row">
+              {{localize 'CY.SlotsUsed'}}: {{item.system.slotsUsed}} / {{item.system.slots}}
+            </div>
+          </div>        
+        </div>
+        {{#each item.system.slottedAppsData as |item id|}}
+        <div class="item item-row app-row slotted-app" data-item-id="{{item._id}}">
+          <div class="slotted-indent">  
+            <div class="ul"></div>
+            <div class="ur"></div>
+            <div class="ll"></div>
+            <div class="lr"></div>
+          </div>
+          <div class="icon">
+            <img src="{{item.img}}" />
+          </div>
+          <div class="item-fields">
+            <div class="item-field-row item-name-row">        
+              <div class="item-name">{{item.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-eject" title="{{localize 'CY.Eject'}}"><i class="fas fa-eject"></i></a>
+                <a class="item-control item-edit" title="{{localize 'CY.Edit'}}"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="{{localize 'CY.Delete'}}"><i class="fas fa-trash"></i></a>
+              </div>
+            </div>          
+            <div class="item-field-row">
+              <button type="button" class="sheet-button use-app-button">{{localize 'CY.Use'}}</button>
+            </div>
+          </div>        
+        </div>
+        {{/each}}  
+      </div>
+    {{/each}}
+  </div>  
+  <div class="apps item-list">
+    {{#each data.system.unslottedApps as |item id|}}
+      <div class="item item-row app-row unslotted-app" data-item-id="{{item._id}}">
+        <div class="icon">
+          <img src="{{item.img}}" />
+        </div>
+        <div class="item-fields">
+          <div class="item-field-row item-name-row">        
+            <div class="item-name">{{item.name}}</div>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="{{localize 'CY.Edit'}}"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete" title="{{localize 'CY.Delete'}}"><i class="fas fa-trash"></i></a>
+            </div>
+          </div>          
+          <div class="item-field-row">
+            {{localize 'CY.UnslottedAppHelp'}}
+          </div>
+        </div>        
+      </div>
+    {{/each}}
+  </div>  
+  <div class="widget field-row">
+    <div class="field-label">
     {{ localize 'CY.NanoFumbleOn'}}
     </div>
     <div class="field-value">
@@ -43,8 +121,8 @@
           <div class="item-field-row item-name-row">        
             <div class="item-name">{{item.name}}</div>
             <div class="item-controls">
-              <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
-              <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+              <a class="item-control item-edit" title="{{localize 'CY.Edit'}}"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete" title="{{localize 'CY.Delete'}}"><i class="fas fa-trash"></i></a>
             </div>
           </div>
           {{#if item.system.nanoId}}
@@ -53,35 +131,6 @@
           </div>
           {{/if}}
         </div>
-      </div>
-    {{/each}}
-  </div>
-  <div class="widget field-row">
-    <div class="field-label">
-    {{ localize 'CY.AppFumbleOn'}}
-    </div>
-    <div class="field-value">
-      <input class="field-input" type="number" name="system.appFumbleOn" value="{{data.system.appFumbleOn}}"/>
-    </div>
-  </div>    
-  <div class="apps">
-    {{#each data.system.apps as |item id|}}
-      <div class="item item-row app-row" data-item-id="{{item._id}}">
-        <div class="icon">
-          <img src="{{item.img}}" />
-        </div>
-        <div class="item-fields">
-          <div class="item-field-row item-name-row">        
-            <div class="item-name">{{item.name}}</div>
-            <div class="item-controls">
-              <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
-              <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
-            </div>
-          </div>          
-          <div class="item-field-row">
-            <button type="button" class="sheet-button use-app-button">{{localize 'CY.Use'}}</button>
-          </div>
-        </div>        
       </div>
     {{/each}}
   </div>

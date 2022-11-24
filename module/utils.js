@@ -56,6 +56,6 @@ export const articalize = (str) => {
   return `a ${str}`;
 };
 
-export const rollTotal = (formula) => {
-  return new Roll(formula).evaluate({async: false}).total;
+export const rollTotal = (formula, rollData={}) => {
+  return new Roll(formula, rollData).evaluate({async: false}).total;
 };
