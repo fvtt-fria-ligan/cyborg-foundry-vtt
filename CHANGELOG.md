@@ -1,3 +1,8 @@
+# 1.3.1
+
+- Fix burned hacker starting cyberdeck.
+- Fix cyberdeck/cyberdeck+ slot formulas.
+
 # 1.3.0
 
 - Add cyberdeck item type, sheet, and items.

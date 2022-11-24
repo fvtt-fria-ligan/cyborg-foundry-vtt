@@ -63,7 +63,6 @@ import { byName, rollTotal } from "../utils.js";
     super.prepareDerivedData();
     if (this.type === CY.itemTypes.app && this.parent) {
     } else if (this.type === CY.itemTypes.cyberdeck && this.parent) {
-      this.system.slottedAppsData = this.slottedApps();
       const rollData = this.parent.getRollData();
       if (this.system.slotFormula) {
         this.system.slots = rollTotal(this.system.slotFormula, rollData);
@@ -71,6 +70,7 @@ import { byName, rollTotal } from "../utils.js";
         this.system.slots = 1;
       }
       this.system.slotsUsed = this.slottedApps().length;
+      this.system.slottedAppsData = this.slottedApps();
     } else if (this.type === CY.itemTypes.nanoPower) {      
       this.system.infestationData = this.linkedInfestation();
     }
