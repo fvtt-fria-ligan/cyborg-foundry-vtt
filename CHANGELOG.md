@@ -6,6 +6,7 @@
 - Rename "postCreateMacro" field to "actorCreateMacro".
 - Add Macros compendium, and move CorpKiller and Gearhead macros there.
 - Implement app/cyberdeck slotting: decks appear on the apps & nano tab, drag apps to deck to slot, use eject button to eject.
+- Delete linked infestation when deleting nano.
 
 # 1.2.3
 
