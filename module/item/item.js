@@ -30,21 +30,21 @@ import { byName, rollTotal } from "../utils.js";
       }
     }  
   }
-  
-  linkedNano() {
-    if (this.system.nanoId) {
-      return this.findParentItem(this.system.nanoId);
-    }
-  }
 
+  /** @override */
+  async _onDelete(options, userId) {
+    if (this.type === CY.itemTypes.nanoPower) {
+      // delete any linked infestation
+      const infestation = this.linkedInfestation();
+      if (infestation) {
+        await infestation.delete();
+      }  
+    }
+    super._onDelete(options, userId);
+  }
+    
   linkedInfestation() {
-    if (this.system.infestationId) {
-      return this.findParentItem(this.system.infestationId);
-    }
-  }
-
-  findParentItem(id) {
-    return this.parent.items.filter(x => x.id === id).shift();
+    return this.parent?.items.find(item => item.system.nanoId === this._id);
   }
 
   async createLinkedInfestation() {
@@ -55,8 +55,7 @@ import { byName, rollTotal } from "../utils.js";
     }
     const data = dupeData(infestation);
     data.data.nanoId = this.id;
-    const docs = await this.parent.createEmbeddedDocuments("Item", [data]);
-    await this.update({["system.infestationId"]: docs[0].id})
+    await this.parent.createEmbeddedDocuments("Item", [data]);
   }
 
   /** @override */
@@ -72,16 +71,10 @@ import { byName, rollTotal } from "../utils.js";
         this.system.slots = 1;
       }
       this.system.slotsUsed = this.slottedApps().length;
-    } else if (this.type === CY.itemTypes.infestation && this.system.nanoId) {
-      this.system.nanoName = this.linkedNano()?.name;
-    } else if (this.type === CY.itemTypes.nanoPower && this.system.infestationId) {
-      this.system.infestationName = this.linkedInfestation()?.name;
+    } else if (this.type === CY.itemTypes.nanoPower) {      
+      this.system.infestationData = this.linkedInfestation();
     }
   }
-
-  // TODO:L figure out if we need this, or if using this.actor in prepareDerivedData() suffices
-  // prepareActorDerivedData(actor) {
-  // }
 
   slottedApps() {
     return this.parent?.items

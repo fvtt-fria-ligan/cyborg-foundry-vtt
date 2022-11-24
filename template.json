@@ -134,8 +134,7 @@
       "triggered": ""
     },
     "nanoPower": {
-      "description": "",
-      "infestationId": null
+      "description": ""
     },
     "weapon": {
       "templates": ["baseEquipment"],

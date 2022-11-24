@@ -1,7 +1,11 @@
 .nano-tab {
-  .app-row.slotted-app {
-    .slotted-indent {
-      display:grid;
+  .section-separator {
+    height: 20px;
+    width: 100%;
+  }
+  .nested-item {
+    .nested-indent {
+      display: grid;
       grid-template-columns: 50% 50%;
       grid-row: auto auto;
       flex: 0 0 75px;
@@ -14,9 +18,11 @@
       }
     }
   }
-  .app-row.slotted-app:last-child {
-    .lr {
-      border-left: none;
+  .nested-item:last-child {
+    .nested-indent {
+      .lr {
+        border-left: none;
+      }  
     }
   }
 }

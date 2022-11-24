@@ -491,20 +491,24 @@
   color: var(--cy-highlight-color);
 }
 
-.nano-tab .app-row.slotted-app .slotted-indent {
+.nano-tab .section-separator {
+  height: 20px;
+  width: 100%;
+}
+.nano-tab .nested-item .nested-indent {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-row: auto auto;
   flex: 0 0 75px;
 }
-.nano-tab .app-row.slotted-app .slotted-indent .ur {
+.nano-tab .nested-item .nested-indent .ur {
   border-bottom: 2px solid var(--cy-highlight-color);
   border-left: 2px solid var(--cy-highlight-color);
 }
-.nano-tab .app-row.slotted-app .slotted-indent .lr {
+.nano-tab .nested-item .nested-indent .lr {
   border-left: 2px solid var(--cy-highlight-color);
 }
-.nano-tab .app-row.slotted-app:last-child .lr {
+.nano-tab .nested-item:last-child .nested-indent .lr {
   border-left: none;
 }
 
