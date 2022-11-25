@@ -1,3 +1,7 @@
+# 1.3.2
+
+- Minimum 1 slot for cyberdecks.
+
 # 1.3.1
 
 - Fix burned hacker starting cyberdeck.

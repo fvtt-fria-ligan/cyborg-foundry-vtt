@@ -65,7 +65,7 @@ import { byName, rollTotal } from "../utils.js";
     } else if (this.type === CY.itemTypes.cyberdeck && this.parent) {
       const rollData = this.parent.getRollData();
       if (this.system.slotFormula) {
-        this.system.slots = rollTotal(this.system.slotFormula, rollData);
+        this.system.slots = Math.max(rollTotal(this.system.slotFormula, rollData), 1);
       } else {
         this.system.slots = 1;
       }
