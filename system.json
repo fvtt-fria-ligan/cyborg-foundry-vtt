@@ -118,10 +118,10 @@
       "type": "Item"
     },
     {
-      "name": "cyborg-docs",
-      "label": "CY_BORG Docs",
+      "name": "cyborg-readme",
+      "label": "CY_BORG",
       "system": "cy-borg",
-      "path": "./packs/cyborg-docs.db",
+      "path": "./packs/cyborg-readme.db",
       "type": "JournalEntry"
     },
     {

@@ -1,6 +1,9 @@
 # 1.3.2
 
 - Minimum 1 slot for cyberdecks.
+- Show common equipment fields on app edit sheet.
+- Set carry slots and quantity for all apps.
+- Don't count carry slots for slotted apps.
 
 # 1.3.1
 

@@ -93,7 +93,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
 
   get carryingSlots() {
     return this.items
-      .reduce((slots, item) => slots + (item.system.carrySlots ? (item.system.carrySlots * item.system.quantity) : 0), 0);
+      .reduce((slots, item) => slots + item.totalCarrySlots, 0);
   }
 
   get isEncumbered() {

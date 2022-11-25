@@ -42,7 +42,18 @@ import { byName, rollTotal } from "../utils.js";
     }
     super._onDelete(options, userId);
   }
-    
+  
+  get totalCarrySlots() {
+    if (this.type === CY.itemTypes.app && this.system.cyberdeckId) {
+      // slotted apps don't count
+      return 0;
+    }
+    if (this.system.carrySlots) {
+      return this.system.carrySlots * this.system.quantity;
+    }
+    return 0;
+  }
+
   linkedInfestation() {
     return this.parent?.items.find(item => item.system.nanoId === this._id);
   }
