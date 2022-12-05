@@ -302,7 +302,7 @@ const randomNpcPortrait = () => {
 };
 
 const randomCorpoPortrait = () => {
-  return randomPortrait("corpos", "corpo_", 16);
+  return randomPortrait("corpos", "corpo_", 37);
 };
 
 const randomPunkPortrait = () => {
