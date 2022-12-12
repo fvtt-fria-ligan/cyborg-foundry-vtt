@@ -282,7 +282,7 @@ const ads = [
   "[ WARNING - UNPLUGGING FROM BIOLINK COULD CAUSE CORRUPTED DNA - WARNING ]",
   "[ WARNING - LIMITED 50% OFF SALE AT :BIRDS OF PREY: ENDS IN 43 MINUTES 6 SECONDS - WARNING ]",
   "<b>PuppyPep Dogfood</b> High in protein and and intensely flavourful for the loved ones in your family, <b>Now with 57% more dog per bite! Arff!</b>",
-  "Worried about your children's future after your gone? Funeral prices too high? Sign up for a organ donation plan today! <i>Let nothing go to waste!</i>",
+  "Worried about your children's future after you're gone? Funeral prices too high? Sign up for a organ donation plan today! <i>Let nothing go to waste!</i>",
   "-/- - ./<br><b>Directive Response</b> <i>We offer a wide variety of defensive and offensive security solutions for thousands of discerning businesses. From Personal Security Detail to Aerial Strike Plans you are guaranteed effective, no compromise services</i> [<b>ELItech Pass Needed</b> to ~sync~]",
   "<b>MealTech</b> Safe Water -/- You can safely drink it. Simple and cheap.",
   // https://discord.com/channels/587764299834064933/926032415288336444/928310904708292608
