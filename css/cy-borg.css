@@ -1362,23 +1362,28 @@ a.inline-roll {
 }
 .cy.sheet.item .sheet-header .portrait-row {
   display: flex;
+  /* 292 */
   flex: 0 0 292px;
-}
-.cy.sheet.item .sheet-header .portrait-row .portrait {
-  align-items: center;
-  display: flex;
   margin-bottom: 5px;
 }
-.cy.sheet.item .sheet-header .portrait-row .portrait img.portrait {
+.cy.sheet.item .sheet-header .portrait-row div.portrait {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 0 0 292px;
+}
+.cy.sheet.item .sheet-header .portrait-row div.portrait img.portrait {
+  border: none;
   height: 292px;
   width: 292px;
 }
 .cy.sheet.item .sheet-header .portrait-row .item-type {
   align-items: center;
   display: flex;
-  flex: 0 0 88px;
+  flex: 1;
   font-family: "UAV OSD Sans Mono";
-  font-size: 50px;
+  font-size: 48px;
   justify-content: center;
   writing-mode: vertical-rl;
 }

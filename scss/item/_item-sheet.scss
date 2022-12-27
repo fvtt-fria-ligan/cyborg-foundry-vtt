@@ -9,22 +9,27 @@
 
     .portrait-row {
       display: flex;
-      flex: 0 0 $portrait-size;
-      .portrait {
+      /* 292 */
+      flex: 0 0 292px;
+      margin-bottom: $widget-margin;
+      div.portrait {
         align-items: center;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 0 0 292px;
         img.portrait {
-          height: $portrait-size;
-          width: $portrait-size;
+          border: none;
+          height: 292px;
+          width: 292px;
         }
-        margin-bottom: $widget-margin;
       }  
       .item-type {
         align-items: center;
         display: flex;
-        flex: 0 0 88px;
+        flex: 1;
         font-family: $name-font;
-        font-size: 50px;
+        font-size: 48px;
         justify-content: center;
         writing-mode: vertical-rl;
       }

@@ -1,3 +1,8 @@
+# 1.4.0
+
+- New weapon icons by Flintwyrm.
+- Fixed item sheet portrait CSS.
+
 # 1.3.2
 
 - Minimum 1 slot for cyberdecks.
