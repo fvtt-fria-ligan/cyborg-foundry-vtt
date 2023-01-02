@@ -2,7 +2,7 @@ import { CYActor } from "../actor/actor.js";
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { randomName } from "./names.js";
-import { lowerCaseFirst, rollTotal, upperCaseFirst, sample, articalize } from "../utils.js";
+import { articalize, lowerCaseFirst, randomIntFromInterval, rollTotal, sample, upperCaseFirst } from "../utils.js";
 
 import {
   documentFromPack,
@@ -34,7 +34,7 @@ export const createNpc = async () => {
 const randomNpc = async () => {
   const name = randomName();
   const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
-  const img = randomNpcPortrait();
+  const img = randomCharacterPortrait();
   const hp = rollTotal("1d8");
   const morale = rollTotal("1d8+4");
   const attack = npcAttack();
@@ -284,33 +284,16 @@ const simpleData = (e) => ({
   type: e.type,  
 });
 
-const randomPortrait = (dir, prefix, maxImgNum) => {
-  const imgNum = Math.floor(Math.random() * (maxImgNum + 1));
+const randomNumberedFile = (dir, prefix, maxImgNum, extension) => {
+  // pick a suffix from 1 to max
+  const imgNum = randomIntFromInterval(1, maxImgNum);
+  // format to 2 digits
   const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  return `systems/cy-borg/assets/images/portraits/${dir}/${prefix}${imgNumStr}.png`;
+  return `/${dir}/${prefix}${imgNumStr}.${extension}`;
 };
 
-const randomNpcPortrait = () => {
-  const rand = Math.random();
-  if (rand < 0.50) {
-    return randomCorpoPortrait();
-  } else if (rand < 0.70) {
-    return randomSecopPortrait();
-  } else {
-    return randomPunkPortrait();
-  }
-};
-
-const randomCorpoPortrait = () => {
-  return randomPortrait("corpos", "corpo_", 37);
-};
-
-const randomPunkPortrait = () => {
-  return randomPortrait("punks", "punk_", 96);
-};
-
-const randomSecopPortrait = () => {
-  return randomPortrait("secops", "secop_", 11);
+const randomCharacterPortrait = () => {
+  return randomNumberedFile("systems/cy-borg/assets/images/portraits/characters", "profile_", 7, "svg");  
 };
 
 const rollScvmForClass = async (clazz) => {
@@ -406,7 +389,7 @@ const rollScvmForClass = async (clazz) => {
   const glitches = rollTotal(clazz.system.glitches);
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
-  const img = randomPunkPortrait();
+  const img = randomCharacterPortrait();
   return {
     actorCreateMacro: clazz.system.actorCreateMacro,
     actorImg: img,
