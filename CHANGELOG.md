@@ -1,6 +1,6 @@
 # 1.5.0
 
-- Add Flintwyrm's pixel art portraits, and use them in character
+- Add Flintwyrm's pixel art portraits, and use them in character and npc generators.
 - Remove AI-generated portraits. (Images still separately available at https://github.com/mcglincy/cy-portraits and https://drive.google.com/drive/folders/1P0zhex3T8pu8v1kRbCpzTyw5a0gQHbJ-?usp=sharing) 
 
 # 1.4.0
