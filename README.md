@@ -2,13 +2,15 @@
 
 An unofficial, community-supported system for playing the CY_BORG ttrpg on Foundry VTT.
 
+  * Explicit permission to use a limited subset of [the CY_BORG book](https://freeleaguepublishing.com/en/store/?product_id=7856009150722) content graciously granted by 
+  the creators, Christian Sahlén and Johan Nohr.
   * Foundry coding by mcglintlock.
-  * UI design and pixel art by [Flintwyrm](https://flintwyrm.itch.io/).
-  * Explicit permission to use a limited subset of [the CY_BORG book](https://freeleaguepublishing.com/en/store/?product_id=7856009150722) content graciously granted by the creators, Christian Sahlén and Johan Nohr.
-  * Special thanks to VinceFox for extensive beta testing and bug reporting.
-  * Icon art from [Game-icons.net](https://game-icons.net/), used unchanged under [CC BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
+  * UI design by [Flintwyrm](https://flintwyrm.itch.io/).
+  * Pixel icon art © [Flintwyrm](https://flintwyrm.itch.io/) and used with artist permission.
+  * Other icon art from [Game-icons.net](https://game-icons.net/), used unchanged under [CC BY 3.0 license](https://creativecommons.org/licenses/by/3.0/).
   * Various sound effects from [freesound.org](https://freesound.org/) and used with minor modifications under Creative Commons licenses.
-
+  * Special thanks to VinceFox for extensive beta testing and bug reporting.
+  
 cyborg-foundry-vtt is an independent production by community contributors,
 and is not affiliated with Stockholm Kartell. It is published under the CY_BORG Third Party License. 
 https://morkborg.com/cb-license/
