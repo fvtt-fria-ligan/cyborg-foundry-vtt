@@ -1,3 +1,7 @@
+# 1.5.2
+
+- Fix drone assault rifle image path, for realsies.
+
 # 1.5.1
 
 - Fix image path for drone assault rifle.
