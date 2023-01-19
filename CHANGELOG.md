@@ -1,3 +1,7 @@
+# 1.5.1
+
+- Fix image path for drone assault rifle.
+
 # 1.5.0
 
 - Add Flintwyrm's pixel art portraits, and use them in character and npc generators.
