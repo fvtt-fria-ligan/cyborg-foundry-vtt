@@ -1,6 +1,8 @@
 # 1.5.1
 
 - Fix image path for drone assault rifle.
+- Fix missing translations in Make Punk and Allowed Classes dialogs.
+- Fix css formatting for Allowed Classes dialog.
 
 # 1.5.0
 

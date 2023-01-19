@@ -977,6 +977,33 @@
   color: var(--cy-foreground-color);
 }
 
+.allowed-scvm-classes-dialog .subtitle {
+  font-size: 125%;
+}
+.allowed-scvm-classes-dialog ul {
+  list-style-type: none;
+}
+.allowed-scvm-classes-dialog ul li {
+  margin: 0 0 10px 0;
+}
+.allowed-scvm-classes-dialog ul li input[type=checkbox] {
+  float: left;
+  height: 14px;
+  width: 14px;
+}
+.allowed-scvm-classes-dialog ul li .class-name {
+  display: block;
+  margin-left: 30px;
+  padding-top: 3px;
+  text-transform: capitalize;
+}
+.allowed-scvm-classes-dialog .button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
 .make-punk-dialog .section {
   margin: 10px 10px 20px 10px;
 }
@@ -986,21 +1013,18 @@
 .make-punk-dialog ul {
   list-style-type: none;
 }
-.make-punk-dialog li {
+.make-punk-dialog ul li {
   margin: 0 0 10px 0;
 }
-.make-punk-dialog li input[type=checkbox], .make-punk-dialog li input[type=radio] {
+.make-punk-dialog ul li input[type=checkbox] {
   float: left;
-}
-.make-punk-dialog li input[type=checkbox] {
   height: 14px;
   width: 14px;
 }
-.make-punk-dialog li label div {
+.make-punk-dialog ul li .class-name {
   display: block;
   margin-left: 30px;
-}
-.make-punk-dialog li .class-name {
+  padding-top: 3px;
   text-transform: capitalize;
 }
 .make-punk-dialog .button-row {
@@ -1009,10 +1033,6 @@
   justify-content: space-evenly;
   margin-bottom: 10px;
   margin-top: 10px;
-}
-
-.allowed-scvm-classes-dialog .class-name {
-  text-transform: capitalize;
 }
 
 .corpcomm-dialog {

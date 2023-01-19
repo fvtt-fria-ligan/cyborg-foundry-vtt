@@ -3,13 +3,15 @@
   class="custom-dialog allowed-scvm-classes-dialog"
 >
   <div class="section">
-    <div class="subtitle">{{localize "CY.AllowedScvmClassesSelect"}}</div>
+    <div class="subtitle">{{localize "CY.AllowedScvmClassesHint"}}</div>
     <ul>
       {{#each classes as |class|}}
       <li>
         <label>
-          <input name="{{class.name}}" type="checkbox" class="class-checkbox"
-          {{#if class.checked }}checked{{/if}} />
+          <div class="checkbox-wrapper">
+            <input name="{{class.name}}" type="checkbox" class="class-checkbox"
+            {{#if class.checked }}checked{{/if}} />  
+          </div>
           <div class="class-name">{{class.label}}</div>
         </label>
       </li>
