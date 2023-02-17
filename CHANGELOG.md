@@ -1,6 +1,6 @@
 # 1.5.3
 
-- Fix broken images in Corpkiller class compendium.
+- Fix broken images in Corpkiller compendiums.
 
 # 1.5.2
 
