@@ -1,3 +1,7 @@
+# 1.5.3
+
+- Fix broken images in Corpkiller class compendium.
+
 # 1.5.2
 
 - Fix drone assault rifle image path, for realsies.
