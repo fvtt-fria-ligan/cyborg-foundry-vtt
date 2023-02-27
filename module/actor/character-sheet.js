@@ -18,8 +18,10 @@ export class CYCharacterSheet extends CYActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "character"],
       template: "systems/cy-borg/templates/actor/character-sheet.html",
-      width: 411,
-      height: 900,
+      // width: 411,
+      // height: 900,
+      width: 900,
+      height: 600,
       tabs: [
         {
           navSelector: ".sheet-tabs",

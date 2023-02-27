@@ -41,6 +41,10 @@
   font-family: "QuanPixel 8px";
   src: url("../assets/fonts/quan.ttf") format("truetype");
 }
+@font-face {
+  font-family: "CY VTT test font 1.2";
+  src: url("../assets/fonts/CY_VTT_test_font_1.2.ttf") format("truetype");
+}
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
@@ -321,6 +325,40 @@
   text-align: right;
 }
 
+.cy.sheet.actor.character section.window-content .big-row {
+  display: flex;
+  height: 100%;
+}
+.cy.sheet.actor.character section.window-content .big-row .header-col {
+  flex: 0 0 395px;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col {
+  flex: 1;
+  height: 100%;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs {
+  background: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 5px solid var(--cy-foreground-color);
+  margin-right: 2px;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item.active {
+  background-color: var(--cy-window-background-color);
+  color: var(--cy-foreground-color);
+  border-bottom: none;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item .tab-label {
+  font-family: "CY VTT test font 1.2";
+  font-size: 6px;
+}
 .cy.sheet.actor.character section.window-content .sheet-header {
   margin-bottom: 4px;
   flex-direction: column;
@@ -381,6 +419,11 @@
   height: 28px;
   width: 28px;
 }
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a .ability-label {
+  color: var(--cy-background-color);
+  font-family: "CY VTT test font 1.2";
+  font-size: 6px;
+}
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
   flex: 1;
 }
@@ -403,6 +446,13 @@
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches {
   flex: 0 0 38px;
+}
+.cy.sheet.actor.character section.window-content .sheet-body {
+  border-left: 5px solid var(--cy-foreground-color);
+  border-right: 5px solid var(--cy-foreground-color);
+  height: 100%;
+  padding: 5px;
+  width: 100%;
 }
 
 .combat-tab .defend-row {

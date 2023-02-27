@@ -1,6 +1,44 @@
 
 .cy.sheet.actor.character {
   section.window-content {
+    .big-row {
+      display: flex;
+      height: 100%;
+      .header-col {
+        flex: 0 0 395px;
+      }
+      .tabs-col {
+        flex: 1;
+        height: 100%;
+        nav.sheet-tabs.tabs {
+          background: none;
+          // border-bottom: 5px solid var(--cy-foreground-color);
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          // hard-coded width in _sheet.scss
+          width: 100%;
+          a.item {
+            // border-bottom-width: 0;
+            // border-right-width: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom: 5px solid var(--cy-foreground-color);
+            margin-right: 2px;
+            &.active {
+              background-color: var(--cy-window-background-color);
+              color: var(--cy-foreground-color);
+              border-bottom: none;
+            }
+            .tab-label {
+              font-family: "CY VTT test font 1.2";              
+              font-size: 6px;
+            }
+          }
+        }
+      }
+    }
     .sheet-header {
       margin-bottom: 4px;;
       flex-direction: column;
@@ -66,6 +104,11 @@
                 height: 28px;
                 width: 28px;
               }  
+              .ability-label {
+                color: var(--cy-background-color);
+                font-family: "CY VTT test font 1.2";
+                font-size: 6px;
+              }
             }
           }
           .ability-score {
@@ -96,6 +139,13 @@
           flex: 0 0 $field-height;
         }
       }  
+    }
+    .sheet-body {
+      border-left: 5px solid var(--cy-foreground-color);
+      border-right: 5px solid var(--cy-foreground-color);
+      height: 100%;
+      padding: 5px;
+      width: 100%;
     }
   }
 }

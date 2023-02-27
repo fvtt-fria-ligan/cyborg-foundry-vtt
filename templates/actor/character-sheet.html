@@ -1,47 +1,68 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <div class="sheet-header">
-    <div class="header-cols">
-      <div class="left-col">
-        <div class="widget portrait">
-          <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
-        </div>
-        <div class="widget name">
-          <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
-        </div>
-        <div class="widget class-row item" data-item-id="{{data.system.class._id}}">
-          <div class="class-name">{{data.system.class.name}}</div>
-          <div class="item-controls">
-            <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+  <div class="big-row">
+    <div class="header-col">
+      <div class="sheet-header">
+        <div class="header-cols">
+          <div class="left-col">
+            <div class="widget portrait">
+              <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>          
+            </div>
+            <div class="widget name">
+              <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
+            </div>
+            <div class="widget class-row item" data-item-id="{{data.system.class._id}}">
+              <div class="class-name">{{data.system.class.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="right-col">
+            {{> systems/cy-borg/templates/actor/abilities.html}}
+            {{> systems/cy-borg/templates/actor/hit-points.html}}
           </div>
         </div>
-      </div>
-      <div class="right-col">
-        {{> systems/cy-borg/templates/actor/abilities.html}}
-        {{> systems/cy-borg/templates/actor/hit-points.html}}
-      </div>
+        <div class="header-button-row">
+          <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
+          <button type="button" class="sheet-button battered-button">{{ localize "CY.Battered" }}</button>
+          <button type="button" class="sheet-button level-up-button">{{ localize "CY.LevelUp" }}</button>
+          <button type="button" class="sheet-button reboot-button">{{ localize "CY.Reboot" }}</button>
+        </div>
+      </div>  
     </div>
-    <div class="header-button-row">
-      <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
-      <button type="button" class="sheet-button battered-button">{{ localize "CY.Battered" }}</button>
-      <button type="button" class="sheet-button level-up-button">{{ localize "CY.LevelUp" }}</button>
-      <button type="button" class="sheet-button reboot-button">{{ localize "CY.Reboot" }}</button>
+    <div class="tabs-col">
+      <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="dossier">
+          <img class="tab-icon" title="{{localize 'CY.Dossier'}}" src="/systems/cy-borg/assets/images/ui/tab_dossier.png" />
+          <div class="tab-label">{{localize 'CY.Dossier'}}</div>
+        </a>
+        <a class="item" data-tab="combat">
+          <img class="tab-icon" title="{{localize 'CY.Combat'}}" src="/systems/cy-borg/assets/images/ui/tab_combat.png" />
+          <div class="tab-label">{{localize 'CY.Combat'}}</div>
+        </a>
+        <a class="item" data-tab="feats">
+          <img class="tab-icon" title="{{localize 'CY.Feats'}}" src="/systems/cy-borg/assets/images/ui/tab_feats.png" />
+          <div class="tab-label">{{localize 'CY.Feats'}}</div>          
+        </a>
+        <a class="item" data-tab="nano">
+          <img class="tab-icon" title="{{localize 'CY.AppsAndNano'}}" src="/systems/cy-borg/assets/images/ui/tab_nano.png" />
+          <div class="tab-label">{{localize 'CY.AppsAndNano'}}</div>          
+        </a>
+        <a class="item" data-tab="equipment">
+          <img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy-borg/assets/images/ui/tab_equipment.png" />
+          <div class="tab-label">{{localize 'CY.Equipment'}}</div>          
+        </a>
+      </nav>
+      
+      <div class="sheet-body">
+        {{> systems/cy-borg/templates/actor/dossier-tab.html}}
+        {{> systems/cy-borg/templates/actor/combat-tab.html}}
+        {{> systems/cy-borg/templates/actor/feats-tab.html}}
+        {{> systems/cy-borg/templates/actor/nano-tab.html}}
+        {{> systems/cy-borg/templates/actor/equipment-tab.html}}
+      </div>      
     </div>
   </div>
 
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="dossier"><img class="tab-icon" title="{{localize 'CY.Dossier'}}" src="/systems/cy-borg/assets/images/ui/tab_dossier.png" /></a>
-    <a class="item" data-tab="combat"><img class="tab-icon" title="{{localize 'CY.Combat'}}" src="/systems/cy-borg/assets/images/ui/tab_combat.png" /></a>
-    <a class="item" data-tab="feats"><img class="tab-icon" title="{{localize 'CY.Feats'}}" src="/systems/cy-borg/assets/images/ui/tab_feats.png" /></a>
-    <a class="item" data-tab="nano"><img class="tab-icon" title="{{localize 'CY.AppsAndNano'}}" src="/systems/cy-borg/assets/images/ui/tab_nano.png" /></a>
-    <a class="item" data-tab="equipment"><img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy-borg/assets/images/ui/tab_equipment.png" /></a>
-  </nav>
-  
-  <div class="sheet-body">
-    {{> systems/cy-borg/templates/actor/dossier-tab.html}}
-    {{> systems/cy-borg/templates/actor/combat-tab.html}}
-    {{> systems/cy-borg/templates/actor/feats-tab.html}}
-    {{> systems/cy-borg/templates/actor/nano-tab.html}}
-    {{> systems/cy-borg/templates/actor/equipment-tab.html}}
-  </div>  
 </form>
 
