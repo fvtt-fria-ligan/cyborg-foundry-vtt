@@ -1,4 +1,7 @@
 
+$tab-height: 30px;
+$border-width: 4px;
+
 .cy.sheet.actor.character {
   section.window-content {
     .big-row {
@@ -12,11 +15,14 @@
         height: 100%;
         nav.sheet-tabs.tabs {
           background: none;
-          // border-bottom: 5px solid var(--cy-foreground-color);
+          border-bottom: $border-width solid var(--cy-foreground-color);
           border-bottom-right-radius: 0;
           border-bottom-left-radius: 0;
-          margin-top: 0px;
-          margin-bottom: 0px;
+          margin: 0px;
+          padding-left: 10px;
+          padding-right: 10px;
+          // margin-top: 0px;
+          // margin-bottom: 0px;
           // hard-coded width in _sheet.scss
           width: 100%;
           a.item {
@@ -24,16 +30,28 @@
             // border-right-width: 0;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
-            border-bottom: 5px solid var(--cy-foreground-color);
+            // border-bottom: 5px solid var(--cy-foreground-color);
+            border-bottom: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: $tab-height;
             margin-right: 2px;
+            opacity: 0.5;
+            &:last-child {
+              margin-right: 0px;
+            }
             &.active {
               background-color: var(--cy-window-background-color);
               color: var(--cy-foreground-color);
               border-bottom: none;
+              opacity: 1.0;
+              position: relative;
+              top: $border-width;
             }
             .tab-label {
               font-family: "CY VTT test font 1.2";              
-              font-size: 6px;
+              font-size: 8px;
             }
           }
         }
@@ -141,10 +159,11 @@
       }  
     }
     .sheet-body {
-      border-left: 5px solid var(--cy-foreground-color);
-      border-right: 5px solid var(--cy-foreground-color);
+      border-left: $border-width solid var(--cy-foreground-color);
+      border-right: $border-width solid var(--cy-foreground-color);
       height: 100%;
-      padding: 5px;
+      padding: $border-width;
+      padding-top: 20px;
       width: 100%;
     }
   }

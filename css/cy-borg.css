@@ -338,26 +338,39 @@
 }
 .cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs {
   background: none;
+  border-bottom: 4px solid var(--cy-foreground-color);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 100%;
 }
 .cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom: 5px solid var(--cy-foreground-color);
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30px;
   margin-right: 2px;
+  opacity: 0.5;
+}
+.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item:last-child {
+  margin-right: 0px;
 }
 .cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item.active {
   background-color: var(--cy-window-background-color);
   color: var(--cy-foreground-color);
   border-bottom: none;
+  opacity: 1;
+  position: relative;
+  top: 4px;
 }
 .cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item .tab-label {
   font-family: "CY VTT test font 1.2";
-  font-size: 6px;
+  font-size: 8px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header {
   margin-bottom: 4px;
@@ -448,10 +461,11 @@
   flex: 0 0 38px;
 }
 .cy.sheet.actor.character section.window-content .sheet-body {
-  border-left: 5px solid var(--cy-foreground-color);
-  border-right: 5px solid var(--cy-foreground-color);
+  border-left: 4px solid var(--cy-foreground-color);
+  border-right: 4px solid var(--cy-foreground-color);
   height: 100%;
-  padding: 5px;
+  padding: 4px;
+  padding-top: 20px;
   width: 100%;
 }
 

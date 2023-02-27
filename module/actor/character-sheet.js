@@ -20,7 +20,7 @@ export class CYCharacterSheet extends CYActorSheet {
       template: "systems/cy-borg/templates/actor/character-sheet.html",
       // width: 411,
       // height: 900,
-      width: 900,
+      width: 1000,
       height: 600,
       tabs: [
         {
