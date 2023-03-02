@@ -21,7 +21,7 @@ export class CYCharacterSheet extends CYActorSheet {
       // width: 411,
       // height: 900,
       width: 1000,
-      height: 600,
+      height: 520,
       tabs: [
         {
           navSelector: ".sheet-tabs",

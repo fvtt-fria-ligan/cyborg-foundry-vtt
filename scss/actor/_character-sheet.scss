@@ -4,11 +4,40 @@ $border-width: 4px;
 
 .cy.sheet.actor.character {
   section.window-content {
+
+    // TODO: clean up padding for the whole sheet and columns etc
+    // seems like it was already set for left/top, but not right? 
+    // maybe for scroll-bar futzing
+    padding-right: 10px;
+
+    overflow: hidden;
+    .widget-row {
+      display: flex;
+      // TODO: fix needing to have right padding, seems wrong/dumb
+      // padding-right: 10px;
+      .widget {
+        flex: 1;
+        margin-right: 4px;
+      }
+      .widget:last-child {
+        margin-right: 0px;
+      }
+    }
+    .cols {
+      display: flex;
+      .col {
+        flex: 1;
+      }
+      .spacer-col {
+        flex: 0 0 20px;
+      }
+    }
     .big-row {
       display: flex;
       height: 100%;
       .header-col {
         flex: 0 0 395px;
+        padding-right: 8px;
       }
       .tabs-col {
         flex: 1;
@@ -41,6 +70,9 @@ $border-width: 4px;
             &:last-child {
               margin-right: 0px;
             }
+            &:hover {
+              opacity: 1.0;
+            }
             &.active {
               background-color: var(--cy-window-background-color);
               color: var(--cy-foreground-color);
@@ -58,9 +90,9 @@ $border-width: 4px;
       }
     }
     .sheet-header {
-      margin-bottom: 4px;;
+      margin-bottom: 4px;
       flex-direction: column;
-      height: 410px;
+      height: 450px;
       .header-cols {
         display: flex;
         flex: 1;
@@ -69,7 +101,8 @@ $border-width: 4px;
         display: flex;
         flex: 0 0 20px;
         justify-content: space-between;
-        width: 385px;
+        // margin-bottom: $border-width;
+        width: 100%;
       }
       .left-col {
         .class-row {
@@ -92,6 +125,10 @@ $border-width: 4px;
         }
       }
       .right-col {
+        // flex: 0 0 60px;
+        width: 90px;
+        // flex: 1;
+        // padding-right: 5px;
         .abilities-wrapper {
           justify-content: space-between;
           display: flex;
@@ -114,9 +151,6 @@ $border-width: 4px;
               display: flex;
               flex-direction: column;
               justify-content: center;
-              // text-align: center;
-              // height: 29.5px;
-              // width: 29.5px;
               img {
                 border: none;
                 height: 28px;
@@ -156,15 +190,28 @@ $border-width: 4px;
         .glitches {
           flex: 0 0 $field-height;
         }
+
       }  
     }
     .sheet-body {
+      overflow: auto;
       border-left: $border-width solid var(--cy-foreground-color);
       border-right: $border-width solid var(--cy-foreground-color);
-      height: 100%;
+      border-bottom: $border-width solid var(--cy-foreground-color);
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      // height: 100%;
+      // height: calc(96% - 10px);
+      // height: 94%;
+      height: calc(100% - 29px);
+      margin-bottom: 10px;
       padding: $border-width;
       padding-top: 20px;
       width: 100%;
+
+      .item.item-row {
+        // overflow: hidden;
+      }
     }
   }
 }

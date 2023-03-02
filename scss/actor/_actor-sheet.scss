@@ -44,11 +44,11 @@
         }        
         .hit-points {
           display: grid;
-          flex: 0 0 88px;
+          flex: 0 0 90px;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr 1fr;
           margin-bottom: $widget-margin;
-          width: 88px;
+          width: 90px;
           .hit-points-ur,
           .hit-points-ll {              
             background-image: -webkit-linear-gradient(135deg, var(--cy-foreground-color) 50%, var(--cy-background-color) 50%);              
