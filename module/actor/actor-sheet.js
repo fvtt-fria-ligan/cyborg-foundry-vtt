@@ -48,6 +48,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".item-delete").click(this._onItemDelete.bind(this));
     html.find(".item-qty-plus").click(this._onItemAddQuantity.bind(this));
     html.find(".item-qty-minus").click(this._onItemSubtractQuantity.bind(this));
+    html.find(".item-equip").click(this._onItemEquip.bind(this));
     html.find(".add-item-button").on("click", this._addItem.bind(this));
     html.find(".initiative-button").on("click", this._initiative.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
@@ -74,6 +75,22 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     const row = $(event.currentTarget).parents(".item");
     this.actor.deleteEmbeddedDocuments("Item", [row.data("itemId")]);
     row.slideUp(200, () => this.render(false));
+  }
+
+  _itemFromEvent(event) {
+    const anchor = $(event.currentTarget);
+    const li = anchor.parents(".item");
+    const itemId = li.data("itemId");
+    const item = this.actor.items.get(itemId);    
+    return item;
+  }
+
+  _onItemEquip(event) {
+    const item = this._itemFromEvent(event);
+    if (item) {
+      uiClick();
+      return item.update({ ["system.equipped"]: !item.system.equipped});
+    }
   }
 
   async _addItem(event) {

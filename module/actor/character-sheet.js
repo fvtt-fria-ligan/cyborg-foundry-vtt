@@ -21,7 +21,7 @@ export class CYCharacterSheet extends CYActorSheet {
       // width: 411,
       // height: 900,
       width: 1000,
-      height: 520,
+      height: 582,
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -37,13 +37,19 @@ export class CYCharacterSheet extends CYActorSheet {
   getData() {
     const superData = super.getData();
     superData.data.system.armor = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.armor)
+      .filter(item => item.type === CONFIG.CY.itemTypes.armor && item.system.equipped)
       .sort(byName);
     superData.data.system.equipment = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.equipment)
+      .filter(item => {
+        return (
+          item.type === CONFIG.CY.itemTypes.equipment || 
+          (item.type === CONFIG.CY.itemTypes.armor && !item.system.equipped) || 
+          (item.type === CONFIG.CY.itemTypes.weapon && !item.system.equipped) || 
+          (item.system.cybertech && !item.system.equipped));
+      })
       .sort(byName);
     superData.data.system.weapons = superData.data.items
-      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon)
+      .filter((item) => item.type === CONFIG.CY.itemTypes.weapon && item.system.equipped)
       .sort(byName);
     superData.data.system.class = superData.data.items
       .filter(item => item.type === CONFIG.CY.itemTypes.class)
@@ -64,8 +70,13 @@ export class CYCharacterSheet extends CYActorSheet {
       .filter(item => item.type === CONFIG.CY.itemTypes.app)
       .filter(item => !item.system.cyberdeckId)
       .sort(byName);
-
     superData.data.system.encumberedClass = this.actor.isEncumbered ? "encumbered": "";
+    // TODO: move this to prepareItems?
+    superData.data.system.equipment.forEach(item => {
+      item.system.equippable = (
+        item.type == CONFIG.CY.itemTypes.armor || 
+        item.type == CONFIG.CY.itemTypes.weapon || 
+        item.cybertech)});
     return superData;
   }
 

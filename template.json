@@ -74,6 +74,7 @@
       "baseEquipment": {
         "carrySlots": 1,
         "description": "",
+        "equipped": false,
         "illegal": false,
         "price": 0,
         "quantity": 1

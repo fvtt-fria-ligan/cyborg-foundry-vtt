@@ -208,6 +208,7 @@
   "CY.Test": "Test",
   "CY.Thrown": "Thrown",
   "CY.Tier": "Tier",
+  "CY.ToggleEquipped": "Toggle Equipped",
   "CY.Toughness": "Toughness",
   "CY.ToughnessAbbrev": "TOU",
   "CY.Triggered": "triggered",
@@ -231,5 +232,6 @@
   "CY.Weapon": "Weapon",
   "CY.WeaponTable": "Weapon Table",
   "CY.WeaponType": "Weapon Type",
-  "CY.YouAreHit": "You are Hit"
+  "CY.YouAreHit": "You are Hit",
+  "CY.YouHaveNoFeats": "You have no feats."
 }

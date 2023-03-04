@@ -99,10 +99,15 @@ $border-width: 4px;
       }
       .header-button-row {
         display: flex;
-        flex: 0 0 20px;
+        // flex: 0 0 20px;
+        flex: 0 0 36px;
         justify-content: space-between;
-        // margin-bottom: $border-width;
+        margin-bottom: $border-width;
         width: 100%;
+        button {
+          height: 100%;
+          font-size: 8px;
+        }
       }
       .left-col {
         .class-row {
@@ -130,16 +135,17 @@ $border-width: 4px;
         // flex: 1;
         // padding-right: 5px;
         .abilities-wrapper {
-          justify-content: space-between;
+          // justify-content: space-between;
           display: flex;
-          flex: 0 0 292px;
+          // flex: 0 0 292px;
+          flex: 1;
           flex-direction: column;
-          margin-bottom: $widget-margin;
+          // margin-bottom: $widget-margin;
         }
         .ability-row {
           display: flex;
           flex: 0 0 37px;
-          // margin-bottom: $widget-margin;
+          margin-bottom: $widget-margin;
           .ability-icon {
             align-items: center;
             background-color: var(--cy-foreground-color);
@@ -171,27 +177,51 @@ $border-width: 4px;
             }
           }
         }
-        .credits-row {
+        .glitches-row {
           display: flex;
+          flex: 1;
           flex-direction: column;
-          .credits-label {
+          .glitches-label {
             background-color: var(--cy-foreground-color);
             color: black;
+            flex: 0 0 24px;
+            // font-family: "CY VTT test font 1.2";            
+            // font-size: 6px;
+            font-size: 16px;
+            // letter-spacing: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // line-height: 12px;
             text-align: center;
-            font-size: 8px;
+            text-transform: uppercase;
           }
-          .credits-input {
-            input[type="text"] {
-              font-size: 4px;
-              height: 10px;  
+          .glitches-input {
+            display: flex;
+            flex: 1;
+            .slash {
+              align-items: center;
+              display: flex;
+              // flex: 0 0 4px;
+              flex-direction: column;
+              font-size: 20px;
+              justify-content: center;
+            }
+            input[type="number"] {
+              border: none;
+              // flex: 1;
+              // font-size: 4px;
+              // height: 10px;  
             }
           }
         }
-        .glitches {
-          flex: 0 0 $field-height;
-        }
-
       }  
+      .owed-to-row {
+        .field-label {
+          flex: 0 0 92px;
+          padding-right: 5px;
+        }
+      }
     }
     .sheet-body {
       overflow: auto;
@@ -203,7 +233,7 @@ $border-width: 4px;
       // height: 100%;
       // height: calc(96% - 10px);
       // height: 94%;
-      height: calc(100% - 29px);
+      height: calc(100% - 33px);
       margin-bottom: 10px;
       padding: $border-width;
       padding-top: 20px;

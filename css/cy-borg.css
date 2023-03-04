@@ -327,6 +327,9 @@
   flex: 0 0 80px;
   text-align: right;
 }
+.cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row .item-controls .item-equip.unequipped {
+  opacity: 0.5;
+}
 
 .cy.sheet.actor.character section.window-content {
   padding-right: 10px;
@@ -413,9 +416,14 @@
 }
 .cy.sheet.actor.character section.window-content .sheet-header .header-button-row {
   display: flex;
-  flex: 0 0 20px;
+  flex: 0 0 36px;
   justify-content: space-between;
+  margin-bottom: 4px;
   width: 100%;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .header-button-row button {
+  height: 100%;
+  font-size: 8px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row {
   align-items: center;
@@ -437,15 +445,14 @@
   width: 90px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .abilities-wrapper {
-  justify-content: space-between;
   display: flex;
-  flex: 0 0 292px;
+  flex: 1;
   flex-direction: column;
-  margin-bottom: 5px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row {
   display: flex;
   flex: 0 0 37px;
+  margin-bottom: 5px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon {
   align-items: center;
@@ -476,22 +483,39 @@
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score input[type=number] {
   font-size: 20px;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row {
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row {
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row .credits-label {
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-label {
   background-color: var(--cy-foreground-color);
   color: black;
+  flex: 0 0 24px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  font-size: 8px;
+  text-transform: uppercase;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .right-col .credits-row .credits-input input[type=text] {
-  font-size: 4px;
-  height: 10px;
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-input {
+  display: flex;
+  flex: 1;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches {
-  flex: 0 0 38px;
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-input .slash {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  justify-content: center;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-input input[type=number] {
+  border: none;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .owed-to-row .field-label {
+  flex: 0 0 92px;
+  padding-right: 5px;
 }
 .cy.sheet.actor.character section.window-content .sheet-body {
   overflow: auto;
@@ -500,7 +524,7 @@
   border-bottom: 4px solid var(--cy-foreground-color);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  height: calc(100% - 29px);
+  height: calc(100% - 33px);
   margin-bottom: 10px;
   padding: 4px;
   padding-top: 20px;
@@ -590,6 +614,11 @@
 }
 .equipment-tab .encumbered {
   color: var(--cy-highlight-color);
+}
+
+.feats-tab .no-feats {
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .nano-tab .section-separator {

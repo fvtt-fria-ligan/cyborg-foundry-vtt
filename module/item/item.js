@@ -48,6 +48,10 @@ import { byName, rollTotal } from "../utils.js";
       // slotted apps don't count
       return 0;
     }
+    if (this.system.equipped) {
+      // equipped items don't count
+      return 0;
+    }
     if (this.system.carrySlots) {
       return this.system.carrySlots * this.system.quantity;
     }
