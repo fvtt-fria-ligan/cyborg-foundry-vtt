@@ -3,10 +3,13 @@
   --cy-accent-color: #71C5C9;
   --cy-background-color: #1C1E23;
   --cy-border-blur: 5px;
+  --cy-button-foreground-color: #F800F8;
+  --cy-button-background-color: #F800F833;
   --cy-cybertext-color: #F8F800;
   --cy-disabled-color: gray;
   --cy-foreground-color: #F6EDDB;
   --cy-highlight-color: #F800F8;
+  --cy-sheet-shadow: none;
   --cy-window-background-color: #333333;
 }
 
@@ -49,6 +52,7 @@
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
+  box-shadow: var(--cy-sheet-shadow);
 }
 .cy.sheet header.window-header {
   border-bottom: 2px solid var(--cy-accent-color);
@@ -144,10 +148,10 @@
   justify-content: space-between;
 }
 .cy.sheet section.window-content .sheet-button {
-  background-color: rgba(249, 0, 248, 0.2);
+  background-color: var(--cy-button-background-color);
   border: 2px solid var(--cy-highlight-color);
   border-radius: 0;
-  color: var(--cy-highlight-color);
+  color: var(--cy-button-foreground-color);
   font-family: "CY VTT test font 1.2";
   font-size: 7px;
   height: 20px;
@@ -643,6 +647,9 @@
   min-height: 60px;
   grid-template-columns: 1fr 1fr;
   row-gap: 8px;
+}
+.equipment-tab .equipment.item-list {
+  flex: 1;
 }
 .equipment-tab .cybertech-title {
   background: repeating-linear-gradient(-45deg, var(--cy-foreground-color), var(--cy-foreground-color) 10px, var(--cy-background-color) 10px, var(--cy-background-color) 20px);

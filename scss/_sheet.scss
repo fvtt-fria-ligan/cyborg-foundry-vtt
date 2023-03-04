@@ -1,8 +1,7 @@
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
-  // TODO: set with color scheme vars
-  // box-shadow: 0px 0px 15px 5px var(--cy-accent-color);
+  box-shadow: var(--cy-sheet-shadow);
 
   header.window-header {
     border-bottom: 2px solid var(--cy-accent-color);
@@ -108,10 +107,11 @@
   
     .sheet-button {
       // TODO: make button bg and color a color scheme variable
-      background-color: rgba(249, 0, 248, 0.2);
+      // background-color: rgba(249, 0, 248, 0.2);
+      background-color: var(--cy-button-background-color);
       border: 2px solid var(--cy-highlight-color);
       border-radius: 0;
-      color:  var(--cy-highlight-color);
+      color:  var(--cy-button-foreground-color);
       font-family: $pixel-font;
       font-size: 7px;
       height: 20px;
