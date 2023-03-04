@@ -7,7 +7,7 @@
   </div>
   <div class="item-list weapons">
     {{#each data.system.weapons as |item id|}}
-      <div class="item item-row weapon-row" data-item-id="{{item._id}}">
+      <div class="item item-row weapon-row {{item.system.cyberClass}}" data-item-id="{{item._id}}">
         <div class="icon weapon-icon">
           <img src="{{item.img}}" />
         </div>
@@ -22,9 +22,8 @@
           </div>          
           <div class="item-field-row">
             {{item.system.damage}} {{item.system.weaponType}}
-          </div>
-          <div class="item-field-row">
-              <button type="button" class="sheet-button attack-button">{{localize 'CY.Attack'}}</button>
+            &nbsp;
+            <button type="button" class="sheet-button attack-button">{{localize 'CY.Attack'}}</button>
             {{#if item.system.usesAmmo}}
               <button type="button" class="sheet-button count-bullets-button">{{localize 'CY.CountBullets'}}</i></a>
             {{/if}}
@@ -35,7 +34,7 @@
   </div>
   <div class="item-list armor">
     {{#each data.system.armor as |item id|}}
-      <div class="item item-row armor-row" data-item-id="{{item._id}}">
+      <div class="item item-row armor-row {{item.system.cyberClass}}" data-item-id="{{item._id}}">
         <div class="icon">
           <img src="{{item.img}}" />
         </div>

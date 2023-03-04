@@ -20,4 +20,42 @@
       // padding-right: 10px;
     }
   }
+  .equipment-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    width: 100%;
+    overflow: hidden;
+
+  }
+  .equipment.item-list, .cybertech.item-list {
+    overflow: auto;
+    display: grid;
+    column-gap: 20px;
+    flex: 1;
+    grid-template-columns: 1fr 1fr;
+    row-gap: calc($border-width * 2);
+  }
+  .cybertech-title {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--cy-foreground-color),
+      var(--cy-foreground-color) 10px,
+      var(--cy-background-color) 10px,
+      var(--cy-background-color) 20px
+    );      
+    font-family: $pixel-font;
+    font-size: 10px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    span {
+      background-color: var(--cy-background-color);
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 4px;
+      padding-top: 4px;
+    }
+  }
 }

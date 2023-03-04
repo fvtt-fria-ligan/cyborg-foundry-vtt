@@ -82,7 +82,7 @@ $border-width: 4px;
               top: $border-width;
             }
             .tab-label {
-              font-family: "CY VTT test font 1.2";              
+              font-family: $pixel-font;              
               font-size: 8px;
             }
           }
@@ -116,10 +116,8 @@ $border-width: 4px;
           margin-bottom: $widget-margin;
           .class-name {
             flex: 1;
-            // font-family: $sheet-font;
             margin-left: 5px;
             text-align: center;
-            // text-transform: uppercase;
           }
           .item-controls {
             display: flex;
@@ -163,7 +161,7 @@ $border-width: 4px;
               }  
               .ability-label {
                 color: var(--cy-background-color);
-                font-family: "CY VTT test font 1.2";
+                font-family: $pixel-font;
                 font-size: 6px;
               }
             }

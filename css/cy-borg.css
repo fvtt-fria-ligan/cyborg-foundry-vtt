@@ -296,9 +296,10 @@
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row {
   display: flex;
+  flex: 1;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .icon {
-  flex: 0 0 75px;
+  flex: 0 0 50px;
   margin-right: 5px;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .icon:hover {
@@ -307,13 +308,14 @@
 .cy.sheet.actor section.window-content .sheet-body .item-row .icon img {
   border: 4px solid var(--cy-foreground-color);
   border-radius: 5px;
-  height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields {
   display: flex;
   flex: 1;
   flex-direction: column;
+  font-size: 14px;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-field-row {
   display: flex;
@@ -331,7 +333,7 @@
   flex: 1;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row .item-controls {
-  flex: 0 0 80px;
+  padding-left: 5px;
   text-align: right;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row .item-fields .item-name-row .item-controls .item-equip.unequipped {
@@ -627,15 +629,53 @@
   flex: 1;
   padding-left: 5px;
 }
+.equipment-tab .equipment-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  width: 100%;
+  overflow: hidden;
+}
+.equipment-tab .equipment.item-list, .equipment-tab .cybertech.item-list {
+  overflow: auto;
+  display: grid;
+  column-gap: 20px;
+  flex: 1;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+}
+.equipment-tab .cybertech-title {
+  background: repeating-linear-gradient(-45deg, var(--cy-foreground-color), var(--cy-foreground-color) 10px, var(--cy-background-color) 10px, var(--cy-background-color) 20px);
+  font-family: "CY VTT test font 1.2";
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+.equipment-tab .cybertech-title span {
+  background-color: var(--cy-background-color);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
 
 .feats-tab .no-feats {
   margin-left: 10px;
   margin-top: 20px;
 }
 
-.nano-tab .section-separator {
-  height: 20px;
-  width: 100%;
+.nano-tab .cols {
+  height: 100%;
+}
+.nano-tab .cols .col {
+  height: 100%;
+  overflow: hidden;
+}
+.nano-tab .cols .col .item-list {
+  height: calc(100% - 44px);
+  overflow: auto;
 }
 .nano-tab .nested-item .nested-indent {
   display: grid;
@@ -643,15 +683,19 @@
   grid-row: auto auto;
   flex: 0 0 20px;
 }
-.nano-tab .nested-item .nested-indent .ur {
+.nano-tab .nested-item.app-row .ur {
   border-bottom: 2px solid var(--cy-highlight-color);
   border-left: 2px solid var(--cy-highlight-color);
 }
-.nano-tab .nested-item .nested-indent .lr {
+.nano-tab .nested-item.app-row .lr {
   border-left: 2px solid var(--cy-highlight-color);
 }
-.nano-tab .nested-item:last-child .nested-indent .lr {
+.nano-tab .nested-item.app-row:last-child .nested-indent .lr {
   border-left: none;
+}
+.nano-tab .nested-item.infestation-row .ur {
+  border-bottom: 2px solid var(--cy-highlight-color);
+  border-left: 2px solid var(--cy-highlight-color);
 }
 
 .cy.sheet.actor.npc section.window-content .sheet-header {
