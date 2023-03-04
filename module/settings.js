@@ -1,3 +1,4 @@
+import { colorChoices } from "./colors.js";
 import { CY } from "./config.js";
 import { AllowedScvmClassesDialog } from "./generator/allowed-scvm-classes-dialog.js";
 
@@ -10,19 +11,7 @@ export const registerSystemSettings = () => {
     config: true,
     default: "flintwyrm",
     type: String,
-    choices: {
-      amber: "CY.ColorSchemeAmber",
-      c64: "CY.ColorSchemeC64",
-      chalk: "CY.ColorSchemeChalk",
-      defcon27: "CY.ColorSchemeDefcon27",
-      flintwyrm: "CY.ColorSchemeFlintwyrm",
-      greenHell: "CY.ColorSchemeGreenHell",
-      mork: "CY.ColorSchemeMork",
-      solarizedDark: "CY.ColorSchemeSolarizedDark",
-      solarizedLight: "CY.ColorSchemeSolarizedLight",
-      p0w3rsh3ll: "CY.ColorSchemeP0w3rsh3ll",
-      virtuaBoi: "CY.ColorSchemeVirtuaBoi",
-    },
+    choices: colorChoices,
     onChange: () => {
       location.reload();
     },

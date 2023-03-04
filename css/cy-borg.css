@@ -49,7 +49,6 @@
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
-  box-shadow: 0px 0px 15px 5px var(--cy-accent-color);
 }
 .cy.sheet header.window-header {
   border-bottom: 2px solid var(--cy-accent-color);
@@ -161,6 +160,14 @@
 .cy.sheet section.window-content .sheet-button:hover {
   background-color: var(--cy-highlight-color);
   color: var(--cy-foreground-color);
+}
+.cy.sheet section.window-content .sheet-button.medium-button {
+  font-size: 8px;
+  height: 30px;
+}
+.cy.sheet section.window-content .sheet-button.big-button {
+  font-size: 8px;
+  height: 36px;
 }
 .cy.sheet section.window-content .field-row {
   display: flex;
@@ -421,10 +428,6 @@
   margin-bottom: 4px;
   width: 100%;
 }
-.cy.sheet.actor.character section.window-content .sheet-header .header-button-row button {
-  height: 100%;
-  font-size: 8px;
-}
 .cy.sheet.actor.character section.window-content .sheet-header .left-col .class-row {
   align-items: center;
   display: flex;
@@ -507,76 +510,75 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 24px;
   justify-content: center;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-input input[type=number] {
   border: none;
+  font-size: 24px;
+}
+.cy.sheet.actor.character section.window-content .sheet-header .right-col .hitpoints-widget {
+  flex: 0 0 88px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .owed-to-row .field-label {
   flex: 0 0 92px;
   padding-right: 5px;
 }
 .cy.sheet.actor.character section.window-content .sheet-body {
-  overflow: auto;
-  border-left: 4px solid var(--cy-foreground-color);
-  border-right: 4px solid var(--cy-foreground-color);
   border-bottom: 4px solid var(--cy-foreground-color);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-left: 4px solid var(--cy-foreground-color);
+  border-right: 4px solid var(--cy-foreground-color);
   height: calc(100% - 33px);
   margin-bottom: 10px;
-  padding: 4px;
+  overflow: auto;
+  padding: 8px;
   padding-top: 20px;
   width: 100%;
 }
-.combat-tab .defend-row {
-  margin-bottom: 5px;
+.cy.sheet section.window-content .combat-tab .combat-buttons {
+  margin-bottom: 10px;
 }
-.combat-tab .defend-row .defend-button {
-  border: 4px solid var(--cy-foreground-color);
-  border-radius: 5;
-  color: var(--cy-foreground-color);
-}
-.combat-tab .armor .tier-label {
+.cy.sheet section.window-content .combat-tab .armor .tier-label {
   float: left;
   font-size: 20;
   padding-top: 4px;
   margin-right: 10px;
 }
-.combat-tab .armor ul.tiers {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers {
   float: left;
   list-style-type: none;
   margin: 0;
   margin-top: 3px;
   padding: 0;
 }
-.combat-tab .armor ul.tiers li {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers li {
   float: left;
   height: 45px;
 }
-.combat-tab .armor ul.tiers label {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers label {
   display: block;
   padding: 4px;
   position: relative;
   padding-left: 32px;
 }
-.combat-tab .armor ul.tiers input[type=radio] {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers input[type=radio] {
   display: none;
 }
-.combat-tab .armor ul.tiers input[type=radio]:checked + span.tier-num {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers input[type=radio]:checked + span.tier-num {
   background: var(--cy-highlight-color);
   color: var(--cy-background-color);
   border: none;
 }
-.combat-tab .armor ul.tiers input[type=radio]:disabled + span.tier-num {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers input[type=radio]:disabled + span.tier-num {
   color: #444444;
   border: 1px solid #444444;
 }
-.combat-tab .armor ul.tiers input[type=radio]:disabled ~ span.tier-dmg {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers input[type=radio]:disabled ~ span.tier-dmg {
   color: #444444;
 }
-.combat-tab .armor ul.tiers span.tier-num {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers span.tier-num {
   border: 1px solid #7a7971;
   width: 24px;
   height: 24px;
@@ -589,7 +591,7 @@
   left: 0;
   top: 0;
 }
-.combat-tab .armor ul.tiers span.tier-dmg {
+.cy.sheet section.window-content .combat-tab .armor ul.tiers span.tier-dmg {
   width: 30px;
   height: 15px;
   position: absolute;
@@ -605,15 +607,25 @@
   color: var(--cy-background-color);
 }
 
-.equipment-tab .carrying-value {
+.equipment-tab .carrying-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.equipment-tab .carrying-row .carrying {
+  flex: 1;
+}
+.equipment-tab .carrying-row .carrying .carrying-value {
   padding-bottom: 2px;
   padding-top: 5px;
 }
-.equipment-tab .button-row {
-  margin-bottom: 5px;
-}
-.equipment-tab .encumbered {
+.equipment-tab .carrying-row .carrying .encumbered {
   color: var(--cy-highlight-color);
+}
+.equipment-tab .carrying-row .add-item-row {
+  flex: 1;
+  padding-left: 5px;
 }
 
 .feats-tab .no-feats {

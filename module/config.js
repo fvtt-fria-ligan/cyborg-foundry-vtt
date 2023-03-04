@@ -199,6 +199,9 @@ CY.colorSchemes = {
   flintwyrm: {
     accent: "#71C5C9",
     background: "#000000",
+    buttonBackground: "",
+    buttonBorder: "",
+    buttonForeground: "",
     cyberText: "#F8F800",
     disabled: "gray",
     foreground: "#F6EDDB",

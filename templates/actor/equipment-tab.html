@@ -1,6 +1,6 @@
 <div class="tab equipment-tab" data-group="primary" data-tab="equipment">
-  <div class="cols">
-    <div class="col">
+  <div class="carrying-row">
+    <div class="carrying">
       <div class="widget field-row {{data.system.encumberedClass}}">
         <div class="field-label">
           {{ localize 'CY.Carrying'}}
@@ -8,14 +8,11 @@
         <div class="field-value carrying-value">
           {{ceil actor.carryingSlots}} / {{actor.normalCarryingCapacity}}
         </div>
-      </div>        
+      </div>  
     </div>
-    <div class="spacer-col"></div>
-    <div class="col">
-      <div class="add-item-row">
-        <button type="button" class="sheet-button add-item-button">{{ localize 'CY.AddItem' }}</button>
-      </div>          
-    </div>
+    <div class="add-item-row">
+      <button type="button" class="sheet-button medium-button add-item-button">{{ localize 'CY.AddItem' }}</button>
+    </div>          
   </div>
   <div class="equipment item-list">
     {{#each data.system.equipment as |item id|}}

@@ -1,18 +1,16 @@
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;
-  box-shadow: 0px 0px 15px 5px var(--cy-accent-color);
+  // TODO: set with color scheme vars
+  // box-shadow: 0px 0px 15px 5px var(--cy-accent-color);
 
   header.window-header {
     border-bottom: 2px solid var(--cy-accent-color);
   }
 
   section.window-content {
-    // background: var(--cy-background-color);
     background-color: var(--cy-window-background-color);
     background-image: none;
-    // border: 2px solid var(--cy-foreground-color);
-    // border-radius: $border-radius;
     color: var(--cy-foreground-color);
     font-family: $sheet-font;
     font-size: 15px;
@@ -64,14 +62,6 @@
       }
     }
 
-    button {
-      // TODO
-      // border: 2px solid var(--cy-foreground-color);
-      // &:hover {
-      //   border: 2px solid var(--cy-highlight-color);
-      // }
-    }
-
     input[type="number"],
     input[type="text"] {
       color: var(--cy-foreground-color);
@@ -117,20 +107,12 @@
     }
   
     .sheet-button {
-      // background-color: var(--cy-foreground-color);
-      // color: var(--cy-background-color);
-      // background-color: var(--cy-highlight-color);
-      // color: var(--cy-foreground-color);
+      // TODO: make button bg and color a color scheme variable
       background-color: rgba(249, 0, 248, 0.2);
       border: 2px solid var(--cy-highlight-color);
-      // color: 1px solid var(--cy-highlight-color);
       border-radius: 0;
       color:  var(--cy-highlight-color);
       font-family: "CY VTT test font 1.2";
-      // text-transform: uppercase;
-      // border-bottom: 1px solid var(--cy-highlight-color);
-      // border-right: 1px solid var(--cy-highlight-color);
-      // font-size: 14px;
       font-size: 7px;
       height: 20px;
       line-height: 1.2;
@@ -143,6 +125,14 @@
         color: var(--cy-foreground-color);
       //         background-color: var(--cy-foreground-color);
       // color: var(--cy-background-color);
+      }
+      &.medium-button {
+        font-size: 8px;
+        height: 30px;
+      }
+      &.big-button {
+        font-size: 8px;
+        height: 36px;
       }
     }
 

@@ -1,9 +1,9 @@
 <div class="tab combat-tab" data-group="primary" data-tab="combat">
-  <div class="button-row defend-row">
-    <button type="button" class="sheet-button rest-button">{{ localize "CY.Rest" }}</button>
-    <button type="button" class="sheet-button battered-button">{{ localize "CY.Battered" }}</button>
-    <button type="button" class="sheet-button initiative-button">{{ localize 'CY.Initiative' }}</button>
-    <button type="button" class="sheet-button defend-button">{{ localize 'CY.Defend' }}</button>
+  <div class="button-row combat-buttons">
+    <button type="button" class="sheet-button big-button initiative-button">{{ localize 'CY.Initiative' }}</button>
+    <button type="button" class="sheet-button big-button defend-button">{{ localize 'CY.Defend' }}</button>
+    <button type="button" class="sheet-button big-button battered-button">{{ localize "CY.Battered" }}</button>
+    <button type="button" class="sheet-button big-button rest-button">{{ localize "CY.Rest" }}</button>
   </div>
   <div class="item-list weapons">
     {{#each data.system.weapons as |item id|}}

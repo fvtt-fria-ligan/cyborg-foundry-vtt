@@ -1,4 +1,20 @@
-<div class="widget hit-points">          
+
+<div class="widget ability-row glitches-row hitpoints-widget">
+  <div class="glitches-label">
+    {{localize 'CY.HitPoints'}}
+  </div>
+  <div class="glitches-input">
+    <div class="col">
+      <input type="number" name="system.hitPoints.value" value="{{data.system.hitPoints.value}}" />
+    </div>
+    <div class="slash">/</div>
+    <div class="col">
+      <input type="number" name="system.hitPoints.max" value="{{data.system.hitPoints.max}}" />
+    </div>
+  </div>
+</div>
+
+<!-- <div class="widget hit-points">          
   <div class="hit-points-ul">
     <input class="hit-points-value" type="number" name="system.hitPoints.value" value="{{data.system.hitPoints.value}}" />            
   </div>
@@ -12,4 +28,4 @@
   <div class="hit-points-lr">
     <input class="hit-points-max" type="number" name="system.hitPoints.max" value="{{data.system.hitPoints.max}}" />            
   </div>
-</div>
+</div> -->

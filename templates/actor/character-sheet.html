@@ -17,13 +17,27 @@
               </div>
             </div>
             <div class="header-button-row">
-              <button type="button" class="sheet-button level-up-button">{{ localize "CY.LevelUp" }}</button>
-              <button type="button" class="sheet-button reboot-button">{{ localize "CY.Reboot" }}</button>
+              <button type="button" class="sheet-button big-button level-up-button">{{ localize "CY.LevelUp" }}</button>
+              <button type="button" class="sheet-button big-button reboot-button">{{ localize "CY.Reboot" }}</button>
             </div>                
           </div>
           <div class="right-col">
             {{> systems/cy-borg/templates/actor/abilities.html}}
             {{> systems/cy-borg/templates/actor/hit-points.html}}
+            <div class="widget ability-row glitches-row">
+              <div class="glitches-label">
+                {{localize 'CY.Glitches'}}
+              </div>
+              <div class="glitches-input">
+                <div class="col">
+                  <input class="glitches" type="number" name="system.glitches.value" value="{{data.system.glitches.value}}" />
+                </div>
+                <div class="slash">/</div>
+                <div class="col">
+                  <input class="glitches" type="number" name="system.glitches.max" value="{{data.system.glitches.max}}" />
+                </div>
+              </div>
+            </div>            
           </div>
         </div>
 
