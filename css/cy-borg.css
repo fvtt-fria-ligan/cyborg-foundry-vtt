@@ -80,8 +80,41 @@
   height: 100%;
 }
 .cy.sheet section.window-content nav.sheet-tabs.tabs {
-  border-radius: 5px;
-  width: 385px;
+  background: none;
+  border-bottom: 4px solid var(--cy-foreground-color);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
+.cy.sheet section.window-content nav.sheet-tabs.tabs a.item {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  font-family: "CY VTT test font 1.2";
+  font-size: 8px;
+  justify-content: center;
+  height: 30px;
+  margin-right: 2px;
+  opacity: 0.5;
+}
+.cy.sheet section.window-content nav.sheet-tabs.tabs a.item:last-child {
+  margin-right: 0px;
+}
+.cy.sheet section.window-content nav.sheet-tabs.tabs a.item:hover {
+  opacity: 1;
+}
+.cy.sheet section.window-content nav.sheet-tabs.tabs a.item.active {
+  background-color: var(--cy-window-background-color);
+  color: var(--cy-foreground-color);
+  border-bottom: none;
+  opacity: 1;
+  position: relative;
+  top: 4px;
 }
 .cy.sheet section.window-content .sheet-tabs {
   background-color: var(--cy-foreground-color);
@@ -102,11 +135,6 @@
 }
 .cy.sheet section.window-content .sheet-tabs a.item.active {
   background-color: var(--cy-highlight-color);
-}
-.cy.sheet section.window-content .sheet-tabs a.item img {
-  border: none;
-  border-radius: 0;
-  height: 30px;
 }
 .cy.sheet section.window-content input[type=number],
 .cy.sheet section.window-content input[type=text] {
@@ -131,13 +159,39 @@
   line-height: 20px;
   resize: none;
 }
+.cy.sheet section.window-content .editor {
+  background-color: var(--cy-foreground-color);
+  color: var(--cy-background-color);
+  padding: 0 8px;
+}
+.cy.sheet section.window-content .editor .editor-menu {
+  border-bottom: 1px solid var(--cy-foreground-color);
+  border-top: 1px solid var(--cy-foreground-color);
+  background-color: var(--cy-background-color);
+  color: var(--cy-foreground-color);
+}
+.cy.sheet section.window-content .editor .editor-menu button {
+  background-color: var(--cy-background-color);
+  border: 1px solid var(--cy-foreground-color);
+  color: var(--cy-foreground-color);
+}
+.cy.sheet section.window-content .editor .editor-menu button ul {
+  background-color: var(--cy-background-color);
+  border: 1px solid var(--cy-foreground-color);
+  color: var(--cy-foreground-color);
+}
+.cy.sheet section.window-content .editor .editor-menu button ul li:hover {
+  background-color: var(--cy-foreground-color);
+  color: var(--cy-background-color);
+}
+.cy.sheet section.window-content .editor .editor-menu button:hover {
+  background-color: var(--cy-foreground-color);
+  color: var(--cy-background-color);
+}
 .cy.sheet section.window-content .editor,
 .cy.sheet section.window-content .editor-content {
   height: 100%;
-  line-height: 20px;
-}
-.cy.sheet section.window-content .editor {
-  padding: 0 8px;
+  padding-top: 10px;
 }
 .cy.sheet section.window-content .widget {
   border: 4px solid var(--cy-foreground-color);
@@ -146,6 +200,12 @@
 .cy.sheet section.window-content .button-row {
   display: flex;
   justify-content: space-between;
+}
+.cy.sheet section.window-content .description-tab {
+  height: 100%;
+}
+.cy.sheet section.window-content .description-tab .description-wrapper {
+  height: 100%;
 }
 .cy.sheet section.window-content .sheet-button {
   background-color: var(--cy-button-background-color);
@@ -205,18 +265,15 @@
   line-height: 20px;
 }
 .cy.sheet section.window-content .sheet-body {
-  flex: 1;
-  width: 385px;
-}
-.cy.sheet section.window-content .sheet-body .tab {
+  border-bottom: 4px solid var(--cy-foreground-color);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: 4px solid var(--cy-foreground-color);
+  border-right: 4px solid var(--cy-foreground-color);
   height: 100%;
-}
-.cy.sheet section.window-content .sheet-body .description-tab .description-wrapper {
-  background-color: var(--cy-foreground-color);
-  color: var(--cy-background-color);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  overflow: auto;
+  padding: 8px;
+  padding-top: 20px;
   width: 100%;
 }
 
@@ -379,45 +436,6 @@
   flex: 1;
   height: 100%;
 }
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs {
-  background: none;
-  border-bottom: 4px solid var(--cy-foreground-color);
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  margin: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 100%;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 30px;
-  margin-right: 2px;
-  opacity: 0.5;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item:last-child {
-  margin-right: 0px;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item:hover {
-  opacity: 1;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item.active {
-  background-color: var(--cy-window-background-color);
-  color: var(--cy-foreground-color);
-  border-bottom: none;
-  opacity: 1;
-  position: relative;
-  top: 4px;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col nav.sheet-tabs.tabs a.item .tab-label {
-  font-family: "CY VTT test font 1.2";
-  font-size: 8px;
-}
 .cy.sheet.actor.character section.window-content .sheet-header {
   margin-bottom: 4px;
   flex-direction: column;
@@ -531,18 +549,9 @@
   padding-right: 5px;
 }
 .cy.sheet.actor.character section.window-content .sheet-body {
-  border-bottom: 4px solid var(--cy-foreground-color);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-left: 4px solid var(--cy-foreground-color);
-  border-right: 4px solid var(--cy-foreground-color);
   height: calc(100% - 33px);
-  margin-bottom: 10px;
-  overflow: auto;
-  padding: 8px;
-  padding-top: 20px;
-  width: 100%;
 }
+
 .cy.sheet section.window-content .combat-tab .combat-buttons {
   margin-bottom: 10px;
 }
@@ -611,6 +620,7 @@
 .sheet-body .dossier-tab {
   background-color: var(--cy-foreground-color);
   color: var(--cy-background-color);
+  height: 100%;
 }
 
 .equipment-tab .carrying-row {

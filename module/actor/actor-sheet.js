@@ -38,7 +38,16 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     return buttons;
   }
 
-
+  /** @override */
+  getData() {
+    const superData = super.getData();
+    superData.data.system.description = TextEditor.enrichHTML(
+      superData.data.system.description,
+      { async: false }
+    );
+    return superData;
+  }
+  
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);

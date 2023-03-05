@@ -30,11 +30,50 @@
       height: 100%;
     }
 
+    // nav.sheet-tabs.tabs {
+    //   border-radius: $border-radius;
+    //   width: 385px;
+    // }
+
     nav.sheet-tabs.tabs {
-      border-radius: $border-radius;
-      width: 385px;
-    }
+      background: none;
+      border-bottom: $border-width solid var(--cy-foreground-color);
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      margin: 0px;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+      a.item {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        font-family: $pixel-font;              
+        font-size: 8px;
+        justify-content: center;
+        height: $tab-height;
+        margin-right: 2px;
+        opacity: 0.5;
+        &:last-child {
+          margin-right: 0px;
+        }
+        &:hover {
+          opacity: 1.0;
+        }
+        &.active {
+          background-color: var(--cy-window-background-color);
+          color: var(--cy-foreground-color);
+          border-bottom: none;
+          opacity: 1.0;
+          position: relative;
+          top: $border-width;
+        }
+      }
+    }    
   
+    // TODO: de-dupe this with tab foo above
     .sheet-tabs {
       background-color: var(--cy-foreground-color);
       border: none;
@@ -52,11 +91,6 @@
         }
         &.active {
           background-color: var(--cy-highlight-color);
-        }
-        img {
-          border: none;
-          border-radius: 0;
-          height: $tab-height;
         }
       }
     }
@@ -86,13 +120,56 @@
       resize: none;
     }
 
+    // .editor,
+    // .editor-content {
+    //   height: 100%;
+    //   line-height: $textarea-line-height;
+    // }
+    // .editor {
+    //   padding: 0 8px;
+    // }
+
+    // TODO: DRY up all these editor stylings
+    .editor {
+      // border: 1px solid #7a7971;
+      // color: var(--cy-foreground-color);
+      background-color: var(--cy-foreground-color);
+      color: var(--cy-background-color);
+
+      // font-family: var(--journal-font);
+      // font-size: var(--journal-font-size);
+      padding: 0 8px;
+    }
+    .editor {
+      .editor-menu {
+        border-bottom: 1px solid var(--cy-foreground-color);
+        border-top: 1px solid var(--cy-foreground-color);
+        background-color: var(--cy-background-color);
+        color: var(--cy-foreground-color);
+        button {
+          background-color: var(--cy-background-color);
+          border: 1px solid var(--cy-foreground-color);
+          color: var(--cy-foreground-color);
+          ul {
+            background-color: var(--cy-background-color);
+            border: 1px solid var(--cy-foreground-color);
+            color: var(--cy-foreground-color);
+            li:hover {
+              background-color: var(--cy-foreground-color);
+              color: var(--cy-background-color);
+            }
+          }
+        }
+        button:hover {
+          background-color: var(--cy-foreground-color);
+          color: var(--cy-background-color);
+        }
+      }    
+    }
     .editor,
     .editor-content {
       height: 100%;
-      line-height: $textarea-line-height;
-    }
-    .editor {
-      padding: 0 8px;
+      padding-top: 10px;
     }
 
     .widget {
@@ -105,6 +182,12 @@
       justify-content: space-between;
     }
   
+    .description-tab {
+      height: 100%;
+      .description-wrapper {
+        height: 100%;
+      }  
+    }
     .sheet-button {
       // TODO: make button bg and color a color scheme variable
       // background-color: rgba(249, 0, 248, 0.2);
@@ -169,22 +252,37 @@
     }
     
     // style shared by npc actor sheet and item sheets
+    // .sheet-body {
+    //   flex: 1;
+    //   width: 385px;
+    //   .tab {
+    //     height: 100%;
+    //   }
+    //   .description-tab {
+    //     .description-wrapper {
+    //       background-color: var(--cy-foreground-color);
+    //       color: var(--cy-background-color);
+    //       display: flex;
+    //       flex-direction: column;
+    //       height: 100%;
+    //       width: 100%;
+    //     }
+    //   }
+    // }  
+
     .sheet-body {
-      flex: 1;
-      width: 385px;
-      .tab {
-        height: 100%;
-      }
-      .description-tab {
-        .description-wrapper {
-          background-color: var(--cy-foreground-color);
-          color: var(--cy-background-color);
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }  
+      border-bottom: $border-width solid var(--cy-foreground-color);
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-left: $border-width solid var(--cy-foreground-color);
+      border-right: $border-width solid var(--cy-foreground-color);
+      // height: calc(100% - 33px);
+      height: 100%;
+      // margin-bottom: 10px;
+      overflow: auto;
+      padding: calc($border-width * 2);
+      padding-top: 20px;
+      width: 100%;
+    }    
   }
 }
