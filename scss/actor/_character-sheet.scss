@@ -145,22 +145,8 @@
         }
       }
     }
-    // .sheet-body {
-    //   border-bottom: $border-width solid var(--cy-foreground-color);
-    //   border-bottom-left-radius: 5px;
-    //   border-bottom-right-radius: 5px;
-    //   border-left: $border-width solid var(--cy-foreground-color);
-    //   border-right: $border-width solid var(--cy-foreground-color);
-    //   height: calc(100% - 33px);
-    //   margin-bottom: 10px;
-    //   overflow: auto;
-    //   padding: calc($border-width * 2);
-    //   padding-top: 20px;
-    //   width: 100%;
-    // }
     .sheet-body {
       height: calc(100% - 33px);
     }
-
   }
 }
