@@ -1,6 +1,8 @@
 .cy.sheet section.window-content .combat-tab {
+  width: 100%;
   .combat-buttons {
     margin-bottom: calc($widget-margin * 2);
+    width: 100%;
   }
   .armor {
     .tier-label {

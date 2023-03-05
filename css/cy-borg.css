@@ -254,7 +254,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1.5;
   justify-content: center;
 }
 .cy.sheet section.window-content .field-row .field-value input {
@@ -277,6 +277,18 @@
   width: 100%;
 }
 
+.cy.sheet.actor section.window-content .big-row {
+  display: flex;
+  height: 100%;
+}
+.cy.sheet.actor section.window-content .big-row .header-col {
+  flex: 0 0 395px;
+  padding-right: 8px;
+}
+.cy.sheet.actor section.window-content .big-row .tabs-col {
+  flex: 1;
+  height: 100%;
+}
 .cy.sheet.actor section.window-content .sheet-header {
   display: flex;
 }
@@ -321,39 +333,39 @@
   justify-content: center;
   writing-mode: vertical-rl;
 }
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points {
-  display: grid;
-  flex: 0 0 90px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  margin-bottom: 5px;
-  width: 90px;
+.cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ur,
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll {
-  background-image: -webkit-linear-gradient(135deg, var(--cy-foreground-color) 50%, var(--cy-background-color) 50%);
-}
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll {
-  color: var(--cy-background-color);
+.cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row .glitches-label {
+  background-color: var(--cy-foreground-color);
+  color: black;
+  flex: 0 0 24px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  font-size: 12px;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
 }
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-ll .hp-label {
-  padding-bottom: 0px;
-  padding-right: 8px;
-  text-align: right;
+.cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row .glitches-input {
+  display: flex;
+  flex: 1;
 }
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-lr {
-  background-color: var(--cy-foreground-color);
+.cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row .glitches-input .slash {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  justify-content: center;
 }
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points .hit-points-lr input[type=number] {
-  color: var(--cy-background-color);
-}
-.cy.sheet.actor section.window-content .sheet-header .right-col .hit-points input[type=number] {
+.cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row .glitches-input input[type=number] {
   border: none;
-  font-size: 34px;
+  font-size: 24px;
+}
+.cy.sheet.actor section.window-content .sheet-header .right-col .hitpoints-widget {
+  flex: 0 0 88px;
 }
 .cy.sheet.actor section.window-content .sheet-body .item-row {
   display: flex;
@@ -423,18 +435,6 @@
 }
 .cy.sheet.actor.character section.window-content .cols .spacer-col {
   flex: 0 0 20px;
-}
-.cy.sheet.actor.character section.window-content .big-row {
-  display: flex;
-  height: 100%;
-}
-.cy.sheet.actor.character section.window-content .big-row .header-col {
-  flex: 0 0 395px;
-  padding-right: 8px;
-}
-.cy.sheet.actor.character section.window-content .big-row .tabs-col {
-  flex: 1;
-  height: 100%;
 }
 .cy.sheet.actor.character section.window-content .sheet-header {
   margin-bottom: 4px;
@@ -552,8 +552,12 @@
   height: calc(100% - 33px);
 }
 
+.cy.sheet section.window-content .combat-tab {
+  width: 100%;
+}
 .cy.sheet section.window-content .combat-tab .combat-buttons {
   margin-bottom: 10px;
+  width: 100%;
 }
 .cy.sheet section.window-content .combat-tab .armor .tier-label {
   float: left;
@@ -719,14 +723,16 @@
 .cy.sheet.actor.npc section.window-content .sheet-header {
   height: 388px;
 }
-.cy.sheet.actor.npc section.window-content .sheet-header .sheet-button {
-  font-size: 16px;
-  height: 38px;
-  line-height: 1;
-}
 
+.cy.sheet.actor.vehicle section.window-content {
+  padding-right: 10px;
+  overflow: hidden;
+}
 .cy.sheet.actor.vehicle section.window-content .sheet-header {
   height: 388px;
+}
+.cy.sheet.actor.vehicle section.window-content .sheet-body {
+  height: calc(100% - 33px);
 }
 
 .chat-ad .content {

@@ -1,5 +1,17 @@
 .cy.sheet.actor {
   section.window-content {
+    .big-row {
+      display: flex;
+      height: 100%;
+      .header-col {
+        flex: 0 0 395px;
+        padding-right: 8px;
+      }
+      .tabs-col {
+        flex: 1;
+        height: 100%;
+      }
+    }    
     .sheet-header {
       display: flex;
       .left-col {
@@ -42,41 +54,41 @@
           justify-content: center;
           writing-mode: vertical-rl;
         }        
-        .hit-points {
-          display: grid;
-          flex: 0 0 90px;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          margin-bottom: $widget-margin;
-          width: 90px;
-          .hit-points-ur,
-          .hit-points-ll {              
-            background-image: -webkit-linear-gradient(135deg, var(--cy-foreground-color) 50%, var(--cy-background-color) 50%);              
-          }
-          .hit-points-ll {
-            color: var(--cy-background-color);
+        .glitches-row {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          .glitches-label {
+            background-color: var(--cy-foreground-color);
+            color: black;
+            flex: 0 0 24px;
+            font-size: 16px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            font-size: 12px;
-            .hp-label {
-              padding-bottom: 0px;
-              padding-right: 8px;
-              text-align: right;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+          }
+          .glitches-input {
+            display: flex;
+            flex: 1;
+            .slash {
+              align-items: center;
+              display: flex;
+              flex-direction: column;
+              font-size: 24px;
+              justify-content: center;
+            }
+            input[type="number"] {
+              border: none;
+              font-size: 24px;
             }
           }
-          .hit-points-lr {              
-            background-color: var(--cy-foreground-color);
-            input[type="number"] {
-              color: var(--cy-background-color);
-            }          
-          }
-          input[type="number"] {
-            border: none;
-            font-size: 34px;
-          }            
         }
-      }  
+        .hitpoints-widget {
+          flex: 0 0 88px;
+        }          
+      }    
     }
 
     .sheet-body {

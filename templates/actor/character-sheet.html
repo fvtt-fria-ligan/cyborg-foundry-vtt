@@ -58,14 +58,6 @@
               <input class="field-input" type="number" name="system.credits" value="{{data.system.credits}}" />
             </div>
           </div> 
-          <!-- <div class="widget field-row">
-            <div class="field-label">
-              {{ localize 'CY.Glitches'}}
-            </div>
-            <div class="field-value">
-              <input class="field-input" type="number" name="system.glitches.value" value="{{data.system.glitches.value}}" />
-            </div>
-          </div>           -->
         </div>
         <div class="widget field-row owed-to-row">
           <div class="field-label">
@@ -80,23 +72,18 @@
     <div class="tabs-col">
       <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="dossier">
-          <!-- <img class="tab-icon" title="{{localize 'CY.Dossier'}}" src="/systems/cy-borg/assets/images/ui/tab_dossier.png" /> -->
           <div class="tab-label">{{localize 'CY.Dossier'}}</div>
         </a>
         <a class="item" data-tab="combat">
-          <!-- <img class="tab-icon" title="{{localize 'CY.Combat'}}" src="/systems/cy-borg/assets/images/ui/tab_combat.png" /> -->
           <div class="tab-label">{{localize 'CY.Combat'}}</div>
         </a>
         <a class="item" data-tab="feats">
-          <!-- <img class="tab-icon" title="{{localize 'CY.Feats'}}" src="/systems/cy-borg/assets/images/ui/tab_feats.png" /> -->
           <div class="tab-label">{{localize 'CY.Feats'}}</div>          
         </a>
         <a class="item" data-tab="nano">
-          <!-- <img class="tab-icon" title="{{localize 'CY.AppsAndNano'}}" src="/systems/cy-borg/assets/images/ui/tab_nano.png" /> -->
           <div class="tab-label">{{localize 'CY.AppsAndNano'}}</div>          
         </a>
         <a class="item" data-tab="equipment">
-          <!-- <img class="tab-icon" title="{{localize 'CY.Equipment'}}" src="/systems/cy-borg/assets/images/ui/tab_equipment.png" /> -->
           <div class="tab-label">{{localize 'CY.Equipment'}}</div>          
         </a>
       </nav>
@@ -106,7 +93,7 @@
         {{> systems/cy-borg/templates/actor/combat-tab.html}}
         {{> systems/cy-borg/templates/actor/feats-tab.html}}
         {{> systems/cy-borg/templates/actor/nano-tab.html}}
-        {{> systems/cy-borg/templates/actor/equipment-tab.html}}
+        {{> systems/cy-borg/templates/actor/character-equipment-tab.html}}
       </div>      
     </div>
   </div>

@@ -3,12 +3,10 @@
 
 .cy.sheet.actor.character {
   section.window-content {
-
     // TODO: clean up padding for the whole sheet and columns etc
     // seems like it was already set for left/top, but not right? 
     // maybe for scroll-bar futzing
     padding-right: 10px;
-
     overflow: hidden;
     .widget-row {
       display: flex;
@@ -29,18 +27,6 @@
       }
       .spacer-col {
         flex: 0 0 20px;
-      }
-    }
-    .big-row {
-      display: flex;
-      height: 100%;
-      .header-col {
-        flex: 0 0 395px;
-        padding-right: 8px;
-      }
-      .tabs-col {
-        flex: 1;
-        height: 100%;
       }
     }
     .sheet-header {

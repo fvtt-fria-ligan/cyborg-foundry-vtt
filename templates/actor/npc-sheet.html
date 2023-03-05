@@ -8,8 +8,8 @@
         <input class="character-name" type="text" name="name" value="{{actor.name}}" placeholder="{{ localize 'CY.Name' }}" spellcheck="false"/>          
       </div>
       <div class="field-row button-row">
-        <button class="sheet-button reaction-button"><i class="fas fa-dice-d6"></i>{{ localize "CY.Reaction" }}</button>
-        <button class="sheet-button morale-button"><i class="fas fa-dice-d6"></i>{{ localize "CY.Morale" }}</button>
+        <button class="sheet-button big-button reaction-button">{{ localize "CY.Reaction" }}</button>
+        <button class="sheet-button big-button morale-button">{{ localize "CY.Morale" }}</button>
       </div>
     </div>
     <div class="right-col">
@@ -21,15 +21,15 @@
   </div>
 
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description"><img class="tab-icon" title="{{localize 'CY.Description'}}" src="/systems/cy-borg/assets/images/ui/tab_dossier.png" /></a>
-    <a class="item" data-tab="data"><img class="tab-icon" title="{{localize 'CY.Data'}}" src="/systems/cy-borg/assets/images/ui/tab_feats.png" /></a>
+    <a class="item" data-tab="description">{{localize 'CY.Description'}}</a>
+    <a class="item" data-tab="data">{{localize 'CY.Data'}}</a>
   </nav>
   
   <div class="sheet-body">  
     <div class="tab description-tab" data-group="primary" data-tab="description">
       <div class="description-wrapper">
         {{editor data.system.description target="system.description"
-        button=true owner=owner editable=true}}  
+        button=true owner=owner editable=true engine="prosemirror"}}  
       </div>
     </div>      
     <div class="tab data-tab" data-group="primary" data-tab="data">

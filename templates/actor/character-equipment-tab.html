@@ -51,5 +51,13 @@
         {{> itemPartial item=item}}
       {{/each}}
     </div>
+    <div class="cybertech-title">
+      <span>{{localize 'CY.Cybertech'}}</span>
+    </div>
+    <div class="cybertech item-list">
+      {{#each data.system.cybertech as |item id|}}
+        {{> itemPartial item=item}}
+      {{/each}}
+    </div>  
   </div>
 </div>

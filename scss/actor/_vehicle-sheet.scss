@@ -1,7 +1,11 @@
-.cy.sheet.actor.vehicle {
-  section.window-content {
-    .sheet-header {
-      height: 388px;
-    }
+.cy.sheet.actor.vehicle section.window-content {
+  padding-right: 10px;
+  overflow: hidden;
+
+  .sheet-header {
+    height: 388px;
+  }
+  .sheet-body {
+    height: calc(100% - 33px);
   }
 }

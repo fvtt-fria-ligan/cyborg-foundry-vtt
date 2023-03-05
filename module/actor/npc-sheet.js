@@ -9,7 +9,7 @@ export class CYNpcSheet extends CYActorSheet {
       classes: ["cy", "sheet", "actor", "npc"],
       template: "systems/cy-borg/templates/actor/npc-sheet.html",
       width: 411,
-      height: 880,
+      height: 900,
       tabs: [
         {
           navSelector: ".sheet-tabs",

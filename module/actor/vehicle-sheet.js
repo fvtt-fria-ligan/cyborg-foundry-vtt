@@ -7,8 +7,8 @@ export class CYVehicleSheet extends CYActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "vehicle"],
       template: "systems/cy-borg/templates/actor/vehicle-sheet.html",
-      width: 411,
-      height: 900,
+      width: 1000,
+      height: 442,
       tabs: [
         {
           navSelector: ".sheet-tabs",

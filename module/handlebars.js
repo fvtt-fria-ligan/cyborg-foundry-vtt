@@ -1,6 +1,7 @@
 export const registerHandlebarsPartials = async () => {
   await loadTemplates([
     "systems/cy-borg/templates/actor/abilities.html",
+    "systems/cy-borg/templates/actor/character-equipment-tab.html",
     "systems/cy-borg/templates/actor/combat-tab.html",
     "systems/cy-borg/templates/actor/dossier-tab.html",
     "systems/cy-borg/templates/actor/equipment-tab.html",
