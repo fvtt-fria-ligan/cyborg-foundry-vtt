@@ -1,3 +1,9 @@
+# 1.6.0
+
+- Redesigned, wider-layout character and vehicle sheets.
+- Switch sheet tabs from icons to text labels.
+- Switch to prosemirror engine for editors.
+
 # 1.5.3
 
 - Fix broken images in Corpkiller compendiums.
