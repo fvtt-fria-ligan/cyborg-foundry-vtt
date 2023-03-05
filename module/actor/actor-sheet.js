@@ -1,10 +1,12 @@
 import { showAddItemDialog } from "./add-item-dialog.js";
 import { showAttackDialog } from "../combat/attack-dialog.js";
+import { rollBattered } from "../combat/battered.js";
 import { countBullets } from "../combat/count-bullets.js";
 import { showDefendDialog } from "../combat/defend-dialog.js";
 import { rollPartyInitiative } from "../combat/initiative.js";
+import { showRestDialog } from "../combat/rest-dialog.js";
 import { nopeShowAd } from "../corpcomm/ad-bot.js";
-import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
+import { uiClick, uiSuccess, uiWindowClose, uiWindowOpen } from "../sound.js";
 
 
 /**
@@ -61,6 +63,8 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     html.find(".add-item-button").on("click", this._addItem.bind(this));
     html.find(".initiative-button").on("click", this._initiative.bind(this));
     html.find(".defend-button").on("click", this._defend.bind(this));
+    html.find(".battered-button").on("click", this._battered.bind(this));
+    html.find(".rest-button").on("click", this._rest.bind(this));
     html.find(".tier-radio").click(this._onArmorTierRadio.bind(this));
     html.find(".attack-button").on("click", this._attack.bind(this));
     html.find(".count-bullets-button").click(this._countBullets.bind(this));
@@ -156,6 +160,31 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     });
   }
 
+  async _defend(event) {
+    event.preventDefault();
+    // uiClick();
+    nopeShowAd(() => {
+      showDefendDialog(this.actor);
+    });
+  }
+
+  _rest(event) {
+    event.preventDefault();
+    // uiClick();
+    nopeShowAd(() => {
+      showRestDialog(this.actor);
+    });
+  }
+
+  _battered(event) {
+    event.preventDefault();
+    // uiClick();
+    nopeShowAd(() => {
+      uiSuccess();
+      rollBattered(this.actor);
+    });
+  }
+
   _attack(event) {
     event.preventDefault();
     // uiClick();
@@ -163,14 +192,6 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
     const itemId = item.data("itemId");
     nopeShowAd(() => {
       showAttackDialog(this.actor, itemId);
-    });
-  }
-
-  async _defend(event) {
-    event.preventDefault();
-    // uiClick();
-    nopeShowAd(() => {
-      showDefendDialog(this.actor);
     });
   }
   

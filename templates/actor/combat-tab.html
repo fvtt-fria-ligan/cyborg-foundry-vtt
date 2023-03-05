@@ -2,8 +2,10 @@
   <div class="button-row combat-buttons">
     <button type="button" class="sheet-button big-button initiative-button">{{ localize 'CY.Initiative' }}</button>
     <button type="button" class="sheet-button big-button defend-button">{{ localize 'CY.Defend' }}</button>
-    <button type="button" class="sheet-button big-button battered-button">{{ localize "CY.Battered" }}</button>
-    <button type="button" class="sheet-button big-button rest-button">{{ localize "CY.Rest" }}</button>
+    {{#ifEq data.type "character"}}
+      <button type="button" class="sheet-button big-button battered-button">{{ localize "CY.Battered" }}</button>
+      <button type="button" class="sheet-button big-button rest-button">{{ localize "CY.Rest" }}</button>
+    {{/ifEq}}
   </div>
   <div class="item-list weapons">
     {{#each data.system.weapons as |item id|}}

@@ -51,5 +51,15 @@
         {{> itemPartial item=item}}
       {{/each}}
     </div>
+    {{#ifEq data.type "character"}}
+      <div class="cybertech-title">
+        <span>{{localize 'CY.Cybertech'}}</span>
+      </div>
+      <div class="cybertech item-list">
+        {{#each data.system.cybertech as |item id|}}
+          {{> itemPartial item=item}}
+        {{/each}}
+      </div>  
+    {{/ifEq}}
   </div>
 </div>
