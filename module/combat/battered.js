@@ -34,6 +34,7 @@ export const rollBattered = async (actor) => {
       const roundsWord = pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
       const hpRoll = new Roll("1d4").evaluate({ async: false });
       outcomeLines = [
+        game.i18n.localize("CY.CyRageAverted") + ".",
         game.i18n.format("CY.BatteredUnconscious", {
           rounds: roundsRoll.total,
           roundsWord,

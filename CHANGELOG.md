@@ -1,3 +1,8 @@
+# 1.6.1
+
+- Fix cyrage calculation to only include equipped cybertech.
+- Show relevant cy-rage averted text in battered outcome.
+
 # 1.6.0
 
 - Redesigned, wider-layout character and vehicle sheets.

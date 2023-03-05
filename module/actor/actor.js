@@ -120,8 +120,9 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
   }
 
   cybertechCount() {
+    // only count equipped cybertech
     return this.items
-    .reduce((count, item) => count + (item.system.cybertech ? 1 : 0), 0);
+    .reduce((count, item) => count + ((item.system.cybertech && item.system.equipped) ? 1 : 0), 0);
   }
 
   ownedVehicles() {
