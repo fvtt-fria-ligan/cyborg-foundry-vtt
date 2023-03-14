@@ -22,12 +22,12 @@
   src: url("../assets/fonts/LDFComicSans.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Papyrus";
-  src: url("../assets/fonts/Papyrus.ttf") format("truetype");
+  font-family: "Nouveau IBM";
+  src: url("../assets/fonts/Nouveau_IBM.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Perfect DOS VGA 437";
-  src: url("../assets/fonts/Perfect DOS VGA 437.ttf") format("truetype");
+  font-family: "Papyrus";
+  src: url("../assets/fonts/Papyrus.ttf") format("truetype");
 }
 @font-face {
   font-family: "Scanlines";
@@ -36,10 +36,6 @@
 @font-face {
   font-family: "UAV OSD Sans Mono";
   src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Aldo the Apache";
-  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
 }
 @font-face {
   font-family: "QuanPixel 8px";
@@ -273,7 +269,7 @@
   height: 100%;
   overflow: auto;
   padding: 8px;
-  padding-top: 20px;
+  padding-top: 10px;
   width: 100%;
 }
 
@@ -1329,7 +1325,7 @@
   --macro-size: 50px;
   --players-width: 200px;
   --form-field-height: 26px;
-  --font-primary: "Perfect DOS VGA 437";
+  --font-primary: "Nouveau IBM";
   --font-mono: monospace;
   --font-size-11: 0.75rem;
   --font-size-12: 0.8125rem;
@@ -1554,6 +1550,10 @@ a.inline-roll {
   margin: 0;
   padding: 0;
   line-height: 16px;
+  /* change color for strong text */
+}
+.chat-message .table-draw .table-results .table-result .result-text strong {
+  color: var(--cy-highlight-color);
 }
 
 .chat-message .table-draw .table-results .table-result:last-child {

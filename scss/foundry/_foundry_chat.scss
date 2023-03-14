@@ -160,6 +160,10 @@ a.inline-roll {
   margin: 0;
   padding: 0;
   line-height: 16px;
+  /* change color for strong text */
+  strong {
+    color: var(--cy-highlight-color);
+  }    
 }
 .chat-message .table-draw .table-results .table-result:last-child {
   border-bottom: none;
