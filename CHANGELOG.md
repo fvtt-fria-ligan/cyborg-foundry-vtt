@@ -1,3 +1,8 @@
+# 1.6.2
+- Replace Perfect DOS VGA font with Nouveau IBM, which has more symbols/characters
+- Reduce top padding for sheet's tab body.
+- Give npc sheet ATTACK textfield another row.
+
 # 1.6.1
 
 - Fix cyrage calculation to only include equipped cybertech.
