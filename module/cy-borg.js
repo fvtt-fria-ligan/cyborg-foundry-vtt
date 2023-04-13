@@ -14,7 +14,7 @@ import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handleb
 import { initializeAdBot } from "./corpcomm/ad-bot.js";
 import { showChatAd } from "./corpcomm/chat-comm.js";
 import { showPopupAd } from "./corpcomm/popup-comm.js";
-
+import { enrichTextEditors } from "./enricher.js";
 
 Hooks.once("init", async () => {
   consoleBanner();
@@ -25,6 +25,7 @@ Hooks.once("init", async () => {
   registerSystemSettings();
   registerDocumentClasses();
   registerSheets();
+  enrichTextEditors();
   registerHandlebarsHelpers();
   await registerHandlebarsPartials();
   modifyFoundryUI();

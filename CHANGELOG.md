@@ -1,4 +1,10 @@
+# 1.7.0
+
+- Add custom enricher for DRAW[]{} patterns in text.
+- Make npc sheet buttons not submit on enter.
+
 # 1.6.2
+
 - Replace Perfect DOS VGA font with Nouveau IBM, which has more symbols/characters
 - Reduce top padding for sheet's tab body.
 - Give npc sheet ATTACK textfield another row.

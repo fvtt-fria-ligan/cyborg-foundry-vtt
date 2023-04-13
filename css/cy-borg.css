@@ -45,6 +45,15 @@
   font-family: "CY VTT test font 1.2";
   src: url("../assets/fonts/CY_VTT_test_font_1.2.ttf") format("truetype");
 }
+.draw-from-table {
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 5px;
+}
+.draw-from-table:hover {
+  text-shadow: 0 0 10px var(--cy-highlight-color);
+}
+
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;

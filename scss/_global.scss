@@ -1,0 +1,11 @@
+.draw-from-table {
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 5px;
+  // position: relative;
+  // top: -2px;
+  // left: -4px;
+  &:hover {
+    text-shadow: 0 0 10px var(--cy-highlight-color);
+  }
+}
