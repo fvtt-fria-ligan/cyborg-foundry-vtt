@@ -2,10 +2,23 @@
   cursor: pointer;
   font-size: 18px;
   margin-left: 5px;
-  // position: relative;
-  // top: -2px;
-  // left: -4px;
   &:hover {
     text-shadow: 0 0 10px var(--cy-highlight-color);
+  }
+}
+
+.rollable {
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--cy-highlight-color);	
+  }
+}
+
+.create-scvm {
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px var(--cy-highlight-color);      
   }
 }

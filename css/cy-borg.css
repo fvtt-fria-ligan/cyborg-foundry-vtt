@@ -54,6 +54,22 @@
   text-shadow: 0 0 10px var(--cy-highlight-color);
 }
 
+.rollable {
+  text-decoration: underline;
+}
+.rollable:hover {
+  cursor: pointer;
+  text-shadow: 0 0 10px var(--cy-highlight-color);
+}
+
+.create-scvm {
+  text-decoration: underline;
+}
+.create-scvm:hover {
+  cursor: pointer;
+  text-shadow: 0 0 10px var(--cy-highlight-color);
+}
+
 .cy.sheet {
   border: 2px solid var(--cy-accent-color);
   border-radius: 5px;

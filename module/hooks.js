@@ -1,5 +1,7 @@
 import { applyFontsAndColors } from "./colors.js";
 import { uiAdd, uiDelete } from "./sound.js";
+import { createScvmFromClassUuid } from "./generator/scvmfactory.js";
+
 
 export const registerHooks = () => {
 
@@ -25,43 +27,43 @@ export const registerHooks = () => {
     applyFontsAndColors();
   });
 
-  // Hooks.on("createOwnedItem", async (item, options, userId) => {
-  //   if (userId != game.user.id) {
-  //     return;
-  //   }
-  //   console.log("******* createOwnedItem");
-  //   console.log(item);
-  //   console.log(options);
-  //   console.log(userId);
-  // });
+  Hooks.on("renderJournalTextPageSheet", (journalTextPageSheet, html) => {
+    html.find(".draw-from-table").on("click", drawFromRollableTable.bind(this));  
+    html.find(".rollable").click(roll.bind(this)); 
+    html.find(".create-scvm").click(createScvm.bind(this));   
+  });
 
-  // Hooks.on("createActor", async (actor, options, userId) => {
-  //   if (userId != game.user.id) {
-  //     return;
-  //   }
-  //   console.log("******* createActor");
-  //   console.log(actor);
-  //   console.log(options);
-  //   console.log(userId);
-  // });
-
-  // Hooks.on("createDocument", async (document, options, userId) => {
-  //   if (userId != game.user.id) {
-  //     return;
-  //   }
-  //   console.log("******* createDocument");
-  //   console.log(document);
-  //   console.log(options);
-  //   console.log(userId);
-  // });
-
-  // Hooks.on("createEmbeddedDocument", async (document, options, userId) => {
-  //   if (userId != game.user.id) {
-  //     return;
-  //   }
-  //   console.log("******* createEmbeddedDocument");
-  //   console.log(document);
-  //   console.log(options);
-  //   console.log(userId);
-  // })
+  Hooks.on("closeJournalTextPageSheet", (journalTextPageSheet, html) => {
+    html.find(".draw-from-table").off("click");  
+    html.find(".rollable").off("click");
+    html.find(".create-scvm").off("click");
+  });
 };
+
+async function drawFromRollableTable(event) {
+  event.preventDefault();
+  const uuid = event.currentTarget.getAttribute("data-uuid");
+  if (uuid) {
+    const table = await fromUuid(uuid);
+    if (table instanceof RollTable) {
+      const formula = event.currentTarget.getAttribute("data-roll");
+      const roll = formula ? new Roll(formula) : null;
+      await table.draw({roll});
+    }
+  }
+}
+
+function roll(event) {
+  event.preventDefault();
+  const formula = event.currentTarget.dataset.roll;
+  if (formula) {
+    const roll = new Roll(formula);
+    roll.toMessage();
+  }
+}
+
+async function createScvm(event) {
+  event.preventDefault();
+  const uuid = event.currentTarget.dataset.uuid;
+  await createScvmFromClassUuid(uuid);
+}

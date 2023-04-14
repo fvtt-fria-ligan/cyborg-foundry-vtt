@@ -1,3 +1,7 @@
+# 1.8.0
+
+- Add journal page listeners for rollable and draw-from-table css classes.
+
 # 1.7.0
 
 - Add custom enricher for DRAW[]{} patterns in text.

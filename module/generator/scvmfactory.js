@@ -20,6 +20,18 @@ export const createScvm = async (clazz) => {
   await createActorWithScvm(scvm);
 };
 
+export const createScvmFromClassUuid = async (classUuid) => {
+  const clazz = await fromUuid(classUuid);
+  if (!clazz) {
+    // couldn't find class item, so bail
+    const err = `No class item found with UUID ${classUUID}`;
+    console.error(err);
+    ui.notifications.error(err);
+    return;
+  }
+  await createScvm(clazz);
+};
+
 export const scvmifyActor = async (actor, clazz) => {
   const scvm = await rollScvmForClass(clazz);
   await updateActorWithScvm(actor, scvm);
