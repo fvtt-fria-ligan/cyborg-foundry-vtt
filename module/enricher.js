@@ -10,7 +10,7 @@ const drawFromTableEnricher = (match, _options) => {
   const roll = match[3];
   const elem = document.createElement('span');
   elem.className = "draw-from-table";
-  elem.setAttribute("title", `Draw from table ${tableName}`);
+  elem.setAttribute("title", `Draw from ${tableName}`);
   elem.setAttribute("data-uuid", uuid);
   if (roll) {
     elem.setAttribute("data-roll", roll);
