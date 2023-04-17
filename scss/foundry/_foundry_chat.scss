@@ -95,6 +95,13 @@ a.inline-roll {
   -ms-user-select: text;
   user-select: text;
   word-break: break-word;
+  /* change color for strong text */
+  strong {
+    color: var(--cy-highlight-color);
+  }
+  h2 {
+    border-bottom: 1px dashed var(--cy-foreground-color);
+  }    
 }
 .chat-message.emote {
   background: var(--cy-background-color);
