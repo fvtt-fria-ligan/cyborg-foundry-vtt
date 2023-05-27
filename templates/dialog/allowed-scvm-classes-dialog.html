@@ -3,23 +3,21 @@
   class="custom-dialog allowed-scvm-classes-dialog"
 >
   <div class="section">
-    <div class="subtitle">{{localize "CY.AllowedScvmClassesHint"}}</div>
+    <div class="subtitle">{{localize "CY.AllowedScvmClassesSelect"}}</div>
     <ul>
       {{#each classes as |class|}}
       <li>
         <label>
-          <div class="checkbox-wrapper">
-            <input name="{{class.name}}" type="checkbox" class="class-checkbox"
-            {{#if class.checked }}checked{{/if}} />  
-          </div>
-          <div class="class-name">{{class.label}}</div>
+          <input name="{{class.uuid}}" type="checkbox" class="class-checkbox"
+          {{#if class.checked }}checked{{/if}} />
+          <div class="class-name">{{class.name}}</div>
         </label>
       </li>
       {{/each}}
     </ul>
     <div>
-      <a class="toggle-none">{{localize "CY.ScvmfactoryToggleNone"}}</a> /
-      <a class="toggle-all">{{localize "CY.ScvmfactoryToggleAll"}}</a>
+      <a class="toggle-none">{{localize "CY.ScvmfactoryToggleNone"}}</a>&nbsp; /
+      &nbsp;<a class="toggle-all">{{localize "CY.ScvmfactoryToggleAll"}}</a>
     </div>
   </div>
   <div class="button-row">

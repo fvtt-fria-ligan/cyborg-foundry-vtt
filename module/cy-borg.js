@@ -6,7 +6,7 @@ import { CYVehicleSheet } from "./actor/vehicle-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
 import { registerSystemSettings } from "./settings.js";
-import { MakePunkDialog } from "./generator/make-punk-dialog.js";
+import { showMakePunkDialog } from "./generator/make-punk-dialog.js";
 import { createNpc } from "./generator/scvmfactory.js";
 import { registerHooks } from "./hooks.js";
 import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handlebars.js";
@@ -99,7 +99,7 @@ const modifyFoundryUI = () => {
       punkHeader
         .querySelector(".make-punk-button")
         .addEventListener("click", () => {
-          new MakePunkDialog().render(true);
+          showMakePunkDialog();
         });
 
       const npcHeader = document.createElement("header");
