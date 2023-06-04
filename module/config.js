@@ -92,19 +92,19 @@ CY.flags = {
   TARGET_ARMOR: "targetArmor",
 };
 
-CY.appBacklashesPack = "cy-borg.random-tables";
+CY.appBacklashesPack = "cy-borg.cyborg-tables";
 CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
   ammoItem: "Ammo Mag",
-  ammoPack: "cy-borg.weapons",
-  startingItemsPack: "cy-borg.equipment",
+  ammoPack: "cy-borg.cyborg-items",
+  startingItemsPack: "cy-borg.cyborg-items",
   startingItems: [
     "Cheap clothes",
     "Retinal Com Device",
   ],
-  characterCreationPack: "cy-borg.random-tables",
+  characterCreationPack: "cy-borg.cyborg-tables",
   startingEquipmentTables: [
     "Cash & Gear 1",
     "Cash & Gear 2",
@@ -157,6 +157,23 @@ CY.scvmFactory = {
       articalize: true
     },
   ],  
+  // modules wanting to add more character classes to the generator should append uuids to this list
+  classUuids: [
+    // Burned Hacker
+    "Compendium.cy-borg.cyborg-items.Item.hTC8FruS6zC1hQKs",
+    // Classless Punk
+    "Compendium.cy-borg.cyborg-items.Item.mOR4y0KD1LElPUx7",
+    // Discharged CorpKiller
+    "Compendium.cy-borg.cyborg-items.Item.buxwe4sUYRRC72dR",
+    // Forsaken Gang-Goon
+    "Compendium.cy-borg.cyborg-items.Item.QBxOyQ9J8wVr9Wdj",
+    // {Orphaned Gearhead
+    "Compendium.cy-borg.cyborg-items.Item.pWM7IpNXYXawvO5Y",
+    // Renegade Cyberslasher
+    "Compendium.cy-borg.cyborg-items.Item.raLprLcqryAWsSkk",
+    // Shunned Nanomancer
+    "Compendium.cy-borg.cyborg-items.Item.wE4c4OAHuQygwcFn"
+  ],
 };
 
 CY.colorSchemes = {

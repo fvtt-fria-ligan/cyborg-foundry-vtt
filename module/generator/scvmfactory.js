@@ -9,11 +9,7 @@ import {
   drawFromTable,
   drawText,
 } from "../packutils.js";
-
-export const createRandomScvm = async () => {
-  const clazz = await pickRandomClass();
-  await createScvm(clazz);
-};
+import { getAllowedScvmClasses } from "../settings.js";
 
 export const createScvm = async (clazz) => {
   const scvm = await rollScvmForClass(clazz);
@@ -116,40 +112,24 @@ const makeDescription = async (descriptionTables) => {
   return descriptionLine;
 };
 
-const pickRandomClass = async () => {
-  const classPacks = findClassPacks();
-  if (classPacks.length === 0) {
-    // TODO: error on 0-length classPaths
-    return;
-  }
-  const packName = classPacks[Math.floor(Math.random() * classPacks.length)];
-  // TODO: debugging hardcodes
-  const pack = game.packs.get(packName);
-  const content = await pack.getDocuments();
-  return content.find((i) => i.type === "class");
-};
-
-export const findClassPacks = () => {
-  const classPacks = [];
-  const packKeys = game.packs.keys();
-  for (const packKey of packKeys) {
-    // moduleOrSystemName.packName
-    const keyParts = packKey.split(".");
-    if (keyParts.length === 2) {
-      const packName = keyParts[1];
-      if (packName.startsWith("class-") && packName.length > 6) {
-        // class pack
-        classPacks.push(packKey);
-      }
+export const findClasses = async () => {
+  const classes = [];
+  for (const uuid of CY.scvmFactory.classUuids) {
+    const clazz = await fromUuid(uuid);
+    if (clazz && clazz.type == CY.itemTypes.class) {
+      classes.push(clazz);
     }
   }
-  return classPacks;
+  return classes;
 };
 
-export const classItemFromPack = async (packName) => {
-  const pack = game.packs.get(packName);
-  const content = await pack.getDocuments();
-  return content.find((i) => i.type === "class");
+export const findAllowedClasses = async () => {
+  const classes = await findClasses();
+  const allowedScvmClasses = getAllowedScvmClasses();
+  const filtered = classes.filter((c) => {
+    return !(c.uuid in allowedScvmClasses) || allowedScvmClasses[c.uuid];
+  });
+  return filtered;
 };
 
 const abilityRoll = (formula) => {

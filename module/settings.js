@@ -2,6 +2,20 @@ import { colorChoices } from "./colors.js";
 import { CY } from "./config.js";
 import { AllowedScvmClassesDialog } from "./generator/allowed-scvm-classes-dialog.js";
 
+// TODO: DRY out below with this
+const Settings = {
+  allowedScvmClasses: "allowedScvmClasses",
+  additionalAbilities: "additionalAbilities",
+  colorScheme: "colorScheme",
+  deleteZeroQuantity: "deleteZeroQuantity",
+  hitAutomation: "hitAutomation",
+  fontScheme: "fontScheme",
+  lastScvmfactorySelection: "lastScvmfactorySelection",
+  systemMigrationVersion: "systemMigrationVersion",
+  trackAmmo: "trackAmmo",
+  trackCarryingCapacity: "trackCarryingCapacity",
+};
+
 export const registerSystemSettings = () => {
   /** UI Color scheme */
   game.settings.register(CY.system, "colorScheme", {
@@ -122,6 +136,14 @@ export const registerSystemSettings = () => {
   });
 };
 
+const getSetting = (setting) => {
+  return game.settings.get(CONFIG.CY.system, setting);
+};
+
+const setSetting = (setting, value) => {
+  return game.settings.set(CONFIG.CY.system, setting, value);
+};
+
 export const showChatAds = () => {
   return game.settings.get(CY.system, "showChatAds");
 };
@@ -155,6 +177,10 @@ export const isScvmClassAllowed = (classPack) => {
   return typeof allowedScvmClasses[classPack] === "undefined"
     ? true
     : !!allowedScvmClasses[classPack];
+};
+
+export const getAllowedScvmClasses = () => {
+  return getSetting(Settings.allowedScvmClasses);
 };
 
 export const setAllowedScvmClasses = (allowedScvmClasses) => {

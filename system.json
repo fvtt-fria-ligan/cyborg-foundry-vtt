@@ -20,193 +20,39 @@
   ],
   "packs": [
     {
-      "name": "actors-orphaned-gearhead",
-      "label": "Actors - Orphaned Gearhead",
+      "name": "cyborg-actors",
+      "label": "CY_BORG (Actors)",
       "system": "cy-borg",
-      "path": "./packs/actors-orphaned-gearhead.db",
+      "path": "./packs/cyborg-actors",
       "type": "Actor"
     },  
     {
-      "name": "apps",
-      "label": "Apps",
+      "name": "cyborg-items",
+      "label": "CY_BORG (Items)",
       "system": "cy-borg",
-      "path": "./packs/apps.db",
+      "path": "./packs/cyborg-items",
       "type": "Item"
     },
     {
-      "name": "armor",
-      "label": "Armor",
+      "name": "cyborg-journal",
+      "label": "CY_BORG (Journal)",
       "system": "cy-borg",
-      "path": "./packs/armor.db",
-      "type": "Item"
-    },
-    {
-      "name": "boostermods",
-      "label": "Booster Mods",
-      "system": "cy-borg",
-      "path": "./packs/booster-mods.db",
-      "type": "Item"
-    },
-    {
-      "name": "class-burned-hacker",
-      "label": "Class - Burned Hacker",
-      "system": "cy-borg",
-      "path": "./packs/class-burned-hacker.db",
-      "type": "Item"
-    },
-    {
-      "name": "class-classless-punk",
-      "label": "Class - Classless Punk",
-      "system": "cy-borg",
-      "path": "./packs/class-classless-punk.db",
-      "type": "Item"
-    },    
-    {
-      "name": "class-discharged-corpkiller",
-      "label": "Class - Discharged CorpKiller",
-      "system": "cy-borg",
-      "path": "./packs/class-discharged-corpkiller.db",
-      "type": "Item"
-    },
-    {
-      "name": "class-forsaken-gang-goon",
-      "label": "Class - Forsaken Gang-Goon",
-      "system": "cy-borg",
-      "path": "./packs/class-forsaken-gang-goon.db",
-      "type": "Item"
-    },    
-    {
-      "name": "class-orphaned-gearhead",
-      "label": "Class - Orphaned Gearhead",
-      "system": "cy-borg",
-      "path": "./packs/class-orphaned-gearhead.db",
-      "type": "Item"
-    },     
-    {
-      "name": "class-renegade-cyberslasher",
-      "label": "Class - Renegade Cyberslasher",
-      "system": "cy-borg",
-      "path": "./packs/class-renegade-cyberslasher.db",
-      "type": "Item"
-    },     
-    {
-      "name": "class-shunned-nanomancer",
-      "label": "Class - Shunned Nanomancer",
-      "system": "cy-borg",
-      "path": "./packs/class-shunned-nanomancer.db",
-      "type": "Item"
-    },
-    {
-      "name": "cybertech",
-      "label": "Cybertech",
-      "system": "cy-borg",
-      "path": "./packs/cybertech.db",
-      "type": "Item"
-    },
-    {
-      "name": "equipment",
-      "label": "Equipment",
-      "system": "cy-borg",
-      "path": "./packs/equipment.db",
-      "type": "Item"
-    },
-    {
-      "name": "infestations",
-      "label": "Infestations",
-      "system": "cy-borg",
-      "path": "./packs/infestations.db",
-      "type": "Item"
-    },
-    {
-      "name": "cyborg-readme",
-      "label": "CY_BORG",
-      "system": "cy-borg",
-      "path": "./packs/cyborg-readme.db",
+      "path": "./packs/cyborg-journal",
       "type": "JournalEntry"
     },
     {
-      "name": "macros",
-      "label": "Macros",
+      "name": "cyborg-macros",
+      "label": "CY_BORG (Macros)",
       "system": "cy-borg",
-      "path": "./packs/macros.db",
+      "path": "./packs/cyborg-macros",
       "type": "Macro"
     },
     {
-      "name": "nanopowers",
-      "label": "Nano Powers",
+      "name": "cyborg-tables",
+      "label": "CY_BORG (Tables)",
       "system": "cy-borg",
-      "path": "./packs/nano-powers.db",
-      "type": "Item"
-    },
-    {
-      "name": "npcs",
-      "label": "NPCs",
-      "system": "cy-borg",
-      "path": "./packs/npcs.db",
-      "type": "Actor"
-    },    
-    {
-      "name": "random-tables",
-      "label": "Random Tables",
-      "system": "cy-borg",
-      "path": "./packs/random-tables.db",
+      "path": "./packs/cyborg-tables",
       "type": "RollTable"
-    },
-    {
-      "name": "rolls-orphaned-gearhead",
-      "label": "Rolls - Orphaned Gearhead",
-      "system": "cy-borg",
-      "path": "./packs/rolls-orphaned-gearhead.db",
-      "type": "RollTable"
-    },    
-    {
-      "name": "rolls-burned-hacker",
-      "label": "Rolls - Burned Hacker",
-      "system": "cy-borg",
-      "path": "./packs/rolls-burned-hacker.db",
-      "type": "RollTable"
-    },
-    {
-      "name": "rolls-discharged-corpkiller",
-      "label": "Rolls - Discharged CorpKiller",
-      "system": "cy-borg",
-      "path": "./packs/rolls-discharged-corpkiller.db",
-      "type": "RollTable"
-    },
-    {
-      "name": "rolls-forsaken-gang-goon",
-      "label": "Rolls - Forsaken Gang-Goon",
-      "system": "cy-borg",
-      "path": "./packs/rolls-forsaken-gang-goon.db",
-      "type": "RollTable"
-    },    
-    {
-      "name": "rolls-renegade-cyberslasher",
-      "label": "Rolls - Renegade Cyberslasher",
-      "system": "cy-borg",
-      "path": "./packs/rolls-renegade-cyberslasher.db",
-      "type": "RollTable"
-    },       
-    {
-      "name": "rolls-shunned-nanomancer",
-      "label": "Rolls - Shunned Nanomancer",
-      "system": "cy-borg",
-      "path": "./packs/rolls-shunned-nanomancer.db",
-      "type": "RollTable"
-    },
-    {
-      "name": "vehicles",
-      "label": "Vehicles",
-      "system": "cy-borg",
-      "path": "./packs/vehicles.db",
-      "type": "Actor"
-    },    
-    {
-      "name": "weapons",
-      "label": "Weapons",
-      "system": "cy-borg",
-      "path": "./packs/weapons.db",
-      "type": "Item"
     }
   ],  
   "socket": true,
@@ -216,8 +62,8 @@
   "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
   "compatibility": {
-    "minimum": 10,
-    "verified": 10
+    "minimum": "11.300",
+    "verified": "11.300"
   },  
   "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",
   "manifest": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt/releases/latest/download/system.json",

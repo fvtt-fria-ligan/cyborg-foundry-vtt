@@ -1,0 +1,23 @@
+.tab.sidebar-tab.compendium-sidebar {
+  .directory-list {
+    .directory-item.compendium {
+      align-items: start;
+      h3.entry-name {
+        margin-left: 0px;
+      }
+      img.compendium-banner {
+        display: none;
+      }
+    }
+  }
+}
+
+.compendium.directory {
+  .directory-header {
+    .header-banner {
+      display: none;
+      // background-image is currently set in a style attribute :P
+      // background-image: none !important;
+    }
+  }
+}
