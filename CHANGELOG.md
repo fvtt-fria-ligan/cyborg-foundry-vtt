@@ -1,3 +1,7 @@
+# 2.0.1
+
+- Fix class sheet's items field not saving.
+
 # 2.0.0
 
 - v11 compatibility.
