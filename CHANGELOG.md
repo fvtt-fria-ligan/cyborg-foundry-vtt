@@ -1,3 +1,8 @@
+# 2.0.0
+
+- v11 compatibility.
+- Reorganize compendiums with folders.
+
 # 1.8.0
 
 - Add journal page listeners for rollable and draw-from-table css classes.
