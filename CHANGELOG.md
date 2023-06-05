@@ -1,3 +1,7 @@
+# 2.0.4
+
+- Fix more compendium mislinks.
+
 # 2.0.3
 
 - Fix syntax error.
