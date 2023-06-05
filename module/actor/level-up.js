@@ -1,4 +1,4 @@
-import { TABLES_PACK } from "../packutils";
+import { TABLES_PACK } from "../packutils.js";
 
 const LEVEL_UP_ROLL_CARD_TEMPLATE =
   "systems/cy-borg/templates/chat/level-up-roll-card.html";
