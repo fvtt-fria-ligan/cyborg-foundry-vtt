@@ -1,6 +1,7 @@
+import { TABLES_PACK } from "../packutils";
+
 const LEVEL_UP_ROLL_CARD_TEMPLATE =
   "systems/cy-borg/templates/chat/level-up-roll-card.html";
-
 
 export const rollLevelUp = async (actor) => {
   const oldHp = actor.system.hitPoints.max;
@@ -89,7 +90,7 @@ export const rollLevelUp = async (actor) => {
 
   if (rollTableName) {
     // roll a scroll
-    const pack = game.packs.get("cy-borg.random-tables");
+    const pack = game.packs.get(TABLES_PACK);
     const content = await pack.getDocuments();
     const table = content.find((i) => i.name === rollTableName);
     await table.draw();

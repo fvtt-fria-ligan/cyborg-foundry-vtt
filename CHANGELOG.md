@@ -1,3 +1,7 @@
+# 2.0.2
+
+- Fix various broken compendium links.
+
 # 2.0.1
 
 - Fix class sheet's items field not saving.

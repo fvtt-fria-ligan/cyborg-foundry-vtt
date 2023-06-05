@@ -1,3 +1,8 @@
+export const ACTORS_PACK = "cy-borg.cyborg-actors";
+export const ITEMS_PACK = "cy-borg.cyborg-items";
+export const MACROS_PACK = "cy-borg.cyborg-macros";
+export const TABLES_PACK = "cy-borg.cyborg-tables";
+
 export const documentFromPack = async (packName, docName) => {
   const pack = game.packs.get(packName);
   if (!pack) {

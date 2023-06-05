@@ -1,12 +1,12 @@
 import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from "./ad-css.js";
 import { randomAd } from "./ad-data.js";
-import { documentFromPack } from "../packutils.js";
+import { ACTORS_PACK, documentFromPack } from "../packutils.js";
 import { playSound } from "../sound.js";
 import { sample } from "../utils.js";
 
 
 const getAdBotActor = async () => {
-  const adbot = await documentFromPack("cy-borg.npcs", "AdBot2000");
+  const adbot = await documentFromPack(ACTORS_PACK, "AdBot2000");
   return adbot;
 }
 
