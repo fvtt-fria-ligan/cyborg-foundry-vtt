@@ -1,3 +1,7 @@
+# 2.1.0
+
+- Add drugs.
+
 # 2.0.4
 
 - Fix more compendium mislinks.

@@ -18,6 +18,19 @@
       "path": "lang/en.json"
     }
   ],
+  "packFolders": [
+    {
+      "name": "CY_BORG",
+      "sorting": "m",
+      "packs": [
+        "cyborg-actors",
+        "cyborg-items",
+        "cyborg-journal",
+        "cyborg-macros",
+        "cyborg-tables"
+      ]
+    }
+  ],   
   "packs": [
     {
       "name": "cyborg-actors",
