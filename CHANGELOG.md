@@ -1,3 +1,7 @@
+# 2.1.1
+
+- Fix reboot button on character sheet.
+
 # 2.1.0
 
 - Add drugs.
