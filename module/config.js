@@ -122,12 +122,16 @@ CY.scvmFactory = {
       formatKey: "CY.FeatureFormat"
     },
     {
+      tableName: "Wants",
+      formatKey: "CY.WantFormat"
+    },
+    {
       tableName: "Quirks",
       formatKey: "CY.QuirkFormat"
     },
     {
-      tableName: "Wants",
-      formatKey: "CY.WantFormat"
+      tableName: "Obsessions",
+      formatKey: "CY.ObsessionFormat"
     },
   ],
   npcDescriptionTables: [
@@ -143,6 +147,10 @@ CY.scvmFactory = {
       tableName: "Features",
       formatKey: "CY.FeatureFormat"
     },
+    {
+      tableName: "Obsessions",
+      formatKey: "CY.ObsessionFormat"
+    },    
     {
       tableName: "Quirks",
       formatKey: "CY.QuirkFormat"

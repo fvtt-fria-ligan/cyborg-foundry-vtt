@@ -486,7 +486,6 @@ const updateActorWithScvm = async (actor, s) => {
 
   // update any actor tokens in the scene
   for (const token of actor.getActiveTokens()) {
-    console.log(token);
     await token.document.update({
       name: actor.name,
       texture: {
