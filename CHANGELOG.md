@@ -1,9 +1,6 @@
-# 2.1.3
-
-- Add obsession table roll to PC and NPC generation.
-
 # 2.1.2
 
+- Add obsession table roll to PC and NPC generation.
 - Fix weapons table assault rifle + grenade launcher result.
 
 # 2.1.1
