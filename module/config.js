@@ -97,70 +97,97 @@ CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
-  ammoItem: "Ammo Mag",
-  ammoPack: "cy-borg.cyborg-items",
-  startingItemsPack: "cy-borg.cyborg-items",
+  // Character Names
+  namesTable: "Compendium.cy-borg.cyborg-tables.RollTable.lWQNFZ99gjXNuElZ",
+  // Apps
+  appsTable: "Compendium.cy-borg.cyborg-tables.RollTable.v6SQP7gpXHwVzMeg",
+  // Cybertech
+  cybertechTable: "Compendium.cy-borg.cyborg-tables.RollTable.zeL73uYKLhX9tuxN",
+  // Nano Powers
+  nanoPowersTable: "Compendium.cy-borg.cyborg-tables.RollTable.NwthVwRcvLnnCtZ",
+  // Debt
+  debtTable: "Compendium.cy-borg.cyborg-tables.RollTable.1PvNYhHjZGvAebTe",
+  // Ammo Mag
+  ammoItem: "Compendium.cy-borg.cyborg-items.Item.PmeJXY1RIi8f9Bij",
   startingItems: [
-    "Cheap clothes",
-    "Retinal Com Device",
+    // Cheap clothes
+    "Compendium.cy-borg.cyborg-items.Item.OYLg8DatbzysitFk",
+    // Retinal Com Device
+    "Compendium.cy-borg.cyborg-items.Item.TYj1kPvCOsDmhuCA"
   ],
-  characterCreationPack: "cy-borg.cyborg-tables",
   startingEquipmentTables: [
-    "Cash & Gear 1",
-    "Cash & Gear 2",
-    "Cash & Gear 3",
+    // Cash & Gear
+    "Compendium.cy-borg.cyborg-tables.RollTable.bnwWwzR5NSK10Khu",
+    // Cash & Gear 2
+    "Compendium.cy-borg.cyborg-tables.RollTable.dto4J2Q64xPO9KUN",
+    // Cash & Gear 3
+    "Compendium.cy-borg.cyborg-tables.RollTable.3IkCqQQq9dUxbOoQ",
   ],
-  startingWeaponTable: "Weapons",
-  startingArmorTable: "Armor",
+  // Weapons
+  startingWeaponTable: "Compendium.cy-borg.cyborg-tables.RollTable.2ozvRk5I5vaUrMmc",
+  // Armor
+  startingArmorTable: "Compendium.cy-borg.cyborg-tables.RollTable.SdPk5JLewSWsOQrU",
   descriptionTables: [
     {
-      tableName: "Styles",
+      // Styles
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.ynpJKCDgdCGSdLJU",
       formatKey: "CY.StyleFormat"
     },
     {
-      tableName: "Features",
+      // Features
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.3PsUdFRUIe8Mm70T",
       formatKey: "CY.FeatureFormat"
     },
     {
-      tableName: "Wants",
+      // Wants
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.3tl4PxzDaQA4k7Uh",
       formatKey: "CY.WantFormat"
     },
     {
-      tableName: "Quirks",
+      // Quirks
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.vGxWLOiH33ocmGrm",
       formatKey: "CY.QuirkFormat"
     },
     {
-      tableName: "Obsessions",
+      // Obsessions
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.QfLYSLzrDod9g6zq",
       formatKey: "CY.ObsessionFormat"
     },
   ],
   npcDescriptionTables: [
     {
-      tableName: "Roles",
+      // Roles
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.wGLCXzoaFFYNy8Y4",
       formatKey: "CY.RoleFormat"
     },
     {
-      tableName: "Styles",
+      // Styles
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.ynpJKCDgdCGSdLJU",
       formatKey: "CY.StyleFormat"
     },
     {
-      tableName: "Features",
+      // Features
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.3PsUdFRUIe8Mm70T",
       formatKey: "CY.FeatureFormat"
     },
     {
-      tableName: "Obsessions",
+      // Obsessions
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.QfLYSLzrDod9g6zq",
       formatKey: "CY.ObsessionFormat"
     },    
     {
-      tableName: "Quirks",
+      // Quirks
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.vGxWLOiH33ocmGrm",
       formatKey: "CY.QuirkFormat"
     },
     {
-      tableName: "Wants",
+      // "Wants
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.3tl4PxzDaQA4k7Uh",
       formatKey: "CY.WantFormat"
     },
     {
-      tableName: "Trinkets",
+      // Trinkets
+      uuid: "Compendium.cy-borg.cyborg-tables.RollTable.mLrq098IuxxbIbqP",
       formatKey: "CY.CarriesFormat",
       articalize: true
     },

@@ -1,13 +1,11 @@
 import { CYActor } from "../actor/actor.js";
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
-import { randomName } from "./names.js";
 import { articalize, lowerCaseFirst, randomIntFromInterval, rollTotal, sample, upperCaseFirst } from "../utils.js";
 
 import {
-  documentFromPack,
-  drawFromTable,
-  drawText,
+  drawFromTableUuid,
+  drawTextFromTableUuid,
 } from "../packutils.js";
 import { getAllowedScvmClasses } from "../settings.js";
 
@@ -39,8 +37,12 @@ export const createNpc = async () => {
   actor.sheet.render(true);
 };
 
+const randomName = async () => {
+  return drawTextFromTableUuid(CY.scvmFactory.namesTable);
+};
+
 const randomNpc = async () => {
-  const name = randomName();
+  const name = await randomName();
   const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
   const img = randomCharacterPortrait();
   const hp = rollTotal("1d8");
@@ -92,11 +94,9 @@ const npcArmor = () => {
 }
 
 const makeDescription = async (descriptionTables) => {
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
   let descriptionLine = "";
   for (const dt of descriptionTables) {
-    const table = ccContent.find((i) => i.name === dt.tableName);
+    const table = await fromUuid(dt.uuid);
     if (table) {
       const draw = await table.draw({ displayChat: false });
       let text = lowerCaseFirst(draw.results[0].text);
@@ -106,7 +106,7 @@ const makeDescription = async (descriptionTables) => {
       const formatted = game.i18n.format(dt.formatKey, {text});
       descriptionLine += upperCaseFirst(formatted) + " ";  
     } else {
-      console.error(`Could not find table ${dt.tableName}`);
+      console.error(`Could not find table ${dt.uuid}`);
     }
   }
   return descriptionLine;
@@ -137,13 +137,10 @@ const abilityRoll = (formula) => {
 }
 
 const classStartingArmor = async (clazz) => {
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
   if (CY.scvmFactory.startingArmorTable && clazz.system.armorTable) {
+    // TODO: refactor documentsFromTableUuid() to take a roll, and use it
     const armorRoll = new Roll(clazz.system.armorTable);
-    const armorTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingArmorTable
-    );
+    const armorTable = await fromUuid(CY.scvmFactory.startingArmorTable);
     const armorDraw = await armorTable.draw({
       roll: armorRoll,
       displayChat: false,
@@ -154,23 +151,20 @@ const classStartingArmor = async (clazz) => {
 };
 
 const classStartingWeapons = async (clazz) => {
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
   if (CY.scvmFactory.startingWeaponTable && clazz.system.weaponTable) {
+    // TODO: refactor documentsFromTableUuid() to take a roll, and use it
     const weaponRoll = new Roll(clazz.system.weaponTable);
-    const weaponTable = ccContent.find(
-      (i) => i.name === CY.scvmFactory.startingWeaponTable
-    );
+    const weaponTable = await fromUuid(CY.scvmFactory.startingWeaponTable);
     const weaponDraw = await weaponTable.draw({
       roll: weaponRoll,
       displayChat: false,
     });
-    const weapons = await docsFromResults(weaponDraw.results);
+    const weapons = await docsFromResults(weaponDraw.results);    
     // add ammo mags if starting weapon uses ammo
     const mags = [];
     for (const weapon of weapons) {
       if (weapon.system.usesAmmo) {
-        const mag = await documentFromPack(CY.scvmFactory.ammoPack, CY.scvmFactory.ammoItem);
+        const mag = await fromUuid(CY.scvmFactory.ammoItem);
         const magRoll = new Roll("1d4").evaluate({async: false});
         // TODO: need to mutate _data to get it to change for our owned item creation.
         // Is there a better way to do this?
@@ -230,39 +224,36 @@ const hasNano = (items) => {
 
 const startingEquipment = async (clazz) => {
   const equipment = [];
-
-  if (CY.scvmFactory.startingItemsPack) {
-    const itemPack = game.packs.get(CY.scvmFactory.startingItemsPack);
-    const items = await itemPack.getDocuments();
-    for (const itemName of CY.scvmFactory.startingItems) {
-      const item = items.find(x => x.name === itemName);
-      equipment.push(item);
+  if (CY.scvmFactory.startingItems) {
+    for (const uuid of CY.scvmFactory.startingItems) {
+      const item = await fromUuid(uuid);
+      if (item) {
+        equipment.push(item);
+      }
     }
   }
 
-  const ccPack = game.packs.get(CY.scvmFactory.characterCreationPack);
-  const ccContent = await ccPack.getDocuments();
-  for (const tableName of CY.scvmFactory.startingEquipmentTables) {
-    const table = ccContent.find(x => x.name === tableName);
+  for (const uuid of CY.scvmFactory.startingEquipmentTables) {
+    const table = await fromUuid(uuid);
     if (table) {
       const draw = await table.draw({ displayChat: false });
       let items = await docsFromResults(draw.results);
       if (clazz.system.onlyApps && (hasCybertech(items) || hasNano(items))) {
         // replace with a draw from apps
-        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Apps");
+        const item = await drawFromTableUuid(CY.scvmFactory.appsTable);
         items = [item];
       } else if (clazz.system.onlyCybertech && (hasApp(items) || hasNano(items))) {
         // replace with a draw from cybertech
-        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Cybertech", "1d12");
+        const item = await drawFromTableUuid(CY.scvmFactory.cybertechTable, "1d12");
         items = [item];
       } else if (clazz.system.onlyNano && (hasApp(items) || hasCybertech(items))) {
         // replace with a draw from nano powers
-        const item = await drawFromTable(CY.scvmFactory.characterCreationPack, "Nano Powers");
+        const item = await drawFromTableUuid(CY.scvmFactory.nanoPowersTable);
         items = [item];
       }
       equipment.push(...items);  
     } else {
-      console.error(`Could not find table ${tableName}`);
+      console.error(`Could not find table ${uuid}`);
     }
   }
   return equipment;
@@ -364,7 +355,7 @@ const rollScvmForClass = async (clazz) => {
   const items = allDocs.filter((e) => e instanceof CYItem);
   const itemData = items.map(i => simpleData(i));
 
-  const name = randomName();
+  const name = await randomName();
   const npcs = allDocs.filter(e => e instanceof CYActor);
   const npcData = npcs.map(n => simpleData(n));
 
@@ -377,7 +368,7 @@ const rollScvmForClass = async (clazz) => {
     rollTotal(clazz.system.hitPoints) + toughness);
   const credits = rollTotal(clazz.system.credits);
   const debtAmount = rollTotal("3d6*1000");
-  const debtTo = await drawText(CY.scvmFactory.characterCreationPack, "Debt");
+  const debtTo = await drawTextFromTableUuid(CY.scvmFactory.debtTable);
   const glitches = rollTotal(clazz.system.glitches);
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
