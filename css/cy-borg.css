@@ -1614,20 +1614,6 @@ a.inline-roll {
   padding: 1px;
 }
 
-.tab.sidebar-tab.compendium-sidebar .directory-list .directory-item.compendium {
-  align-items: start;
-}
-.tab.sidebar-tab.compendium-sidebar .directory-list .directory-item.compendium h3.entry-name {
-  margin-left: 0px;
-}
-.tab.sidebar-tab.compendium-sidebar .directory-list .directory-item.compendium img.compendium-banner {
-  display: none;
-}
-
-.compendium.directory .directory-header .header-banner {
-  display: none;
-}
-
 .cy.sheet.item .cyber .sheet-header .portrait-row .item-type {
   color: var(--cy-cybertext-color);
 }
