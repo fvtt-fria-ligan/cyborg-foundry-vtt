@@ -1,3 +1,10 @@
+# 2.2.0
+
+- Use table and item UUIDs for character generator.
+- Move character names to rollable table.
+- Don't hide compendium background images.
+
+
 # 2.1.2
 
 - Add obsession table roll to PC and NPC generation.
