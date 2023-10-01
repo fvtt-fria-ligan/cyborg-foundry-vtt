@@ -18,7 +18,7 @@ export const createScvmFromClassUuid = async (classUuid) => {
   const clazz = await fromUuid(classUuid);
   if (!clazz) {
     // couldn't find class item, so bail
-    const err = `No class item found with UUID ${classUUID}`;
+    const err = `No class item found with UUID ${classUuid}`;
     console.error(err);
     ui.notifications.error(err);
     return;
