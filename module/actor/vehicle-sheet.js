@@ -4,7 +4,7 @@ import { byName } from "../utils.js";
 export class CYVehicleSheet extends CYActorSheet {
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "vehicle"],
       template: "systems/cy-borg/templates/actor/vehicle-sheet.html",
       width: 1000,
@@ -20,8 +20,8 @@ export class CYVehicleSheet extends CYActorSheet {
   }
 
   /** @override */
-  getData() {
-    const superData = super.getData();
+  async getData() {
+    const superData = await super.getData();
     if (superData.data.system.ownerId) {
       superData.data.system.owner = game.actors.get(superData.data.system.ownerId);
     }

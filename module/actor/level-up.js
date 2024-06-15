@@ -3,7 +3,7 @@ import { TABLES_PACK } from "../packutils.js";
 const LEVEL_UP_ROLL_CARD_TEMPLATE =
   "systems/cy-borg/templates/chat/level-up-roll-card.html";
 
-export const rollLevelUp = async (actor) => {
+export async function rollLevelUp(actor) {
   const oldHp = actor.system.hitPoints.max;
   const newHp = betterHp(oldHp);
   const oldStr = actor.system.abilities.strength.value;
@@ -52,11 +52,11 @@ export const rollLevelUp = async (actor) => {
   // In the lining of your jacket, you find...
   let jacketOutcome = null;
   let rollTableName = null;
-  const jacketRoll = new Roll("1d6").evaluate({async: false});
+  const jacketRoll = await new Roll("1d6").evaluate();
   if (jacketRoll.total < 4) {
     jacketOutcome = game.i18n.localize("CY.LevelUpJacketNothing");
   } else if (jacketRoll.total === 4) {
-    const creditsRoll = new Roll("3d6*10").evaluate({async: false});
+    const creditsRoll = await new Roll("3d6*10").evaluate();
     jacketOutcome = game.i18n.format("CY.LevelUpJacketCredChip", {credits: creditsRoll.total});
     newCredits += creditsRoll.total;
   } else if (jacketRoll.total === 5) {
@@ -108,11 +108,11 @@ export const rollLevelUp = async (actor) => {
   });
 }
 
-const betterHp = (oldHp) => {
-  const hpRoll = new Roll("6d10").evaluate({async: false});
+async function betterHp(oldHp) {
+  const hpRoll = await new Roll("6d10").evaluate();
   if (hpRoll.total >= oldHp) {
     // success, increase HP
-    const howMuchRoll = new Roll("1d6").evaluate({async: false});
+    const howMuchRoll = await new Roll("1d6").evaluate();
     return oldHp + howMuchRoll.total;
   } else {
     // no soup for you

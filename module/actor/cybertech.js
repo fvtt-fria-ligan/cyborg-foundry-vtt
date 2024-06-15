@@ -1,10 +1,10 @@
 import { showDice } from "../dice.js";
 import { d20Formula, showOutcomeRollCard } from "../utils.js";
 
-export const rollCyRage = async (actor) => {
+export async function rollCyRage(actor) {
   // Test Presence DR10 with +1DR for every cybertech installed.
   const formula = d20Formula(actor.system.abilities.presence.value);
-  const roll = new Roll(formula).evaluate({async: false});
+  const roll = await new Roll(formula).evaluate();
   await showDice(roll);
 
   const numCybertechInstalled = actor.cybertechCount();

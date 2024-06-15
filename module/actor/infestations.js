@@ -1,12 +1,12 @@
 import { d20Formula, showOutcomeRollCard } from "../utils.js";
 
 
-export const rollInfestationTriggers = async (actor) => {
+export async function rollInfestationTriggers(actor) {
   const dr = 10;
   const formula = d20Formula(actor.system.abilities.presence.value);
 
   for (const infestation of actor.unlinkedInfestations()) {
-    const roll = new Roll(formula).evaluate({async: false});
+    const roll = await new Roll(formula).evaluate();
     let outcome;
     if (roll.total >= dr) {
       // passed

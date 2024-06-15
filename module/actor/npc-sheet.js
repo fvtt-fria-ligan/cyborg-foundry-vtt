@@ -5,7 +5,7 @@ import { rollReaction } from "./reaction.js";
 export class CYNpcSheet extends CYActorSheet {
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "npc"],
       template: "systems/cy-borg/templates/actor/npc-sheet.html",
       width: 411,
@@ -21,8 +21,8 @@ export class CYNpcSheet extends CYActorSheet {
   }
 
   /** @override */
-  getData() {
-    const superData = super.getData();
+  async getData() {
+    const superData = await super.getData();
     return superData;
   }
 

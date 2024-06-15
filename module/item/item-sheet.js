@@ -3,7 +3,7 @@ import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
 export class CYItemSheet extends ItemSheet {  
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "item"],
       width: 411,
       height: 900,
@@ -42,8 +42,8 @@ export class CYItemSheet extends ItemSheet {
   }
 
   /** @override */
-  getData() {
-    const superData = super.getData();
+  async getData() {
+    const superData = await super.getData();
     superData.cssCyberClass = superData.data.system.cybertech ? "cyber" : "";
     superData.data.system.description = TextEditor.enrichHTML(
       superData.data.system.description,

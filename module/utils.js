@@ -56,8 +56,8 @@ export const articalize = (str) => {
   return `a ${str}`;
 };
 
-export const rollTotal = (formula, rollData={}) => {
-  return new Roll(formula, rollData).evaluate({async: false}).total;
+export async function rollTotal(formula, rollData={}) {
+  return await new Roll(formula, rollData).evaluate().total;
 };
 
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript

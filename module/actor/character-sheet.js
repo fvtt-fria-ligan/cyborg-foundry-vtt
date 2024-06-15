@@ -13,7 +13,7 @@ import { CY } from "../config.js";
 export class CYCharacterSheet extends CYActorSheet {
   /** @override */
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["cy", "sheet", "actor", "character"],
       template: "systems/cy-borg/templates/actor/character-sheet.html",
       // width: 411,
@@ -32,8 +32,8 @@ export class CYCharacterSheet extends CYActorSheet {
   }
 
   /** @override */
-  getData() {
-    const superData = super.getData();
+  async getData() {
+    const superData = await super.getData();
     // TODO: move this to prepareItems?
     superData.data.items.forEach(item => {
       item.system.equippable = (

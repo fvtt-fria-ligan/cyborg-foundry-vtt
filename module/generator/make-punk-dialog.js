@@ -41,8 +41,9 @@ export class MakePunkDialog extends Application {
   }
 
   /** @override */
-  getData(options = {}) {
-    return mergeObject(super.getData(options), {
+  async getData(options = {}) {
+    const superData = await super.getData(options);
+    return foundry.utils.mergeObject(superData, {
       classes: this.classes,
       forActor: this.actor !== undefined && this.actor !== null,
     });

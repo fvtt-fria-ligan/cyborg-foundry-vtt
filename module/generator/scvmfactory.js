@@ -9,12 +9,12 @@ import {
 } from "../packutils.js";
 import { getAllowedScvmClasses } from "../settings.js";
 
-export const createScvm = async (clazz) => {
+export async function createScvm(clazz) {
   const scvm = await rollScvmForClass(clazz);
   await createActorWithScvm(scvm);
 };
 
-export const createScvmFromClassUuid = async (classUuid) => {
+export async function createScvmFromClassUuid(classUuid) {
   const clazz = await fromUuid(classUuid);
   if (!clazz) {
     // couldn't find class item, so bail
@@ -26,22 +26,22 @@ export const createScvmFromClassUuid = async (classUuid) => {
   await createScvm(clazz);
 };
 
-export const scvmifyActor = async (actor, clazz) => {
+export async function scvmifyActor(actor, clazz) {
   const scvm = await rollScvmForClass(clazz);
   await updateActorWithScvm(actor, scvm);
 };
 
-export const createNpc = async () => {
+export async function createNpc() {
   const npc = await randomNpc();
   const actor = await CYActor.create(npc);
   actor.sheet.render(true);
 };
 
-const randomName = async () => {
+function randomName() {
   return drawTextFromTableUuid(CY.scvmFactory.namesTable);
 };
 
-const randomNpc = async () => {
+async function randomNpc() {
   const name = await randomName();
   const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
   const img = randomCharacterPortrait();
@@ -73,7 +73,7 @@ const randomNpc = async () => {
   };  
 };
 
-const npcAttack = () => {
+function npcAttack() {
   return sample([
     "Unarmed d2",
     "Shiv d3",
@@ -85,7 +85,7 @@ const npcAttack = () => {
   ]);
 }
 
-const npcArmor = () => {
+function npcArmor() {
   return sample([
     "No armor",
     "Styleguard -d2",
@@ -93,7 +93,7 @@ const npcArmor = () => {
   ]);
 }
 
-const makeDescription = async (descriptionTables) => {
+async function makeDescription(descriptionTables) {
   let descriptionLine = "";
   for (const dt of descriptionTables) {
     const table = await fromUuid(dt.uuid);
@@ -112,7 +112,7 @@ const makeDescription = async (descriptionTables) => {
   return descriptionLine;
 };
 
-export const findClasses = async () => {
+export async function findClasses() {
   const classes = [];
   for (const uuid of CY.scvmFactory.classUuids) {
     const clazz = await fromUuid(uuid);
@@ -123,7 +123,7 @@ export const findClasses = async () => {
   return classes;
 };
 
-export const findAllowedClasses = async () => {
+export async function findAllowedClasses() {
   const classes = await findClasses();
   const allowedScvmClasses = getAllowedScvmClasses();
   const filtered = classes.filter((c) => {
@@ -132,8 +132,8 @@ export const findAllowedClasses = async () => {
   return filtered;
 };
 
-const abilityRoll = (formula) => {
-  return abilityBonus(rollTotal(formula));
+async function abilityRoll(formula) {
+  return await abilityBonus(rollTotal(formula));
 }
 
 const classStartingArmor = async (clazz) => {
@@ -150,7 +150,7 @@ const classStartingArmor = async (clazz) => {
   }
 };
 
-const classStartingWeapons = async (clazz) => {
+async function classStartingWeapons(clazz) {
   if (CY.scvmFactory.startingWeaponTable && clazz.system.weaponTable) {
     // TODO: refactor documentsFromTableUuid() to take a roll, and use it
     const weaponRoll = new Roll(clazz.system.weaponTable);
@@ -159,13 +159,15 @@ const classStartingWeapons = async (clazz) => {
       roll: weaponRoll,
       displayChat: false,
     });
+    console.log("weaponDraw", weaponDraw);
     const weapons = await docsFromResults(weaponDraw.results);    
+    console.log("weapons", weapons);
     // add ammo mags if starting weapon uses ammo
     const mags = [];
     for (const weapon of weapons) {
       if (weapon.system.usesAmmo) {
         const mag = await fromUuid(CY.scvmFactory.ammoItem);
-        const magRoll = new Roll("1d4").evaluate({async: false});
+        const magRoll = await new Roll("1d4").evaluate();
         // TODO: need to mutate _data to get it to change for our owned item creation.
         // Is there a better way to do this?
         mag.name = `${weapon.name} ${mag.name}`;
@@ -179,7 +181,7 @@ const classStartingWeapons = async (clazz) => {
   }
 };
 
-const classStartingItems = async (clazz) => {
+async function classStartingItems(clazz) {
   if (clazz.system.items) {
     const startingItems = [];
     const lines = clazz.system.items.split("\n");
@@ -198,7 +200,7 @@ const classStartingItems = async (clazz) => {
   }
 };
 
-const classDescriptionLines = async (clazz) => {
+async function classDescriptionLines(clazz) {
   const descriptionLines = [];
   descriptionLines.push(clazz.system.description);
   descriptionLines.push("<p>&nbsp;</p>");
@@ -210,19 +212,19 @@ const classDescriptionLines = async (clazz) => {
   return descriptionLines;
 };
 
-const hasApp = (items) => {
+function hasApp(items) {
   return items.filter(x => x.type === CY.itemTypes.app).length > 0;
 }
 
-const hasCybertech = (items) => {
+function hasCybertech(items) {
   return items.filter(x => x.system.cybertech).length > 0;
 }
 
-const hasNano = (items) => {
+function hasNano(items) {
   return items.filter(x => x.type === CY.itemTypes.nanoPower).length > 0;
 }
 
-const startingEquipment = async (clazz) => {
+async function startingEquipment(clazz) {
   const equipment = [];
   if (CY.scvmFactory.startingItems) {
     for (const uuid of CY.scvmFactory.startingItems) {
@@ -259,15 +261,17 @@ const startingEquipment = async (clazz) => {
   return equipment;
 };
 
-const simpleData = (e) => ({
-  data: e.system,
-  img: e.img,
-  items: e.items?.map(i => simpleData(i)),
-  name: e.name,
-  type: e.type,  
-});
+function simpleData(e) {
+  return {
+    data: e.system,
+    img: e.img,
+    items: e.items?.map(i => simpleData(i)),
+    name: e.name,
+    type: e.type,  
+  };
+};
 
-const randomNumberedFile = (dir, prefix, maxImgNum, extension) => {
+function randomNumberedFile(dir, prefix, maxImgNum, extension) {
   // pick a suffix from 1 to max
   const imgNum = randomIntFromInterval(1, maxImgNum);
   // format to 2 digits
@@ -275,11 +279,11 @@ const randomNumberedFile = (dir, prefix, maxImgNum, extension) => {
   return `/${dir}/${prefix}${imgNumStr}.${extension}`;
 };
 
-const randomCharacterPortrait = () => {
+function randomCharacterPortrait() {
   return randomNumberedFile("systems/cy-borg/assets/images/portraits/characters", "profile_", 7, "svg");  
 };
 
-const rollScvmForClass = async (clazz) => {
+async function rollScvmForClass(clazz) {
   console.log(`Creating new ${clazz.name}`);
   const allDocs = [clazz];
 
@@ -327,15 +331,15 @@ const rollScvmForClass = async (clazz) => {
           const results = await compendiumTableDrawMany(table, numRolls, formula);
           for (const result of results) {
             // draw result type: text (0), entity (1), or compendium (2)
-            if (result.type === 0) {
+            if (result.type === CONST.TABLE_RESULT_TYPES.TEXT) {
               // text
               descriptionLines.push(
                 `<p>${table.name}: ${result.text}</p>`
               );
-            } else if (result.type === 1) {
+            } else if (result.type === CONST.TABLE_RESULT_TYPES.DOCUMENT) {
               // entity
               // TODO: what do we want to do here?
-            } else if (result.type === 2) {
+            } else if (result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
               // compendium
               const entity = await entityFromResult(result);
               startingRollItems.push(entity);
@@ -396,7 +400,7 @@ const rollScvmForClass = async (clazz) => {
   };
 };
 
-const scvmToActorData = (s) => {
+function scvmToActorData(s) {
   return {
     name: s.name,
     data: {
@@ -432,7 +436,7 @@ const scvmToActorData = (s) => {
   };
 };
 
-const createActorWithScvm = async (s) => {
+async function createActorWithScvm(s) {
   const data = scvmToActorData(s);
   // use CYActor.create() so we get default disposition, actor link, vision, etc
   const actor = await CYActor.create(data);  
@@ -468,7 +472,7 @@ const createActorWithScvm = async (s) => {
   }
 };
 
-const updateActorWithScvm = async (actor, s) => {
+async function updateActorWithScvm(actor, s) {
   const data = scvmToActorData(s);
   // Explicitly nuke all items before updating.
   await actor.deleteEmbeddedDocuments("Item", [], { deleteAll: true });
@@ -513,7 +517,7 @@ const updateActorWithScvm = async (actor, s) => {
   }  
 };
 
-const docsFromResults = async (results) => {
+async function docsFromResults(results) {
   const ents = [];
   for (const result of results) {
     const entity = await entityFromResult(result);
@@ -524,9 +528,10 @@ const docsFromResults = async (results) => {
   return ents;
 };
 
-const entityFromResult = async (result) => {
+async function entityFromResult(result) {
+  console.log("result".charAt, result);
   // draw result type: text (0), entity (1), or compendium (2)
-  if (result.type === 2) {
+  if (result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
     // grab the item from the compendium
     const collection = game.packs.get(result.documentCollection);
     if (collection) {
@@ -541,7 +546,7 @@ const entityFromResult = async (result) => {
   }
 };
 
-const abilityBonus = (rollTotal) => {
+function abilityBonus(rollTotal) {
   if (rollTotal <= 4) {
     return -3;
   } else if (rollTotal <= 6) {
@@ -561,7 +566,7 @@ const abilityBonus = (rollTotal) => {
 };
 
 /** Workaround for compendium RollTables not honoring replacement=false */
-const compendiumTableDrawMany = async (rollTable, numDesired, formula) => {
+async function compendiumTableDrawMany(rollTable, numDesired, formula) {
   const rollTotals = [];
   let results = [];
   while (rollTotals.length < numDesired) {

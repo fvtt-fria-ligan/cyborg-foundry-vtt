@@ -14,14 +14,14 @@ export const countBullets = async (actor, itemId) => {
   }
 };
 
-export const rollCountBullets = async (actor, itemId, usedAutofire) => {
+export async function rollCountBullets(actor, itemId, usedAutofire) {
   const item = actor.items.get(itemId);
   if (!item) {
     return;
   }
 
   const formula = usedAutofire ? "1d6" : "1d8";
-  const roll = new Roll(formula).evaluate({async: false});
+  const roll = await new Roll(formula).evaluate();
   await showDice(roll);
 
   let outcome;

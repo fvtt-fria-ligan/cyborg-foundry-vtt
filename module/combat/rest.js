@@ -17,9 +17,9 @@ export const rollRest = async (actor, restLength, starving) => {
   }
 };
 
-const rollStarvation = async (actor) => {
+async function rollStarvation(actor) {
   const roll = new Roll("1d4");
-  roll.evaluate({async: false});
+  await roll.evaluate();
   const flavor = `${game.i18n.localize("CY.Starving")}: ${game.i18n.localize("CY.Lose")} ${roll.total} ${pluralize("CY.HitPoint", "CY.HitPoints", roll.total)}`;
   await roll.toMessage({
     flavor,
@@ -30,9 +30,9 @@ const rollStarvation = async (actor) => {
   await actor.update({ ["system.hitPoints.value"]: newHP });
 };
 
-const rollHealHitPoints = async (actor, dieRoll) => {
+async function rollHealHitPoints(actor, dieRoll) {
   const roll = new Roll(dieRoll);
-  roll.evaluate({async: false});
+  await roll.evaluate();
   const flavor = `${game.i18n.localize("CY.Rest")}: ${game.i18n.localize("CY.Heal")} ${roll.total} ${pluralize("CY.HitPoint", "CY.HitPoints", roll.total)}`;
   await roll.toMessage({
     flavor,

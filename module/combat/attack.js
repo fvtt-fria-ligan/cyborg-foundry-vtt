@@ -10,9 +10,9 @@ const ATTACK_ROLL_CARD_TEMPLATE =
 /**
  * Do the actual attack rolls and resolution.
  */
-export const rollAttack = async (
+export async function rollAttack(
   actor, itemId, attackDR, targetArmor, 
-  autofire, weakPoints, targetIsVehicle) => {
+  autofire, weakPoints, targetIsVehicle) {
   const item = actor.items.get(itemId);
   const itemRollData = item.getRollData();
 
@@ -49,7 +49,7 @@ export const rollAttack = async (
 
   // roll 1: attack
   const attackRoll = new Roll(d20Formula(value));
-  attackRoll.evaluate({ async: false });
+  await attackRoll.evaluate();
   await showDice(attackRoll);
 
   const d20Result = attackRoll.terms[0].results[0].result;
@@ -92,14 +92,14 @@ export const rollAttack = async (
       damageFormula = `${damageFormula} * ${critMultiplier}`;
     }
     damageRoll = new Roll(damageFormula);
-    damageRoll.evaluate({ async: false });
+    await damageRoll.evaluate();
     const dicePromises = [];
     addShowDicePromise(dicePromises, damageRoll);
     let damage = damageRoll.total;
     // roll 3: target armor soak
     if (targetArmor && !weakPoints) {
       targetArmorRoll = new Roll(targetArmor, {});
-      targetArmorRoll.evaluate({ async: false });
+      await targetArmorRoll.evaluate();
       addShowDicePromise(dicePromises, targetArmorRoll);
       damage = Math.max(damage - targetArmorRoll.total, 0);
     }
@@ -111,7 +111,7 @@ export const rollAttack = async (
     )} ${damage} ${game.i18n.localize("CY.Damage")}`;
   } else {
     // MISS!!!
-    attackOutcome = missText(isFumble);
+    attackOutcome = await missText(isFumble);
   }
 
   const rollResult = {
@@ -129,11 +129,11 @@ export const rollAttack = async (
   await renderAttackRollCard(actor, rollResult);
 };
 
-const missText = (isFumble) => {
+async function missText(isFumble) {
   let missKey;
   if (isFumble) {
     const fumbleRoll = new Roll("1d6");
-    fumbleRoll.evaluate({ async: false });
+    await fumbleRoll.evaluate();
     if (fumbleRoll.total < 4) {
       missKey = "CY.AttackFumbleText1";
     } else if (fumbleRoll.total < 6) {
@@ -150,7 +150,7 @@ const missText = (isFumble) => {
 /**
  * Show attack rolls/result in a chat roll card.
  */
-const renderAttackRollCard = async (actor, rollResult) => {
+async function renderAttackRollCard(actor, rollResult) {
   const html = await renderTemplate(ATTACK_ROLL_CARD_TEMPLATE, rollResult);
   ChatMessage.create({
     content: html,

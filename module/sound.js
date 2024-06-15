@@ -3,7 +3,7 @@ import { soundEffects } from "./settings.js";
 export const playSound = (src, volume=0.8) => {
   if (src && soundEffects()) {
     const pushToOtherClients = false;
-    AudioHelper.play({src, volume, loop: false}, pushToOtherClients);
+    foundry.audio.AudioHelper.play({src, volume, loop: false}, pushToOtherClients);
   }
 };
 

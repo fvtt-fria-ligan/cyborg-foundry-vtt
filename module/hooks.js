@@ -3,7 +3,7 @@ import { uiAdd, uiDelete } from "./sound.js";
 import { createScvmFromClassUuid } from "./generator/scvmfactory.js";
 
 
-export const registerHooks = () => {
+export function registerHooks() {
 
   Hooks.on("createItem", async (item, options, userId) => {
     if (userId != game.user.id) {

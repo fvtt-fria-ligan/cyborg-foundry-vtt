@@ -79,7 +79,7 @@ export const drawDocuments = async (packName, tableName) => {
 };
 
 export const documentsFromDraw = async (draw) => {
-  const docResults = draw.results.filter((r) => r.type === 2);
+  const docResults = draw.results.filter((r) => r.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM);
   return Promise.all(docResults.map((r) => documentFromResult(r)));
 };
 
@@ -94,7 +94,7 @@ export const documentFromResult = async (result) => {
     return;
   }
   const collectionName =
-    result.type === 2
+    result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM
       ? "Compendium." + result.documentCollection
       : result.documentCollection;
   const uuid = `${collectionName}.${result.documentId}`;

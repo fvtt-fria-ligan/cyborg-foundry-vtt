@@ -41,11 +41,10 @@ import { uiClick, uiSuccess, uiWindowClose, uiWindowOpen } from "../sound.js";
   }
 
   /** @override */
-  getData() {
-    const superData = super.getData();
-    superData.data.system.description = TextEditor.enrichHTML(
-      superData.data.system.description,
-      { async: false }
+  async getData() {
+    const superData = await super.getData();
+    superData.data.system.description = await TextEditor.enrichHTML(
+      superData.data.system.description
     );
     return superData;
   }

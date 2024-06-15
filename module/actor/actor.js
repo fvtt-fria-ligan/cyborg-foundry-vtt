@@ -36,7 +36,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
         vision: true,
       };
     } 
-    mergeObject(data.prototypeToken, defaults, { overwrite: false });
+    foundry.utils.mergeObject(data.prototypeToken, defaults, { overwrite: false });
     return super.create(data, options);
   }
 
