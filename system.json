@@ -2,7 +2,7 @@
   "id": "cy-borg",
   "title": "CY_BORG",
   "description": "Foundry VTT system for CY_BORG.",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "templateVersion": 2,
   "authors": [
     {
@@ -75,8 +75,8 @@
   "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
   "compatibility": {
-    "minimum": "11.300",
-    "verified": "11.300"
+    "minimum": "12",
+    "verified": "12"
   },  
   "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",
   "manifest": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt/releases/latest/download/system.json",
