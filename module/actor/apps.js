@@ -5,7 +5,7 @@ import { d20Formula, showOutcomeRollCard } from "../utils.js";
 /**
  * Roll for actor to use an app.
  */
- export const rollUseApp = async (actor, itemId) => {
+ export async function rollUseApp(actor, itemId) {
   const app = actor.items.get(itemId);
   if (!app) {
     return;
@@ -19,7 +19,7 @@ import { d20Formula, showOutcomeRollCard } from "../utils.js";
 
   const useFormula = d20Formula(actor.system.abilities.knowledge.value);
   const useRoll = new Roll(useFormula);
-  useRoll.evaluate({ async: false });
+  await useRoll.evaluate();
   await showDice(useRoll);
 
   const d20Result = useRoll.terms[0].results[0].result;

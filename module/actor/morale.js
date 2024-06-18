@@ -1,13 +1,13 @@
 /**
  * Roll morale.
  */
- export const rollMorale = async (actor) => {
+ export async function rollMorale(actor) {
   const moraleRoll = new Roll("2d6");
-  moraleRoll.evaluate({ async: false });
+  await moraleRoll.evaluate();
   let key = "";
   if (moraleRoll.total > actor.system.morale) {
     const resultRoll = new Roll("1d6");
-    resultRoll.evaluate({ async: false });
+    await resultRoll.evaluate();
     if (resultRoll.total <= 3) {
       key = "CY.MoraleFlees";
     } else {

@@ -3,7 +3,7 @@ export const ITEMS_PACK = "cy-borg.cyborg-items";
 export const MACROS_PACK = "cy-borg.cyborg-macros";
 export const TABLES_PACK = "cy-borg.cyborg-tables";
 
-export const documentFromPack = async (packName, docName) => {
+export async function documentFromPack(packName, docName) {
   const pack = game.packs.get(packName);
   if (!pack) {
     console.error(`Could not find pack ${packName}.`);
@@ -17,7 +17,7 @@ export const documentFromPack = async (packName, docName) => {
   return doc;
 };
 
-export const drawFromTable = async (packName, tableName, formula) => {
+export async function drawFromTable(packName, tableName, formula) {
   const table = await documentFromPack(packName, tableName);
   if (!table) {
     console.log(`Could not load ${tableName} from pack ${packName}`);
@@ -29,11 +29,11 @@ export const drawFromTable = async (packName, tableName, formula) => {
   return tableDraw;
 };
 
-export const drawFromTableUuid = async (
+export async function drawFromTableUuid(
   uuid,
   formula = null,
   displayChat = false
-) => {
+) {
   const table = await fromUuid(uuid);
   if (!table) {
     console.log(`Could not find table ${uuid}`);
@@ -46,49 +46,49 @@ export const drawFromTableUuid = async (
   return tableDraw;
 };
 
-export const drawText = async (packName, tableName) => {
+export async function drawText(packName, tableName) {
   const draw = await drawFromTable(packName, tableName);
   if (draw) {
     return draw.results[0].text;
   }  
 };
 
-export const drawTextFromTableUuid = async (uuid) => {
+export async function drawTextFromTableUuid(uuid) {
   const draw = await drawFromTableUuid(uuid);
   if (draw) {
     return draw.results[0].text;
   }
 };
 
-export const drawDocument = async (packName, tableName) => {
+export async function drawDocument(packName, tableName) {
   const draw = await drawFromTable(packName, tableName);
   const doc = await documentFromDraw(draw);
   return doc;
 };
 
-export const drawDocumentsFromTableUuid = async (uuid) => {
+export async function drawDocumentsFromTableUuid(uuid) {
   const draw = await drawFromTableUuid(uuid);
   const docs = await documentsFromDraw(draw);
   return docs;
 };
 
-export const drawDocuments = async (packName, tableName) => {
+export async function drawDocuments(packName, tableName) {
   const draw = await drawFromTable(packName, tableName);
   const docs = await documentsFromDraw(draw);
   return docs;
 };
 
-export const documentsFromDraw = async (draw) => {
+export async function documentsFromDraw(draw) {
   const docResults = draw.results.filter((r) => r.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM);
   return Promise.all(docResults.map((r) => documentFromResult(r)));
 };
 
-export const documentFromDraw = async (draw) => {
+export async function documentFromDraw(draw) {
   const doc = await documentFromResult(draw.results[0]);
   return doc;
 };
 
-export const documentFromResult = async (result) => {
+export async function documentFromResult(result) {
   if (!result.documentCollection) {
     console.log("No documentCollection for result; skipping");
     return;
@@ -102,7 +102,7 @@ export const documentFromResult = async (result) => {
   return doc;
 };
 
-export const dupeData = (doc) => {
+export function dupeData(doc) {
   return {
     data: doc.system,
     img: doc.img,

@@ -1,9 +1,9 @@
 import { showDice } from "../dice.js";
 import { showOutcomeRollCard } from "../utils.js";
 
-export const rollPartyInitiative = async (actor) => {
+export async function rollPartyInitiative(actor) {
   const initiativeRoll = new Roll("d6", {});
-  initiativeRoll.evaluate({ async: false });
+  await initiativeRoll.evaluate();
   await showDice(initiativeRoll);
   let outcomeText = "";
   if (initiativeRoll.total <= 3) {
@@ -25,7 +25,7 @@ export const rollPartyInitiative = async (actor) => {
   }
 };
   
-export const rollIndividualInitiative = async (actor) => {
+export async function rollIndividualInitiative(actor) {
   if (game.combats && game.combat) {
     // there is an encounter started in the Combat Tracker
     const combatant = game.combat.combatants.find(
@@ -44,7 +44,7 @@ export const rollIndividualInitiative = async (actor) => {
   // no encounter going on, so just show chat cards
   const formula = rollFormula("1d6", actor.system.abilities.agility.value);
   const initiativeRoll = new Roll(formula);
-  initiativeRoll.evaluate({ async: false });
+  await initiativeRoll.evaluate();
   await showDice(initiativeRoll);
   const rollResult = {
     cardTitle: game.i18n.localize('CY.Initiative'),

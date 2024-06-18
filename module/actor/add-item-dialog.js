@@ -1,6 +1,6 @@
 import { CYApplication } from "../ui/application.js";
 
-export const showAddItemDialog = (actor) => {
+export function showAddItemDialog(actor) {
   const dialog = new AddItemDialog();
   dialog.actor = actor;
   dialog.render(true);

@@ -1,9 +1,9 @@
 /**
  * Roll reaction.
  */
- export const rollReaction = async (actor) => {
+ export async function rollReaction(actor) {
   const reactionRoll = new Roll("2d6");
-  reactionRoll.evaluate({ async: false });
+  await reactionRoll.evaluate();
   let key = "";
   if (reactionRoll.total <= 3) {
     key = "CY.ReactionHostile";

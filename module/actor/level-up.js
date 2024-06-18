@@ -5,17 +5,17 @@ const LEVEL_UP_ROLL_CARD_TEMPLATE =
 
 export async function rollLevelUp(actor) {
   const oldHp = actor.system.hitPoints.max;
-  const newHp = betterHp(oldHp);
+  const newHp = await betterHp(oldHp);
   const oldStr = actor.system.abilities.strength.value;
-  const newStr = betterAbility(oldStr);
+  const newStr = await betterAbility(oldStr);
   const oldAgi = actor.system.abilities.agility.value;
-  const newAgi = betterAbility(oldAgi);
+  const newAgi = await betterAbility(oldAgi);
   const oldPre = actor.system.abilities.presence.value;
-  const newPre = betterAbility(oldPre);
+  const newPre = await betterAbility(oldPre);
   const oldTou = actor.system.abilities.toughness.value;
-  const newTou = betterAbility(oldTou);
+  const newTou = await betterAbility(oldTou);
   const oldKno = actor.system.abilities.knowledge.value;
-  const newKno = betterAbility(oldKno);
+  const newKno = await betterAbility(oldKno);
   let newCredits = actor.system.credits;
 
   const hpOutcome = abilityOutcome(
@@ -120,8 +120,8 @@ async function betterHp(oldHp) {
   }
 }
 
-const betterAbility = (oldVal) => {
-  const roll = new Roll("1d6").evaluate({ async: false });
+async function betterAbility(oldVal) {
+  const roll = await new Roll("1d6").evaluate();
   if (roll.total === 1 || roll.total < oldVal) {
     // decrease, to a minimum of -3
     return Math.max(-3, oldVal - 1);
@@ -131,7 +131,7 @@ const betterAbility = (oldVal) => {
   }
 }
 
-const abilityOutcome = (abilityName, oldVal, newVal) => {
+function abilityOutcome(abilityName, oldVal, newVal) {
   if (newVal < oldVal) {
     return `Lose ${oldVal - newVal} ${abilityName}`;
   } else if (newVal > oldVal) {

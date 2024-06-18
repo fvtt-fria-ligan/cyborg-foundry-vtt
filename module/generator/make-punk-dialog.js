@@ -6,7 +6,7 @@ import {
 import { createScvm, findAllowedClasses, scvmifyActor } from "./scvmfactory.js";
 import { sample } from "../utils.js";
 
-export const showMakePunkDialog = async (actor) => {
+export async function showMakePunkDialog(actor) {
   const lastScvmfactorySelection = getLastScvmfactorySelection();
   const allowedClasses = await findAllowedClasses();
   const classData = allowedClasses

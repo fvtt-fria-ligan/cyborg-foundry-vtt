@@ -5,17 +5,17 @@ const BATTERED_ROLL_CARD_TEMPLATE =
   "systems/cy-borg/templates/chat/battered-roll-card.html";
 
 
-export const rollBattered = async (actor) => {
-  const batteredRoll = new Roll("1d8").evaluate({ async: false });
+export async function rollBattered(actor) {
+  const batteredRoll = await new Roll("1d8").evaluate();
   await showDice(batteredRoll);
 
   let outcomeLines = [];
   let additionalRolls = [];
   if (batteredRoll.total <= 2) {
     // unconscious
-    const roundsRoll = new Roll("1d4").evaluate({ async: false });
+    const roundsRoll = await new Roll("1d4").evaluate();
     const roundsWord = pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
-    const hpRoll = new Roll("1d4").evaluate({ async: false });
+    const hpRoll = await new Roll("1d4").evaluate();
     outcomeLines = [
       game.i18n.format("CY.BatteredUnconscious", {
         rounds: roundsRoll.total,
@@ -27,12 +27,12 @@ export const rollBattered = async (actor) => {
   } else if (batteredRoll.total <= 4) {
     // maybe cy-rage
     const rageDR = 10 + actor.cybertechCount();
-    const presenceRoll = new Roll(`1d20+${actor.system.abilities.presence.value}`).evaluate({ async: false });
+    const presenceRoll = await new Roll(`1d20+${actor.system.abilities.presence.value}`).evaluate();
     if (presenceRoll.total >= rageDR) {
       // passed presence test, so just unconscious
-      const roundsRoll = new Roll("1d4").evaluate({ async: false });
+      const roundsRoll = await new Roll("1d4").evaluate();
       const roundsWord = pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
-      const hpRoll = new Roll("1d4").evaluate({ async: false });
+      const hpRoll = await new Roll("1d4").evaluate();
       outcomeLines = [
         game.i18n.localize("CY.CyRageAverted") + ".",
         game.i18n.format("CY.BatteredUnconscious", {
@@ -44,7 +44,7 @@ export const rollBattered = async (actor) => {
       additionalRolls = [presenceRoll, roundsRoll, hpRoll];  
     } else {
       // cy-rage, woooo
-      const hpRoll = new Roll("1d8").evaluate({ async: false });
+      const hpRoll = await new Roll("1d8").evaluate();
       outcomeLines = [
         game.i18n.format("CY.BatteredCyRage", {
           hp: hpRoll.total,
@@ -55,9 +55,9 @@ export const rollBattered = async (actor) => {
   } else if (batteredRoll.total <= 6) {
     // critical injury
     const bodyPart = randomBodyPart();
-    const roundsRoll = new Roll("1d4").evaluate({ async: false });
+    const roundsRoll = await new Roll("1d4").evaluate();
     const roundsWord = pluralize("CY.Round", "CY.Rounds", roundsRoll.total);
-    const hpRoll = new Roll("1d4").evaluate({ async: false });
+    const hpRoll = await new Roll("1d4").evaluate();
     outcomeLines = [
       game.i18n.format("CY.BatteredCriticalInjury", {
         bodyPart,
@@ -69,7 +69,7 @@ export const rollBattered = async (actor) => {
     additionalRolls = [roundsRoll, hpRoll];
   } else if (batteredRoll.total == 7) {
     // hemmorrhage
-    const hoursRoll = new Roll("1d2").evaluate({ async: false });
+    const hoursRoll = await new Roll("1d2").evaluate();
     const hoursWord = pluralize("CY.Hour", "CY.Hours", hoursRoll.total);
     const drModifier = game.i18n.localize(hoursRoll.total == 1 ? "CY.BatteredHemorrhageOneHour" : "CY.BatteredHemorrhageTwoHours");
     outcomeLines = [
@@ -98,7 +98,7 @@ export const rollBattered = async (actor) => {
   });
 }
 
-const randomBodyPart = () => {
+function randomBodyPart() {
   // TODO: localize
   const bodyParts = [
     {name: "forehead"},

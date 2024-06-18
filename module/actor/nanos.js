@@ -5,7 +5,7 @@ import { d20Formula, showOutcomeRollCard } from "../utils.js";
 /**
  * Roll for actor to use a nano power.
  */
-export const rollUseNano = async (actor, itemId) => {
+export async function rollUseNano(actor, itemId) {
   const nano = actor.items.get(itemId);
   if (!nano) {
     return;
@@ -13,7 +13,7 @@ export const rollUseNano = async (actor, itemId) => {
 
   const useFormula = d20Formula(actor.system.abilities.presence.value);
   const useRoll = new Roll(useFormula);
-  useRoll.evaluate({ async: false });
+  await useRoll.evaluate();
   await showDice(useRoll);
 
   const d20Result = useRoll.terms[0].results[0].result;

@@ -45,9 +45,8 @@ export class CYItemSheet extends ItemSheet {
   async getData() {
     const superData = await super.getData();
     superData.cssCyberClass = superData.data.system.cybertech ? "cyber" : "";
-    superData.data.system.description = TextEditor.enrichHTML(
-      superData.data.system.description,
-      { async: false });
+    superData.data.system.description = await TextEditor.enrichHTML(
+      superData.data.system.description);
     return superData;
   }
 

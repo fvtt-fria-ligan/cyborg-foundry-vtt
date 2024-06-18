@@ -8,13 +8,13 @@ const DEFEND_ROLL_CARD_TEMPLATE =
 /**
  * Do the actual defend rolls and resolution.
  */
-export const rollDefend = async (actor, defendDR, incomingAttack) => {
+export async function rollDefend(actor, defendDR, incomingAttack) {
   const agility = actor.system.abilities.agility.value;
   const defendFormula = d20Formula(agility);
 
   // roll 1: defend
   const defendRoll = new Roll(defendFormula);
-  defendRoll.evaluate({ async: false });
+  await defendRoll.evaluate();
   await showDice(defendRoll);
 
   const d20Result = defendRoll.terms[0].results[0].result;
@@ -48,7 +48,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
       damageFormula += " * 2";
     }
     damageRoll = new Roll(damageFormula, {});
-    damageRoll.evaluate({ async: false });
+    await damageRoll.evaluate();
     const dicePromises = [];
     addShowDicePromise(dicePromises, damageRoll);
     damage = damageRoll.total;
@@ -63,7 +63,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
     }
     if (damageReductionDie) {
       armorRoll = new Roll("@die", { die: damageReductionDie });
-      armorRoll.evaluate({ async: false });
+      await armorRoll.evaluate();
       addShowDicePromise(dicePromises, armorRoll);
       damage = Math.max(damage - armorRoll.total, 0);
     }
@@ -98,7 +98,7 @@ export const rollDefend = async (actor, defendDR, incomingAttack) => {
 /**
  * Show attack rolls/result in a chat roll card.
  */
-const renderDefendRollCard = async (actor, rollResult) => {
+async function renderDefendRollCard(actor, rollResult) {
   const html = await renderTemplate(DEFEND_ROLL_CARD_TEMPLATE, rollResult);
   ChatMessage.create({
     content: html,

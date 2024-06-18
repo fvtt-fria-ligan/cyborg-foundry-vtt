@@ -1,3 +1,11 @@
+# 3.0.1
+
+- v12 fixes: 
+
+# 3.0.0
+
+- Initial Foundry v12 compatibility.
+
 # 2.2.0
 
 - Use table and item UUIDs for character generator.
