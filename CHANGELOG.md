@@ -1,6 +1,6 @@
 # 3.0.1
 
-- v12 fixes: 
+- Fix more v12 breakage.
 
 # 3.0.0
 
