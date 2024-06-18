@@ -1,7 +1,7 @@
 import { d20Formula } from "../utils.js";
 
 
-export const testAgility = async (actor) => {
+export async function testAgility(actor) {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
@@ -29,7 +29,7 @@ export const testAgility = async (actor) => {
   );
 };
 
-export const testKnowledge = async (actor) => {
+export async function testKnowledge(actor) {
   await testAbility(
     actor,
     "knowledge",
@@ -38,7 +38,7 @@ export const testKnowledge = async (actor) => {
   );
 };
 
-export const testPresence = async (actor) => {
+export async function testPresence(actor) {
   await testAbility(
     actor,
     "presence",
@@ -47,7 +47,7 @@ export const testPresence = async (actor) => {
   );
 };
 
-export const testStrength = async (actor) => {
+export async function testStrength(actor) {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
@@ -75,7 +75,7 @@ export const testStrength = async (actor) => {
   );
 };
 
-export const testToughness = async (actor) => {
+export async function testToughness(actor) {
   const drModifiers = [];
   const armor = actor.equippedArmor();
   if (armor) {
@@ -96,14 +96,14 @@ export const testToughness = async (actor) => {
   );
 };
 
-const drModifiersToHtml = (drModifiers) => {
+function drModifiersToHtml(drModifiers) {
   if (!drModifiers) {
     return "";
   }
   return "<ul>" + drModifiers.map(x => `<li>${x}`) + "</ul>"
 };
 
-const testAbility = async (actor, ability, abilityKey, drModifiers) => {
+async function testAbility(actor, ability, abilityKey, drModifiers) {
   const value = actor.system.abilities[ability].value;
   const formula = d20Formula(value);
   const abilityRoll = new Roll(formula);

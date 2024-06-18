@@ -3,10 +3,10 @@ import { showPopupAd } from "./popup-comm.js";
 import { chatAdDelay, popupAdChance, popupAdInstead, showChatAds, showPopupAds } from "../settings.js";
 
 const chatAdTimerInterval = 1000;
-let chatAdTimerID;
+let chatAdTimerId;
 let lastChatMessageTime;
 
-export const initializeAdBot = () => {
+export function initializeAdBot() {
   if (!game.user.isGM) {
     // adbot only runs for gm
     return;
@@ -17,17 +17,16 @@ export const initializeAdBot = () => {
   if (showChatAds()) {
     Hooks.on("createChatMessage", onCreateChatMessage);
     lastChatMessageTime = new Date().getTime();
-    chatAdTimerID = setInterval(adTimerTick, chatAdTimerInterval);
+    chatAdTimerId = setInterval(adTimerTick, chatAdTimerInterval);
   }
 }
 
-export const terminateAdBot = () => {
+export function terminateAdBot() {
   Hooks.off("createChatMessage", onCreateChatMessage);
-  stopChatAdTimer();
   clearInterval(chatAdTimerId);
 };
 
-export const nopeShowAd = (originalFn) => {
+export function nopeShowAd(originalFn) {
   const percent = Math.random() * 100;
   if (showPopupAds() && percent < popupAdChance()) {
     showPopupAd();
@@ -39,11 +38,11 @@ export const nopeShowAd = (originalFn) => {
   }
 };
 
-const onCreateChatMessage = (chatLog, message, chatData) => {
+function onCreateChatMessage(chatLog, message, chatData) {
   lastChatMessageTime = new Date().getTime();
 };
 
-const adTimerTick = () => {
+function adTimerTick() {
   const timeSinceLastChatMessage = new Date().getTime() - lastChatMessageTime;
   if (timeSinceLastChatMessage > (chatAdDelay() * 1000)) {
     showChatAd();

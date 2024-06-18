@@ -5,12 +5,12 @@ import { playSound } from "../sound.js";
 import { sample } from "../utils.js";
 
 
-const getAdBotActor = async () => {
+async function getAdBotActor() {
   const adbot = await documentFromPack(ACTORS_PACK, "AdBot2000");
   return adbot;
 }
 
-const playChatAdSound = () => {
+function playChatAdSound() {
   const sound = sample([
     "chat-ad-1.ogg",
     "chat-ad-2.mp3",
@@ -22,7 +22,7 @@ const playChatAdSound = () => {
   playSound(src);
 }
 
-export const showChatAd = async () => {
+export async function showChatAd() {
   const ad = randomAd();
   const cssAdClass = `${randomCssAnimationClass()} ${randomCssColorClass()} ${randomCssFontClass()}`
   const data = {

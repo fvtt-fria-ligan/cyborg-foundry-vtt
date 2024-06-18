@@ -1,14 +1,14 @@
 import { sample } from "../utils.js";
 
-export const randomCssAnimationClass = () => {
+export function randomCssAnimationClass() {
   return sample(cssAnimationClasses);
 }
 
-export const randomCssColorClass = () => {
+export function randomCssColorClass() {
   return sample(cssColorClasses);
 }
 
-export const randomCssFontClass = () => {
+export function randomCssFontClass() {
   return sample(cssFontClasses);
 }
 

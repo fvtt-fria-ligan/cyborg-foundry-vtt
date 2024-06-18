@@ -1,6 +1,6 @@
 import { sample } from "../utils.js";
 
-export const randomAd = () => {
+export function randomAd() {
   return sample(ads);
 };
 

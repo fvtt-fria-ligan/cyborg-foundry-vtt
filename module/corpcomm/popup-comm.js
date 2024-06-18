@@ -3,7 +3,7 @@ import { randomCssAnimationClass, randomCssColorClass, randomCssFontClass } from
 import { randomAd } from "./ad-data.js";
 import { popupAdClose, popupAdOpen } from "../sound.js";
 
-export const showPopupAd = () => {
+export function showPopupAd() {
   const popup = new CorpcommDialog();
   popup.render(true);
 };
