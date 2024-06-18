@@ -45,8 +45,8 @@ async function randomNpc() {
   const name = await randomName();
   const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
   const img = randomCharacterPortrait();
-  const hp = rollTotal("1d8");
-  const morale = rollTotal("1d8+4");
+  const hp = await rollTotal("1d8");
+  const morale = await rollTotal("1d8+4");
   const attack = npcAttack();
   const armor = npcArmor();
   return {
@@ -133,7 +133,7 @@ export async function findAllowedClasses() {
 };
 
 async function abilityRoll(formula) {
-  return await abilityBonus(rollTotal(formula));
+  return abilityBonus(await rollTotal(formula));
 }
 
 const classStartingArmor = async (clazz) => {
@@ -159,9 +159,7 @@ async function classStartingWeapons(clazz) {
       roll: weaponRoll,
       displayChat: false,
     });
-    console.log("weaponDraw", weaponDraw);
     const weapons = await docsFromResults(weaponDraw.results);    
-    console.log("weapons", weapons);
     // add ammo mags if starting weapon uses ammo
     const mags = [];
     for (const weapon of weapons) {
@@ -363,17 +361,18 @@ async function rollScvmForClass(clazz) {
   const npcs = allDocs.filter(e => e instanceof CYActor);
   const npcData = npcs.map(n => simpleData(n));
 
-  const strength = abilityRoll(clazz.system.strength);
-  const agility = abilityRoll(clazz.system.agility);
-  const presence = abilityRoll(clazz.system.presence);
-  const toughness = abilityRoll(clazz.system.toughness);
-  const knowledge = abilityRoll(clazz.system.knowledge);
+  const strength = await abilityRoll(clazz.system.strength);
+  console.log("strength", strength);
+  const agility = await abilityRoll(clazz.system.agility);
+  const presence = await abilityRoll(clazz.system.presence);
+  const toughness = await abilityRoll(clazz.system.toughness);
+  const knowledge = await abilityRoll(clazz.system.knowledge);
   const hitPoints = Math.max(1,
-    rollTotal(clazz.system.hitPoints) + toughness);
-  const credits = rollTotal(clazz.system.credits);
-  const debtAmount = rollTotal("3d6*1000");
+    await rollTotal(clazz.system.hitPoints) + toughness);
+  const credits = await rollTotal(clazz.system.credits);
+  const debtAmount = await rollTotal("3d6*1000");
   const debtTo = await drawTextFromTableUuid(CY.scvmFactory.debtTable);
-  const glitches = rollTotal(clazz.system.glitches);
+  const glitches = await rollTotal(clazz.system.glitches);
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
   const img = randomCharacterPortrait();
@@ -529,7 +528,6 @@ async function docsFromResults(results) {
 };
 
 async function entityFromResult(result) {
-  console.log("result".charAt, result);
   // draw result type: text (0), entity (1), or compendium (2)
   if (result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
     // grab the item from the compendium

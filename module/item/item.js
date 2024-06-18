@@ -80,7 +80,10 @@ import { byName, rollTotal } from "../utils.js";
     } else if (this.type === CY.itemTypes.cyberdeck && this.parent) {
       const rollData = this.parent.getRollData();
       if (this.system.slotFormula) {
-        this.system.slots = Math.max(rollTotal(this.system.slotFormula, rollData), 1);
+        // TODO: fix, since prepareDerivedData doesn't appear to be async.
+        // Maybe setting the slots randomly should be an item post-create hook?
+        //this.system.slots = Math.max(await rollTotal(this.system.slotFormula, rollData), 1);
+        this.system.slots = 3;
       } else {
         this.system.slots = 1;
       }
