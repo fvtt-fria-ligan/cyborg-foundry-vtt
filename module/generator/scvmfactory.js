@@ -51,7 +51,7 @@ async function randomNpc() {
   const armor = npcArmor();
   return {
     name,
-    data: {
+    system: {
       armor,
       attack,
       description,
@@ -133,7 +133,8 @@ export async function findAllowedClasses() {
 };
 
 async function abilityRoll(formula) {
-  return abilityBonus(await rollTotal(formula));
+  const total = await rollTotal(formula);
+  return abilityBonus(total);
 }
 
 const classStartingArmor = async (clazz) => {
@@ -261,7 +262,7 @@ async function startingEquipment(clazz) {
 
 function simpleData(e) {
   return {
-    data: e.system,
+    system: e.system,
     img: e.img,
     items: e.items?.map(i => simpleData(i)),
     name: e.name,
@@ -362,7 +363,6 @@ async function rollScvmForClass(clazz) {
   const npcData = npcs.map(n => simpleData(n));
 
   const strength = await abilityRoll(clazz.system.strength);
-  console.log("strength", strength);
   const agility = await abilityRoll(clazz.system.agility);
   const presence = await abilityRoll(clazz.system.presence);
   const toughness = await abilityRoll(clazz.system.toughness);
@@ -402,7 +402,7 @@ async function rollScvmForClass(clazz) {
 function scvmToActorData(s) {
   return {
     name: s.name,
-    data: {
+    system: {
       abilities: {
         strength: { value: s.strength },
         agility: { value: s.agility },

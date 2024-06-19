@@ -1,6 +1,10 @@
+# 3.0.2
+
+- Fix more v12 breakage, for chargen abilities and items.
+
 # 3.0.1
 
-- Fix more v12 breakage.
+- Fix more v12 breakage, for async rolls and enriched html.
 
 # 3.0.0
 

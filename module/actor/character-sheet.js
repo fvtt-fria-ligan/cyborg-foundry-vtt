@@ -34,6 +34,7 @@ export class CYCharacterSheet extends CYActorSheet {
   /** @override */
   async getData() {
     const superData = await super.getData();
+    console.log("character superdata", superData);
     // TODO: move this to prepareItems?
     superData.data.items.forEach(item => {
       item.system.equippable = (
