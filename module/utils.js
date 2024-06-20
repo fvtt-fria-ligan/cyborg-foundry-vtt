@@ -62,6 +62,11 @@ export async function rollTotal(formula, rollData={}) {
   return roll.total;
 };
 
+export function rollTotalSync(formula, rollData={}) {
+  return new Roll(formula, rollData).evaluateSync().total;
+};
+
+
 // https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 export const randomIntFromInterval = (min, max) => { 
   // min and max included 

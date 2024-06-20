@@ -104,7 +104,7 @@ export async function documentFromResult(result) {
 
 export function dupeData(doc) {
   return {
-    data: doc.system,
+    system: doc.system,
     img: doc.img,
     name: doc.name,
     type: doc.type,

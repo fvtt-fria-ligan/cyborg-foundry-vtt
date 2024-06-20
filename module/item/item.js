@@ -2,7 +2,7 @@ import { CY } from "../config.js";
 import { TABLES_PACK, drawDocument, dupeData } from "../packutils.js";
 import { soundEffects } from "../settings.js";
 import { uiEject, uiError, uiSlot } from "../sound.js";
-import { byName, rollTotal } from "../utils.js";
+import { byName, rollTotalSync } from "../utils.js";
 
 /**
  * @extends {Item}
@@ -69,7 +69,7 @@ import { byName, rollTotal } from "../utils.js";
       return;
     }
     const data = dupeData(infestation);
-    data.data.nanoId = this.id;
+    data.system.nanoId = this.id;
     await this.parent.createEmbeddedDocuments("Item", [data]);
   }
 
@@ -80,10 +80,9 @@ import { byName, rollTotal } from "../utils.js";
     } else if (this.type === CY.itemTypes.cyberdeck && this.parent) {
       const rollData = this.parent.getRollData();
       if (this.system.slotFormula) {
-        // TODO: fix, since prepareDerivedData doesn't appear to be async.
-        // Maybe setting the slots randomly should be an item post-create hook?
-        //this.system.slots = Math.max(await rollTotal(this.system.slotFormula, rollData), 1);
-        this.system.slots = 3;
+        // e.g., Cyberdeck+ has slots equal to the owner's knowledge + 4.
+        // We assume this is a non-random, can-be-synchronous roll.
+        this.system.slots = Math.max(rollTotalSync(this.system.slotFormula, rollData), 1);
       } else {
         this.system.slots = 1;
       }
@@ -110,9 +109,9 @@ import { byName, rollTotal } from "../utils.js";
       // slots available, so slot it
       if (soundEffects()) {
         uiSlot();
-        setTimeout(() => app.update({ "data.cyberdeckId": this._id }), 1000);  
+        setTimeout(() => app.update({ "system.cyberdeckId": this._id }), 1000);  
       } else {
-        await app.update({ "data.cyberdeckId": this._id });
+        await app.update({ "system.cyberdeckId": this._id });
       }
     } else {
       // no empty slots
@@ -125,9 +124,9 @@ import { byName, rollTotal } from "../utils.js";
     if (this.system.cyberdeckId) {
       if (soundEffects()) {
         uiEject();
-        setTimeout(() => this.update({ "data.cyberdeckId": null }), 1000);
+        setTimeout(() => this.update({ "system.cyberdeckId": null }), 1000);
       } else {
-        await this.update({ "data.cyberdeckId": null });
+        await this.update({ "system.cyberdeckId": null });
       }
     }        
   }

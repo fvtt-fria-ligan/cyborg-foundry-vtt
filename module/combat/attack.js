@@ -88,7 +88,7 @@ export async function rollAttack(
       damageFormula = `${damageFormula} * 2`;
     }
     if (isCrit) {
-      const critMultiplier = item.data.data.critMultiplier ?? 2;
+      const critMultiplier = item.data.system.critMultiplier ?? 2;
       damageFormula = `${damageFormula} * ${critMultiplier}`;
     }
     damageRoll = new Roll(damageFormula);

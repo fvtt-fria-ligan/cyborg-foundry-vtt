@@ -34,7 +34,6 @@ export class CYCharacterSheet extends CYActorSheet {
   /** @override */
   async getData() {
     const superData = await super.getData();
-    console.log("character superdata", superData);
     // TODO: move this to prepareItems?
     superData.data.items.forEach(item => {
       item.system.equippable = (
@@ -114,7 +113,6 @@ export class CYCharacterSheet extends CYActorSheet {
       return;
     }
     const deck = this._findDropCyberdeck(event);
-    console.log(deck);
     if (deck && deck.type === CY.itemTypes.cyberdeck) {
       // ...onto cyberdecks
       await deck.slotApp(item);
@@ -122,7 +120,6 @@ export class CYCharacterSheet extends CYActorSheet {
   }
 
   _findDropCyberdeck(event) {
-    console.log(event);
     const dropIntoItem = $(event.srcElement).closest(".cyberdeck-row-wrapper");
     return dropIntoItem.length > 0
       ? this.actor.items.get(dropIntoItem.attr("data-item-id"))

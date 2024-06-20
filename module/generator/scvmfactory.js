@@ -446,7 +446,7 @@ async function createActorWithScvm(s) {
     const lastWord = npcData.name.split(" ").pop();
     npcData.name = `${actor.name}'s ${lastWord}`;
     if (npcData.type === "vehicle") {
-      npcData.data.ownerId = actor.id;
+      npcData.system.ownerId = actor.id;
     }
     const npcActor = await CYActor.create(npcData);
     npcActor.sheet.render(true);
@@ -494,7 +494,7 @@ async function updateActorWithScvm(actor, s) {
       const lastWord = npcData.name.split(" ").pop();
       npcData.name = `${actor.name}'s ${lastWord}`;
       if (npcData.type === "vehicle") {
-        npcData.data.ownerId = actor.id;
+        npcData.system.ownerId = actor.id;
       }  
       const npcActor = await CYActor.create(npcData);
       npcActor.sheet.render(true);      

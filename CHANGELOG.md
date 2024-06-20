@@ -1,3 +1,8 @@
+# 3.0.3
+
+- Fix more v12 breakage due to data=>system changes: slotting apps, linked infestations, vehicle owners, attack crit multiplier, scvmfactory npcs, etc.
+- Fix cyberdeck+ slots roll, which can be evaluated synchronously.
+
 # 3.0.2
 
 - Fix more v12 breakage, for chargen abilities and items.
