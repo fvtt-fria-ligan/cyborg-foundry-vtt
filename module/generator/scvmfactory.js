@@ -275,7 +275,7 @@ function randomNumberedFile(dir, prefix, maxImgNum, extension) {
   const imgNum = randomIntFromInterval(1, maxImgNum);
   // format to 2 digits
   const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  return `/${dir}/${prefix}${imgNumStr}.${extension}`;
+  return `${dir}/${prefix}${imgNumStr}.${extension}`;
 };
 
 function randomCharacterPortrait() {
