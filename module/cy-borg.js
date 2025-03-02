@@ -5,6 +5,7 @@ import { CYNpcSheet } from "./actor/npc-sheet.js";
 import { CYVehicleSheet } from "./actor/vehicle-sheet.js";
 import { CYItem } from "./item/item.js";
 import { CYItemSheet } from "./item/item-sheet.js";
+import { CYCombat } from "./combat/combat.js";
 import { registerSystemSettings } from "./settings.js";
 import { showMakePunkDialog } from "./generator/make-punk-dialog.js";
 import { createNpc } from "./generator/scvmfactory.js";
@@ -51,6 +52,7 @@ const consoleBanner = () => {
 const registerDocumentClasses = () => {
   CONFIG.Actor.documentClass = CYActor;
   CONFIG.Item.documentClass = CYItem;
+  CONFIG.Combat.documentClass = CYCombat;
 }
 
 const registerSheets = () => {
