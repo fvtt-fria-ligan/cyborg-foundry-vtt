@@ -1,47 +1,6 @@
 import { rollPartyInitiative } from "./initiative.js";
 
 export class CYCombat extends Combat {
-  async setPartyInitiative(rollTotal) {
-    game.combat.partyInitiative = rollTotal;
-    await game.combat.setCombatantsInitiative();
-  }
-
-  async setCombatantsInitiative() {
-    const updates = this.turns.map((t) => {
-      return {
-        _id: t.id,
-        initiative: this.#getInitiative(t),
-      };
-    });
-    await this.updateEmbeddedDocuments("Combatant", updates);
-  }
-
-  #isFriendlyCombatant(combatant) {
-    if (combatant._token) {
-      // v8 compatible
-      return combatant._token.system.disposition === 1;
-    } else if (combatant.token.system?.disposition != null) {
-      // v9+
-      return combatant.token.system.disposition === 1;
-    } else if (combatant.token.disposition != null) {
-      // v12+
-      return combatant.token.disposition === 1;
-    }
-    return false;
-  }
-
-  #getInitiative(combatant) {
-    if (this.partyInitiative == null) {
-      return null;
-    }
-
-    if (this.#isFriendlyCombatant(combatant)) {
-      return this.partyInitiative >= 4;
-    } else {
-      return this.partyInitiative <= 3;
-    }
-  }
-
   /**
    * @override
    */
@@ -66,5 +25,68 @@ export class CYCombat extends Combat {
     }
 
     return this;
+  }
+
+  /**
+   * @override
+   */
+  async createEmbeddedDocuments(embeddedName, data = [], operation = {}) {
+    return super.createEmbeddedDocuments(
+      embeddedName,
+      data.map((item) => ({
+        ...item,
+        initiative: this.#getInitiative(
+          this.#isFriendly(
+            game.canvas?.tokens?.get(item.tokenId)?.document?.disposition
+          )
+        ),
+      })),
+      operation
+    );
+  }
+
+  async setPartyInitiative(rollTotal) {
+    game.combat.partyInitiative = rollTotal;
+    await game.combat.setCombatantsInitiative();
+  }
+
+  async setCombatantsInitiative() {
+    const updates = this.turns.map((t) => {
+      return {
+        _id: t.id,
+        initiative: this.#getInitiative(this.#isFriendlyCombatant(t)),
+      };
+    });
+    await this.updateEmbeddedDocuments("Combatant", updates);
+  }
+
+  #isFriendlyCombatant(combatant) {
+    if (combatant._token) {
+      // v8 compatible
+      return this.#isFriendly(combatant._token.system.disposition);
+    } else if (combatant.token.system?.disposition != null) {
+      // v9+
+      return this.#isFriendly(combatant.token.system.disposition);
+    } else if (combatant.token.disposition != null) {
+      // v12+
+      return this.#isFriendly(combatant.token.disposition);
+    }
+    return false;
+  }
+
+  #isFriendly(disposition) {
+    return disposition === 1;
+  }
+
+  #getInitiative(isFriendly) {
+    if (this.partyInitiative == null) {
+      return null;
+    }
+
+    if (isFriendly) {
+      return this.partyInitiative >= 4;
+    } else {
+      return this.partyInitiative <= 3;
+    }
   }
 }
