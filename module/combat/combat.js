@@ -10,7 +10,7 @@ export class CYCombatModel extends foundry.abstract.TypeDataModel {
   }
 
   async setPartyInitiative(rollTotal) {
-    await this.parent.update({ "system.partyInitiative": rollTotal });
+    this.partyInitiative = rollTotal;
     await this.setCombatantsInitiative();
   }
 
