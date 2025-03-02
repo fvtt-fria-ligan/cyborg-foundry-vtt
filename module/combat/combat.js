@@ -72,7 +72,7 @@ export class CYCombat extends Combat {
    */
   async create(data = {}, operation) {
     // Always create with type: 'cy' so we can use the CYCombatModel
-    super.create({ ...data, type: "cy" }, operation);
+    return super.create({ ...data, type: "cy" }, operation);
   }
 
   /**
