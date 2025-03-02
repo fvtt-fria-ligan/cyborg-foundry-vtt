@@ -8,6 +8,62 @@ export class CYCombatModel extends foundry.abstract.TypeDataModel {
       partyInitiative: new NumberField({ required: false, integer: true }),
     };
   }
+
+  async setPartyInitiative(rollTotal) {
+    await this.update({ partyInitiative: rollTotal });
+    await this.setCombatantsInitiative();
+  }
+
+  async setCombatantsInitiative() {
+    const updates = this.parent.turns.map((t) => {
+      return {
+        _id: t.id,
+        initiative: this.#getInitiative(this.#isFriendlyCombatant(t)),
+      };
+    });
+    await this.parent.updateEmbeddedDocuments("Combatant", updates);
+  }
+
+  addPartyInitiative(data) {
+    return data.map((item) => ({
+      ...item,
+      initiative: this.#getInitiative(
+        this.#isFriendly(
+          game.canvas?.tokens?.get(item.tokenId)?.document?.disposition
+        )
+      ),
+    }));
+  }
+
+  #isFriendlyCombatant(combatant) {
+    if (combatant._token) {
+      // v8 compatible
+      return this.#isFriendly(combatant._token.system.disposition);
+    } else if (combatant.token.system?.disposition != null) {
+      // v9+
+      return this.#isFriendly(combatant.token.system.disposition);
+    } else if (combatant.token.disposition != null) {
+      // v12+
+      return this.#isFriendly(combatant.token.disposition);
+    }
+    return false;
+  }
+
+  #isFriendly(disposition) {
+    return disposition === 1;
+  }
+
+  #getInitiative(isFriendly) {
+    if (this.partyInitiative == null) {
+      return null;
+    }
+
+    if (isFriendly) {
+      return this.partyInitiative >= 4;
+    } else {
+      return this.partyInitiative <= 3;
+    }
+  }
 }
 
 export class CYCombat extends Combat {
@@ -51,60 +107,8 @@ export class CYCombat extends Combat {
   async createEmbeddedDocuments(embeddedName, data = [], operation = {}) {
     return super.createEmbeddedDocuments(
       embeddedName,
-      data.map((item) => ({
-        ...item,
-        initiative: this.#getInitiative(
-          this.#isFriendly(
-            game.canvas?.tokens?.get(item.tokenId)?.document?.disposition
-          )
-        ),
-      })),
+      this.system.addPartyInitiative(data),
       operation
     );
-  }
-
-  async setPartyInitiative(rollTotal) {
-    await this.update({ "system.partyInitiative": rollTotal });
-    await this.setCombatantsInitiative();
-  }
-
-  async setCombatantsInitiative() {
-    const updates = this.turns.map((t) => {
-      return {
-        _id: t.id,
-        initiative: this.#getInitiative(this.#isFriendlyCombatant(t)),
-      };
-    });
-    await this.updateEmbeddedDocuments("Combatant", updates);
-  }
-
-  #isFriendlyCombatant(combatant) {
-    if (combatant._token) {
-      // v8 compatible
-      return this.#isFriendly(combatant._token.system.disposition);
-    } else if (combatant.token.system?.disposition != null) {
-      // v9+
-      return this.#isFriendly(combatant.token.system.disposition);
-    } else if (combatant.token.disposition != null) {
-      // v12+
-      return this.#isFriendly(combatant.token.disposition);
-    }
-    return false;
-  }
-
-  #isFriendly(disposition) {
-    return disposition === 1;
-  }
-
-  #getInitiative(isFriendly) {
-    if (this.system.partyInitiative == null) {
-      return null;
-    }
-
-    if (isFriendly) {
-      return this.system.partyInitiative >= 4;
-    } else {
-      return this.system.partyInitiative <= 3;
-    }
   }
 }

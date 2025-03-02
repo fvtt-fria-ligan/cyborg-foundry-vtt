@@ -12,7 +12,7 @@ export async function rollPartyInitiative(actor) {
     outcomeText = game.i18n.localize("CY.InitiativePCsActFirst");
   }
   const rollResult = {
-    cardTitle: game.i18n.localize('CY.PartyInitiative'),
+    cardTitle: game.i18n.localize("CY.PartyInitiative"),
     formula: "1d6",
     roll: initiativeRoll,
     outcome: outcomeText,
@@ -21,10 +21,10 @@ export async function rollPartyInitiative(actor) {
 
   // if a combat/encounter is happening, apply player/enemy ordering
   if (game.combats && game.combat) {
-    await game.combat.setPartyInitiative(initiativeRoll.total);
+    await game.combat.system.setPartyInitiative(initiativeRoll.total);
   }
-};
-  
+}
+
 export async function rollIndividualInitiative(actor) {
   if (game.combats && game.combat) {
     // there is an encounter started in the Combat Tracker
@@ -47,9 +47,9 @@ export async function rollIndividualInitiative(actor) {
   await initiativeRoll.evaluate();
   await showDice(initiativeRoll);
   const rollResult = {
-    cardTitle: game.i18n.localize('CY.Initiative'),
+    cardTitle: game.i18n.localize("CY.Initiative"),
     formula: `1d6 + ${game.i18n.localize("CY.AgilityAbbrev")}`,
-    roll: initiativeRoll
+    roll: initiativeRoll,
   };
   showOutcomeRollCard(actor, rollResult);
-};
+}
