@@ -1,7 +1,7 @@
 export class CYCombat extends Combat {
   async setPartyInitiative(rollTotal) {
     game.combat.partyInitiative = rollTotal;
-    await game.combat.resortCombatants();
+    await game.combat.setCombatantsInitiative();
   }
 
   async setCombatantsInitiative() {
