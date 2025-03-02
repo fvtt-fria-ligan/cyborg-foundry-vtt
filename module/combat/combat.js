@@ -2,12 +2,21 @@ import { rollPartyInitiative } from "./initiative.js";
 
 const { NumberField } = foundry.data.fields;
 
-export class CYCombat extends Combat {
+export class CYCombatModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
-      ...super.defineSchema(),
       partyInitiative: new NumberField({ required: false, integer: true }),
     };
+  }
+}
+
+export class CYCombat extends Combat {
+  /**
+   * @override
+   */
+  async create(data = {}, operation) {
+    // Always create with type: 'cy' so we can use the CYCombatModel
+    super.create({ ...data, type: "cy" }, operation);
   }
 
   /**
@@ -55,7 +64,7 @@ export class CYCombat extends Combat {
   }
 
   async setPartyInitiative(rollTotal) {
-    await this.update({ partyInitiative: rollTotal });
+    await this.update({ system: { partyInitiative: rollTotal } });
     await this.setCombatantsInitiative();
   }
 
