@@ -68,7 +68,7 @@ export class CYCombatModel extends foundry.abstract.TypeDataModel {
 
 export class CYCombat extends Combat {
   /**
-   * @override
+   * @inheritdoc
    */
   async create(data = {}, operation) {
     // Always create with type: 'cy' so we can use the CYCombatModel
@@ -76,9 +76,11 @@ export class CYCombat extends Combat {
   }
 
   /**
+   * Rolls party initiative for the combat
    * @override
    */
   async rollInitiative(ids, { updateTurn = true } = {}) {
+    // We only need to roll intiative once for all combatants, so grab the first id
     const [id] = ids;
     const currentId = this.combatant?.id;
     if (!id) {
@@ -102,7 +104,7 @@ export class CYCombat extends Combat {
   }
 
   /**
-   * @override
+   * @inheritdoc
    */
   async createEmbeddedDocuments(embeddedName, data = [], operation = {}) {
     return super.createEmbeddedDocuments(
