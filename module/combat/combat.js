@@ -70,7 +70,7 @@ export class CYCombat extends Combat {
   /**
    * @inheritdoc
    */
-  async create(data = {}, operation) {
+  static async create(data = {}, operation) {
     // Always create with type: 'cy' so we can use the CYCombatModel
     return super.create({ ...data, type: "cy" }, operation);
   }
