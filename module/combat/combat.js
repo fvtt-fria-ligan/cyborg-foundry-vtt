@@ -58,11 +58,14 @@ export class CYCombatModel extends foundry.abstract.TypeDataModel {
       return null;
     }
 
+    let result;
     if (isFriendly) {
-      return this.partyInitiative >= 4;
+      result = this.partyInitiative >= 4;
     } else {
-      return this.partyInitiative <= 3;
+      result = this.partyInitiative <= 3;
     }
+
+    return result ? 1 : 0;
   }
 }
 
