@@ -64,7 +64,7 @@ export class CYCombat extends Combat {
   }
 
   async setPartyInitiative(rollTotal) {
-    await this.update({ system: { partyInitiative: rollTotal } });
+    await this.update({ "system.partyInitiative": rollTotal });
     await this.setCombatantsInitiative();
   }
 
@@ -97,14 +97,14 @@ export class CYCombat extends Combat {
   }
 
   #getInitiative(isFriendly) {
-    if (this.partyInitiative == null) {
+    if (this.system.partyInitiative == null) {
       return null;
     }
 
     if (isFriendly) {
-      return this.partyInitiative >= 4;
+      return this.system.partyInitiative >= 4;
     } else {
-      return this.partyInitiative <= 3;
+      return this.system.partyInitiative <= 3;
     }
   }
 }
