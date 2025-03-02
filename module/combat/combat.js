@@ -1,4 +1,4 @@
-import { rollPartyInitiative } from "./initiative";
+import { rollPartyInitiative } from "./initiative.js";
 
 export class CYCombat extends Combat {
   async setPartyInitiative(rollTotal) {
