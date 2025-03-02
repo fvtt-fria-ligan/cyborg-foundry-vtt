@@ -1,3 +1,5 @@
+import { rollPartyInitiative } from "./initiative";
+
 export class CYCombat extends Combat {
   async setPartyInitiative(rollTotal) {
     game.combat.partyInitiative = rollTotal;
@@ -38,6 +40,32 @@ export class CYCombat extends Combat {
     } else {
       return this.partyInitiative <= 3;
     }
+  }
+
+  /**
+   * @override
+   */
+  async rollInitiative(ids, { updateTurn = true } = {}) {
+    const [id] = ids;
+    const currentId = this.combatant?.id;
+    if (!id) {
+      return;
+    }
+
+    const combatant = this.combatants.get(id);
+    if (!combatant) {
+      return;
+    }
+
+    await rollPartyInitiative(combatant.actor);
+
+    if (updateTurn && currentId) {
+      await this.update({
+        turn: this.turns.findIndex((t) => t.id === currentId),
+      });
+    }
+
+    return this;
   }
 
   // /**
