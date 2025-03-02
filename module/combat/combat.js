@@ -1,6 +1,3 @@
-
-
-
 export class CYCombat extends Combat {
   async setPartyInitiative(rollTotal) {
     game.combat.partyInitiative = rollTotal;
@@ -23,10 +20,14 @@ export class CYCombat extends Combat {
     if (combatant._token) {
       // v8 compatible
       return combatant._token.system.disposition === 1;
-    } else {
+    } else if (combatant.token.system?.disposition != null) {
       // v9+
       return combatant.token.system.disposition === 1;
+    } else if (combatant.token.disposition != null) {
+      // v12+
+      return combatant.token.disposition === 1;
     }
+    return false;
   }
 
   /**
@@ -63,5 +64,3 @@ export class CYCombat extends Combat {
     return a.tokenId - b.tokenId;
   }
 }
-
-
