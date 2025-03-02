@@ -1,6 +1,15 @@
 import { rollPartyInitiative } from "./initiative.js";
 
+const { NumberField } = foundry.data.fields;
+
 export class CYCombat extends Combat {
+  static defineSchema() {
+    return {
+      ...super.defineSchema(),
+      partyInitiative: new NumberField({ required: false, integer: true }),
+    };
+  }
+
   /**
    * @override
    */
@@ -46,8 +55,8 @@ export class CYCombat extends Combat {
   }
 
   async setPartyInitiative(rollTotal) {
-    game.combat.partyInitiative = rollTotal;
-    await game.combat.setCombatantsInitiative();
+    await this.update({ partyInitiative: rollTotal });
+    await this.setCombatantsInitiative();
   }
 
   async setCombatantsInitiative() {
