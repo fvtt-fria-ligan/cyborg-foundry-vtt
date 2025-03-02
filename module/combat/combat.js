@@ -12,6 +12,8 @@ export class CYCombatModel extends foundry.abstract.TypeDataModel {
   async setPartyInitiative(rollTotal) {
     this.partyInitiative = rollTotal;
     await this.setCombatantsInitiative();
+    // Update system state last since this will construct a new instance of this class
+    await this.parent.update({ "system.partyIntiative": rollTotal });
   }
 
   async setCombatantsInitiative() {
