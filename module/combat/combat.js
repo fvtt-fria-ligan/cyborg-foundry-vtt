@@ -1,67 +1,121 @@
+import { rollPartyInitiative } from "./initiative.js";
 
+const { NumberField } = foundry.data.fields;
 
-
-export class CYCombat extends Combat {
-  async setPartyInitiative(rollTotal) {
-    game.combat.partyInitiative = rollTotal;
-    await game.combat.resortCombatants();
+export class CYCombatModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      partyInitiative: new NumberField({ required: false, integer: true }),
+    };
   }
 
-  async resortCombatants() {
-    // TODO: this seems like a stupidly-hacky way to do this. Is there no better way?
-    const updates = this.turns.map((t) => {
+  async setPartyInitiative(rollTotal) {
+    this.partyInitiative = rollTotal;
+    await this.setCombatantsInitiative();
+    // Update parent state last since this will construct a new instance of this class
+    await this.parent.update({ "system.partyInitiative": rollTotal });
+  }
+
+  async setCombatantsInitiative() {
+    const updates = this.parent.turns.map((t) => {
       return {
         _id: t.id,
-        initiative: t.system.initiative,
+        initiative: this.#getInitiative(this.#isFriendlyCombatant(t)),
       };
     });
-    await game.combat.resetAll();
-    await this.updateEmbeddedDocuments("Combatant", updates);
+    await this.parent.updateEmbeddedDocuments("Combatant", updates);
   }
 
-  isFriendlyCombatant(combatant) {
+  addPartyInitiative(data) {
+    return data.map((item) => ({
+      ...item,
+      initiative: this.#getInitiative(
+        this.#isFriendly(
+          game.canvas?.tokens?.get(item.tokenId)?.document?.disposition
+        )
+      ),
+    }));
+  }
+
+  #isFriendlyCombatant(combatant) {
     if (combatant._token) {
       // v8 compatible
-      return combatant._token.system.disposition === 1;
-    } else {
+      return this.#isFriendly(combatant._token.system.disposition);
+    } else if (combatant.token.system?.disposition != null) {
       // v9+
-      return combatant.token.system.disposition === 1;
+      return this.#isFriendly(combatant.token.system.disposition);
+    } else if (combatant.token.disposition != null) {
+      // v12+
+      return this.#isFriendly(combatant.token.disposition);
     }
+    return false;
   }
 
-  /**
-   * Define how the array of Combatants is sorted in the displayed list of the tracker.
-   * This method can be overridden by a system or module which needs to display combatants in an alternative order.
-   * By default sort by initiative, falling back to name
-   * @private
-   */
-  _sortCombatants(a, b) {
-    // .combat is a getter, so verify existence of combats array
-    if (game.combats && game.combat.partyInitiative) {
-      const isPartyA = game.combat.isFriendlyCombatant(a);
-      const isPartyB = game.combat.isFriendlyCombatant(b);
-      if (isPartyA !== isPartyB) {
-        // only matters if they're different
-        if (game.combat.partyInitiative > 3) {
-          // players begin
-          return isPartyA ? -1 : 1;
-        } else {
-          // enemies begin
-          return isPartyA ? 1 : -1;
-        }
-      }
+  #isFriendly(disposition) {
+    return disposition === 1;
+  }
+
+  #getInitiative(isFriendly) {
+    if (this.partyInitiative == null) {
+      return null;
     }
 
-    // combatants are both friendly or enemy, so sort by normal initiative
-    const ia = Number.isNumeric(a.initiative) ? a.initiative : -9999;
-    const ib = Number.isNumeric(b.initiative) ? b.initiative : -9999;
-    const ci = ib - ia;
-    if (ci !== 0) return ci;
-    const [an, bn] = [a.token?.name || "", b.token?.name || ""];
-    const cn = an.localeCompare(bn);
-    if (cn !== 0) return cn;
-    return a.tokenId - b.tokenId;
+    let result;
+    if (isFriendly) {
+      result = this.partyInitiative >= 4;
+    } else {
+      result = this.partyInitiative <= 3;
+    }
+
+    return result ? 1 : 0;
   }
 }
 
+export class CYCombat extends Combat {
+  /**
+   * @inheritdoc
+   */
+  static async create(data = {}, operation) {
+    // Always create with type: 'cy' so we can use the CYCombatModel
+    return super.create({ ...data, type: "cy" }, operation);
+  }
 
+  /**
+   * Rolls party initiative for the combat
+   * @override
+   */
+  async rollInitiative(ids, { updateTurn = true } = {}) {
+    // We only need to roll intiative once for all combatants, so grab the first id
+    const [id] = ids;
+    const currentId = this.combatant?.id;
+    if (!id) {
+      return;
+    }
+
+    const combatant = this.combatants.get(id);
+    if (!combatant) {
+      return;
+    }
+
+    await rollPartyInitiative(combatant.actor);
+
+    if (updateTurn && currentId) {
+      await this.update({
+        turn: this.turns.findIndex((t) => t.id === currentId),
+      });
+    }
+
+    return this;
+  }
+
+  /**
+   * @inheritdoc
+   */
+  async createEmbeddedDocuments(embeddedName, data = [], operation = {}) {
+    return super.createEmbeddedDocuments(
+      embeddedName,
+      this.system.addPartyInitiative(data),
+      operation
+    );
+  }
+}
