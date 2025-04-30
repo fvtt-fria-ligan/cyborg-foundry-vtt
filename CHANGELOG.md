@@ -1,3 +1,9 @@
+# 3.0.4
+
+- Polish translation by @rklos.
+- Refactor and enable party initiative by @iangus.
+- Refactor absolute image paths to relative by @iangus.
+
 # 3.0.3
 
 - Fix more v12 breakage due to data=>system changes: slotting apps, linked infestations, vehicle owners, attack crit multiplier, scvmfactory npcs, etc.
@@ -99,7 +105,7 @@
 # 1.5.0
 
 - Add Flintwyrm's pixel art portraits, and use them in character and npc generators.
-- Remove AI-generated portraits. (Images still separately available at https://github.com/mcglincy/cy-portraits and https://drive.google.com/drive/folders/1P0zhex3T8pu8v1kRbCpzTyw5a0gQHbJ-?usp=sharing) 
+- Remove AI-generated portraits. (Images still separately available at https://github.com/mcglincy/cy-portraits and https://drive.google.com/drive/folders/1P0zhex3T8pu8v1kRbCpzTyw5a0gQHbJ-?usp=sharing)
 
 # 1.4.0
 
@@ -274,4 +280,3 @@
 # 0.1.0
 
 - First release.
-
