@@ -1,3 +1,7 @@
+# 3.0.5
+
+- Fix weapon crit by @jtpevehouse.
+
 # 3.0.4
 
 - Polish translation by @rklos.
