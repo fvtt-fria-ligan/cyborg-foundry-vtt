@@ -1,288 +1,293 @@
 .cy.sheet {
-  border: 2px solid var(--cy-accent-color);
-  border-radius: 5px;
-  box-shadow: var(--cy-sheet-shadow);
+    border: 2px solid var(--cy-accent-color);
+    border-radius: 5px;
+    box-shadow: var(--cy-sheet-shadow);
 
-  header.window-header {
-    border-bottom: 2px solid var(--cy-accent-color);
-  }
-
-  section.window-content {
-    background-color: var(--cy-window-background-color);
-    background-image: none;
-    color: var(--cy-foreground-color);
-    font-family: $sheet-font;
-    font-size: 15px;
-    overflow-y: scroll;
-    padding-bottom: $sheet-padding;
-    padding-left: $sheet-padding;
-    padding-right: 0;
-    padding-top: $sheet-padding;
-    scrollbar-color: var(--cy-highlight-color) var(--cy-window-background-color);
-    scrollbar-width: thin;
-
-    form {
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      height: 100%;
+    header.window-header {
+        border-bottom: 2px solid var(--cy-accent-color);
     }
 
-    // nav.sheet-tabs.tabs {
-    //   border-radius: $border-radius;
-    //   width: 385px;
-    // }
-
-    nav.sheet-tabs.tabs {
-      background: none;
-      border-bottom: $border-width solid var(--cy-foreground-color);
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      margin: 0px;
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 100%;
-      a.item {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        border-bottom: none;
-        display: flex;
-        flex-direction: column;
-        font-family: $pixel-font;              
-        font-size: 8px;
-        justify-content: center;
-        height: $tab-height;
-        margin-right: 2px;
-        opacity: 0.5;
-        &:last-child {
-          margin-right: 0px;
-        }
-        &:hover {
-          opacity: 1.0;
-        }
-        &.active {
-          background-color: var(--cy-window-background-color);
-          color: var(--cy-foreground-color);
-          border-bottom: none;
-          opacity: 1.0;
-          position: relative;
-          top: $border-width;
-        }
-      }
-    }    
-  
-    // TODO: de-dupe this with tab foo above
-    .sheet-tabs {
-      background-color: var(--cy-foreground-color);
-      border: none;
-      flex: 0 0 $tab-height;
-      padding: 0;
-      a.item {
-        border: 4px solid var(--cy-foreground-color);
-        border-radius: $border-radius;
-        height: 57;
-        flex: 1;
-        padding: 4px;
-        text-align: center;
-        &:hover {
-          background-color: var(--cy-highlight-color);
-        }
-        &.active {
-          background-color: var(--cy-highlight-color);
-        }
-      }
-    }
-
-    input[type="number"],
-    input[type="text"] {
-      color: var(--cy-foreground-color);
-      height: 100%;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-    }
-    input[type="number"] {
-      font-family: $input-number-font;
-      font-size: 20px;
-    }
-    input[type="text"] {
-      font-family: $input-text-font;
-      line-height: $textarea-line-height;
-    }
-
-    textarea {
-      color: var(--cy-foreground-color);
-      font-family: $textarea-font;
-      font-size: 15px;
-      line-height: $textarea-line-height;
-      resize: none;
-    }
-
-    // .editor,
-    // .editor-content {
-    //   height: 100%;
-    //   line-height: $textarea-line-height;
-    // }
-    // .editor {
-    //   padding: 0 8px;
-    // }
-
-    // TODO: DRY up all these editor stylings
-    .editor {
-      // border: 1px solid #7a7971;
-      // color: var(--cy-foreground-color);
-      background-color: var(--cy-foreground-color);
-      color: var(--cy-background-color);
-
-      // font-family: var(--journal-font);
-      // font-size: var(--journal-font-size);
-      padding: 0 8px;
-    }
-    .editor {
-      .editor-menu {
-        border-bottom: 1px solid var(--cy-foreground-color);
-        border-top: 1px solid var(--cy-foreground-color);
-        background-color: var(--cy-background-color);
+    section.window-content {
+        background-color: var(--cy-window-background-color);
+        background-image: none;
         color: var(--cy-foreground-color);
-        button {
-          background-color: var(--cy-background-color);
-          border: 1px solid var(--cy-foreground-color);
-          color: var(--cy-foreground-color);
-          ul {
-            background-color: var(--cy-background-color);
-            border: 1px solid var(--cy-foreground-color);
+        font-family: $sheet-font;
+        font-size: 15px;
+        overflow-y: scroll;
+        padding-bottom: $sheet-padding;
+        padding-left: $sheet-padding;
+        padding-right: 0;
+        padding-top: $sheet-padding;
+        scrollbar-color: var(--cy-highlight-color)
+            var(--cy-window-background-color);
+        scrollbar-width: thin;
+
+        form {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            height: 100%;
+        }
+
+        // nav.sheet-tabs.tabs {
+        //   border-radius: $border-radius;
+        //   width: 385px;
+        // }
+
+        nav.tabs [data-tab] {
             color: var(--cy-foreground-color);
-            li:hover {
-              background-color: var(--cy-foreground-color);
-              color: var(--cy-background-color);
+        }
+
+        nav.sheet-tabs.tabs {
+            background: none;
+            border-bottom: $border-width solid var(--cy-foreground-color);
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            margin: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+            a.item {
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom: none;
+                display: flex;
+                flex-direction: column;
+                font-family: $pixel-font;
+                font-size: 8px;
+                justify-content: center;
+                height: $tab-height;
+                margin-right: 2px;
+                opacity: 0.5;
+                &:last-child {
+                    margin-right: 0px;
+                }
+                &:hover {
+                    opacity: 1;
+                }
+                &.active {
+                    background-color: var(--cy-window-background-color);
+                    color: var(--cy-foreground-color);
+                    border-bottom: none;
+                    opacity: 1;
+                    position: relative;
+                    top: $border-width;
+                }
             }
-          }
         }
-        button:hover {
-          background-color: var(--cy-foreground-color);
-          color: var(--cy-background-color);
+
+        // TODO: de-dupe this with tab foo above
+        .sheet-tabs {
+            background-color: var(--cy-foreground-color);
+            border: none;
+            flex: 0 0 $tab-height;
+            padding: 0;
+            a.item {
+                border: 4px solid var(--cy-foreground-color);
+                border-radius: $border-radius;
+                height: 57;
+                flex: 1;
+                padding: 4px;
+                text-align: center;
+                &:hover {
+                    background-color: var(--cy-highlight-color);
+                }
+                &.active {
+                    background-color: var(--cy-highlight-color);
+                }
+            }
         }
-      }    
-    }
-    .editor,
-    .editor-content {
-      height: 100%;
-      padding-top: 10px;
-    }
 
-    .widget {
-      border: 4px solid var(--cy-foreground-color);
-      border-radius: $border-radius;
-    }
-
-    .button-row {
-      display: flex;
-      justify-content: space-between;
-    }
-  
-    .description-tab {
-      height: 100%;
-      .description-wrapper {
-        height: 100%;
-      }  
-    }
-    .sheet-button {
-      // TODO: make button bg and color a color scheme variable
-      // background-color: rgba(249, 0, 248, 0.2);
-      background-color: var(--cy-button-background-color);
-      border: 2px solid var(--cy-highlight-color);
-      border-radius: 0;
-      color:  var(--cy-button-foreground-color);
-      font-family: $pixel-font;
-      font-size: 7px;
-      height: 20px;
-      line-height: 1.2;
-      margin-right: 4px;
-      &:last-child {
-        margin-right: 0px;
-      }
-      &:hover {
-        background-color: var(--cy-highlight-color);
-        color: var(--cy-foreground-color);
-      //         background-color: var(--cy-foreground-color);
-      // color: var(--cy-background-color);
-      }
-      &.medium-button {
-        font-size: 8px;
-        height: 30px;
-      }
-      &.big-button {
-        font-size: 8px;
-        height: 36px;
-      }
-    }
-
-    .field-row {
-      display: flex;
-      flex: 0 0 $field-height;
-      margin-bottom: $widget-margin;
-      .field-label {
-        align-items: center;
-        background-color: var(--cy-foreground-color);
-        color: var(--cy-background-color);
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        font-family: $label-font;
-        justify-content: center;
-        text-align: center;
-        text-transform: uppercase;
-      }
-      .field-value {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        flex: 1.5;
-        justify-content: center;
-        input {
-          width: 100%;
+        input[type="number"],
+        input[type="text"] {
+            color: var(--cy-foreground-color);
+            height: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
         }
-      }
-      textarea {
-        font-family: $textarea-font;
-        line-height: $textarea-line-height;
-      }
-    }
-    
-    // style shared by npc actor sheet and item sheets
-    // .sheet-body {
-    //   flex: 1;
-    //   width: 385px;
-    //   .tab {
-    //     height: 100%;
-    //   }
-    //   .description-tab {
-    //     .description-wrapper {
-    //       background-color: var(--cy-foreground-color);
-    //       color: var(--cy-background-color);
-    //       display: flex;
-    //       flex-direction: column;
-    //       height: 100%;
-    //       width: 100%;
-    //     }
-    //   }
-    // }  
+        input[type="number"] {
+            font-family: $input-number-font;
+            font-size: 20px;
+        }
+        input[type="text"] {
+            font-family: $input-text-font;
+            line-height: $textarea-line-height;
+        }
 
-    .sheet-body {
-      border-bottom: $border-width solid var(--cy-foreground-color);
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      border-left: $border-width solid var(--cy-foreground-color);
-      border-right: $border-width solid var(--cy-foreground-color);
-      // height: calc(100% - 33px);
-      height: 100%;
-      // margin-bottom: 10px;
-      overflow: auto;
-      padding: calc($border-width * 2);
-      padding-top: 10px;
-      width: 100%;
-    }    
-  }
+        textarea {
+            color: var(--cy-foreground-color);
+            font-family: $textarea-font;
+            font-size: 15px;
+            line-height: $textarea-line-height;
+            resize: none;
+        }
+
+        // .editor,
+        // .editor-content {
+        //   height: 100%;
+        //   line-height: $textarea-line-height;
+        // }
+        // .editor {
+        //   padding: 0 8px;
+        // }
+
+        // TODO: DRY up all these editor stylings
+        .editor {
+            // border: 1px solid #7a7971;
+            // color: var(--cy-foreground-color);
+            background-color: var(--cy-foreground-color);
+            color: var(--cy-background-color);
+
+            // font-family: var(--journal-font);
+            // font-size: var(--journal-font-size);
+            padding: 0 8px;
+        }
+        .editor {
+            .editor-menu {
+                border-bottom: 1px solid var(--cy-foreground-color);
+                border-top: 1px solid var(--cy-foreground-color);
+                background-color: var(--cy-background-color);
+                color: var(--cy-foreground-color);
+                button {
+                    background-color: var(--cy-background-color);
+                    border: 1px solid var(--cy-foreground-color);
+                    color: var(--cy-foreground-color);
+                    ul {
+                        background-color: var(--cy-background-color);
+                        border: 1px solid var(--cy-foreground-color);
+                        color: var(--cy-foreground-color);
+                        li:hover {
+                            background-color: var(--cy-foreground-color);
+                            color: var(--cy-background-color);
+                        }
+                    }
+                }
+                button:hover {
+                    background-color: var(--cy-foreground-color);
+                    color: var(--cy-background-color);
+                }
+            }
+        }
+        .editor,
+        .editor-content {
+            height: 100%;
+            padding-top: 10px;
+        }
+
+        .widget {
+            border: 4px solid var(--cy-foreground-color);
+            border-radius: $border-radius;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .description-tab {
+            height: 100%;
+            .description-wrapper {
+                height: 100%;
+            }
+        }
+        .sheet-button {
+            // TODO: make button bg and color a color scheme variable
+            // background-color: rgba(249, 0, 248, 0.2);
+            background-color: var(--cy-button-background-color);
+            border: 2px solid var(--cy-highlight-color);
+            border-radius: 0;
+            color: var(--cy-button-foreground-color);
+            font-family: $pixel-font;
+            font-size: 7px;
+            height: 20px;
+            line-height: 1.2;
+            margin-right: 4px;
+            &:last-child {
+                margin-right: 0px;
+            }
+            &:hover {
+                background-color: var(--cy-highlight-color);
+                color: var(--cy-foreground-color);
+                //         background-color: var(--cy-foreground-color);
+                // color: var(--cy-background-color);
+            }
+            &.medium-button {
+                font-size: 8px;
+                height: 30px;
+            }
+            &.big-button {
+                font-size: 8px;
+                height: 36px;
+            }
+        }
+
+        .field-row {
+            display: flex;
+            flex: 0 0 $field-height;
+            margin-bottom: $widget-margin;
+            .field-label {
+                align-items: center;
+                background-color: var(--cy-foreground-color);
+                color: var(--cy-background-color);
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                font-family: $label-font;
+                justify-content: center;
+                text-align: center;
+                text-transform: uppercase;
+            }
+            .field-value {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                flex: 1.5;
+                justify-content: center;
+                input {
+                    width: 100%;
+                }
+            }
+            textarea {
+                font-family: $textarea-font;
+                line-height: $textarea-line-height;
+            }
+        }
+
+        // style shared by npc actor sheet and item sheets
+        // .sheet-body {
+        //   flex: 1;
+        //   width: 385px;
+        //   .tab {
+        //     height: 100%;
+        //   }
+        //   .description-tab {
+        //     .description-wrapper {
+        //       background-color: var(--cy-foreground-color);
+        //       color: var(--cy-background-color);
+        //       display: flex;
+        //       flex-direction: column;
+        //       height: 100%;
+        //       width: 100%;
+        //     }
+        //   }
+        // }
+
+        .sheet-body {
+            border-bottom: $border-width solid var(--cy-foreground-color);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-left: $border-width solid var(--cy-foreground-color);
+            border-right: $border-width solid var(--cy-foreground-color);
+            // height: calc(100% - 33px);
+            height: 100%;
+            // margin-bottom: 10px;
+            overflow: auto;
+            padding: calc($border-width * 2);
+            padding-top: 10px;
+            width: 100%;
+        }
+    }
 }

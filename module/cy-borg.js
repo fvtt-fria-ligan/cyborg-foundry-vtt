@@ -10,7 +10,10 @@ import { registerSystemSettings } from "./settings.js";
 import { showMakePunkDialog } from "./generator/make-punk-dialog.js";
 import { createNpc } from "./generator/scvmfactory.js";
 import { registerHooks } from "./hooks.js";
-import { registerHandlebarsHelpers, registerHandlebarsPartials } from "./handlebars.js";
+import {
+  registerHandlebarsHelpers,
+  registerHandlebarsPartials,
+} from "./handlebars.js";
 
 import { initializeAdBot } from "./corpcomm/ad-bot.js";
 import { showChatAd } from "./corpcomm/chat-comm.js";
@@ -38,15 +41,39 @@ Hooks.once("ready", async () => {
 });
 
 const consoleBanner = () => {
-  const consoleOptions = 'background: #ffffff; color: #000000';
-  console.log('%c===========================================================', consoleOptions);
-  console.log('%c   ██████╗██╗   ██╗     ██████╗  ██████╗ ██████╗  ██████╗ ', consoleOptions);
-  console.log('%c  ██╔════╝╚██╗ ██╔╝     ██╔══██╗██╔═══██╗██╔══██╗██╔════╝ ', consoleOptions);
-  console.log('%c  ██║      ╚████╔╝      ██████╔╝██║   ██║██████╔╝██║  ███╗', consoleOptions);
-  console.log('%c  ██║       ╚██╔╝       ██╔══██╗██║   ██║██╔══██╗██║   ██║', consoleOptions);
-  console.log('%c  ╚██████╗   ██║███████╗██████╔╝╚██████╔╝██║  ██║╚██████╔╝', consoleOptions);
-  console.log('%c   ╚═════╝   ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ', consoleOptions);                                                          
-  console.log('%c===========================================================', consoleOptions);
+  const consoleOptions = "background: #ffffff; color: #000000";
+  console.log(
+    "%c===========================================================",
+    consoleOptions,
+  );
+  console.log(
+    "%c   ██████╗██╗   ██╗     ██████╗  ██████╗ ██████╗  ██████╗ ",
+    consoleOptions,
+  );
+  console.log(
+    "%c  ██╔════╝╚██╗ ██╔╝     ██╔══██╗██╔═══██╗██╔══██╗██╔════╝ ",
+    consoleOptions,
+  );
+  console.log(
+    "%c  ██║      ╚████╔╝      ██████╔╝██║   ██║██████╔╝██║  ███╗",
+    consoleOptions,
+  );
+  console.log(
+    "%c  ██║       ╚██╔╝       ██╔══██╗██║   ██║██╔══██╗██║   ██║",
+    consoleOptions,
+  );
+  console.log(
+    "%c  ╚██████╗   ██║███████╗██████╔╝╚██████╔╝██║  ██║╚██████╔╝",
+    consoleOptions,
+  );
+  console.log(
+    "%c   ╚═════╝   ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ",
+    consoleOptions,
+  );
+  console.log(
+    "%c===========================================================",
+    consoleOptions,
+  );
 };
 
 const registerDocumentClasses = () => {
@@ -54,7 +81,7 @@ const registerDocumentClasses = () => {
   CONFIG.Item.documentClass = CYItem;
   CONFIG.Combat.documentClass = CYCombat;
   CONFIG.Combat.dataModels.cy = CYCombatModel;
-}
+};
 
 const registerSheets = () => {
   Actors.unregisterSheet("core", ActorSheet);
@@ -77,15 +104,15 @@ const registerSheets = () => {
   Items.registerSheet(CY.system, CYItemSheet, {
     makeDefault: true,
     label: "CY.ItemSheet",
-  });  
+  });
 };
 
 const modifyFoundryUI = () => {
-  Hooks.on("renderActorDirectory", (app, html) => {
+  Hooks.on("renderActorDirectory", (tab, html, context, options) => {
     // only show the Create Punk button to users who can create actors
-    if (game.user.can("ACTOR_CREATE")) {
+    if (options.isFirstRender && game.user.can("ACTOR_CREATE")) {
       // Add buttons before directory header
-      const dirHeader = html[0].querySelector(".directory-header");
+      const dirHeader = $(html)[0].querySelector(".directory-header");
 
       const punkHeader = document.createElement("header");
       punkHeader.classList.add("make-punk");
@@ -95,9 +122,9 @@ const modifyFoundryUI = () => {
         "afterbegin",
         `
         <div class="header-actions action-buttons flexrow">
-          <button type="button" class="make-punk-button"><i class="fas fa-skull"></i> ${game.i18n.localize('CY.MakePunk')}</button>
+          <button type="button" class="make-punk-button"><i class="fas fa-skull"></i> ${game.i18n.localize("CY.MakePunk")}</button>
         </div>
-        `
+        `,
       );
       punkHeader
         .querySelector(".make-punk-button")
@@ -113,15 +140,15 @@ const modifyFoundryUI = () => {
         "afterbegin",
         `
         <div class="header-actions action-buttons flexrow">
-          <button type="button" class="make-npc-button"><i class="fas fa-user"></i> ${game.i18n.localize('CY.MakeNpc')}</button>
+          <button type="button" class="make-npc-button"><i class="fas fa-user"></i> ${game.i18n.localize("CY.MakeNpc")}</button>
         </div>
-        `
+        `,
       );
       npcHeader
         .querySelector(".make-npc-button")
         .addEventListener("click", () => {
           createNpc();
-        });  
+        });
     }
   });
-}
+};
