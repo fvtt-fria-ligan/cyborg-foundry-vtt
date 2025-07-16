@@ -100,6 +100,9 @@
   justify-content: flex-start;
   height: 100%;
 }
+.cy.sheet section.window-content nav.tabs [data-tab] {
+  color: var(--cy-foreground-color);
+}
 .cy.sheet section.window-content nav.sheet-tabs.tabs {
   background: none;
   border-bottom: 4px solid var(--cy-foreground-color);
