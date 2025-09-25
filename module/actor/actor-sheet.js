@@ -43,7 +43,7 @@ import { uiClick, uiSuccess, uiWindowClose, uiWindowOpen } from "../sound.js";
   /** @override */
   async getData() {
     const superData = await super.getData();
-    superData.data.system.description = await TextEditor.enrichHTML(
+    superData.data.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
       superData.data.system.description
     );
     return superData;
