@@ -44,7 +44,7 @@ function randomName() {
 async function randomNpc() {
   const name = await randomName();
   const description = await makeDescription(CY.scvmFactory.npcDescriptionTables);
-  const img = randomCharacterPortrait();
+  const img = await randomNpcPortrait();
   const hp = await rollTotal("1d8");
   const morale = await rollTotal("1d8+4");
   const attack = npcAttack();
@@ -270,17 +270,18 @@ function simpleData(e) {
   };
 };
 
-function randomNumberedFile(dir, prefix, maxImgNum, extension) {
-  // pick a suffix from 1 to max
-  const imgNum = randomIntFromInterval(1, maxImgNum);
-  // format to 2 digits
-  const imgNumStr = imgNum.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  return `${dir}/${prefix}${imgNumStr}.${extension}`;
+async function randomCharacterPortrait() {
+  return await randomFile(CY.scvmFactory.characterPortraitPath);
 };
 
-function randomCharacterPortrait() {
-  return randomNumberedFile("systems/cy-borg/assets/images/portraits/characters", "profile_", 7, "svg");  
-};
+async function randomNpcPortrait() {
+  return await randomFile(CY.scvmFactory.npcPortraitPath);
+}
+
+async function randomFile(fromPath) {
+  let folderInfo = await FilePicker.browse('data', fromPath);
+  return sample(folderInfo.files);  
+}
 
 async function rollScvmForClass(clazz) {
   console.log(`Creating new ${clazz.name}`);
@@ -375,7 +376,7 @@ async function rollScvmForClass(clazz) {
   const glitches = await rollTotal(clazz.system.glitches);
   descriptionLines.push("<p>&nbsp;</p>");
   descriptionLines.push(`<p>You owe a debt of ${debtAmount} to ${debtTo}.</p>`);
-  const img = randomCharacterPortrait();
+  const img = await randomCharacterPortrait();
   return {
     actorCreateMacro: clazz.system.actorCreateMacro,
     actorImg: img,

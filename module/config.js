@@ -97,6 +97,10 @@ CY.appBacklashesTable = "App Backlashes";
 
 // Config variables for the Scvmfactory character generator
 CY.scvmFactory = {
+  // Directory under Foundry data to pull character portraits from.
+  characterPortraitPath: "systems/cy-borg/assets/images/portraits/characters/",
+  // Directory under Foundry data to pull NPC portraits from.
+  npcPortraitPath: "systems/cy-borg/assets/images/portraits/characters/",
   // Character Names
   namesTable: "Compendium.cy-borg.cyborg-tables.RollTable.lWQNFZ99gjXNuElZ",
   // Apps
@@ -191,7 +195,7 @@ CY.scvmFactory = {
       formatKey: "CY.CarriesFormat",
       articalize: true
     },
-  ],  
+  ],
   // modules wanting to add more character classes to the generator should append uuids to this list
   classUuids: [
     // Burned Hacker
@@ -220,7 +224,16 @@ CY.colorSchemes = {
     foreground: "#FFB000",
     highlight: "#FFCC00",
     windowBackground: "#282828",
-  },  
+  }, 
+  blackOnWhite: {
+    accent: "#656565",
+    background: "#ffffff",
+    cyberText: "#ffffff",
+    disabled: "gray",
+    foreground: "#000000",
+    highlight: "#656565",
+    windowBackground: "#ffffff",
+  },    
   c64: {
     accent: "#8B4096",
     background: "#41328D",
@@ -288,12 +301,6 @@ CY.colorSchemes = {
     windowBackground: "#032556",
   },
   solarizedDark: {
-    // blue 1F88D2
-    // cream FDF6E3
-    // almost black 002B36
-    // gray light 93A1A1
-    // magenta D33682 
-    // orange B58900
     accent: "#B58900",
     background: "#002B36",
     cyberText: "#D33682",
