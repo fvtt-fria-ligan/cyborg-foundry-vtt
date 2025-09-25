@@ -130,7 +130,9 @@
   margin-right: 0px;
 }
 .cy.sheet section.window-content nav.sheet-tabs.tabs a.item:hover {
+  color: var(--cy-background-color);
   opacity: 1;
+  text-shadow: none;
 }
 .cy.sheet section.window-content nav.sheet-tabs.tabs a.item.active {
   background-color: var(--cy-window-background-color);
@@ -138,6 +140,7 @@
   border-bottom: none;
   opacity: 1;
   position: relative;
+  text-shadow: none;
   top: 4px;
 }
 .cy.sheet section.window-content .sheet-tabs {
@@ -247,7 +250,8 @@
 }
 .cy.sheet section.window-content .sheet-button:hover {
   background-color: var(--cy-highlight-color);
-  color: var(--cy-foreground-color);
+  box-shadow: none;
+  color: var(--cy-background-color);
 }
 .cy.sheet section.window-content .sheet-button.medium-button {
   font-size: 8px;
@@ -364,7 +368,7 @@
 }
 .cy.sheet.actor section.window-content .sheet-header .right-col .glitches-row .glitches-label {
   background-color: var(--cy-foreground-color);
-  color: black;
+  color: var(--cy-background-color);
   flex: 0 0 24px;
   font-size: 16px;
   display: flex;
@@ -541,7 +545,7 @@
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .glitches-row .glitches-label {
   background-color: var(--cy-foreground-color);
-  color: black;
+  color: var(--cy-background-color);
   flex: 0 0 24px;
   font-size: 16px;
   display: flex;
