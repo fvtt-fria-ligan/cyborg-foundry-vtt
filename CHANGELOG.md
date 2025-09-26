@@ -1,3 +1,13 @@
+# 4.0.1
+
+- Add Black-on-White color scheme.
+- Remove Foundry css box-shadow from buttons and text-shadow from tabs.
+- Fix missing type="submit" on Add Item dialog to fix enter key weirdness.
+
+# 4.0.0
+
+- Foundry v13 compatibility.
+
 # 3.0.5
 
 - Fix weapon crit by @jtpevehouse.
