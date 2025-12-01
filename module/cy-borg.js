@@ -84,24 +84,24 @@ const registerDocumentClasses = () => {
 };
 
 const registerSheets = () => {
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(CY.system, CYCharacterSheet, {
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet(CY.system, CYCharacterSheet, {
     types: ["character"],
     makeDefault: true,
     label: "CY.CharacterSheet",
   });
-  Actors.registerSheet(CY.system, CYNpcSheet, {
+  foundry.documents.collections.Actors.registerSheet(CY.system, CYNpcSheet, {
     types: ["npc"],
     makeDefault: true,
     label: "CY.NpcSheet",
   });
-  Actors.registerSheet(CY.system, CYVehicleSheet, {
+  foundry.documents.collections.Actors.registerSheet(CY.system, CYVehicleSheet, {
     types: ["vehicle"],
     makeDefault: true,
     label: "CY.VehicleSheet",
   });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(CY.system, CYItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet(CY.system, CYItemSheet, {
     makeDefault: true,
     label: "CY.ItemSheet",
   });

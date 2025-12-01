@@ -12,7 +12,7 @@ import { uiClick, uiSuccess, uiWindowClose, uiWindowOpen } from "../sound.js";
 /**
  * @extends {ActorSheet}
  */
- export class CYActorSheet extends ActorSheet {
+ export class CYActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   /** @override */
   render(force=false, options={}) {

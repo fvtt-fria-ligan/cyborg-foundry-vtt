@@ -1,4 +1,4 @@
-import { TABLES_PACK } from "../packutils.js";
+import { CY } from "../config.js";
 
 const LEVEL_UP_ROLL_CARD_TEMPLATE =
   "systems/cy-borg/templates/chat/level-up-roll-card.html";
@@ -90,7 +90,7 @@ export async function rollLevelUp(actor) {
 
   if (rollTableName) {
     // roll a scroll
-    const pack = game.packs.get(TABLES_PACK);
+    const pack = game.packs.get(CY.packs.tables);
     const content = await pack.getDocuments();
     const table = content.find((i) => i.name === rollTableName);
     await table.draw();

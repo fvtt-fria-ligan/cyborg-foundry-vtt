@@ -1,5 +1,5 @@
 import { CY } from "../config.js";
-import { TABLES_PACK, drawDocument, dupeData } from "../packutils.js";
+import { drawDocument, dupeData } from "../packutils.js";
 import { soundEffects } from "../settings.js";
 import { uiEject, uiError, uiSlot } from "../sound.js";
 import { byName, rollTotalSync } from "../utils.js";
@@ -63,7 +63,7 @@ import { byName, rollTotalSync } from "../utils.js";
   }
 
   async createLinkedInfestation() {
-    const infestation = await drawDocument(TABLES_PACK, "Infestations");
+    const infestation = await drawDocument(CY.packs.tables, "Infestations");
     if (!infestation) {
       console.error("Failed to draw an infestation");
       return;

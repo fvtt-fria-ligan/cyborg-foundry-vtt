@@ -4,6 +4,8 @@ import { CYItem } from "../item/item.js";
 import { articalize, lowerCaseFirst, randomIntFromInterval, rollTotal, sample, upperCaseFirst } from "../utils.js";
 
 import {
+  documentFromResult,
+  documentsFromDraw,
   drawFromTableUuid,
   drawTextFromTableUuid,
 } from "../packutils.js";
@@ -12,7 +14,7 @@ import { getAllowedScvmClasses } from "../settings.js";
 export async function createScvm(clazz) {
   const scvm = await rollScvmForClass(clazz);
   await createActorWithScvm(scvm);
-};
+}
 
 export async function createScvmFromClassUuid(classUuid) {
   const clazz = await fromUuid(classUuid);
@@ -24,22 +26,22 @@ export async function createScvmFromClassUuid(classUuid) {
     return;
   }
   await createScvm(clazz);
-};
+}
 
 export async function scvmifyActor(actor, clazz) {
   const scvm = await rollScvmForClass(clazz);
   await updateActorWithScvm(actor, scvm);
-};
+}
 
 export async function createNpc() {
   const npc = await randomNpc();
   const actor = await CYActor.create(npc);
   actor.sheet.render(true);
-};
+}
 
 function randomName() {
   return drawTextFromTableUuid(CY.scvmFactory.namesTable);
-};
+}
 
 async function randomNpc() {
   const name = await randomName();
@@ -71,7 +73,7 @@ async function randomNpc() {
     },    
     type: "npc",
   };  
-};
+}
 
 function npcAttack() {
   return sample([
@@ -99,7 +101,7 @@ async function makeDescription(descriptionTables) {
     const table = await fromUuid(dt.uuid);
     if (table) {
       const draw = await table.draw({ displayChat: false });
-      let text = lowerCaseFirst(draw.results[0].text);
+      let text = lowerCaseFirst(draw.results[0].description);
       if (dt.articalize) {
         text = articalize(text);
       }
@@ -110,7 +112,7 @@ async function makeDescription(descriptionTables) {
     }
   }
   return descriptionLine;
-};
+}
 
 export async function findClasses() {
   const classes = [];
@@ -121,7 +123,7 @@ export async function findClasses() {
     }
   }
   return classes;
-};
+}
 
 export async function findAllowedClasses() {
   const classes = await findClasses();
@@ -130,7 +132,7 @@ export async function findAllowedClasses() {
     return !(c.uuid in allowedScvmClasses) || allowedScvmClasses[c.uuid];
   });
   return filtered;
-};
+}
 
 async function abilityRoll(formula) {
   const total = await rollTotal(formula);
@@ -139,28 +141,19 @@ async function abilityRoll(formula) {
 
 const classStartingArmor = async (clazz) => {
   if (CY.scvmFactory.startingArmorTable && clazz.system.armorTable) {
-    // TODO: refactor documentsFromTableUuid() to take a roll, and use it
-    const armorRoll = new Roll(clazz.system.armorTable);
-    const armorTable = await fromUuid(CY.scvmFactory.startingArmorTable);
-    const armorDraw = await armorTable.draw({
-      roll: armorRoll,
-      displayChat: false,
-    });
-    const armor = await docsFromResults(armorDraw.results);
+    const draw = await drawFromTableUuid(
+      CY.scvmFactory.startingArmorTable,
+      clazz.system.armorTable
+    );
+    const armor = await documentsFromDraw(draw);
     return armor;
   }
-};
+}
 
 async function classStartingWeapons(clazz) {
   if (CY.scvmFactory.startingWeaponTable && clazz.system.weaponTable) {
-    // TODO: refactor documentsFromTableUuid() to take a roll, and use it
-    const weaponRoll = new Roll(clazz.system.weaponTable);
-    const weaponTable = await fromUuid(CY.scvmFactory.startingWeaponTable);
-    const weaponDraw = await weaponTable.draw({
-      roll: weaponRoll,
-      displayChat: false,
-    });
-    const weapons = await docsFromResults(weaponDraw.results);    
+    const draw = await drawFromTableUuid(CY.scvmFactory.startingWeaponTable, clazz.system.weaponTable);
+    const weapons = await documentsFromDraw(draw);
     // add ammo mags if starting weapon uses ammo
     const mags = [];
     for (const weapon of weapons) {
@@ -178,7 +171,7 @@ async function classStartingWeapons(clazz) {
     weapons.push(...mags);    
     return weapons;
   }
-};
+}
 
 async function classStartingItems(clazz) {
   if (clazz.system.items) {
@@ -197,7 +190,7 @@ async function classStartingItems(clazz) {
     }
     return startingItems;
   }
-};
+}
 
 async function classDescriptionLines(clazz) {
   const descriptionLines = [];
@@ -209,7 +202,7 @@ async function classDescriptionLines(clazz) {
     descriptionLines.push("<p>&nbsp;</p>");
   }
   return descriptionLines;
-};
+}
 
 function hasApp(items) {
   return items.filter(x => x.type === CY.itemTypes.app).length > 0;
@@ -235,30 +228,25 @@ async function startingEquipment(clazz) {
   }
 
   for (const uuid of CY.scvmFactory.startingEquipmentTables) {
-    const table = await fromUuid(uuid);
-    if (table) {
-      const draw = await table.draw({ displayChat: false });
-      let items = await docsFromResults(draw.results);
-      if (clazz.system.onlyApps && (hasCybertech(items) || hasNano(items))) {
-        // replace with a draw from apps
-        const item = await drawFromTableUuid(CY.scvmFactory.appsTable);
-        items = [item];
-      } else if (clazz.system.onlyCybertech && (hasApp(items) || hasNano(items))) {
-        // replace with a draw from cybertech
-        const item = await drawFromTableUuid(CY.scvmFactory.cybertechTable, "1d12");
-        items = [item];
-      } else if (clazz.system.onlyNano && (hasApp(items) || hasCybertech(items))) {
-        // replace with a draw from nano powers
-        const item = await drawFromTableUuid(CY.scvmFactory.nanoPowersTable);
-        items = [item];
-      }
-      equipment.push(...items);  
-    } else {
-      console.error(`Could not find table ${uuid}`);
+    const draw = await drawFromTableUuid(uuid);
+    let items = await documentsFromDraw(draw);
+    if (clazz.system.onlyApps && (hasCybertech(items) || hasNano(items))) {
+      // replace with a draw from apps
+      const item = await drawFromTableUuid(CY.scvmFactory.appsTable);
+      items = [item];
+    } else if (clazz.system.onlyCybertech && (hasApp(items) || hasNano(items))) {
+      // replace with a draw from cybertech
+      const item = await drawFromTableUuid(CY.scvmFactory.cybertechTable, "1d12");
+      items = [item];
+    } else if (clazz.system.onlyNano && (hasApp(items) || hasCybertech(items))) {
+      // replace with a draw from nano powers
+      const item = await drawFromTableUuid(CY.scvmFactory.nanoPowersTable);
+      items = [item];
     }
+    equipment.push(...items);  
   }
   return equipment;
-};
+}
 
 function simpleData(e) {
   return {
@@ -268,18 +256,18 @@ function simpleData(e) {
     name: e.name,
     type: e.type,  
   };
-};
+}
 
 async function randomCharacterPortrait() {
   return await randomFile(CY.scvmFactory.characterPortraitPath);
-};
+}
 
 async function randomNpcPortrait() {
   return await randomFile(CY.scvmFactory.npcPortraitPath);
 }
 
 async function randomFile(fromPath) {
-  let folderInfo = await FilePicker.browse('data', fromPath);
+  let folderInfo = await foundry.applications.apps.FilePicker.implementation.browse('data', fromPath);
   return sample(folderInfo.files);  
 }
 
@@ -334,15 +322,12 @@ async function rollScvmForClass(clazz) {
             if (result.type === CONST.TABLE_RESULT_TYPES.TEXT) {
               // text
               descriptionLines.push(
-                `<p>${table.name}: ${result.text}</p>`
+                `<p>${table.name}: ${result.description}</p>`
               );
             } else if (result.type === CONST.TABLE_RESULT_TYPES.DOCUMENT) {
-              // entity
-              // TODO: what do we want to do here?
-            } else if (result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
-              // compendium
-              const entity = await entityFromResult(result);
-              startingRollItems.push(entity);
+              // compendium / doc
+              const doc = await documentFromResult(result);
+              startingRollItems.push(doc);
             }
           }
         } else {
@@ -398,7 +383,7 @@ async function rollScvmForClass(clazz) {
     tokenImg: img,
     toughness,
   };
-};
+}
 
 function scvmToActorData(s) {
   return {
@@ -434,7 +419,7 @@ function scvmToActorData(s) {
     },
     type: "character",
   };
-};
+}
 
 async function createActorWithScvm(s) {
   const data = scvmToActorData(s);
@@ -470,7 +455,7 @@ async function createActorWithScvm(s) {
       console.error(`Could not find pack ${packName}.`);
     }
   }
-};
+}
 
 async function updateActorWithScvm(actor, s) {
   const data = scvmToActorData(s);
@@ -515,35 +500,7 @@ async function updateActorWithScvm(actor, s) {
       macro.execute({actor});
     }
   }  
-};
-
-async function docsFromResults(results) {
-  const ents = [];
-  for (const result of results) {
-    const entity = await entityFromResult(result);
-    if (entity) {
-      ents.push(entity);
-    }
-  }
-  return ents;
-};
-
-async function entityFromResult(result) {
-  // draw result type: text (0), entity (1), or compendium (2)
-  if (result.type === CONST.TABLE_RESULT_TYPES.COMPENDIUM) {
-    // grab the item from the compendium
-    const collection = game.packs.get(result.documentCollection);
-    if (collection) {
-      // TODO: should we use pack.getEntity(entryId) ?
-      // const item = await collection.getEntity(result._id);
-      const content = await collection.getDocuments();
-      const entity = content.find((i) => i.name === result.text);
-      return entity;
-    } else {      
-      console.log(`Could not find pack ${result.documentCollection}`);
-    }
-  }
-};
+}
 
 function abilityBonus(rollTotal) {
   if (rollTotal <= 4) {
@@ -562,7 +519,7 @@ function abilityBonus(rollTotal) {
     // 17 - 20+
     return 3;
   }
-};
+}
 
 /** Workaround for compendium RollTables not honoring replacement=false */
 async function compendiumTableDrawMany(rollTable, numDesired, formula) {
@@ -579,4 +536,4 @@ async function compendiumTableDrawMany(rollTable, numDesired, formula) {
     results = results.concat(tableDraw.results);
   }
   return results;
-};
+}

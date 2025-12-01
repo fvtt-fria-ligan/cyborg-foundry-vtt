@@ -1,6 +1,6 @@
 import { uiClick, uiWindowClose, uiWindowOpen } from "../sound.js";
 
-export class CYItemSheet extends ItemSheet {  
+export class CYItemSheet extends foundry.appv1.sheets.ItemSheet {  
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {

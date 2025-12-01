@@ -2,6 +2,13 @@ export const CY = {};
 
 CY.system = "cy-borg";
 
+CY.packs = {
+  actors: "cy-borg.cyborg-actors",
+  items: "cy-borg.cyborg-items",
+  macros: "cy-borg.cyborg-macros",
+  tables: "cy-borg.cyborg-tables"
+};
+
 CY.actorTypes = {
   character: "character",
   npc: "npc",

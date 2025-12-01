@@ -1,7 +1,7 @@
 import { CY } from "../config.js";
 import { CYItem } from "../item/item.js";
 import { trackCarryingCapacity } from "../settings.js";
-import { ITEMS_PACK, documentFromPack, dupeData } from "../packutils.js";
+import { documentFromPack, dupeData } from "../packutils.js";
 import { rollCyRage } from "./cybertech.js";
 import { showMakePunkDialog } from "../generator/make-punk-dialog.js";
 
@@ -66,7 +66,7 @@ const byCurrentTierDesc = (a, b) => (a.system.tier.value < b.system.tier.value ?
   async addDefaultClass() {
     // add classless punk if a class doesn't already exist
     if (!this._first(CY.itemTypes.class)) {
-      const clazz = await documentFromPack(ITEMS_PACK, "Classless Punk");
+      const clazz = await documentFromPack(CY.packs.items, "Classless Punk");
       if (clazz) {
         await this.createEmbeddedDocuments("Item", [dupeData(clazz)]);
       }  

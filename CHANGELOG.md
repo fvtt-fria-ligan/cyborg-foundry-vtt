@@ -1,3 +1,8 @@
+# 4.0.2
+
+- More v13 warning cleanup.
+- Fix v13 breakage in character generator that caused rolled class items to not be created.
+
 # 4.0.1
 
 - Add Black-on-White color scheme.

@@ -1,5 +1,5 @@
 export const registerHandlebarsPartials = async () => {
-  await loadTemplates([
+  await foundry.applications.handlebars.loadTemplates([
     "systems/cy-borg/templates/actor/abilities.html",
     "systems/cy-borg/templates/actor/combat-tab.html",
     "systems/cy-borg/templates/actor/dossier-tab.html",
