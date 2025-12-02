@@ -8,6 +8,7 @@ import {
   documentsFromDraw,
   drawFromTableUuid,
   drawTextFromTableUuid,
+  simpleData,
 } from "../packutils.js";
 import { getAllowedScvmClasses } from "../settings.js";
 
@@ -246,16 +247,6 @@ async function startingEquipment(clazz) {
     equipment.push(...items);  
   }
   return equipment;
-}
-
-function simpleData(e) {
-  return {
-    system: e.system,
-    img: e.img,
-    items: e.items?.map(i => simpleData(i)),
-    name: e.name,
-    type: e.type,  
-  };
 }
 
 async function randomCharacterPortrait() {

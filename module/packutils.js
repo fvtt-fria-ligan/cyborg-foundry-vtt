@@ -107,11 +107,13 @@ export async function documentFromResult(result) {
   return doc;
 }
 
-export function dupeData(doc) {
+export function simpleData(e) {
   return {
-    system: doc.system,
-    img: doc.img,
-    name: doc.name,
-    type: doc.type,
+    img: e.img,
+    items: e.items?.map(i => simpleData(i)),
+    name: e.name,
+    system: e.system,
+    type: e.type,  
   };
 }
+
