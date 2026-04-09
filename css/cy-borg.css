@@ -120,7 +120,7 @@
   display: flex;
   flex-direction: column;
   font-family: "Pixelify Sans";
-  font-size: 8px;
+  font-size: 14px;
   justify-content: center;
   height: 30px;
   margin-right: 2px;
@@ -254,11 +254,11 @@
   color: var(--cy-background-color);
 }
 .cy.sheet section.window-content .sheet-button.medium-button {
-  font-size: 8px;
+  font-size: 15px;
   height: 30px;
 }
 .cy.sheet section.window-content .sheet-button.big-button {
-  font-size: 8px;
+  font-size: 15px;
   height: 36px;
 }
 .cy.sheet section.window-content .field-row {
@@ -530,7 +530,8 @@
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a .ability-label {
   color: var(--cy-background-color);
   font-family: "Pixelify Sans";
-  font-size: 6px;
+  font-size: 10px;
+  text-align: center;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
   flex: 1;

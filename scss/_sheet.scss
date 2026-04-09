@@ -51,7 +51,7 @@
                 display: flex;
                 flex-direction: column;
                 font-family: $pixel-font;
-                font-size: 8px;
+                font-size: 14px;
                 justify-content: center;
                 height: $tab-height;
                 margin-right: 2px;
@@ -212,11 +212,11 @@
                 color: var(--cy-background-color);
             }
             &.medium-button {
-                font-size: 8px;
+                font-size: 15px;
                 height: 30px;
             }
             &.big-button {
-                font-size: 8px;
+                font-size: 15px;
                 height: 36px;
             }
         }
