@@ -716,5 +716,12 @@ const adsPl = [
   "Chcesz ubrania za grosze? Odwiedź ThriftMorgue koło Ciebie po wybór NAJŚWIEŻSZEJ odzieży w niskiej cenie. Ceny jeszcze niższe na artykuły niedezynfekowane.",
   "Oddychaj swobodnie! Kup puszkowane powietrze Hex Corp. Produkujemy jeden z najlepszych O₂ w puszce za Twoje Kredyty! Teraz w 20% opakowaniu z recyklingu.",
   "<b>Freerider RealTobacco</b> POCZWÓRNA paczka dziennie. Subskrybuj teraz i odbierz Specjalny Prezent (25% zniżki dla członków Gildii Kaytell Makers).",
+  "Po prostu powiększ swojego cyber-naganiacza.<br>Wybierz rozmiar:<br>◯ 18 cm<br>◉ 23 cm<br>◯ 27 cm<br>◯ 32 cm <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swój cybernetyczny mózg.<br>Wybierz pojemność:<br>◯ 64 TB<br>◉ 256 TB<br>◯ 1 PB<br>◯ 10 PB <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swoją broń.<br>Wybierz kaliber:<br>◯ 9 mm<br>◉ .45 ACP<br>◯ 12.7 mm<br>◯ 20 mm <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swój dług.<br>Wybierz kwotę:<br>◯ 10 000¤<br>◉ 50 000¤<br>◯ 250 000¤<br>◯ 1 000 000¤ <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swoją cybernetyczną rękę.<br>Wybierz liczbę palców:<br>◯ 5<br>◉ 8<br>◯ 12<br>◯ 20 <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swój rating społeczny.<br>Wybierz liczbę znajomych:<br>◯ 500<br>◉ 5 000<br>◯ 50 000<br>◯ 500 000 <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
+  "Po prostu powiększ swojego cyber-wszczepa.<br>Wybierz rozmiar:<br>◯ 18 cm<br>◉ 23 cm<br>◯ 27 cm<br>◯ 32 cm <span style='color:red'>(Ostrożnie!)</span><br><b>POTWIERDŹ</b>",
 ];
  
