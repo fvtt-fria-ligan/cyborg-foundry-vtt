@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Press+Start+2P&family=Righteous&family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Press+Start+2P&family=Righteous&family=VT323&subset=latin-ext&display=swap");
 :root {
   --cy-accent-color: #71C5C9;
   --cy-background-color: #1C1E23;
@@ -14,36 +14,36 @@
 }
 
 @font-face {
-  font-family: "Aldo the Apache";
-  src: url("../assets/fonts/AldotheApache.ttf") format("truetype");
+  font-family: "Bungee";
+  src: url("../assets/fonts/Bungee-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "LDFComicSans";
-  src: url("../assets/fonts/LDFComicSans.ttf") format("truetype");
+  font-family: "Comic Relief";
+  src: url("../assets/fonts/ComicRelief-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Nouveau IBM";
-  src: url("../assets/fonts/Nouveau_IBM.ttf") format("truetype");
+  font-family: "IBM Plex Mono";
+  src: url("../assets/fonts/IBMPlexMono-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Papyrus";
-  src: url("../assets/fonts/Papyrus.ttf") format("truetype");
+  font-family: "Almendra";
+  src: url("../assets/fonts/Almendra-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Scanlines";
-  src: url("../assets/fonts/Scanlines.ttf") format("truetype");
+  font-family: "Audiowide";
+  src: url("../assets/fonts/Audiowide-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "UAV OSD Sans Mono";
-  src: url("../assets/fonts/UAV-OSD-Sans-Mono.ttf") format("truetype");
+  font-family: "Space Mono";
+  src: url("../assets/fonts/SpaceMono-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "QuanPixel 8px";
   src: url("../assets/fonts/quan.ttf") format("truetype");
 }
 @font-face {
-  font-family: "CY VTT test font 1.2";
-  src: url("../assets/fonts/CY_VTT_test_font_1.2.ttf") format("truetype");
+  font-family: "Pixelify Sans";
+  src: url("../assets/fonts/PixelifySans-Variable.ttf") format("truetype");
 }
 .draw-from-table {
   cursor: pointer;
@@ -119,7 +119,7 @@
   border-bottom: none;
   display: flex;
   flex-direction: column;
-  font-family: "CY VTT test font 1.2";
+  font-family: "Pixelify Sans";
   font-size: 8px;
   justify-content: center;
   height: 30px;
@@ -172,7 +172,7 @@
   width: 100%;
 }
 .cy.sheet section.window-content input[type=number] {
-  font-family: "Aldo the Apache";
+  font-family: "Bungee";
   font-size: 20px;
 }
 .cy.sheet section.window-content input[type=text] {
@@ -239,7 +239,7 @@
   border: 2px solid var(--cy-highlight-color);
   border-radius: 0;
   color: var(--cy-button-foreground-color);
-  font-family: "CY VTT test font 1.2";
+  font-family: "Pixelify Sans";
   font-size: 7px;
   height: 20px;
   line-height: 1.2;
@@ -273,7 +273,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  font-family: "UAV OSD Sans Mono";
+  font-family: "Space Mono";
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
@@ -342,7 +342,7 @@
   margin-bottom: 5px;
 }
 .cy.sheet.actor section.window-content .sheet-header .left-col .name input[type=text] {
-  font-family: "UAV OSD Sans Mono";
+  font-family: "Space Mono";
   height: 38px;
 }
 .cy.sheet.actor section.window-content .sheet-header .right-col {
@@ -355,7 +355,7 @@
   align-items: center;
   display: flex;
   flex: 0 0 292px;
-  font-family: "UAV OSD Sans Mono";
+  font-family: "Space Mono";
   font-size: 40px;
   margin-bottom: 5px;
   justify-content: center;
@@ -529,7 +529,7 @@
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-icon a .ability-label {
   color: var(--cy-background-color);
-  font-family: "CY VTT test font 1.2";
+  font-family: "Pixelify Sans";
   font-size: 6px;
 }
 .cy.sheet.actor.character section.window-content .sheet-header .right-col .ability-row .ability-score {
@@ -634,7 +634,7 @@
   line-height: 1.5;
   text-align: center;
   border-radius: 100%;
-  font-family: "Aldo the Apache";
+  font-family: "Bungee";
   left: 0;
   top: 0;
 }
@@ -696,7 +696,7 @@
 }
 .equipment-tab .cybertech-title {
   background: repeating-linear-gradient(-45deg, var(--cy-foreground-color), var(--cy-foreground-color) 10px, var(--cy-background-color) 10px, var(--cy-background-color) 20px);
-  font-family: "CY VTT test font 1.2";
+  font-family: "Pixelify Sans";
   font-size: 10px;
   margin-bottom: 10px;
   margin-top: 20px;
@@ -830,12 +830,12 @@
 }
 
 .font6 {
-  font-family: Scanlines;
+  font-family: Audiowide;
   text-transform: uppercase;
 }
 
 .font7 {
-  font-family: "Fascinate Inline";
+  font-family: "Bungee Inline";
   font-size: 20px;
 }
 
@@ -844,12 +844,12 @@
 }
 
 .font9 {
-  font-family: "Papyrus";
+  font-family: "Almendra";
   font-size: 18px;
 }
 
 .font10 {
-  font-family: "LDFComicSans";
+  font-family: "Comic Relief";
   font-size: 18px;
 }
 
@@ -1357,7 +1357,7 @@
   --macro-size: 50px;
   --players-width: 200px;
   --form-field-height: 26px;
-  --font-primary: "Nouveau IBM";
+  --font-primary: "IBM Plex Mono";
   --font-mono: monospace;
   --font-size-11: 0.75rem;
   --font-size-12: 0.8125rem;
@@ -1651,7 +1651,7 @@ a.inline-roll {
   align-items: center;
   display: flex;
   flex: 1;
-  font-family: "UAV OSD Sans Mono";
+  font-family: "Space Mono";
   font-size: 48px;
   justify-content: center;
   writing-mode: vertical-rl;
