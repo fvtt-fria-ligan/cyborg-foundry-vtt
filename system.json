@@ -2,7 +2,7 @@
   "id": "cy-borg",
   "title": "CY_BORG",
   "description": "Foundry VTT system for CY_BORG.",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "authors": [
     {
       "name": "mcglintlock"
@@ -86,7 +86,8 @@
   "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
   "compatibility": {
-    "minimum": "13",
+    "maximum": "14",
+    "minimum": "14",
     "verified": "13"
   },
   "url": "https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt",

@@ -1,5 +1,5 @@
 import { CY } from "../config.js";
-import { drawDocument, dupeData } from "../packutils.js";
+import { drawDocument, simpleData } from "../packutils.js";
 import { soundEffects } from "../settings.js";
 import { uiEject, uiError, uiSlot } from "../sound.js";
 import { byName, rollTotalSync } from "../utils.js";
@@ -68,7 +68,7 @@ import { byName, rollTotalSync } from "../utils.js";
       console.error("Failed to draw an infestation");
       return;
     }
-    const data = dupeData(infestation);
+    const data = simpleData(infestation);
     data.system.nanoId = this.id;
     await this.parent.createEmbeddedDocuments("Item", [data]);
   }
